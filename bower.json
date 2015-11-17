@@ -1,0 +1,23 @@
+{
+  "name": "sailsSample",
+  "version": "0.0.0",
+  "homepage": "https://github.com/trunkWorkshop/sailsSample",
+  "authors": [
+    "smlsunxie <smlsun@gmail.com>"
+  ],
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5"
+  }
+}

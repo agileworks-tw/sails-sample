@@ -118,3 +118,5 @@ nbproject
 .node_history
 
 sqlite.db
+.sass-cache
+www
