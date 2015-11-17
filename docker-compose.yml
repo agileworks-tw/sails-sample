@@ -1,0 +1,50 @@
+build:
+  container_name: sailsSample_build
+  image: miiixr/picklete_env
+  command: "/bin/bash -l -c 'npm i && node_modules/.bin/grunt buildDev'"
+
+  working_dir: /sailsSample
+  volumes:
+    - ./:/sailsSample
+
+test:
+  container_name: sailsSample_test
+  image: miiixr/picklete_env
+  extends:
+    file: ./dockerConfig/development.yml
+    service: test
+
+  external_links:
+    - mysql
+
+  working_dir: /picklete
+  volumes:
+    - ./:/picklete
+
+web:
+  container_name: sailsSample
+  image: miiixr/picklete_env
+  extends:
+    file: ./dockerConfig/development.yml
+    service: web
+
+  external_links:
+    - mysql
+
+  working_dir: /sailsSample
+  volumes:
+    - ./:/sailsSample
+
+  restart: always
+
+
+mysql:
+  container_name: mysql
+  image: dgraziotin/mysql
+  extends:
+    file: ./dockerConfig/development.yml
+    service: mysql
+  volumes:
+    - ../database:/var/lib/mysql/
+
+  restart: always

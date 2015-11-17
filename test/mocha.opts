@@ -1,0 +1,4 @@
+-t 500000
+--require chai
+--recursive test/bootstrap.test.js
+--reporter spec
