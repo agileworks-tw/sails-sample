@@ -3,6 +3,7 @@ var rc = require("rc");
 
 global.request = require("supertest-as-promised");
 global.should = require("chai").should();
+global.sinon = require("sinon");
 
 var options = {
   loose: "all",

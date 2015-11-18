@@ -121,3 +121,4 @@ sqlite.db
 .sass-cache
 www
 assets/bower
+coverage

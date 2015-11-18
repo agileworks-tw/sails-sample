@@ -46,7 +46,7 @@
     "grunt-mocha-istanbul": "^3.0.1",
     "istanbul": "^0.4.0",
     "mocha": "^2.3.4",
-    "supertest": "^1.1.0",
+    "sinon": "^1.17.2",
     "supertest-as-promised": "^2.0.2"
   }
 }
