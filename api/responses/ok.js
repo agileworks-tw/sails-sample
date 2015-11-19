@@ -38,7 +38,6 @@ module.exports = function sendOK (data, options) {
   if (options.view) {
     return res.view(options.view, { data: data });
   }
-
   // If no second argument provided, try to serve the implied view,
   // but fall back to sending JSON(P) if no view can be inferred.
   else return res.guessView({ data: data }, function couldNotGuessView () {

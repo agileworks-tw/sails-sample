@@ -1,6 +1,19 @@
 extends ./../layout
 
 block body
-  p user index
+  
+ .container
+   h1 user index
+   table.table
+     thead
+       tr
+         th name
+         th age
+     tbody
+       each user in data.users
+         tr
+           td #{user.name}
+           td #{user.age}
+  
     
 block scripts
