@@ -3,7 +3,7 @@ describe('about User Controller operation.', function() {
     done(new Error('no implement'));
   });
 
-  describe.only('find user', () => {
+  describe('find user', () => {
 
     it('should success.', async (done) => {
       try {

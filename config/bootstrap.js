@@ -11,7 +11,10 @@
 
 module.exports.bootstrap = async (cb) => {
   try {
-    await User.create({name: 'testuser'});
+    let user = await User.create({name: 'testuser'});
+    let post = await Post.create({title: 'testTitle'});
+    await user.setPosts([post]);
+
     cb();
   } catch (e) {
     cb(e);

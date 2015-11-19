@@ -1,15 +1,15 @@
 module.exports = {
   attributes: {
-    name: {
+    title: {
       type: Sequelize.STRING,
       allowNull: false
     },
-    age: {
-      type: Sequelize.INTEGER
+    content: {
+      type: Sequelize.STRING,
     }
   },
   associations: function() {
-    User.hasMany(Post);
+
   },
   options: {
     classMethods: {},
