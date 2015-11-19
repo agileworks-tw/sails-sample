@@ -3,14 +3,19 @@ describe('about User Controller operation.', function() {
     done(new Error('no implement'));
   });
 
-  describe('find user', () => {
-    before(async (done) => {
-      done();
-    });
+  describe.only('find user', () => {
 
     it('should success.', async (done) => {
-      done(new Error('no implement'));
+      try {
+        let res = await request(sails.hooks.http.app).get(`/user/find`);
+        let {users} = res.body;
+        users.should.be.Array;
+        done();
+      } catch (e) {
+        done(e);
+      }
     });
+
   });
 
   describe('delete user', () => {
