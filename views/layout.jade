@@ -23,9 +23,9 @@ html
         div
           ul.nav.navbar-nav
             li(class=(req.options.controller == null ? 'active' : ''))
-              a(href='/') Home
+              a(href='/') #{i18n('home')}
             li(class=(req.options.controller == 'user' ? 'active' : ''))
-              a(href='/user/index') User
+              a(href='/user/index') #{i18n('user')}
 
     
     block body
