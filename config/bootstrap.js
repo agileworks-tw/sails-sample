@@ -15,8 +15,8 @@ module.exports.bootstrap = async (cb) => {
     let user = await User.create({username: 'testuser', email: 'test@gmail.com'});
     let passport = await Passport.create({provider: 'local', password: 'testuser'});
     let post = await Post.create({title: 'testTitle'});
-    await user.setPosts([post]);
-    await user.setPassports([passport]);
+    let result = await user.setPosts([post]);
+    // await user.setPassports([passport]);
     cb();
   } catch (e) {
     cb(e);

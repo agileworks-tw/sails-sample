@@ -23,7 +23,8 @@ module.exports.policies = {
     '*': ['passport']
   },
   'UserController': {
-    'index': ['passport', 'sessionAuth']
+    'index': [],
+    'find': []
   }
   /***************************************************************************
   *                                                                          *
