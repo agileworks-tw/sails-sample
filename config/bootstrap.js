@@ -12,10 +12,10 @@
 module.exports.bootstrap = async (cb) => {
   try {
     sails.services.passport.loadStrategies();
-    let user = await User.create({username: 'testuser', email: 'test@gmail.com'});
-    let passport = await Passport.create({provider: 'local', password: 'testuser'});
-    let post = await Post.create({title: 'testTitle'});
-    let result = await user.setPosts([post]);
+    let user = await User.create({username: 'user', email: 'user@gmail.com'});
+    let passport = await Passport.create({provider: 'local', password: 'user', UserId: user.id});
+    let post = await Post.create({title: 'testTitle', UserId: user.id});
+    // await user.setPosts([post]);
     // await user.setPassports([passport]);
     cb();
   } catch (e) {

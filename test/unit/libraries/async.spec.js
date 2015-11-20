@@ -23,7 +23,7 @@ describe('about flow operation.', () => {
   });
 
   it('findAll post use promise function', (done) => {
-
+    done();
   });
 
   it('findAll post use async/await function', async (done) => {
