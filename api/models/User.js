@@ -1,6 +1,10 @@
 module.exports = {
   attributes: {
-    name: {
+    username: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    email: {
       type: Sequelize.STRING,
       allowNull: false
     },
@@ -10,6 +14,7 @@ module.exports = {
   },
   associations: function() {
     User.hasMany(Post);
+    User.hasMany(Passport);
   },
   options: {
     classMethods: {},
