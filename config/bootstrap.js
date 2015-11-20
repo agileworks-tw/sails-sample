@@ -17,7 +17,6 @@ module.exports.bootstrap = async (cb) => {
     let post = await Post.create({title: 'testTitle'});
     await user.setPosts([post]);
     await user.setPassports([passport]);
-
     cb();
   } catch (e) {
     cb(e);

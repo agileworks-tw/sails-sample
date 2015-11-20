@@ -5,14 +5,14 @@ block body
  .container
    h1 user login
    
-   form(role='form', ation='/auth/local', method='post')
+   form(role='form', action='/auth/local', method='post')
     .form-group
       label(for='email') Email address:
-      input#email.form-control(type='email')
+      input#email.form-control(name='identifier')
 
     .form-group
       label(for='pwd') Password:
-      input#pwd.form-control(type='password')
+      input#pwd.form-control(type='password', name='password')
     
     button.btn.btn-default(type='submit') Submit
 

@@ -39,6 +39,14 @@ module.exports = {
     }
 
   },
+  status: (req, res) => {
+    let status = {
+      loginState: AuthService.getLoginState(req),
+      loginUser: AuthService.getLoginUser(req)
+    }
+    res.ok({status});
+
+  },
   callback: async function(req, res) {
     var tryAgain = function(err) {
       var action, flashError;
@@ -65,17 +73,8 @@ module.exports = {
           } catch (e) {
             reference = { path : "" };
           }
-          if (req.xhr)
-            return res.ok({
-              status: "fail",
-              message: "login fail"
-            });
 
-          if (reference.path === '/admin/login') {
-            res.redirect('/admin/login');
-          }else {
-            res.redirect('/');
-          }
+          res.redirect('/');
 
       }
     };
@@ -88,14 +87,10 @@ module.exports = {
         if (err) {
           return tryAgain(err);
         }
+
         req.session.authenticated = true;
 
-
-        if (req.xhr)
-          return res.ok({
-            status: "ok",
-            message: "login success"
-          });
+        sails.log.info('=== login success ===');
 
         return res.redirect('/');
       });

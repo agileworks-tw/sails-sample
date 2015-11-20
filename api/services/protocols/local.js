@@ -31,6 +31,8 @@ exports.register = async function(req, res, next) {
       UserId: user.id
     });
 
+    sails.log.info("=== local register success ===");
+
     return next(null, user);
 
   } catch (err) {
@@ -70,48 +72,49 @@ exports.connect = function(req, res, next) {
 
 
 exports.login = function(req, identifier, password, next) {
-  var isEmail, query;
-  isEmail = validator.isEmail(identifier);
-  query = {
-    where: {},
-    include: [Role, Like]
-  };
-  if (isEmail) {
-    query.where.email = identifier;
-  } else {
-    query.where.username = identifier;
-  }
-  User.findOne(query).then(function(user) {
-    if (!user) {
-      if (isEmail) {
-        req.flash('error', 'Error.Passport.Email.NotFound');
-      } else {
-        req.flash('error', 'Error.Passport.Username.NotFound');
-      }
-      return next(null, false);
+
+  try {
+    var isEmail, query;
+    isEmail = validator.isEmail(identifier);
+    query = {
+      where: {}
+    };
+    if (isEmail) {
+      query.where.email = identifier;
+    } else {
+      query.where.username = identifier;
     }
-    console.log('== user ==', user);
-    Passport.findOne({
-      where: {
-        UserId: user.id
+    User.findOne(query).then(function(user) {
+      if (!user) {
+        if (isEmail) {
+          throw new Error('Error.Passport.Email.NotFound');
+        } else {
+          throw new Error('Error.Passport.Username.NotFound');
+        }
       }
-    }).then(function(passport) {
-      if (passport) {
-        passport.validatePassword(password, function(err, res) {
-          if (err) {
-            return next(err);
-          }
-          if (!res) {
-            req.flash('error', 'Error.Passport.Password.Wrong');
-            return next(null, false);
-          } else {
-            return next(null, user);
-          }
-        });
-      } else {
-        req.flash('error', 'Error.Passport.Password.NotSet');
-        return next(null, false);
-      }
+
+      Passport.findOne({
+        where: {
+          UserId: user.id
+        }
+      }).then(function(passport) {
+        if (passport) {
+          passport.validatePassword(password, function(err, res) {
+            if (err) throw err;
+            if (!res) {
+              throw new Error('Error.Passport.Password.Wrong');
+            } else {
+              return next(null, user);
+            }
+          });
+        } else {
+          throw new Error('Error.Passport.Password.NotSet');
+        }
+      });
     });
-  });
+
+  } catch (e) {
+    sails.log.info(e.stack);
+    next(err);
+  }
 };

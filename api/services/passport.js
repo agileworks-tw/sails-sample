@@ -197,26 +197,37 @@ passport.endpoint = function(req, res) {
  */
 
 passport.callback = async function(req, res, next) {
+  sails.log.info('=== start login ===');
   var action, provider;
-  console.log('=== passport.callback ===', req.body);
   provider = req.param('provider', 'local');
   action = req.param('action');
-  if (provider === 'local' && action !== void 0) {
-    if (action === 'register' && !req.user) {
-      await this.protocols.local.register(req, res, next);
-    } else if (action === 'connect' && req.user) {
-      this.protocols.local.connect(req, res, next);
-    } else if (action === 'disconnect' && req.user) {
-      this.protocols.local.disconnect(req, res, next);
+
+  try {
+    sails.log.info('=== provider ===', provider);
+    sails.log.info('=== action ===', action);
+    if (provider === 'local' && action !== void 0) {
+      if (action === 'register' && !req.user) {
+        await this.protocols.local.register(req, res, next);
+      } else if (action === 'connect' && req.user) {
+        this.protocols.local.connect(req, res, next);
+      } else if (action === 'disconnect' && req.user) {
+        this.protocols.local.disconnect(req, res, next);
+      } else {
+        throw new Error('Invalid action');
+      }
     } else {
-      next(new Error('Invalid action'));
+
+      if (action === 'disconnect' && req.user) {
+        this.disconnect(req, res, next);
+      } else {
+        sails.log.info('=== start authenticate ===');
+        this.authenticate(provider, next)(req, res, req.next);
+      }
     }
-  } else {
-    if (action === 'disconnect' && req.user) {
-      this.disconnect(req, res, next);
-    } else {
-      this.authenticate(provider, next)(req, res, req.next);
-    }
+
+  } catch (e) {
+    sails.log.error(e.stack);
+    next(e);
   }
 };
 
@@ -317,12 +328,10 @@ passport.disconnect = function(req, res, next) {
 };
 
 passport.serializeUser(function(user, next) {
-  sails.log.info("serializeUser",user);
   return next(null, user);
 });
 
 passport.deserializeUser(function(user, next) {
-  sails.log.info("deserializeUser",user);
   return next(null, user);
 });
 
