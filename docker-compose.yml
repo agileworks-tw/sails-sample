@@ -1,7 +1,16 @@
-build:
-  container_name: sailsSample_build
-  image: miiixr/picklete_env
-  command: "/bin/bash -l -c 'npm i && node_modules/.bin/grunt buildDev'"
+buildDev:
+  container_name: sailsSample_buildDev
+  image: trunk/sails_env
+  command: "/bin/bash -l -c 'npm i && node_modules/.bin/grunt build'"
+
+  working_dir: /sailsSample
+  volumes:
+    - ./:/sailsSample
+
+buildProd:
+  container_name: sailsSample_buildProd
+  image: trunk/sails_env
+  command: "/bin/bash -l -c 'npm i && node_modules/.bin/grunt prod'"
 
   working_dir: /sailsSample
   volumes:
@@ -9,13 +18,10 @@ build:
 
 test:
   container_name: sailsSample_test
-  image: miiixr/picklete_env
-  extends:
-    file: ./dockerConfig/development.yml
-    service: test
-
-  external_links:
-    - mysql
+  image: trunk/sails_env
+  command: "/bin/bash -l -c 'node_modules/.bin/grunt test'"
+  ports:
+    - "1338:1338"
 
   working_dir: /picklete
   volumes:
@@ -23,17 +29,21 @@ test:
 
 web:
   container_name: sailsSample
-  image: miiixr/picklete_env
-  extends:
-    file: ./dockerConfig/development.yml
-    service: web
+  image: trunk/sails_env
+  command: "/bin/bash -l -c 'npm start'"
+  environment:
+    PORT: "1337"
+    NODE_ENV: "production"
+    DOMAIN_HOST: "localhost:1337"
 
-  external_links:
-    - mysql
+  ports:
+    - "1337:1337"
 
   working_dir: /sailsSample
   volumes:
     - ./:/sailsSample
+  external_links:
+    - mysql
 
   restart: always
 
@@ -41,9 +51,16 @@ web:
 mysql:
   container_name: mysql
   image: dgraziotin/mysql
-  extends:
-    file: ./dockerConfig/development.yml
-    service: mysql
+
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_ADMIN_PASS: "root"
+    MYSQL_USER_NAME: "nodejsSample"
+    MYSQL_USER_DB: "nodejsSample"
+    MYSQL_USER_PASS: "nodejsSample"
+    CREATE_MYSQL_BASIC_USER_AND_DB: "true"
+
   volumes:
     - ../database:/var/lib/mysql/
 

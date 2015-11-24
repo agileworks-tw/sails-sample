@@ -34,7 +34,22 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "grunt build",
+    "test": "grunt test",
+    "build-prod": "grunt prod",
+
+    "build-docker": "docker-compose run --rm buildDev",
+    "test-docker": "docker-compose run --rm test",
+    "start-docker": "docker-compose up -d web",
+
+    "build-prod-docker": "docker-compose run --rm buildPord",
+    "build-prod-docker-images": "docker build -t trunk/sails .",
+
+    "start-mysql-docker": "docker-compose up -d mysql",
+    "start-web-docker": "docker rm -f web || true && docker run -d --link mysql -p 1337:1337 --restart always --name web trunk/sails",
+    "start-prod-docker": "npm run start-mysql-docker && npm run start-web-docker"
+
   },
   "main": "app.js",
   "repository": {
@@ -46,6 +61,7 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "grunt-bower-task": "^0.4.0",
+    "grunt-cli": "^0.1.13",
     "grunt-contrib-sass": "^0.9.2",
     "grunt-mocha-istanbul": "^3.0.1",
     "istanbul": "^0.4.0",

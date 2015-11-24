@@ -1,6 +1,6 @@
-FROM miiixr/picklete_env
-COPY ./ /nodjsSample
-WORKDIR /nodjsSample
+FROM trunk/sails_env
+COPY ./ /sailsSample
+WORKDIR /sailsSample
 
 RUN /bin/bash -l -c 'npm i'
 RUN /bin/bash -l -c 'node_modules/.bin/grunt prod'
@@ -10,4 +10,4 @@ ENV NODE_ENV "production"
 ENV DOMAIN_HOST "localhost:1337"
 
 EXPOSE 1337
-CMD /bin/bash -l -c 'npm start'
+CMD /bin/bash -l -c 'npm start --production'

@@ -18,13 +18,13 @@ module.exports = {
    ***************************************************************************/
 
   models: {
-    connection: 'mysql'
+    connection: 'mysql',
     migrate: 'safe'
   },
 
 
   log: {
-    level: "silent"
+    level: "info"
   }
 
 };
