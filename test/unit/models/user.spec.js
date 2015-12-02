@@ -43,7 +43,6 @@ describe('about User model operation.', function() {
         email: 'test@gmail.com',
         age: 18
       });
-      console.log("!!!!!!!!!",testDel);
       done();
     });
 
