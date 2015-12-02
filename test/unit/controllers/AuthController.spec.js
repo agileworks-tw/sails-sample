@@ -1,4 +1,4 @@
-describe.only('about Auth Controller operation.', function() {
+describe('about Auth Controller operation.', function() {
   it('register user should success.', async (done) => {
 
     try {
