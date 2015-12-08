@@ -32,7 +32,7 @@ var jsFilesToInject = [
   'js/dependencies/**/*.js',
   'bower/**/*.js',
   'js/**/*.js',
-
+  '!bower/framework7/js/*.js'
   // Use the "exclude" operator to ignore files
   // '!js/ignore/these/files/*.js'
 ];
