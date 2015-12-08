@@ -1,13 +1,19 @@
 module.exports = {
-  environment: '',
-  domain: 'http://localhost:1337',
-  db: {
-    'username': process.env.MYSQL_USER || "root",
-    'password': process.env.MYSQL_PASSWORD || "root",
-    'host': process.env.MYSQL_1_PORT_3306_TCP_ADDR || "127.0.0.1",
-    'port': process.env.MYSQL_1_PORT_3306_TCP_PORT || 3306,
-    'database': 'trademuch',
-    'dialect': 'mysql',
-    'force': true
+  models:{
+    connection: 'mysql',
+  },
+  connections:{
+    mysql: {
+      'user': process.env.MYSQL_ENV_MYSQL_USER_NAME || "admin",
+      'password': process.env.MYSQL_ENV_MYSQL_USER_PASS || "root",
+      'database': process.env.MYSQL_ENV_MYSQL_USER_DB ||'trademuch',
+      'dialect': 'mysql',
+      options: {
+        'host': process.env.MYSQL_PORT_3306_TCP_ADDR || "127.0.0.1",
+        'port': process.env.MYSQL_PORT_3306_TCP_PORT || 3306,
+        'dialect': 'mysql',
+        'timezone': '+08:00'
+      }
+    }
   }
 }
