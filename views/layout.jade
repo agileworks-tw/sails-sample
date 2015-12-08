@@ -16,17 +16,23 @@ html
     block styles
 
   body
-    nav.navbar.navbar-default
-      .container-fluid
-        .navbar-header
-          a.navbar-brand(href='#') sailsSample
-        div
-          ul.nav.navbar-nav
-            li(class=(req.options.controller == null ? 'active' : ''))
-              a(href='/') #{i18n('home')}
-            li(class=(req.options.controller == 'user' ? 'active' : ''))
-              a(href='/user/index') #{i18n('user')}
-
+    head
+      // Required meta tags
+      meta(charset='utf-8')
+      |     
+      meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui')
+      |     
+      meta(name='apple-mobile-web-app-capable', content='yes')
+      |     
+      meta(name='apple-mobile-web-app-status-bar-style', content='black')
+      // Your app title
+      title My App
+      // Path to Framework7 iOS CSS theme styles
+      link(rel='stylesheet', href='bower/framework7/css/framework7.ios.min.css')
+      // Path to Framework7 iOS related color styles
+      link(rel='stylesheet', href='bower/framework7/css/framework7.ios.colors.min.css')
+      // Path to your custom app styles
+      link(rel='stylesheet', href='bower/framework7/css/my-app.css')
     
     block body
 
@@ -34,6 +40,10 @@ html
     script(src="/js/dependencies/sails.io.js")
     script(src="/bower/jquery/jquery.js")
     script(src="/bower/bootstrap-sass/bootstrap.js")
+    script(src="/bower/framework7/js/framework7.js")
+    script(src="/bower/framework7/js/framework7.min.js")
+    script(src="/bower/framework7/js/my-app.js")
+    script(src="/js/index.js")
     // SCRIPTS END
 
     block scripts
