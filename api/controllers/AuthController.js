@@ -90,7 +90,11 @@ module.exports = {
 
         req.session.authenticated = true;
 
-        sails.log.info('=== login success ===');
+        sails.log.info('=== login success ===',user);
+
+        if( !user.hasOwnProperty('eamil') ){
+          return res.redirect('/loginEmail');
+        }
 
         return res.redirect('/');
       });

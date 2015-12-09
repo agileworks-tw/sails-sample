@@ -80,7 +80,7 @@ passport.connect = async function(req, query, profile, next) {
     return next(new Error('No authentication provider was identified.'));
   }
   if (profile.hasOwnProperty('emails')) {
-    user.email = profile.emails[0].value || profile.emails[0] || "";
+    user.email = profile.emails[0].value || profile.emails[0];
   } else if (profile.hasOwnProperty('email')) {
     user.email = profile.email;
   }

@@ -18,6 +18,7 @@ module.exports = {
   associations: function() {
     User.hasMany(Post);
     User.hasMany(Passport);
+    User.belongsToMany(Like, {through: 'UserLike'});
   },
   options: {
     classMethods: {},
