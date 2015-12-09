@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<div class="modal-wrapper">
+    <h3>Select Property</h3>
+    <h2>Multiple Properties in one location</h2>
+    <div class="modal-body">
+        <ul class="items list-unstyled"></ul>
+    </div>
+    <div class="modal-close"><img src="assets/img/close.png"></div>
+</div>
+<div class="modal-background fade_in"></div>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="assets/js/ie-scripts.js"></script>
+<![endif]-->
+</body>
+
+</html>
