@@ -8,6 +8,16 @@ var myApp = new Framework7({
     init: false
 });
 
+navigator . geolocation . getCurrentPosition ( GetLocation );
+function  GetLocation ( location )  {
+    var location = {
+      "latitude": location.coords.latitude ,
+      "longitude": location.coords.longitude ,
+      "accuracy": location.coords.accuracy
+     }
+    return location;
+}
+
 // Expose Internal DOM library
 var $$ = Framework7.$;
 

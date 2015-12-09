@@ -1,15 +1,12 @@
 module.exports = {
   attributes: {
-    username: {
+    itemname: {
       type: Sequelize.STRING,
       allowNull: false
     },
-    email: {
+    sort: {
       type: Sequelize.STRING,
       allowNull: false
-    },
-    age: {
-      type: Sequelize.INTEGER
     }
 
   },
