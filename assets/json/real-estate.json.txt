@@ -9,13 +9,13 @@
             "longitude": -0.112588,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/real-estate/6.jpg",
-                    "assets/img/items/real-estate/5.jpg",
-                    "assets/img/items/real-estate/4.jpg"
+                    "../img/items/real-estate/6.jpg",
+                    "../img/items/real-estate/5.jpg",
+                    "../img/items/real-estate/4.jpg"
                 ],
             "features":
                 [
@@ -59,13 +59,13 @@
             "longitude": -0.097418,
             "url": "real-estate-item-detail.html",
             "type": "Condominium",
-            "type_icon": "assets/icons/real-estate/condominium.png",
+            "type_icon": "../icons/real-estate/condominium.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/real-estate/12.jpg",
-                    "assets/img/items/real-estate/3.jpg",
-                    "assets/img/items/real-estate/5.jpg"
+                    "../img/items/real-estate/12.jpg",
+                    "../img/items/real-estate/3.jpg",
+                    "../img/items/real-estate/5.jpg"
                 ],
             "features":
                 [
@@ -109,13 +109,13 @@
             "longitude": -0.067077,
             "url": "real-estate-item-detail.html",
             "type": "House",
-            "type_icon": "assets/icons/real-estate/house.png",
+            "type_icon": "../icons/real-estate/house.png",
             "rating": 5,
             "gallery":
                 [
-                    "assets/img/items/real-estate/1.jpg",
-                    "assets/img/items/real-estate/1.jpg",
-                    "assets/img/items/real-estate/6.jpg"
+                    "../img/items/real-estate/1.jpg",
+                    "../img/items/real-estate/1.jpg",
+                    "../img/items/real-estate/6.jpg"
                 ],
             "features":
                 [
@@ -159,13 +159,13 @@
             "longitude": -0.118403,
             "url": "real-estate-item-detail.html",
             "type": "Building",
-            "type_icon": "assets/icons/real-estate/office-building.png",
+            "type_icon": "../icons/real-estate/office-building.png",
             "rating": 5,
             "gallery":
                 [
-                    "assets/img/items/real-estate/8.jpg",
-                    "assets/img/items/real-estate/10.jpg",
-                    "assets/img/items/real-estate/9.jpg"
+                    "../img/items/real-estate/8.jpg",
+                    "../img/items/real-estate/10.jpg",
+                    "../img/items/real-estate/9.jpg"
                 ],
             "features":
                 [
@@ -209,13 +209,13 @@
             "longitude": -0.037894,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 5,
             "gallery":
                 [
-                    "assets/img/items/real-estate/9.jpg",
-                    "assets/img/items/real-estate/9.jpg",
-                    "assets/img/items/real-estate/10.jpg"
+                    "../img/items/real-estate/9.jpg",
+                    "../img/items/real-estate/9.jpg",
+                    "../img/items/real-estate/10.jpg"
                 ],
             "features":
                 [
@@ -259,13 +259,13 @@
             "longitude": -0.038837,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 3,
             "gallery":
                 [
-                    "assets/img/items/real-estate/2.jpg",
-                    "assets/img/items/real-estate/10.jpg",
-                    "assets/img/items/real-estate/11.jpg"
+                    "../img/items/real-estate/2.jpg",
+                    "../img/items/real-estate/10.jpg",
+                    "../img/items/real-estate/11.jpg"
                 ],
             "features":
                 [
@@ -309,13 +309,13 @@
             "longitude": -0.058837,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 3,
             "gallery":
                 [
-                    "assets/img/items/real-estate/7.jpg",
-                    "assets/img/items/real-estate/10.jpg",
-                    "assets/img/items/real-estate/11.jpg"
+                    "../img/items/real-estate/7.jpg",
+                    "../img/items/real-estate/10.jpg",
+                    "../img/items/real-estate/11.jpg"
                 ],
             "features":
                 [
@@ -359,13 +359,13 @@
             "longitude": -0.128274,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 5,
             "gallery":
                 [
-                    "assets/img/items/real-estate/11.jpg",
-                    "assets/img/items/real-estate/10.jpg",
-                    "assets/img/items/real-estate/12.jpg"
+                    "../img/items/real-estate/11.jpg",
+                    "../img/items/real-estate/10.jpg",
+                    "../img/items/real-estate/12.jpg"
                 ],
             "features":
                 [
@@ -409,13 +409,13 @@
             "longitude": -0.111365,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 5,
             "gallery":
                 [
-                    "assets/img/items/real-estate/2.jpg",
-                    "assets/img/items/real-estate/11.jpg",
-                    "assets/img/items/real-estate/12.jpg"
+                    "../img/items/real-estate/2.jpg",
+                    "../img/items/real-estate/11.jpg",
+                    "../img/items/real-estate/12.jpg"
                 ],
             "features":
                 [
@@ -459,13 +459,13 @@
             "longitude": -0.078750,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 5,
             "gallery":
                 [
-                    "assets/img/items/real-estate/3.jpg",
-                    "assets/img/items/real-estate/11.jpg",
-                    "assets/img/items/real-estate/12.jpg"
+                    "../img/items/real-estate/3.jpg",
+                    "../img/items/real-estate/11.jpg",
+                    "../img/items/real-estate/12.jpg"
                 ],
             "features":
                 [
@@ -509,13 +509,13 @@
             "longitude": -0.036607,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/real-estate/4.jpg",
-                    "assets/img/items/real-estate/11.jpg",
-                    "assets/img/items/real-estate/12.jpg"
+                    "../img/items/real-estate/4.jpg",
+                    "../img/items/real-estate/11.jpg",
+                    "../img/items/real-estate/12.jpg"
                 ],
             "features":
                 [
@@ -559,13 +559,13 @@
             "longitude": -0.105012,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/real-estate/5.jpg",
-                    "assets/img/items/real-estate/2.jpg",
-                    "assets/img/items/real-estate/5.jpg"
+                    "../img/items/real-estate/5.jpg",
+                    "../img/items/real-estate/2.jpg",
+                    "../img/items/real-estate/5.jpg"
                 ],
             "features":
                 [
@@ -609,13 +609,13 @@
             "longitude": -0.140977,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/real-estate/6.jpg",
-                    "assets/img/items/real-estate/2.jpg",
-                    "assets/img/items/real-estate/5.jpg"
+                    "../img/items/real-estate/6.jpg",
+                    "../img/items/real-estate/2.jpg",
+                    "../img/items/real-estate/5.jpg"
                 ],
             "features":
                 [
@@ -659,13 +659,13 @@
             "longitude": -0.070939,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/real-estate/8.jpg",
-                    "assets/img/items/real-estate/2.jpg",
-                    "assets/img/items/real-estate/5.jpg"
+                    "../img/items/real-estate/8.jpg",
+                    "../img/items/real-estate/2.jpg",
+                    "../img/items/real-estate/5.jpg"
                 ],
             "features":
                 [
@@ -709,13 +709,13 @@
             "longitude": -0.041842,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/real-estate/9.jpg",
-                    "assets/img/items/real-estate/2.jpg",
-                    "assets/img/items/real-estate/5.jpg"
+                    "../img/items/real-estate/9.jpg",
+                    "../img/items/real-estate/2.jpg",
+                    "../img/items/real-estate/5.jpg"
                 ],
             "features":
                 [
@@ -759,13 +759,13 @@
             "longitude": -0.102321,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/real-estate/10.jpg",
-                    "assets/img/items/real-estate/6.jpg",
-                    "assets/img/items/real-estate/5.jpg"
+                    "../img/items/real-estate/10.jpg",
+                    "../img/items/real-estate/6.jpg",
+                    "../img/items/real-estate/5.jpg"
                 ],
             "features":
                 [
@@ -809,13 +809,13 @@
             "longitude": -0.103493,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/real-estate/11.jpg",
-                    "assets/img/items/real-estate/4.jpg",
-                    "assets/img/items/real-estate/5.jpg"
+                    "../img/items/real-estate/11.jpg",
+                    "../img/items/real-estate/4.jpg",
+                    "../img/items/real-estate/5.jpg"
                 ],
             "features":
                 [
@@ -859,13 +859,13 @@
             "longitude": -0.051885,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/real-estate/12.jpg",
-                    "assets/img/items/real-estate/8.jpg",
-                    "assets/img/items/real-estate/5.jpg"
+                    "../img/items/real-estate/12.jpg",
+                    "../img/items/real-estate/8.jpg",
+                    "../img/items/real-estate/5.jpg"
                 ],
             "features":
                 [
@@ -909,13 +909,13 @@
             "longitude": -0.054545,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 5,
             "gallery":
                 [
-                    "assets/img/items/real-estate/5.jpg",
-                    "assets/img/items/real-estate/8.jpg",
-                    "assets/img/items/real-estate/3.jpg"
+                    "../img/items/real-estate/5.jpg",
+                    "../img/items/real-estate/8.jpg",
+                    "../img/items/real-estate/3.jpg"
                 ],
             "features":
                 [
@@ -959,13 +959,13 @@
             "longitude": -0.052314,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 5,
             "gallery":
                 [
-                    "assets/img/items/real-estate/6.jpg",
-                    "assets/img/items/real-estate/8.jpg",
-                    "assets/img/items/real-estate/3.jpg"
+                    "../img/items/real-estate/6.jpg",
+                    "../img/items/real-estate/8.jpg",
+                    "../img/items/real-estate/3.jpg"
                 ],
             "features":
                 [
@@ -1010,13 +1010,13 @@
             "longitude": -0.078750,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 5,
             "gallery":
                 [
-                    "assets/img/items/real-estate/7.jpg",
-                    "assets/img/items/real-estate/8.jpg",
-                    "assets/img/items/real-estate/5.jpg"
+                    "../img/items/real-estate/7.jpg",
+                    "../img/items/real-estate/8.jpg",
+                    "../img/items/real-estate/5.jpg"
                 ],
             "features":
                 [
@@ -1060,13 +1060,13 @@
             "longitude": -0.078750,
             "url": "real-estate-item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/real-estate/apartment-3.png",
+            "type_icon": "../icons/real-estate/apartment-3.png",
             "rating": 5,
             "gallery":
                 [
-                    "assets/img/items/real-estate/7.jpg",
-                    "assets/img/items/real-estate/8.jpg",
-                    "assets/img/items/real-estate/5.jpg"
+                    "../img/items/real-estate/7.jpg",
+                    "../img/items/real-estate/8.jpg",
+                    "../img/items/real-estate/5.jpg"
                 ],
             "features":
                 [

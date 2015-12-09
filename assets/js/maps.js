@@ -98,7 +98,7 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
                 boxClass: "infobox",
                 enableEventPropagation: true,
                 closeBoxMargin: "0px 0px -30px 0px",
-                closeBoxURL: "assets/img/close.png",
+                closeBoxURL: "../img/close.png",
                 infoBoxClearance: new google.maps.Size(1, 1)
             };
 
@@ -174,7 +174,7 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
 
         var clusterStyles = [
             {
-                url: 'assets/img/cluster.png',
+                url: '../img/cluster.png',
                 height: 34,
                 width: 34
             }
@@ -654,7 +654,7 @@ function multiChoice(sameLatitude, sameLongitude, json) {
             }
         });
         $('body').append('<div class="modal-window multichoice fade_in"></div>');
-        $('.modal-window').load( 'assets/external/_modal-multichoice.html', function() {
+        $('.modal-window').load( '../external/_modal-multichoice.html', function() {
             $('.modal-window .modal-wrapper .items').html( multipleItems );
             rating('.modal-window');
         });
