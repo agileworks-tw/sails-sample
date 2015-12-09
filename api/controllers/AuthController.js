@@ -93,7 +93,7 @@ module.exports = {
         sails.log.info('=== login success ===',user);
 
         if( !user.hasOwnProperty('eamil') ){
-          return res.redirect('/loginEmail');
+          return res.redirect('/hobby');
         }
 
         return res.redirect('/');
