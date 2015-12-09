@@ -36,8 +36,8 @@ module.exports.routes = {
     view: 'index'
   },
 
-  '/hobby': {
-    view: 'hobby'
+  '/2': {
+    view: 'index2'
   },
 
   'get /login': 'AuthController.login',

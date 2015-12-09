@@ -9,13 +9,13 @@
             "longitude": -0.112588,
             "url": "item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/store/apparel/umbrella-2.png",
+            "type_icon": "../icons/store/apparel/umbrella-2.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/1.jpg",
-                    "assets/img/items/5.jpg",
-                    "assets/img/items/4.jpg"
+                    "../img/items/1.jpg",
+                    "../img/items/5.jpg",
+                    "../img/items/4.jpg"
                 ],
             "features":
                 [
@@ -55,12 +55,12 @@
             "longitude": -0.097418,
             "url": "item-detail.html",
             "type": "Restaurant",
-            "type_icon": "assets/icons/store/apparel/bags.png",
+            "type_icon": "../icons/store/apparel/bags.png",
             "rating": 5,
             "price": "$120",
             "gallery":
                 [
-                    "assets/img/items/2.jpg"
+                    "../img/items/2.jpg"
                 ],
             "color": "",
             "item_specific":
@@ -83,11 +83,11 @@
             "longitude": -0.067077,
             "url": "item-detail.html",
             "type": "Restaurant",
-            "type_icon": "assets/icons/store/apparel/clothers_male.png",
+            "type_icon": "../icons/store/apparel/clothers_male.png",
             "rating": 2,
             "gallery":
                 [
-                    "assets/img/items/3.jpg"
+                    "../img/items/3.jpg"
                 ],
             "color": ""
         },
@@ -99,11 +99,11 @@
             "longitude": -0.118403,
             "url": "item-detail.html",
             "type": "Restaurant",
-            "type_icon": "assets/icons/store/apparel/shoes.png",
+            "type_icon": "../icons/store/apparel/shoes.png",
             "rating": 0,
             "gallery":
                 [
-                    "assets/img/items/4.jpg"
+                    "../img/items/4.jpg"
                 ],
             "color": ""
         },
@@ -115,11 +115,11 @@
             "longitude": -0.037894,
             "url": "item-detail.html",
             "type": "Restaurant",
-            "type_icon": "assets/icons/store/apparel/tailor.png",
+            "type_icon": "../icons/store/apparel/tailor.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/5.jpg"
+                    "../img/items/5.jpg"
                 ],
             "color": ""
         },
@@ -131,11 +131,11 @@
             "longitude": -0.058837,
             "url": "item-detail.html",
             "type": "Restaurant",
-            "type_icon": "assets/icons/store/apparel/umbrella-2.png",
+            "type_icon": "../icons/store/apparel/umbrella-2.png",
             "rating": 5,
             "gallery":
                 [
-                    "assets/img/items/6.jpg"
+                    "../img/items/6.jpg"
                 ],
             "color": ""
         },
@@ -147,11 +147,11 @@
             "longitude": -0.112739,
             "url": "item-detail.html",
             "type": "Restaurant",
-            "type_icon": "assets/icons/store/computers-electronics/videogames.png",
+            "type_icon": "../icons/store/computers-electronics/videogames.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/7.jpg"
+                    "../img/items/7.jpg"
                 ],
             "color": ""
         },
@@ -163,12 +163,12 @@
             "longitude": -0.128274,
             "url": "item-detail.html",
             "type": "Restaurant",
-            "type_icon": "assets/icons/store/apparel/bags.png",
+            "type_icon": "../icons/store/apparel/bags.png",
             "rating": 4,
             "featured": 0,
             "gallery":
                 [
-                    "assets/img/items/2.jpg"
+                    "../img/items/2.jpg"
                 ],
             "color": ""
         },
@@ -180,11 +180,11 @@
             "longitude": -0.111365,
             "url": "item-detail.html",
             "type": "Restaurant",
-            "type_icon": "assets/icons/store/apparel/bags.png",
+            "type_icon": "../icons/store/apparel/bags.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/5.jpg"
+                    "../img/items/5.jpg"
                 ],
             "color": ""
         },
@@ -196,11 +196,11 @@
             "longitude": -0.078750,
             "url": "item-detail.html",
             "type": "Restaurant",
-            "type_icon": "assets/icons/store/apparel/bags.png",
+            "type_icon": "../icons/store/apparel/bags.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/1.jpg"
+                    "../img/items/1.jpg"
                 ],
             "color": ""
         },
@@ -212,12 +212,12 @@
             "longitude": -0.036607,
             "url": "item-detail.html",
             "type": "Restaurant",
-            "type_icon": "assets/icons/store/apparel/bags.png",
+            "type_icon": "../icons/store/apparel/bags.png",
             "rating": 4,
             "featured": 0,
             "gallery":
                 [
-                    "assets/img/items/3.jpg"
+                    "../img/items/3.jpg"
                 ],
             "color": ""
         },
@@ -229,11 +229,11 @@
             "longitude": -0.125012,
             "url": "item-detail.html",
             "type": "Restaurant",
-            "type_icon": "assets/icons/store/apparel/bags.png",
+            "type_icon": "../icons/store/apparel/bags.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/6.jpg"
+                    "../img/items/6.jpg"
                 ],
             "color": ""
         },
@@ -245,11 +245,11 @@
             "longitude": -0.140977,
             "url": "item-detail.html",
             "type": "Restaurant",
-            "type_icon": "assets/icons/store/apparel/bags.png",
+            "type_icon": "../icons/store/apparel/bags.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/2.jpg"
+                    "../img/items/2.jpg"
                 ],
             "color": ""
         },
@@ -261,11 +261,11 @@
             "longitude": -0.070939,
             "url": "item-detail.html",
             "type": "Restaurant",
-            "type_icon": "assets/icons/store/computers-electronics/computers.png",
+            "type_icon": "../icons/store/computers-electronics/computers.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/5.jpg"
+                    "../img/items/5.jpg"
                 ],
             "color": ""
         },
@@ -277,11 +277,11 @@
             "longitude": -0.041842,
             "url": "item-detail.html",
             "type": "Restaurant",
-            "type_icon": "assets/icons/store/computers-electronics/videogames.png",
+            "type_icon": "../icons/store/computers-electronics/videogames.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/5.jpg"
+                    "../img/items/5.jpg"
                 ],
             "color": ""
         },
@@ -293,11 +293,11 @@
             "longitude": -0.102321,
             "url": "item-detail.html",
             "type": "Restaurant / Grill & Steak",
-            "type_icon": "assets/icons/store/computers-electronics/videogames.png",
+            "type_icon": "../icons/store/computers-electronics/videogames.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/restaurant/4.jpg"
+                    "../img/items/restaurant/4.jpg"
                 ],
             "color": ""
         },
@@ -309,11 +309,11 @@
             "longitude": -0.103493,
             "url": "item-detail.html",
             "type": "Restaurant / Grill & Steak",
-            "type_icon": "assets/icons/store/computers-electronics/videogames.png",
+            "type_icon": "../icons/store/computers-electronics/videogames.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/restaurant/8.jpg"
+                    "../img/items/restaurant/8.jpg"
                 ],
             "color": ""
         },
@@ -325,11 +325,11 @@
             "longitude": -0.051885,
             "url": "item-detail.html",
             "type": "Restaurant / Coffee",
-            "type_icon": "assets/icons/store/computers-electronics/videogames.png",
+            "type_icon": "../icons/store/computers-electronics/videogames.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/restaurant/9.jpg"
+                    "../img/items/restaurant/9.jpg"
                 ],
             "color": ""
         },
@@ -341,11 +341,11 @@
             "longitude": -0.054545,
             "url": "item-detail.html",
             "type": "Restaurant / Coffee",
-            "type_icon": "assets/icons/store/computers-electronics/videogames.png",
+            "type_icon": "../icons/store/computers-electronics/videogames.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/restaurant/10.jpg"
+                    "../img/items/restaurant/10.jpg"
                 ],
             "color": ""
         },
@@ -357,11 +357,11 @@
             "longitude": -0.052314,
             "url": "item-detail.html",
             "type": "Restaurant / Grill",
-            "type_icon": "assets/icons/store/computers-electronics/videogames.png",
+            "type_icon": "../icons/store/computers-electronics/videogames.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/restaurant/11.jpg"
+                    "../img/items/restaurant/11.jpg"
                 ],
             "color": ""
         },
@@ -375,11 +375,11 @@
             "longitude": -0.078750,
             "url": "item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/store/apparel/umbrella-2.png",
+            "type_icon": "../icons/store/apparel/umbrella-2.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/4.jpg"
+                    "../img/items/4.jpg"
                 ],
             "item_specific":
                 {
@@ -399,11 +399,11 @@
             "longitude": -0.078750,
             "url": "item-detail.html",
             "type": "Apartment",
-            "type_icon": "assets/icons/store/apparel/umbrella-2.png",
+            "type_icon": "../icons/store/apparel/umbrella-2.png",
             "rating": 4,
             "gallery":
                 [
-                    "assets/img/items/3.jpg"
+                    "../img/items/3.jpg"
                 ],
             "item_specific":
                 {
