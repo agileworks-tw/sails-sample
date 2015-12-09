@@ -72,7 +72,7 @@ exports.connect = function(req, res, next) {
 
 
 exports.login = function(req, identifier, password, next) {
-
+  sails.log.info('=== doLogin ===');
   try {
     var isEmail, query;
     isEmail = validator.isEmail(identifier);
@@ -114,7 +114,7 @@ exports.login = function(req, identifier, password, next) {
     });
 
   } catch (e) {
-    sails.log.info(e.stack);
+    sails.log.error(e.stack);
     next(err);
   }
 };

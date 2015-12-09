@@ -6,10 +6,13 @@ module.exports = {
     },
     email: {
       type: Sequelize.STRING,
-      allowNull: false
     },
     age: {
       type: Sequelize.INTEGER
+    },
+    gender:{
+      type: Sequelize.ENUM('none', 'male', 'female'),
+      defaultValue: 'none'
     }
   },
   associations: function() {
