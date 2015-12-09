@@ -1,0 +1,182 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "category": "car",
+            "title": "Open Insignia TDi",
+            "url": "car-item-detail.html",
+            "latitude": 51.541599,
+            "longitude": -0.112588,
+            "type": "Sedan",
+            "gallery":
+                [
+                    "assets/img/items/cars/1.jpg",
+                    "assets/img/items/cars/2.jpg",
+                    "assets/img/items/cars/3.jpg"
+                ],
+            "features":
+                [
+                    "Cruise Control",
+                    "Airbags",
+                    "Air Conditioning",
+                    "Alarm System",
+                    "Anti-theft Protection",
+                    "Audio Interface",
+                    "Climate Control",
+                    "Automatic Headlights",
+                    "Auto Start/Stop",
+                    "Bi-Xenon Headlights"
+                ],
+            "date_created": "2014-11-03",
+            "price": "$42.000",
+            "featured": 0,
+            "color": "",
+            "year": 1980,
+            "special_offer": 0,
+            "item_specific":
+                {
+                    "engine": "3.4L Mid-Engine V6",
+                    "transmission": "6-speed Manual",
+                    "miles": 154,
+                    "doors": 5,
+                    "passengers": 5,
+                    "fuel_type": "Gasoline",
+                    "condition": "New",
+                    "owners": 1
+                },
+            "description": "Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque massa, viverra interdum eros ut, imperdiet pellentesque mauris. Proin sit amet scelerisque risus. Donec semper semper erat ut mollis. Curabitur suscipit, justo eu dignissim lacinia, ante sapien pharetra duin consectetur eros augue sed ex. Donec a odio rutrum, hendrerit sapien vitae, euismod arcu."
+        },
+        {
+            "id": 2,
+            "category": "car",
+            "title": "Mercedes Benz Class A",
+            "url": "car-item-detail.html",
+            "type": "SUV",
+            "gallery":
+                [
+                    "assets/img/items/cars/3.jpg",
+                    "assets/img/items/cars/6.jpg",
+                    "assets/img/items/cars/5.jpg"
+                ],
+            "features":
+                [
+                    "Cruise Control",
+                    "Airbags",
+                    "Air Conditioning",
+                    "Alarm System",
+                    "Anti-theft Protection",
+                    "Audio Interface",
+                    "Climate Control",
+                    "Automatic Headlights",
+                    "Auto Start/Stop",
+                    "Bi-Xenon Headlights"
+                ],
+            "date_created": "2014-11-03",
+            "price": "$42.000",
+            "featured": 0,
+            "color": "",
+            "year": 1980,
+            "special_offer": 0,
+            "item_specific":
+            {
+                "engine": "3.4L Mid-Engine V6",
+                "transmission": "6-speed Manual",
+                "miles": 154,
+                "doors": 5,
+                "passengers": 5,
+                "fuel_type": "Gasoline",
+                "condition": "New",
+                "owners": 1
+            },
+            "description": "Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque massa, viverra interdum eros ut, imperdiet pellentesque mauris. Proin sit amet scelerisque risus. Donec semper semper erat ut mollis. Curabitur suscipit, justo eu dignissim lacinia, ante sapien pharetra duin consectetur eros augue sed ex. Donec a odio rutrum, hendrerit sapien vitae, euismod arcu."
+        },
+        {
+            "id": 3,
+            "category": "car",
+            "title": "Subaru WRX 2.2 TDi",
+            "url": "car-item-detail.html",
+            "type": "Sport Car",
+            "gallery":
+                [
+                    "assets/img/items/cars/8.jpg",
+                    "assets/img/items/cars/6.jpg",
+                    "assets/img/items/cars/5.jpg"
+                ],
+            "features":
+                [
+                    "Cruise Control",
+                    "Airbags",
+                    "Air Conditioning",
+                    "Alarm System",
+                    "Anti-theft Protection",
+                    "Audio Interface",
+                    "Climate Control",
+                    "Automatic Headlights",
+                    "Auto Start/Stop",
+                    "Bi-Xenon Headlights"
+                ],
+            "date_created": "2014-11-03",
+            "price": "$42.000",
+            "featured": 0,
+            "color": "",
+            "year": 1980,
+            "special_offer": 0,
+            "item_specific":
+            {
+                "engine": "3.4L Mid-Engine V6",
+                "transmission": "6-speed Manual",
+                "miles": 154,
+                "doors": 5,
+                "passengers": 5,
+                "fuel_type": "Gasoline",
+                "condition": "New",
+                "owners": 1
+            },
+            "description": "Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque massa, viverra interdum eros ut, imperdiet pellentesque mauris. Proin sit amet scelerisque risus. Donec semper semper erat ut mollis. Curabitur suscipit, justo eu dignissim lacinia, ante sapien pharetra duin consectetur eros augue sed ex. Donec a odio rutrum, hendrerit sapien vitae, euismod arcu."
+        },
+        {
+            "id": 4,
+            "category": "car",
+            "title": "Infinity Q50",
+            "url": "car-item-detail.html",
+            "type": "Sport Car",
+            "gallery":
+                [
+                    "assets/img/items/cars/7.jpg",
+                    "assets/img/items/cars/6.jpg",
+                    "assets/img/items/cars/5.jpg"
+                ],
+            "features":
+                [
+                    "Cruise Control",
+                    "Airbags",
+                    "Air Conditioning",
+                    "Alarm System",
+                    "Anti-theft Protection",
+                    "Audio Interface",
+                    "Climate Control",
+                    "Automatic Headlights",
+                    "Auto Start/Stop",
+                    "Bi-Xenon Headlights"
+                ],
+            "date_created": "2014-11-03",
+            "price": "$42.000",
+            "featured": 0,
+            "color": "",
+            "year": 1980,
+            "special_offer": 0,
+            "item_specific":
+            {
+                "engine": "3.4L Mid-Engine V6",
+                "transmission": "6-speed Manual",
+                "miles": 154,
+                "doors": 5,
+                "passengers": 5,
+                "fuel_type": "Gasoline",
+                "condition": "New",
+                "owners": 1
+            },
+            "description": "Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque massa, viverra interdum eros ut, imperdiet pellentesque mauris. Proin sit amet scelerisque risus. Donec semper semper erat ut mollis. Curabitur suscipit, justo eu dignissim lacinia, ante sapien pharetra duin consectetur eros augue sed ex. Donec a odio rutrum, hendrerit sapien vitae, euismod arcu."
+        }
+    ]
+}

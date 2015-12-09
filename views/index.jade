@@ -1,7 +1,19 @@
-extends ./layout
-
-block body
-  #outer-wrapper
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(href='/fonts/font-awesome.css', rel='stylesheet', type='text/css')
+  link(href='http://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+  link(rel='stylesheet', href='styles/bootstrap/css/bootstrap.min.css', type='text/css')
+  link(rel='stylesheet', href='styles/css/bootstrap-select.min.css', type='text/css')
+  link(rel='stylesheet', href='styles/css/owl.carousel.css', type='text/css')
+  link(rel='stylesheet', href='styles/css/jquery.mCustomScrollbar.css', type='text/css')
+  link(rel='stylesheet', href='styles/css/jquery.nouislider.min.css', type='text/css')
+  link(rel='stylesheet', href='styles/css/colors/green.css', type='text/css')
+  link(rel='stylesheet', href='styles/css/user.style.css', type='text/css')
+  title Spotter - Universal Directory Listing HTML Template
+  body#page-top.map-fullscreen.page-homepage.navigation-off-canvas(onunload='')
+    // Outer Wrapper
+    #outer-wrapper
       // Inner Wrapper
       #inner-wrapper
         // Navigation
@@ -9,7 +21,7 @@ block body
           .wrapper
             .brand
               a(href='index-real-estate.html')
-                img(src='/images/logo-real-estate.png', alt='logo')
+                img(src='/img/logo-real-estate.png', alt='logo')
             nav.navigation-items
               .wrapper
                 ul.main-navigation.navigation-top-header
@@ -220,25 +232,38 @@ block body
             // end Map Canvas
           // end Inner Wrapper
         // end Outer Wrapper
-
-    block scripts
+      script(type='text/javascript', src='/js/jquery-2.1.0.min.js')
+      script(type='text/javascript', src='/js/before.load.js')
+      script(type='text/javascript', src='http://maps.google.com/maps/api/js?sensor=false&libraries=places')
+      script(type='text/javascript', src='/js/jquery-migrate-1.2.1.min.js')
+      script(type='text/javascript', src='/js/markerclusterer.js')
+      script(type='text/javascript', src='/styles/bootstrap/js/bootstrap.min.js')
+      script(type='text/javascript', src='/js/richmarker-compiled.js')
+      script(type='text/javascript', src='/js/smoothscroll.js')
+      script(type='text/javascript', src='/js/infobox.js')
+      script(type='text/javascript', src='/js/bootstrap-select.min.js')
+      script(type='text/javascript', src='/js/icheck.min.js')
+      script(type='text/javascript', src='/js/jquery.hotkeys.js')
+      script(type='text/javascript', src='/js/jquery.mCustomScrollbar.concat.min.js')
+      script(type='text/javascript', src='/js/jquery.nouislider.all.min.js')
+      script(type='text/javascript', src='/js/custom.js')
+      script(type='text/javascript', src='/js/maps.js')
       script.
         var _latitude = 51.541216;
         var _longitude = -0.095678;
         var jsonPath = '/json/real-estate.json.txt';
         // Load JSON data and create Google Maps
         $.getJSON(jsonPath)
-          .done(function(json) {
-            createHomepageGoogleMap(_latitude,_longitude,json);
-          })
-          .fail(function( jqxhr, textStatus, error ) {
-            console.log(error);
-          });
+        .done(function(json) {
+        createHomepageGoogleMap(_latitude,_longitude,json);
+        })
+        .fail(function( jqxhr, textStatus, error ) {
+        console.log(error);
+        })
+        ;
         // Set if language is RTL and load Owl Carousel
         $(window).load(function(){
-          var rtl = false; // Use RTL
-          initializeOwl(rtl);
+        var rtl = false; // Use RTL
+        initializeOwl(rtl);
         });
         autoComplete();
-
-      //- 
