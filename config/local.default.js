@@ -1,4 +1,5 @@
 module.exports = {
+  environment: 'development',
   models:{
     connection: 'mysql',
   },
