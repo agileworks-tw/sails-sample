@@ -12,18 +12,13 @@ html
     title My App
 
     //if lt IE 9
-      //- script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
-      //- script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
         
     // STYLES
     link(rel="stylesheet", href="/styles/bootstrap/css/bootstrap.min.css")
-    link(rel="stylesheet", href="/styles/css/bootstrap-select.min.css")
-    link(rel="stylesheet", href="/styles/css/colors/green.css")
-    link(rel="stylesheet", href="/styles/css/jquery.mCustomScrollbar.css")
-    link(rel="stylesheet", href="/styles/css/jquery.nouislider.min.css")
-    link(rel="stylesheet", href="/styles/css/owl.carousel.css")
-    link(rel="stylesheet", href="/styles/css/style.css")
-    link(rel="stylesheet", href="/styles/css/user.style.css")
+    link(rel="stylesheet", href="/styles/css/framework7.ios.css")
+    link(rel="stylesheet", href="/styles/css/hobby.css")
     link(rel="stylesheet", href="/styles/importer.css")
     // STYLES END
     
@@ -31,20 +26,21 @@ html
       
   body
     head
-      // Path to Framework7 iOS CSS theme styles
-      //- link(rel='stylesheet', href='bower/framework7/css/framework7.ios.min.css')
       // Path to Framework7 iOS related color styles
-      //- link(rel='stylesheet', href='bower/framework7/css/framework7.ios.colors.min.css')
+      link(rel='stylesheet', href='bower/framework7/css/framework7.ios.colors.min.css')
       // Path to your custom app styles
-      //- link(rel='stylesheet', href='bower/framework7/css/my-app.css')
-    
+      link(rel='stylesheet', href='bower/framework7/css/my-app.css')
+      
     block body
       
-      
+    
     // SCRIPTS
     script(src="/js/dependencies/sails.io.js")
     script(src="/bower/jquery/jquery.js")
     script(src="/bower/bootstrap-sass/bootstrap.js")
+    script(src="/bower/framework7/js/framework7.js")
+    script(src="/js/font/hobby.js")
+    script(src="/js/index.js")
     // SCRIPTS END
 
     block scripts

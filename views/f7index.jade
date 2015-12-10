@@ -18,7 +18,7 @@ block body
           .navbar-inner
             // We need cool sliding animation on title element, so we have additional "sliding" class
             .center.sliding Awesome App
-            |
+            |             
             .right
               //
                 Right link contains only icon - additional "icon-only" class
@@ -34,13 +34,14 @@ block body
               p Page content goes here
               // Link to another page
               a(href='templates/about.html') About app
-              a(href='/auth/facebook/' class="external button button-round button-fill") FB Login
+              //- a(href="#" class="button button-big button-fill") Big Fill Button 
+              a(href="#" class="button button-round button-fill") Round Fill Button
         // Bottom Toolbar
         .toolbar
           .toolbar-inner
             // Toolbar links
             a.link(href='#') Link 1
-            |
+            |             
             a.link(href='#') Link 2
-
+        
   block scripts

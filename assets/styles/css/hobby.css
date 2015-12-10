@@ -1,0 +1,39 @@
+
+div[class*="col-"] {
+  background: #fff;
+  text-align: center;
+  color: #000;
+  border: 1px solid #ddd;
+  padding: 5px;
+  height: 150px
+}
+
+#greeting {
+  padding: 10%;
+  margin-top: 20%;
+}
+
+#greeting .button {
+  margin-right: 30%;
+  margin-left: 30%
+}
+
+#greeting input {
+  text-align: center;
+}
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;
+}
+
+:-ms-input-placeholder {
+   text-align: center;
+}

@@ -2,21 +2,37 @@ extends ./layout
 
 block body
   .views
-      .view.view-main
-          .pages
-            .page.navbar-fixed(data-page='hobby')
-              .page-content
-                  .row.no-gutter
-                    .col-100.tablet-50 .col-100.tablet-50
-                    .col-100.tablet-50 .col-100.tablet-50
-                  .row.no-gutter
-                    .col-50.tablet-25 .col-50.tablet-25
-                    .col-50.tablet-25 .col-50.tablet-25
-                    .col-50.tablet-25 .col-50.tablet-25
-                    .col-50.tablet-25 .col-50.tablet-25
-                  .row.no-gutter
-                    .col-100.tablet-40 .col-100.tablet-40
-                    .col-50.tablet-60 .col-50.tablet-60
-        
+      .view.view-main.layout-white
+        .navbar
+          .navbar-inner
+            // We need cool sliding animation on title element, so we have additional "sliding" class
+            a.left(href='index-directory.html')
+              img(src='/img/logo.png', alt='logo')
+            a.right(href='templates/finish.html') next
+        .pages
+          .page.navbar-fixed(data-page='hobby')
+            .page-content
+                .row.no-gutter
+                  .col-100.tablet-50.item 時尚
+                  .col-100.tablet-50.item 美妝保養
+                .row.no-gutter
+                  .col-50.tablet-25.item 設計工藝
+                  .col-50.tablet-25.item 生活3C
+                  .col-50.tablet-25.item 運動用品
+                  .col-50.tablet-25.item 攝影拍照
+                .row.no-gutter
+                  .col-100.tablet-40.item 名牌精品
+                  .col-50.tablet-60.item 復古風情
+                  .col-50.tablet-50.item 遊戲玩物
+                  .col-100.tablet-50.item 傢具傢居
+                .row.no-gutter
+                  .col-50.tablet-25.item 課本買賣
+                  .col-50.tablet-25.item 書籍雜誌
+                  .col-50.tablet-25.item 樂器樂譜
+                  .col-50.tablet-25.item 廚房家電
+                .row.no-gutter
+                  .col-100.tablet-40.item 寶寶時尚
+                  .col-50.tablet-60.item 寵物用品
+                  .col-50.tablet-50.item 票卷交換
+                  .col-100.tablet-50.item 哩哩扣扣
   block scripts
-    

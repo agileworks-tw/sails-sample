@@ -40,6 +40,14 @@ module.exports.routes = {
     view: 'index2'
   },
 
+  '/hobby': {
+    view: 'hobby'
+  },
+
+  '/f7': {
+    view: 'f7index'
+  },
+
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
   'get /register': 'AuthController.register',

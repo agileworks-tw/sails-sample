@@ -16,7 +16,8 @@ var tmpPath = '.tmp/public/';
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
-  'styles/**/*.css'
+  'styles/**/*.css',
+  '!styles/mapCss/**/*.css'
 ];
 
 
@@ -34,7 +35,7 @@ var jsFilesToInject = [
   'js/**/*.js',
   '!bower/framework7/js/framework7.min.js',
   '!bower/framework7/js/my-app.js',
-  '!bower/framework7/js/*.js',
+  // '!bower/framework7/js/*.js',
   '!js/map/*.js'
   // Use the "exclude" operator to ignore files
   // '!js/ignore/these/files/*.js'
