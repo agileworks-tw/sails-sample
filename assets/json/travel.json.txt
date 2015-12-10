@@ -1,0 +1,190 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "category": "travel",
+            "title": "Marina Creek Resort & Spa",
+            "location": "Egypt",
+            "latitude": 51.541599,
+            "longitude": -0.112588,
+            "url": "travel-item-detail.html",
+            "type": "Sedan",
+            "gallery":
+                [
+                    "assets/img/items/travel/1.jpg",
+                    "assets/img/items/travel/2.jpg",
+                    "assets/img/items/travel/3.jpg"
+                ],
+            "features":
+                [
+                    "Air Condition",
+                    "Airport Shuttle Service",
+                    "Beauty salon",
+                    "Catering services",
+                    "Breakfast",
+                    "Free toiletries",
+                    "Hairdryer",
+                    "Heating",
+                    "Indoor pool"
+                ],
+            "date_created": "2014-11-03",
+            "price": "$680",
+            "featured": 0,
+            "color": "",
+            "year": 1980,
+            "special_offer": 0,
+            "item_specific":
+                {
+                    "check_in": "14:00",
+                    "check_out": "10:00",
+                    "rooms_description": "Maecenas vel quam sit amet ex mattis ullamcorper. In venenatis congue luctus. In arcu dolor, scelerisque in iaculis quis, molestie non justo. Mauris fringilla, tellus a molestie fringilla, lacus justo ullamcorper ligula, sit amet pulvinar sem ante luctus est. ",
+                    "sports": "Nullam non faucibus metus, sit amet sagittis massa. In hac habitasse platea dictumst. Sed sodales purus ante, a sollicitudin nisl rutrum non. Etiam rutrum massa id mollis eleifend. Nullam eget bibendum orci. ",
+                    "for_kids": "Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas faucibus justo ac turpis efficitur, in vestibulum nisl pulvinar.",
+                    "meals": "Breakfast, Full, All Inclusive",
+                    "pets": "Not Allowed"
+                },
+            "description": "Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque massa, viverra interdum eros ut, imperdiet pellentesque mauris. Proin sit amet scelerisque risus. Donec semper semper erat ut mollis. Curabitur suscipit, justo eu dignissim lacinia, ante sapien pharetra duin consectetur eros augue sed ex. Donec a odio rutrum, hendrerit sapien vitae, euismod arcu.",
+            "rating": 5,
+            "last_review": "Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque massa, viverra interdum eros ut, imperdiet",
+            "last_review_rating": 5
+        },
+        {
+            "id": 2,
+            "category": "travel",
+            "title": "Sunny Lake Hotel",
+            "location": "Morocco",
+            "url": "travel-item-detail.html",
+            "type": "Sedan",
+            "gallery":
+                [
+                    "assets/img/items/travel/2.jpg",
+                    "assets/img/items/travel/4.jpg",
+                    "assets/img/items/travel/3.jpg"
+                ],
+            "features":
+                [
+                    "Air Condition",
+                    "Airport Shuttle Service",
+                    "Beauty salon",
+                    "Catering services",
+                    "Breakfast",
+                    "Free toiletries",
+                    "Hairdryer",
+                    "Heating",
+                    "Indoor pool"
+                ],
+            "date_created": "2014-11-03",
+            "price": "$680",
+            "featured": 0,
+            "color": "",
+            "year": 1980,
+            "special_offer": 0,
+            "item_specific":
+            {
+                "check_in": "14:00",
+                "check_out": "10:00",
+                "rooms_description": "Maecenas vel quam sit amet ex mattis ullamcorper. In venenatis congue luctus. In arcu dolor, scelerisque in iaculis quis, molestie non justo. Mauris fringilla, tellus a molestie fringilla, lacus justo ullamcorper ligula, sit amet pulvinar sem ante luctus est. ",
+                "sports": "Nullam non faucibus metus, sit amet sagittis massa. In hac habitasse platea dictumst. Sed sodales purus ante, a sollicitudin nisl rutrum non. Etiam rutrum massa id mollis eleifend. Nullam eget bibendum orci. ",
+                "for_kids": "Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas faucibus justo ac turpis efficitur, in vestibulum nisl pulvinar.",
+                "meals": "Breakfast, Full, All Inclusive",
+                "pets": "Not Allowed"
+            },
+            "description": "Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque massa, viverra interdum eros ut, imperdiet pellentesque mauris. Proin sit amet scelerisque risus. Donec semper semper erat ut mollis. Curabitur suscipit, justo eu dignissim lacinia, ante sapien pharetra duin consectetur eros augue sed ex. Donec a odio rutrum, hendrerit sapien vitae, euismod arcu.",
+            "rating": 5,
+            "last_review": "Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque massa, viverra interdum eros ut, imperdiet",
+            "last_review_rating": 5
+        },
+        {
+            "id": 3,
+            "category": "travel",
+            "title": "Cinnamon Resort",
+            "location": "Cypress",
+            "url": "travel-item-detail.html",
+            "type": "Sedan",
+            "gallery":
+                [
+                    "assets/img/items/travel/7.jpg",
+                    "assets/img/items/travel/4.jpg",
+                    "assets/img/items/travel/3.jpg"
+                ],
+            "features":
+                [
+                    "Air Condition",
+                    "Airport Shuttle Service",
+                    "Beauty salon",
+                    "Catering services",
+                    "Breakfast",
+                    "Free toiletries",
+                    "Hairdryer",
+                    "Heating",
+                    "Indoor pool"
+                ],
+            "date_created": "2014-11-03",
+            "price": "$680",
+            "featured": 0,
+            "color": "",
+            "year": 1980,
+            "special_offer": 0,
+            "item_specific":
+            {
+                "check_in": "14:00",
+                "check_out": "10:00",
+                "rooms_description": "Maecenas vel quam sit amet ex mattis ullamcorper. In venenatis congue luctus. In arcu dolor, scelerisque in iaculis quis, molestie non justo. Mauris fringilla, tellus a molestie fringilla, lacus justo ullamcorper ligula, sit amet pulvinar sem ante luctus est. ",
+                "sports": "Nullam non faucibus metus, sit amet sagittis massa. In hac habitasse platea dictumst. Sed sodales purus ante, a sollicitudin nisl rutrum non. Etiam rutrum massa id mollis eleifend. Nullam eget bibendum orci. ",
+                "for_kids": "Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas faucibus justo ac turpis efficitur, in vestibulum nisl pulvinar.",
+                "meals": "Breakfast, Full, All Inclusive",
+                "pets": "Not Allowed"
+            },
+            "description": "Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque massa, viverra interdum eros ut, imperdiet pellentesque mauris. Proin sit amet scelerisque risus. Donec semper semper erat ut mollis. Curabitur suscipit, justo eu dignissim lacinia, ante sapien pharetra duin consectetur eros augue sed ex. Donec a odio rutrum, hendrerit sapien vitae, euismod arcu.",
+            "rating": 5,
+            "last_review": "Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque massa, viverra interdum eros ut, imperdiet",
+            "last_review_rating": 5
+        },
+        {
+            "id": 4,
+            "category": "travel",
+            "title": "Everland Hotel & Spa",
+            "location": "Italy",
+            "url": "travel-item-detail.html",
+            "type": "Sedan",
+            "gallery":
+                [
+                    "assets/img/items/travel/8.jpg",
+                    "assets/img/items/travel/4.jpg",
+                    "assets/img/items/travel/3.jpg"
+                ],
+            "features":
+                [
+                    "Air Condition",
+                    "Airport Shuttle Service",
+                    "Beauty salon",
+                    "Catering services",
+                    "Breakfast",
+                    "Free toiletries",
+                    "Hairdryer",
+                    "Heating",
+                    "Indoor pool"
+                ],
+            "date_created": "2014-11-03",
+            "price": "$680",
+            "featured": 0,
+            "color": "",
+            "year": 1980,
+            "special_offer": 0,
+            "item_specific":
+            {
+                "check_in": "14:00",
+                "check_out": "10:00",
+                "rooms_description": "Maecenas vel quam sit amet ex mattis ullamcorper. In venenatis congue luctus. In arcu dolor, scelerisque in iaculis quis, molestie non justo. Mauris fringilla, tellus a molestie fringilla, lacus justo ullamcorper ligula, sit amet pulvinar sem ante luctus est. ",
+                "sports": "Nullam non faucibus metus, sit amet sagittis massa. In hac habitasse platea dictumst. Sed sodales purus ante, a sollicitudin nisl rutrum non. Etiam rutrum massa id mollis eleifend. Nullam eget bibendum orci. ",
+                "for_kids": "Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas faucibus justo ac turpis efficitur, in vestibulum nisl pulvinar.",
+                "meals": "Breakfast, Full, All Inclusive",
+                "pets": "Not Allowed"
+            },
+            "description": "Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque massa, viverra interdum eros ut, imperdiet pellentesque mauris. Proin sit amet scelerisque risus. Donec semper semper erat ut mollis. Curabitur suscipit, justo eu dignissim lacinia, ante sapien pharetra duin consectetur eros augue sed ex. Donec a odio rutrum, hendrerit sapien vitae, euismod arcu.",
+            "rating": 5,
+            "last_review": "Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque massa, viverra interdum eros ut, imperdiet",
+            "last_review_rating": 5
+        }
+    ]
+}

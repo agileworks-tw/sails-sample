@@ -1,4 +1,5 @@
 module.exports = {
+  environment: 'development',
   models:{
     connection: 'mysql',
   },
@@ -13,6 +14,19 @@ module.exports = {
         'port': process.env.MYSQL_PORT_3306_TCP_PORT || 3306,
         'dialect': 'mysql',
         'timezone': '+08:00'
+      }
+    }
+  },
+  passport:{
+    facebook:{
+      name: 'Facebook',
+      protocol: 'oauth2',
+      strategy: require('passport-facebook').Strategy,
+      options:{
+        clientID: '',
+        clientSecret: '',
+        profileFields: [ 'id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified', 'displayName' ],
+        callbackURL: "http://localhost:1337/auth/facebook/callback"
       }
     }
   }
