@@ -21,9 +21,29 @@ var mainView = myApp.addView('.view-main', {
 
 $$(document).on('pageInit', '.page[data-page="hobby"]', function (e) {
   $$('.item').click(function(){
-    console.log("!!!")
-    console.log($$(this));
-    $$(this).prop( "disabled", true );
+    if($$(this).find('input').prop("checked"))
+      $$(this).find('input').prop("checked", false);
+    else
+      $$(this).find('input').prop("checked", true);
+    var storedData = myApp.formToJSON('#hobbySelect');
+    $$("#nextSetp").attr("data-context",JSON.stringify(storedData));
+    if(storedData.hobby.length > 0) {
+      $$('#nextSetp').removeAttr("disabled");
+    }else{
+      $$('#nextSetp').attr("disabled",true);
+    }
+  });
+});
+
+$$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
+  var emailInput = $$('input[name="email"]');
+  var submitBtn = $$('input[name="submit"]');
+  submitBtn.prop("disabled",true)
+  emailInput.on('input', function(){
+    if($$(this).val() != "" )
+      submitBtn.removeAttr("disabled");
+    else
+      submitBtn.attr("disabled",true);
   });
 });
 

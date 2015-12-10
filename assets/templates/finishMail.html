@@ -29,9 +29,12 @@
                 </div>
               </li>
             </ul>
+            {{#each this.hobby}}
+              <input type="hidden" name="hobby" value= {{this}}>
+            {{/each}}
           </div>
           <div class="list-block">
-              <input type="submit" class="button  active" value="Start" style="width:50%; margin:0 auto;">
+              <input type="submit" name="submit" class="button  active" value="Start" style="width:50%; margin:0 auto;">
           </div>
         </form>
         </div>
