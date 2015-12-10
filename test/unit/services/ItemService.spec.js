@@ -75,7 +75,7 @@ describe.only('about item.', function() {
 
     it('update Itemname、sort should success.', async (done) => {
       try {
-        // let users;
+        
         let updateItem = await Item.findById(testUpdate.id);
         updateItem.Itemname= 'select';
         updateItem.sort= 'live';
