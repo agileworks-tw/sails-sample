@@ -1,4 +1,4 @@
-describe.only('about item.', function() {
+describe('about item.', function() {
   it('create item should success.', async (done) => {
     try {
       let items= await Item.create({
@@ -75,7 +75,7 @@ describe.only('about item.', function() {
 
     it('update Itemname、sort should success.', async (done) => {
       try {
-        
+
         let updateItem = await Item.findById(testUpdate.id);
         updateItem.Itemname= 'select';
         updateItem.sort= 'live';
