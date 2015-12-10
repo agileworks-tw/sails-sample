@@ -45,6 +45,18 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
     else
       submitBtn.attr("disabled",true);
   });
+
+  $$('#singUp-form').on('submitted', function (e) {
+    var xhr = e.detail.xhr; // actual XHR object
+    var data = JSON.parse(e.detail.data);
+    console.log(data);
+  });
+
+  $$('#singUp-form').on('submitError', function (e) {
+    console.log(e);
+    myApp.alert('Please try again later','Error');
+  });
+
 });
 
 // Show/hide preloader for remote ajax loaded pages

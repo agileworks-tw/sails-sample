@@ -17,6 +17,9 @@
           <h1>感謝註冊blabla</h1>
           <p>歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨</p>
           <form id="singUp-form" action="/updateHobbyAndMail" method="post" class="ajax-submit" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          {{#each this.hobby}}
+            <input type="hidden" name="hobby" value= {{this}}>
+          {{/each}}
           <div class="list-block">
               <input type="submit" class="button  active" value="Start" style="width:50%; margin:0 auto;">
           </div>
