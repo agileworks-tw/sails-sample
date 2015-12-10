@@ -61,7 +61,7 @@ module.exports.routes = {
   'get /auth/:provider/callback': 'AuthController.callback',
   'get /auth/:provider/:action': 'AuthController.callback',
 
-  'post /updateHobbyAndMail': 
+  'post /updateHobbyAndMail': 'UserController.updateHobbyAndMail'
 
   /***************************************************************************
   *                                                                          *
