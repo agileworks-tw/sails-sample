@@ -18,9 +18,9 @@ function  GetLocation ( location )  {
     return location;
 }
 
-$( "#button" ).click(function() {
-  $( this ).click();
-});
+// $( "#button" ).click(function() {
+//   $( this ).click();
+// });
 
 // Expose Internal DOM library
 var $$ = Framework7.$;

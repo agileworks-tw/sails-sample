@@ -11,8 +11,7 @@ module.exports = {
 
   },
   associations: function() {
-    User.hasMany(Post);
-    User.hasMany(Passport);
+
   },
   options: {
     classMethods: {},
