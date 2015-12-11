@@ -71,6 +71,36 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
 
 });
 
+
+$$(document).on('pageInit', '.page[data-page="stroryHobby"]', function (e) {
+  var storedData = myApp.formToJSON('#stroryHobbyChoose');
+  myApp.formStoreData('stroryHobbyChoose',storedData);
+  $$("#nextSetp").attr("data-context",JSON.stringify(storedData));
+  console.log($$("#nextSetp").attr("data-context"));
+  if(storedData.hobby.length > 0) {
+    $$('#nextSetp').removeAttr("disabled");
+  }else{
+    $$('#nextSetp').attr("disabled",true);
+  }
+
+  $$('.hobbyitem').click(function(){
+    if($$(this).find('input').prop("checked"))
+      $$(this).find('input').prop("checked", false);
+    else
+      $$(this).find('input').prop("checked", true);
+
+    storedData = myApp.formToJSON('#stroryHobbyChoose');
+    myApp.formStoreData('stroryHobbyChoose',storedData);
+    $$("#nextSetp").attr("data-context",JSON.stringify(storedData));
+    if(storedData.hobby.length > 0) {
+      $$('#nextSetp').removeAttr("disabled");
+    }else{
+      $$('#nextSetp').attr("disabled",true);
+    }
+  });
+});
+
+
 // Show/hide preloader for remote ajax loaded pages
 // Probably should be removed on a production/local app
 $$(document).on('ajaxStart', function (e) {

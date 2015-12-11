@@ -33,7 +33,7 @@ var jsFilesToInject = [
   'bower/jquery/jquery.js',
   'js/dependencies/**/*.js',
   'bower/**/*.js',
-  'js/**/*.js',
+  'js/*.js',
   '!bower/framework7/js/framework7.min.js',
   '!bower/framework7/js/my-app.js',
   // '!bower/framework7/js/*.js',
