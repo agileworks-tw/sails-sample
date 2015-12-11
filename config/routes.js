@@ -46,7 +46,7 @@ module.exports.routes = {
 
   '/story':{
     view: 'story'
-  }
+  },
 
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
