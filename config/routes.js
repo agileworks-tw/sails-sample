@@ -36,12 +36,16 @@ module.exports.routes = {
     view: 'index'
   },
 
+  '/2': {
+    view: 'index2'
+  },
+
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
   'get /register': 'AuthController.register',
 
   'get /auth/status': 'AuthController.status',
-  
+
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',
 

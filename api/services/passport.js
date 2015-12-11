@@ -69,7 +69,8 @@ passport.protocols = require('./protocols');
  */
 
 passport.connect = async function(req, query, profile, next) {
-
+  sails.log.info('=== do login ===',query);
+  sails.log.info('=== do login profile ===',profile);
   var provider, user;
   user = {};
   provider = undefined;
@@ -95,6 +96,10 @@ passport.connect = async function(req, query, profile, next) {
     user.fullName = profile.displayName;
   }
 
+  if(profile.hasOwnProperty('gender')){
+    user.gender = profile.gender || 'none';
+  }
+
   if (!user.username && !user.email) {
     return next(new Error('Neither a username nor email was available'));
   }
@@ -111,7 +116,7 @@ passport.connect = async function(req, query, profile, next) {
 
     //有一般使用者登入但沒使用FB註冊過
     let loginedUser = req.user;
-    sails.log.info("=== loginedUser ===",loginedUser);
+    sails.log.info("=== loginedUser ===",loginedUser,passport,user);
     if (loginedUser && !passport) {
       query.UserId = loginedUser.id;
       passport = await Passport.create(query);
@@ -134,7 +139,6 @@ passport.connect = async function(req, query, profile, next) {
       else
         throw new Error('Error user not found');
     }
-
 
 
     let checkMail;

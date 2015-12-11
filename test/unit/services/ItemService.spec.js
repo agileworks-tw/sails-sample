@@ -54,7 +54,7 @@ describe("about Item service", () => {
         };
       testDeleteItemCode = await db.Itemcode.create(Itemcode3);
 
-      
+
       var Itemcode4 = {
           title: '測試修改項目',
           code: 'EEEEEEEEEEFFFFFFFFFF',
@@ -200,7 +200,7 @@ describe("about Item service", () => {
 
   it('send ItemCode to target sort', async (done) => {
     try {
-      let ItemCode = testShopCode;
+      let ItemCode = testItemCode;
       let sort = await db.Sort.findAll({ limit: 5 });
       await ItemCode.setSort(sort);
 

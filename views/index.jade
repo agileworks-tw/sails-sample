@@ -1,49 +1,142 @@
-extends ./layout
-
-block body
-    // Status bar overlay for full screen mode (PhoneGap)
-    .statusbar-overlay
-    // Panels overlay
-    .panel-overlay
-    // Left panel with reveal effect
-    .panel.panel-left.panel-reveal
-      .content-block
-        p Left panel content goes here
-    // Views
-    .views
-      // Your main view, should have "view-main" class
-      .view.view-main
-        // Top Navbar
-        .navbar
-          .navbar-inner
-            // We need cool sliding animation on title element, so we have additional "sliding" class
-            .center.sliding Awesome App
-            |             
-            .right
-              //
-                Right link contains only icon - additional "icon-only" class
-                Additional "open-panel" class tells app to open panel when we click on this link
-              a.link.icon-only.open-panel(href='#')
-                i.icon.icon-bars-blue
-        // Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes
-        .pages.navbar-through.toolbar-through
-          // Page, "data-page" contains page name
-          .page(data-page='index')
-            // Scrollable page content
-            .page-content
-              p Page content goes here
-              // Link to another page
-              a(href='templates/about.html') About app 
-              
-              a(href="#" class="button button-round button-fill") Round Fill Button
-              a(href="#" class="button button-big button-fill") Big  Button
-        // Bottom Toolbar
-        .toolbar
-          .toolbar-inner
-            // Toolbar links
-            a.link(href='#') Link 1
-            |             
-            a.link(href='#') Link 2
-        
-  block scripts
-    
+doctype html(lang='en-US')
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(href='/fonts/font-awesome.css', rel='stylesheet', type='text/css')
+  link(href='http://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+  link(rel='stylesheet', href='styles/bootstrap/css/bootstrap.min.css', type='text/css')
+  link(rel='stylesheet', href='styles/css/bootstrap-select.min.css', type='text/css')
+  link(rel='stylesheet', href='styles/css/owl.carousel.css', type='text/css')
+  link(rel='stylesheet', href='styles/css/jquery.mCustomScrollbar.css', type='text/css')
+  link(rel='stylesheet', href='styles/css/style.css', type='text/css')
+  link(rel='stylesheet', href='styles/css/user.style.css', type='text/css')
+  title Spotter - Universal Directory Listing HTML Template
+  body#page-top.map-fullscreen.page-homepage.navigation-off-canvas(onunload='')
+    // Outer Wrapper
+    #outer-wrapper
+      // Inner Wrapper
+      #inner-wrapper
+        // Navigation
+        .header
+          .wrapper
+            .brand
+              a(href='index-directory.html')
+                img(src='/img/logo.png', alt='logo')
+            nav.navigation-items
+              .wrapper
+                ul.main-navigation.navigation-top-header
+                ul.user-area
+                  li
+                    a(href='/auth/facebook') Login 
+                a.submit-item(href='submit.html')
+                  .content
+                    span Submit Your Item
+                  .icon
+                    i.fa.fa-plus
+                .toggle-navigation
+                  .icon
+                    .line
+                    .line
+                    .line
+        // end Navigation
+        // Page Canvas
+        #page-canvas
+          // Off Canvas Navigation
+          nav.off-canvas-navigation
+            header Navigation
+            .main-navigation.navigation-off-canvas
+          // end Off Canvas Navigation
+          // Page Content
+          #page-content
+            // Map Canvas
+            .map-canvas.list-width-30
+              // Map
+              .map
+                .toggle-navigation
+                  .icon
+                    .line
+                    .line
+                    .line
+                // /.toggle-navigation
+                #map.has-parallax
+                // /#map
+                .search-bar.horizontal
+                  form.main-search.border-less-inputs(role='form', method='post')
+                    .input-row
+                      .form-group
+                        input#keyword.form-control(type='text', placeholder='Enter Keyword')
+                      // /.form-group
+                      .form-group
+                        .input-group.location
+                          input#location.form-control(type='text', placeholder='Enter Location')
+                          span.input-group-addon
+                            i.fa.fa-map-marker.geolocation(data-toggle='tooltip', data-placement='bottom', title='Find my position')
+                      // /.form-group
+                      .form-group
+                        select(name='category', multiple='', title='Select Category', data-live-search='true')
+                          option(value='1') Stores
+                          option.sub-category(value='2') Apparel
+                          option.sub-category(value='3') Computers
+                          option.sub-category(value='4') Nature
+                          option(value='5') Tourism
+                          option(value='6') Restaurant &amp; Bars
+                          option.sub-category(value='7') Bars
+                          option.sub-category(value='8') Vegetarian
+                          option.sub-category(value='9') Steak &amp; Grill
+                          option(value='10') Sports
+                          option.sub-category(value='11') Cycling
+                          option.sub-category(value='12') Water Sports
+                          option.sub-category(value='13') Winter Sports
+                      // /.form-group
+                      .form-group
+                        button.btn.btn-default(type='submit')
+                          i.fa.fa-search
+                      // /.form-group
+                    // /.input-row
+                  // /.main-search
+                // /.search-bar
+              // end Map
+              // Items List
+              .items-list
+                .inner
+                  header
+                    h3 Results
+                  ul.results.list
+                // results
+              // end Items List
+            // end Map Canvas
+          // end Inner Wrapper
+        // end Outer Wrapper
+        script(type='text/javascript', src='/js/map/jquery-2.1.0.min.js')
+        script(type='text/javascript', src='/js/map/before.load.js')
+        script(type='text/javascript', src='/js/map/jquery-migrate-1.2.1.min.js')
+        script(type='text/javascript', src='/styles/bootstrap/js/bootstrap.min.js')
+        script(type='text/javascript', src='/js/map/smoothscroll.js')
+        script(type='text/javascript', src='/js/map/bootstrap-select.min.js')
+        script(type='text/javascript', src='/js/map/jquery.hotkeys.js')
+        script(type='text/javascript', src='/js/map/jquery.nouislider.all.min.js')
+        script(type='text/javascript', src='/js/map/jquery.mCustomScrollbar.concat.min.js')
+        script(type='text/javascript', src='http://maps.google.com/maps/api/js?sensor=false&libraries=places')
+        script(type='text/javascript', src='/js/map/infobox.js')
+        script(type='text/javascript', src='/js/map/richmarker-compiled.js')
+        script(type='text/javascript', src='/js/map/markerclusterer.js')
+        script(type='text/javascript', src='/js/map/custom.js')
+        script(type='text/javascript', src='/js/map/maps.js')
+        script.
+          var _latitude = 51.541216;
+          var _longitude = -0.095678;
+          var jsonPath = '/json/items.json.txt';
+          // Load JSON data and create Google Maps
+          $.getJSON(jsonPath)
+          .done(function(json) {
+            createHomepageGoogleMap(_latitude,_longitude,json);
+          })
+          .fail(function( jqxhr, textStatus, error ) {
+            console.log(error);
+          });
+          // Set if language is RTL and load Owl Carousel
+          $(window).load(function(){
+          var rtl = false; // Use RTL
+            initializeOwl(rtl);
+          });
+          autoComplete();
