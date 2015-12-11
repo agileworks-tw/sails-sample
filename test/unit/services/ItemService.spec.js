@@ -1,5 +1,4 @@
 import sinon from 'sinon';
-import moment from 'moment';
 
 describe("about Item service", () => {
 
@@ -162,7 +161,7 @@ describe("about Item service", () => {
   it('use ItemCode but money not enough', async (done) => {
     try {
       var data ={
-        code: testShopCode.code,
+        code: testItemCode.code,
         price: 899,
       }
       let check = await ItemCodeService.use(data);
@@ -226,8 +225,6 @@ describe("about Item service", () => {
           title: '測試',
           code: 'YYYYYYYYYYZZZZZZZZZZ',
           autoRandomCode: 'on',
-          startDate: moment().add(-1, 'days').toDate(),
-          endDate: moment().add(1, 'days').toDate(),
           type: 'price',
           description: 99,
           restriction: 999,
