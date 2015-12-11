@@ -3,12 +3,7 @@ module.exports = {
     itemname: {
       type: Sequelize.STRING,
       allowNull: false
-    },
-    sort: {
-      type: Sequelize.STRING,
-      allowNull: false
     }
-
   },
   associations: function() {
 
