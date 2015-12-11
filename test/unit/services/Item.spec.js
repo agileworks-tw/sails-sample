@@ -1,4 +1,4 @@
-describe('about item.', function() {
+describe.skip('about item.', function() {
   it('create item should success.', async (done) => {
     try {
       let items= await Item.create({
