@@ -19,6 +19,7 @@ module.exports = {
       type: Sequelize.BOOLEAN,
       defaultValue: true
     }
+
   },
   associations: function() {
     User.hasMany(Post);
