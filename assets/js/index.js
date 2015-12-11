@@ -5,7 +5,7 @@ var myApp = new Framework7({
     template7Pages: true,
     pushState: true,
     swipeBackPage: false,
-    init: false
+    init: false,
 });
 
 // Expose Internal DOM library
@@ -17,15 +17,26 @@ var mainView = myApp.addView('.view-main', {
     dynamicNavbar: true,
 });
 
+$$(document).on('pageInit', '.page[data-page="hobbyPage"]', function (e) {
+  console.log("!!!!!!!!");
+  var storedData = myApp.formToJSON('#hobbySelect');
+  myApp.formStoreData('hobbySelect',storedData);
+  $$("#nextSetp").attr("data-context",JSON.stringify(storedData));
+  console.log($$("#nextSetp").attr("data-context"));
+  if(storedData.hobby.length > 0) {
+    $$('#nextSetp').removeAttr("disabled");
+  }else{
+    $$('#nextSetp').attr("disabled",true);
+  }
 
-
-$$(document).on('pageInit', '.page[data-page="hobby"]', function (e) {
-  $$('.item').click(function(){
+  $$('.hobbyitem').click(function(){
     if($$(this).find('input').prop("checked"))
       $$(this).find('input').prop("checked", false);
     else
       $$(this).find('input').prop("checked", true);
-    var storedData = myApp.formToJSON('#hobbySelect');
+
+    storedData = myApp.formToJSON('#hobbySelect');
+    myApp.formStoreData('hobbySelect',storedData);
     $$("#nextSetp").attr("data-context",JSON.stringify(storedData));
     if(storedData.hobby.length > 0) {
       $$('#nextSetp').removeAttr("disabled");
@@ -36,6 +47,7 @@ $$(document).on('pageInit', '.page[data-page="hobby"]', function (e) {
 });
 
 $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
+  console.log("!!!!!!!!");
   var emailInput = $$('input[name="email"]');
   var submitBtn = $$('input[name="submit"]');
   submitBtn.prop("disabled",true)
@@ -47,14 +59,14 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
   });
 
   $$('#singUp-form').on('submitted', function (e) {
-    var xhr = e.detail.xhr; // actual XHR object
-    var data = JSON.parse(e.detail.data);
-    console.log(data);
+    if(e.detail.data == 'ok'){
+      location.href = '/'
+    }
   });
 
   $$('#singUp-form').on('submitError', function (e) {
     console.log(e);
-    myApp.alert('Please try again later','Error');
+    myApp.alert('Your email address has already been used.','Error');
   });
 
 });

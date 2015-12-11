@@ -16,7 +16,7 @@
         <div id="greeting" >
           <h1>感謝註冊blabla</h1>
           <p>歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨歡迎光臨</p>
-          <form id="changePassword-form" action="/updateHobbyAndMail" method="post" class="ajax-submit" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <form id="singUp-form" action="/updateHobbyAndMail" method="post" class="ajax-submit" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
           <div class="list-block">
             <ul>
               <li>
@@ -30,7 +30,7 @@
               </li>
             </ul>
             {{#each this.hobby}}
-              <input type="hidden" name="hobby" value= {{this}}>
+              <input type="hidden" name="hobby[{{@index}}]" value= {{this}}>
             {{/each}}
           </div>
           <div class="list-block">

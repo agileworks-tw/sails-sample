@@ -24,7 +24,9 @@ module.exports.policies = {
   },
   'UserController': {
     'index': [],
-    'find': []
+    'find': [],
+    'updateHobbyAndMail': [],
+    'hobbyView': ['sessionAuth']
   }
   /***************************************************************************
   *                                                                          *

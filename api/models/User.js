@@ -6,6 +6,7 @@ module.exports = {
     },
     email: {
       type: Sequelize.STRING,
+      unique: true
     },
     age: {
       type: Sequelize.INTEGER
@@ -13,6 +14,10 @@ module.exports = {
     gender:{
       type: Sequelize.ENUM('none', 'male', 'female'),
       defaultValue: 'none'
+    },
+    isFirstLogin:{
+      type: Sequelize.BOOLEAN,
+      defaultValue: true
     }
   },
   associations: function() {

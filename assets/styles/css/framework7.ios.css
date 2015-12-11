@@ -3567,9 +3567,9 @@ html.ios-gt-8 .modal-title {
 .modal-button {
   width: 100%;
   padding: 0 5px;
-  height: 70px;
+  height: 44px;
   font-size: 17px;
-  line-height: 70px;
+  line-height: 44px;
   text-align: center;
   color: #007aff;
   display: block;
