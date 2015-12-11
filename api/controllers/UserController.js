@@ -49,7 +49,7 @@ module.exports = {
       if(!isHasMail)
         res.redirect('/')
 
-      console.log("!!!!")
+      console.log("!!")
       res.view('hobby',{
         isHasMail
       });

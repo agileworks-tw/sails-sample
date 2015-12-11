@@ -44,6 +44,10 @@ module.exports.routes = {
     view: 'f7index'
   },
 
+  '/story':{
+    view: 'story'
+  }
+
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
   'get /register': 'AuthController.register',

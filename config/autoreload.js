@@ -1,6 +1,6 @@
 module.exports.autoreload = {
   active: true,
-  usePolling: false,
+  usePolling: true,
   dirs: [
     "api/models",
     "api/controllers",
