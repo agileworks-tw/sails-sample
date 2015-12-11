@@ -14,6 +14,7 @@ module.exports = {
       type: Sequelize.ENUM('none', 'male', 'female'),
       defaultValue: 'none'
     }
+
   },
   associations: function() {
     User.hasMany(Post);
