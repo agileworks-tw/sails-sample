@@ -3,6 +3,10 @@ module.exports = {
     itemname: {
       type: Sequelize.STRING,
       allowNull: false
+    },
+    quantity:{
+      type: Sequelize.INTEGER,
+      defaultValue: 0
     }
   },
   associations: function() {
