@@ -7,7 +7,7 @@ describe("about Item service", () => {
 
   before(async (done) => {
     try {
-      sinon.stub(ItemService, 'getLoginState', (req) => {
+      sinon.stub(ItemService, 'getchooseState', (req) => {
         return true;
       });
 
@@ -54,7 +54,7 @@ describe("about Item service", () => {
         };
       testDeleteItemCode = await db.Itemcode.create(Itemcode3);
 
-      // 打八折
+      
       var Itemcode4 = {
           title: '測試修改項目',
           code: 'EEEEEEEEEEFFFFFFFFFF',
@@ -80,7 +80,7 @@ describe("about Item service", () => {
 
   after((done) => {
     // end this simulated login
-    ItemService.getLoginState.restore();
+    ItemService.getchooseState.restore();
     done();
   });
 
@@ -159,13 +159,13 @@ describe("about Item service", () => {
     }
   });
 
-  it('use ShopCode but money not enough', async (done) => {
+  it('use ItemCode but money not enough', async (done) => {
     try {
       var data ={
         code: testShopCode.code,
         price: 899,
       }
-      let check = await ShopCodeService.use(data);
+      let check = await ItemCodeService.use(data);
       done(new Error('should not pass!'));
     } catch (e) {
       e.message.should.be.equal('請再次確認折扣碼活動時間、活動金額');
@@ -173,13 +173,13 @@ describe("about Item service", () => {
     }
   });
 
-  it('use ShopCode but time out', async (done) => {
+  it('use ItemCode but time out', async (done) => {
     try {
       var data ={
         code: testTimeOutShopCode.code,
         price: 999,
       }
-      let check = await ShopCodeService.use(data);
+      let check = await ItemCodeService.use(data);
       done(new Error('should not pass!'));
     } catch (e) {
       e.message.should.be.equal('請再次確認折扣碼活動時間、活動金額');
@@ -187,10 +187,10 @@ describe("about Item service", () => {
     }
   });
 
-  it('send ShopCode to all users', async (done) => {
+  it('send ItemCode to all sort', async (done) => {
     try {
-      let shopCode = testShopCode;
-      await ShopCodeService.sendAllUsers({shopCode});
+      let itemCode = tesShopCode;
+      await ItemCodeService.sendAllSort({itemCode});
       done();
     } catch (e) {
       console.log(e.stack);
@@ -198,20 +198,20 @@ describe("about Item service", () => {
     }
   });
 
-  it('send ShopCode to target users', async (done) => {
+  it('send ItemCode to target sort', async (done) => {
     try {
-      let shopCode = testShopCode;
-      let users = await db.User.findAll({ limit: 5 });
-      await shopCode.setUsers(users);
+      let ItemCode = testShopCode;
+      let sort = await db.Sort.findAll({ limit: 5 });
+      await ItemCode.setSort(sort);
 
-      shopCode = await db.ShopCode.find({
+      itemCode = await db.ItemCode.find({
         where: {
-          id: shopCode.id
+          id: ItemCode.id
         },
-        include: [db.User]
+        include: [db.Item]
       });
 
-      await ShopCodeService.sendTargetUsers({shopCode});
+      await ItemCodeService.sendTargetItem({ItemCode});
       done();
     } catch (e) {
       console.log(e.stack);
@@ -219,10 +219,10 @@ describe("about Item service", () => {
     }
   });
 
-  describe('send ShopCode when user Register', (done) => {
-    let createdRegisterShopCode;
+  describe('send ItemCode when sort Register', (done) => {
+    let createdRegisterItemCode;
     before( async (done) => {
-      var registerShopCode = {
+      var registerItemCode = {
           title: '測試',
           code: 'YYYYYYYYYYZZZZZZZZZZ',
           autoRandomCode: 'on',
@@ -234,16 +234,16 @@ describe("about Item service", () => {
           sentType: 'beginner',
           sentContent: '測試'
         };
-      createdRegisterShopCode = await db.ShopCode.create(registerShopCode);
+      createdRegisterItemCode = await db.ItemCode.create(registerItemCode);
       done();
     });
 
     it('should be success', async (done) => {
       try {
-        let shopCode = testShopCode;
-        let user = await db.User.find({ limit: 1 });
+        let ItemCode = testItemCode;
+        let sort = await db.Sort.find({ limit: 1 });
 
-        await ShopCodeService.sendWhenRegister({shopCode, user});
+        await ItemCodeService.sendWhenRegister({itemCode, sort});
         done();
       } catch (e) {
         console.log(e.stack);
