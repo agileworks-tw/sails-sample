@@ -40,6 +40,14 @@ module.exports.routes = {
     view: 'index2'
   },
 
+  '/f7': {
+    view: 'f7index'
+  },
+
+  '/story':{
+    view: 'story'
+  },
+
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
   'get /register': 'AuthController.register',
@@ -53,6 +61,8 @@ module.exports.routes = {
   'get /auth/:provider/callback': 'AuthController.callback',
   'get /auth/:provider/:action': 'AuthController.callback',
 
+  'post /updateHobbyAndMail': 'UserController.updateHobbyAndMail',
+  'get /hobby': 'UserController.hobbyView'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
