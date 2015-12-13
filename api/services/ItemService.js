@@ -22,20 +22,20 @@ module.exports = {
     }
   },
 
-  updateUserLike: async({userId,likeArray}) => {
+  updateUserItem: async({LikeId,ItemArray}) => {
     try {
-      let user = await Item.findById(userId);
-      let userLike = await user.setLikes(likeArray);
+      let user = await Item.findById(LikeId);
+      let userLike = await user.setLikes(ItemArray);
       return userLike;
     } catch (e) {
       throw e;
     }
   },
 
-  updateUserMail: async({userId,userMail}) => {
+  updateUserSearch: async({LikeId,userSearch}) => {
     try {
-      let user = await User.findById(userId);
-      user.email = userMail;
+      let user = await Item.findById(LikeId);
+      user.search = userSearch;
       user = await user.save();
       return user;
     } catch (e) {

@@ -31,7 +31,7 @@ module.exports = {
       throw e;
     }
   },
-  
+
   updateUserMail: async({userId,userMail}) => {
     try {
       let user = await User.findById(userId);
