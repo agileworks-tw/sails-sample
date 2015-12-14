@@ -1,12 +1,12 @@
 describe('about Item Service operation.', function() {
 
-  describe('update item itemname & search', () => {
+  describe('update Item itemname & search', () => {
 
     let testItem,FindList;
     before(async (done) => {
 
       testItem = await Item.create({
-  			"Itemname": "testItem",
+  			"itemname": "testItem",
       });
 
       let search = [
@@ -24,7 +24,7 @@ describe('about Item Service operation.', function() {
     it('update Item search should success.', async (done) => {
       try {
 
-        let search = "1"
+        let search = "test1"
         let send = {
           ItemId: testItem.id,
           ItemSearch: Search
@@ -39,7 +39,7 @@ describe('about Item Service operation.', function() {
       }
     });
 
-    it('update Item find  should success.', async (done) => {
+    it('update Item find should success.', async (done) => {
       try {
         let send = {
           ItemId: testItem.id,

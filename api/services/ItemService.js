@@ -6,7 +6,7 @@ module.exports = {
       throw e;
     }
   },
-  getaLoginState: function(req) {
+  getLoginState: function(req) {
     if (req.session.authenticated) {
       return true;
     } else {
