@@ -112,6 +112,7 @@ $$(document).on('pageInit', '.page[data-page="stroryHobby"]', function (e) {
 
 
 $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
+
   $$('.radioItem').click(function(){
     $$("input[name='item']").val("");
     if($$(this).find('input').prop("checked"))
@@ -136,6 +137,8 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
   });
 
   $$('#finishStep').click(function(){
+    // {"mode":"give","hobby":"1","detail":{"title":"123","radioItem":"2","item":""},
+    // "location":{"latitude":24.148657699999998,"longitude":120.67413979999999,"accuracy":30}}
 
     var mode =  myApp.formGetData('stroryModeChoose').mode;
     var hobby =  myApp.formGetData('stroryHobbyChoose').hobby;
@@ -146,8 +149,6 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
       hobby,
       detail
     };
-    // {"mode":"give","hobby":"2","detail":{"title":"","radioItem":"1","item":""}}
-    console.log(data);
 
     if(!data.mode){
       myApp.alert("","Error")
@@ -165,27 +166,37 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
       return false;
     }
 
-    $$.ajax({
-      url: "/postStorys",
-      type:"POST",
-      data : data,
-      success: function(result){
-        var books = JSON.parse(result);
-        console.log(books);
-        showBookList(books);
-        myApp.hidePreloader();
-        $$('#bookListLength').text(books.length+" 本書");
-      },
-      error:function(xhr, ajaxOptions, thrownError){
-        myApp.alert(xhr.status);
-        myApp.alert(thrownError);
+    var location = {};
+    navigator.geolocation.getCurrentPosition(GetLocationAndSubmit);
+
+    function GetLocationAndSubmit(loc) {
+      console.log(loc);
+      location = {
+        latitude: loc.coords.latitude,
+        longitude: loc.coords.longitude,
+        accuracy: loc.coords.accuracy
       }
-    });
+      data.location = location;
+      console.log(JSON.stringify(data));
+
+      $$.ajax({
+        url: "/postStorys",
+        type:"POST",
+        data : data,
+        success: function(result){
+          var books = JSON.parse(result);
+          console.log(books);
+          showBookList(books);
+          myApp.hidePreloader();
+          $$('#bookListLength').text(books.length+" 本書");
+        },
+        error:function(xhr, ajaxOptions, thrownError){
+          myApp.alert(xhr.status);
+          myApp.alert(thrownError);
+        }
+      });
+    }
   });
-
-  function checkFinish(){
-
-  }
 });
 
 
