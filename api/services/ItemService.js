@@ -6,7 +6,7 @@ module.exports = {
       throw e;
     }
   },
-  getLoginState: function(req) {
+  getaLoginState: function(req) {
     if (req.session.authenticated) {
       return true;
     } else {
@@ -14,30 +14,33 @@ module.exports = {
     }
   },
 
-  getLoginUser: function(req) {
-    if (req.session.passport != undefined && req.session.passport.user) {
-      return req.session.passport.user;
+  getLoginItem: function(req) {
+    if (req.session.passport != undefined && req.session.passport.Item) {
+      return req.session.passport.Item;
     } else {
       return null;
     }
   },
 
-  updateUserItem: async({LikeId,ItemArray}) => {
+  updateItemSearch: async({ItemId,SearchArray}) => {
     try {
-      let user = await Item.findById(LikeId);
-      let userLike = await user.setLikes(ItemArray);
-      return userLike;
+      let Item = await Item.findById(ItemId);
+      let ItemSearch = await Item.setsearch(SearchArray);
+      Item.isFirstLogin = false;
+      await Item.save();
+      return ItemSearch;
     } catch (e) {
       throw e;
     }
   },
 
-  updateUserSearch: async({LikeId,userSearch}) => {
+  updateItemFind: async({ItemId,ItemFind}) => {
     try {
-      let user = await Item.findById(LikeId);
-      user.search = userSearch;
-      user = await user.save();
-      return user;
+      sails.log.info(ItemId,ItemFind);
+      let Item = await Item.findById(ItemId);
+      Item.Find = ItemFind;
+      Item = await Item.save();
+      return Item;
     } catch (e) {
       throw e;
     }
