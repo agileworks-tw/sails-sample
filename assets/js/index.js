@@ -113,6 +113,7 @@ $$(document).on('pageInit', '.page[data-page="stroryHobby"]', function (e) {
 
 $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
   $$('.radioItem').click(function(){
+    $$("input[name='item']").val("");
     if($$(this).find('input').prop("checked"))
       $$(this).find('input').prop("checked", false);
     else
@@ -120,8 +121,66 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
 
     console.log(storedData);
     var storedData = myApp.formToJSON('#stroryDetailChoose');
-    myApp.formStoreData('stroryDetail',storedData);
+    myApp.formStoreData('stroryDetailChoose',storedData);
 
+  });
+
+  $$("input[name='item']").on('input', function(){
+    var radioItem = $$("input[name='radioItem']");
+    radioItem.prop("checked", false);
+  });
+
+  $$("input[name='title']").on('input', function(){
+    var storedData = myApp.formToJSON('#stroryDetailChoose');
+    myApp.formStoreData('stroryDetailChoose',storedData);
+  });
+
+  $$('#finishStep').click(function(){
+
+    var mode =  myApp.formGetData('stroryModeChoose').mode;
+    var hobby =  myApp.formGetData('stroryHobbyChoose').hobby;
+    var detail =  myApp.formGetData('stroryDetailChoose');
+
+    var data = {
+      mode,
+      hobby,
+      detail
+    };
+    // {"mode":"give","hobby":"2","detail":{"title":"","radioItem":"1","item":""}}
+    console.log(data);
+
+    if(!data.mode){
+      myApp.alert("","Error")
+      location.href = '/story'
+      return false;
+    }
+
+    if(!data.hobby){
+      myApp.alert("","Error")
+      location.href = '/story'
+      return false;
+    }
+    if(data.detail.title == ""){
+      myApp.alert("Please enter a title","Error")
+      return false;
+    }
+
+    $$.ajax({
+      url: "/postStorys",
+      type:"POST",
+      data : data,
+      success: function(result){
+        var books = JSON.parse(result);
+        console.log(books);
+        showBookList(books);
+        myApp.hidePreloader();
+        $$('#bookListLength').text(books.length+" 本書");
+      },
+      error:function(xhr, ajaxOptions, thrownError){
+        myApp.alert(xhr.status);
+        myApp.alert(thrownError);
+      }
+    });
   });
 
   function checkFinish(){

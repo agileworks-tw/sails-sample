@@ -33,6 +33,10 @@ div[class*="col-"] {
   text-align: center;
 }
 
+#stroryDetailChoose [name=title] {
+  font-size: 25px;
+}
+
 #stroryModeChoose {
   height: 100%
 }
