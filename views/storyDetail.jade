@@ -7,21 +7,30 @@
         .right
           a#finishStep(href='templates/finish.html', data-context="" disabled) Finish
     .pages
-      .page.navbar-fixed(data-page='stroryHobby')
+      .page.navbar-fixed(data-page='stroryDetail')
         .page-content
-          form#stroryDetail
-            .row
-              .col-50.tablet-50 時尚
-                input(type='radio', name='item', value='1')
-              .col-50.tablet-50 美妝保養
-                input(type='radio', name='item', value='2')
-            .row
-              .col-50.tablet-50 時尚
-                input(type='radio', name='item', value='1')
-              .col-50.tablet-50 美妝保養
-                input(type='radio', name='item', value='2')
-            .row
-              .col-50.tablet-50 時尚
-                input(type='radio', name='item', value='1')
-              .col-50.tablet-50 美妝保養
-                input(type='radio', name='item', value='2')
+          form#stroryDetailChoose
+            .list-block
+              .item-content
+                .item-inner
+                  .item-input
+                    input(type='text', name='title', placeholder='Title')
+              .row
+                .col-50.tablet-50.radioItem 手機
+                  input(type='radio', name='radioItem', value='1')
+                .col-50.tablet-50.radioItem 平板
+                  input(type='radio', name='radioItem', value='2')
+              .row
+                .col-50.tablet-50.radioItem iphone
+                  input(type='radio', name='radioItem', value='1')
+                .col-50.tablet-50.radioItem 電腦
+                  input(type='radio', name='radioItem', value='2')
+              .row
+                .col-50.tablet-50.radioItem 筆電
+                  input(type='radio', name='radioItem', value='1')
+                .col-50.tablet-50.radioItem 筆電
+                  input(type='radio', name='radioItem', value='1')
+              .item-content
+                .item-inner
+                  .item-input
+                    input(type='text', name='item', placeholder='Without your item? Enter a new one !')

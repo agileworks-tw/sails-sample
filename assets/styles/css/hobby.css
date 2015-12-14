@@ -29,6 +29,10 @@ div[class*="col-"] {
   text-align: center;
 }
 
+#stroryDetailChoose input {
+  text-align: center;
+}
+
 #stroryModeChoose {
   height: 100%
 }

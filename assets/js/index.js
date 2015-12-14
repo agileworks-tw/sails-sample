@@ -47,7 +47,7 @@ $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function (e) {
 });
 
 $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
-  console.log("!!!!!!!!");
+
   var emailInput = $$('input[name="email"]');
   var submitBtn = $$('input[name="submit"]');
   submitBtn.prop("disabled",true)
@@ -73,20 +73,16 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
 
 
 $$(document).on('pageInit', '.page[data-page="stroryMode"]', function (e) {
-  myApp.formDeleteData('stroryModeChoose');
-  var storedData = myApp.formToJSON('#stroryModeChoose');
-  myApp.formStoreData('stroryModeChoose',storedData);
-
   $$('.selectMode').click(function(){
     if($$(this).find('input').prop("checked"))
       $$(this).find('input').prop("checked", false);
     else
       $$(this).find('input').prop("checked", true);
 
-    storedData = myApp.formToJSON('#stroryModeChoose');
+    var storedData = myApp.formToJSON('#stroryModeChoose');
     myApp.formStoreData('stroryModeChoose',storedData);
 
-    if(storedData.mode != "") {
+    if(storedData.mode != ""  && storedData.hasOwnProperty('mode')) {
       $$('#nextSetp').removeAttr("disabled");
     }else{
       $$('#nextSetp').attr("disabled",true);
@@ -96,20 +92,17 @@ $$(document).on('pageInit', '.page[data-page="stroryMode"]', function (e) {
 
 
 $$(document).on('pageInit', '.page[data-page="stroryHobby"]', function (e) {
-  myApp.formDeleteData('stroryHobbyChoose');
-  var storedData = myApp.formToJSON('#stroryHobbyChoose');
-  myApp.formStoreData('stroryHobbyChoose',storedData);
-
   $$('.hobbyitem').click(function(){
     if($$(this).find('input').prop("checked"))
       $$(this).find('input').prop("checked", false);
     else
       $$(this).find('input').prop("checked", true);
 
-    storedData = myApp.formToJSON('#stroryHobbyChoose');
+    var storedData = myApp.formToJSON('#stroryHobbyChoose');
     myApp.formStoreData('stroryHobbyChoose',storedData);
 
-    if(storedData.hobby != "") {
+    console.log(storedData);
+    if(storedData.hobby != "" && storedData.hasOwnProperty('hobby') ) {
       $$('#nextSetp2').removeAttr("disabled");
     }else{
       $$('#nextSetp2').attr("disabled",true);
@@ -117,6 +110,24 @@ $$(document).on('pageInit', '.page[data-page="stroryHobby"]', function (e) {
   });
 });
 
+
+$$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
+  $$('.radioItem').click(function(){
+    if($$(this).find('input').prop("checked"))
+      $$(this).find('input').prop("checked", false);
+    else
+      $$(this).find('input').prop("checked", true);
+
+    console.log(storedData);
+    var storedData = myApp.formToJSON('#stroryDetailChoose');
+    myApp.formStoreData('stroryDetail',storedData);
+
+  });
+
+  function checkFinish(){
+
+  }
+});
 
 
 // Show/hide preloader for remote ajax loaded pages
