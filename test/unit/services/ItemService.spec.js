@@ -28,9 +28,9 @@ describe.only('about Item Service operation.', function() {
         }
 
         // 完成 ItemService.create
-        let update = ItemService.create(send);
+        await ItemService.create(send);
 
-
+        let update = await like3c.getItems();
         update.length.should.be.an.above(check.length);
         done();
       } catch (e) {
