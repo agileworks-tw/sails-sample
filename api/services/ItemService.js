@@ -6,7 +6,7 @@ module.exports = {
       throw e;
     }
   },
-  getLoginState: function(req) {
+  getItemState: function(req) {
     if (req.session.authenticated) {
       return true;
     } else {
@@ -24,10 +24,10 @@ module.exports = {
 
   updateItemSearch: async({ItemId,SearchArray}) => {
     try {
-      let Item = await Item.findById(ItemId);
+      let item = await Item.findById(ItemId);
       let ItemSearch = await Item.setsearch(SearchArray);
-      Item.isFirstLogin = false;
-      await Item.save();
+      item.isFirstLogin = false;
+      await item.save();
       return ItemSearch;
     } catch (e) {
       throw e;
@@ -37,10 +37,10 @@ module.exports = {
   updateItemFind: async({ItemId,ItemFind}) => {
     try {
       sails.log.info(ItemId,ItemFind);
-      let Item = await Item.findById(ItemId);
-      Item.Find = ItemFind;
-      Item = await Item.save();
-      return Item;
+      let item = await Item.findById(ItemId);
+      item.Find = itemFind;
+      item = await item.save();
+      return item;
     } catch (e) {
       throw e;
     }

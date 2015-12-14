@@ -27,10 +27,10 @@ describe('about Item Service operation.', function() {
         let search = "test1"
         let send = {
           ItemId: testItem.id,
-          ItemSearch: Search
+          ItemSearch: search
         }
         let result = await ItemService.updateItemSearch(send);
-        result.Search.should.be.equal(Search);
+        result.Search.should.be.equal(search);
         done();
 
       } catch (e) {
