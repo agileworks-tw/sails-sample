@@ -2,7 +2,7 @@ describe('about Item Service operation.', function() {
 
   describe('update item itemname & search', () => {
 
-    let testItem,SearchList;
+    let testItem,FindList;
     before(async (done) => {
 
       testItem = await Item.create({
@@ -10,9 +10,9 @@ describe('about Item Service operation.', function() {
       });
 
       let search = [
-        {Itemname: 'a'},
-        {Itemname: 'b'},
-        {Itemname: 'c'}
+        {itemname: 'a'},
+        {itemname: 'b'},
+        {itemname: 'c'}
       ];
       searchList = await* search.map(async(item) => {
           return await search.create(item);
@@ -21,16 +21,16 @@ describe('about Item Service operation.', function() {
       done();
     });
 
-    it('update user search should success.', async (done) => {
+    it('update Item search should success.', async (done) => {
       try {
 
-        let search = "123@gmail.com"
+        let search = "1"
         let send = {
-          userId: testItem.id,
-          userMail: mail
+          ItemId: testItem.id,
+          ItemSearch: Search
         }
-        let result = await UserService.updateUserMail(send);
-        result.email.should.be.equal(mail);
+        let result = await UserService.updateItemSearch(send);
+        result.Search.should.be.equal(Search);
         done();
 
       } catch (e) {
@@ -39,17 +39,17 @@ describe('about Item Service operation.', function() {
       }
     });
 
-    it('update user Like should success.', async (done) => {
+    it('update Item find  should success.', async (done) => {
       try {
         let send = {
-          userId: testItem.id,
-          likeArray: [
-            likeList[0].id,
-            likeList[1].id,
-            likeList[2].id
+          ItemId: testItem.id,
+          FindArray: [
+            FindList[0].id,
+            FindList[1].id,
+            FindList[2].id
           ]
         }
-        let result = await UserService.updateUserLike(send);
+        let result = await ItemService.updateItemFind(send);
         sails.log.info("!!!!",JSON.stringify(result,null,2));
         result.should.be.an.Array;
         done();
