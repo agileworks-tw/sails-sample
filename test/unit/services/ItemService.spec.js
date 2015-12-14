@@ -1,5 +1,4 @@
 import sinon from 'sinon';
-import moment from 'moment';
 
 describe("about Item service", () => {
 

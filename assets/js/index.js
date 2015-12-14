@@ -72,16 +72,33 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
 });
 
 
+$$(document).on('pageInit', '.page[data-page="stroryMode"]', function (e) {
+  myApp.formDeleteData('stroryModeChoose');
+  var storedData = myApp.formToJSON('#stroryModeChoose');
+  myApp.formStoreData('stroryModeChoose',storedData);
+
+  $$('.selectMode').click(function(){
+    if($$(this).find('input').prop("checked"))
+      $$(this).find('input').prop("checked", false);
+    else
+      $$(this).find('input').prop("checked", true);
+
+    storedData = myApp.formToJSON('#stroryModeChoose');
+    myApp.formStoreData('stroryModeChoose',storedData);
+
+    if(storedData.mode != "") {
+      $$('#nextSetp').removeAttr("disabled");
+    }else{
+      $$('#nextSetp').attr("disabled",true);
+    }
+  });
+});
+
+
 $$(document).on('pageInit', '.page[data-page="stroryHobby"]', function (e) {
+  myApp.formDeleteData('stroryHobbyChoose');
   var storedData = myApp.formToJSON('#stroryHobbyChoose');
   myApp.formStoreData('stroryHobbyChoose',storedData);
-  $$("#nextSetp").attr("data-context",JSON.stringify(storedData));
-  console.log($$("#nextSetp").attr("data-context"));
-  if(storedData.hobby.length > 0) {
-    $$('#nextSetp').removeAttr("disabled");
-  }else{
-    $$('#nextSetp').attr("disabled",true);
-  }
 
   $$('.hobbyitem').click(function(){
     if($$(this).find('input').prop("checked"))
@@ -91,14 +108,15 @@ $$(document).on('pageInit', '.page[data-page="stroryHobby"]', function (e) {
 
     storedData = myApp.formToJSON('#stroryHobbyChoose');
     myApp.formStoreData('stroryHobbyChoose',storedData);
-    $$("#nextSetp").attr("data-context",JSON.stringify(storedData));
-    if(storedData.hobby.length > 0) {
-      $$('#nextSetp').removeAttr("disabled");
+
+    if(storedData.hobby != "") {
+      $$('#nextSetp2').removeAttr("disabled");
     }else{
-      $$('#nextSetp').attr("disabled",true);
+      $$('#nextSetp2').attr("disabled",true);
     }
   });
 });
+
 
 
 // Show/hide preloader for remote ajax loaded pages

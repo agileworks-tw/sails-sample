@@ -83,5 +83,7 @@ module.exports = {
         LikeId: likeIC.id
       })
     });
+
+    await Like.bulkCreate(like);
   }
 }
