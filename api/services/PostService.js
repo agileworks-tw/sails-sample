@@ -2,11 +2,30 @@ module.exports = {
 
   create: async(data) => {
     try {
-      sails.log.info(data);
-      let post = await Post.create({
 
-        itemname: itemname,
-        LikeId: LikeId
+      let user = UserService.getLoginUser();
+
+      let itme;
+      if( !data.detail.radioItem ){
+        itme = await ItemService.create({
+          LikeId: data.hobby,
+          itemname: data.detail.item
+        });
+        sails.log.info('??????!!!!!!!!!!',itme.itemname);
+      }
+
+      sails.log.info("!!!!!!!!",data);
+
+      let post = await Post.create({
+        title: data.detail.title,
+        content: '',
+        mode: data.mode,
+        ItemId: data.detail.radioItem || itme.name,
+        UserId: user.id,
+        geometry: {
+          type: 'Point',
+          coordinates: [data.location.latitude,data.location.longitude]
+        }
       });
       return post;
     } catch (e) {

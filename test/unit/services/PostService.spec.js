@@ -1,3 +1,5 @@
+import sinon from 'sinon';
+
 describe('about Post Service operation.', function() {
 
   describe('post new item', () => {
@@ -5,15 +7,35 @@ describe('about Post Service operation.', function() {
     let like, item;
     before(async (done) => {
 
+      let user = await User.create({
+        "username": "testPost",
+  			"email": "testPost@gmail.com",
+  			"age": 18
+      });
+
+      sinon.stub(UserService, 'getLoginState', (req) => {
+        return true;
+      });
+
+      sinon.stub(UserService, 'getLoginUser', (req) => {
+        return user;
+      });
+
       like = await Like.create({
         title: '測試PO文'
       });
 
-      item = Item.create({
+      item = await Item.create({
         itemname: '測試PO文品項',
         LikeId: like.id
       })
 
+      done();
+    });
+
+    after( (done) => {
+      UserService.getLoginState.restore();
+      UserService.getLoginUser.restore();
       done();
     });
 
@@ -45,7 +67,7 @@ describe('about Post Service operation.', function() {
       }
     });
 
-    it('should success.', async (done) => {
+    it('should add new Item success.', async (done) => {
       try {
         let send = {
           "mode": "give",
