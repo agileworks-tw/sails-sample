@@ -89,7 +89,6 @@ module.exports = {
 
 
     let post = {
-      id: 2,
       title: "testTitle",
       content: 'content',
       mode: "give",
