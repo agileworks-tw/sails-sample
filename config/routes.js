@@ -40,12 +40,16 @@ module.exports.routes = {
     view: 'index2'
   },
 
-  '/f7': {
-    view: 'f7index'
-  },
-
   '/story':{
     view: 'story'
+  },
+
+  '/storyHobby':{
+    view: 'storyHobby'
+  },
+
+  '/storyDetail':{
+    view: 'storyDetail'
   },
 
   'get /login': 'AuthController.login',

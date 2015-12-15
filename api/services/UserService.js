@@ -24,18 +24,21 @@ module.exports = {
 
   updateUserItem: async({LikeId,ItemArray}) => {
     try {
-      let user = await Item.findById(LikeId);
-      let userLike = await user.setLikes(ItemArray);
+      let user = await User.findById(userId);
+      let userLike = await user.setLikes(likeArray);
+      user.isFirstLogin = false;
+      await user.save();
       return userLike;
     } catch (e) {
       throw e;
     }
   },
 
-  updateUserSearch: async({LikeId,userSearch}) => {
+  updateUserMail: async({userId,userMail}) => {
     try {
-      let user = await Item.findById(LikeId);
-      user.search = userSearch;
+      sails.log.info(userId,userMail);
+      let user = await User.findById(userId);
+      user.email = userMail;
       user = await user.save();
       return user;
     } catch (e) {

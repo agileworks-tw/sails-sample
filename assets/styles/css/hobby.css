@@ -1,3 +1,10 @@
+form .row {
+  margin: 0px;
+}
+
+#stroryDetail .row {
+  margin: 5px;
+}
 
 div[class*="col-"] {
   background: #fff;
@@ -20,6 +27,24 @@ div[class*="col-"] {
 
 #greeting input {
   text-align: center;
+}
+
+#stroryDetailChoose input {
+  text-align: center;
+}
+
+#stroryDetailChoose [name=title] {
+  font-size: 25px;
+}
+
+#stroryModeChoose {
+  height: 100%
+}
+#stroryModeChoose .row{
+  height: 50%;
+}
+#stroryModeChoose .selectMode{
+  height: 100%;
 }
 
 ::-webkit-input-placeholder {

@@ -24,6 +24,67 @@ module.exports = {
       {title: '哩哩扣扣'},
       {title: '預售代購'}
     ];
+
+    let likeFashion = await Like.create(like[0]);
+    let itemlistFashion = [
+      '衣服',
+      '褲子',
+      '帽子',
+      '鞋子',
+      '包包',
+      '皮夾'
+    ];
+    await* itemlistFashion.map((fashion) => {
+      Item.create({
+        itemname: fashion,
+        LikeId: likeFashion.id
+      })
+    });
+
+    let likeFashion2 = await Like.create(like[1]);
+    let itemlistFashion2 = [
+      "化妝品",
+      '化妝包',
+      '口紅',
+      '保養品',
+      '護唇膏'
+    ];
+    await* itemlistFashion2.map((fashion) => {
+      Item.create({
+        itemname: fashion,
+        LikeId: likeFashion2.id
+      })
+    });
+
+    let likeDesign = await Like.create(like[2]);
+    let itemlistDesign = [
+      '桌子',
+      '畫',
+      '椅子'
+    ];
+    await* itemlistDesign.map((design) => {
+      Item.create({
+        itemname: design,
+        LikeId: likeDesign.id
+      })
+    });
+
+    let likeIC = await Like.create(like[3]);
+    let itemlistIC = [
+      '手機',
+      '平板',
+      '電腦',
+      '筆電',
+      'iphone'
+    ];
+    await* itemlistIC.map( async (ic) => {
+      await Item.create({
+        itemname: ic,
+        LikeId: likeIC.id
+      })
+    });
+
     await Like.bulkCreate(like);
+    
   }
 }

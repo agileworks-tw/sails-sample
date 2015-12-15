@@ -1,57 +1,38 @@
-describe('about Item Service operation.', function() {
+describe.only('about Item Service operation.', function() {
 
-  describe('update Item itemname & search', () => {
+  describe('update lile item', () => {
 
-    let testItem,FindList;
+    let like3c;
     before(async (done) => {
 
-      testItem = await Item.create({
-  			"itemname": "testItem",
+      like3c = await Like.create({
+        title: '測試用生活3C'
       });
-
-      let search = [
-        {itemname: 'a'},
-        {itemname: 'b'},
-        {itemname: 'c'}
-      ];
-      searchList = await* search.map(async(item) => {
-          return await search.create(item);
-      });
-
+      await Item.create({
+        itemname: "Server",
+        LikeId: like3c.id
+      })
       done();
     });
 
-    it('update Item search should success.', async (done) => {
+    it('update should success.', async (done) => {
       try {
 
-        let search = "test1"
-        let send = {
-          ItemId: testItem.id,
-          ItemSearch: search
-        }
-        let result = await ItemService.updateItemSearch(send);
-        result.Search.should.be.equal(search);
-        done();
+        console.log(like3c)
+        let check = await like3c.getItems();
+        console.log("check length",check.length);
 
-      } catch (e) {
-        sails.log.error(e);
-        done(e);
-      }
-    });
-
-    it('update Item find should success.', async (done) => {
-      try {
         let send = {
-          ItemId: testItem.id,
-          FindArray: [
-            FindList[0].id,
-            FindList[1].id,
-            FindList[2].id
-          ]
+          LikeId: like3c.id,
+          itemname: '123'
         }
-        let result = await ItemService.updateItemFind(send);
-        sails.log.info("!!!!",JSON.stringify(result,null,2));
-        result.should.be.an.Array;
+
+        // 完成 ItemService.create
+        await ItemService.create(send);
+
+        let update = await like3c.getItems();
+        update.length.should.be.an.above(check.length);
+        
         done();
       } catch (e) {
         sails.log.error(e);

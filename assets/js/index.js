@@ -47,7 +47,6 @@ $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function (e) {
 });
 
 $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
-  console.log("!!!!!!!!");
   var emailInput = $$('input[name="email"]');
   var submitBtn = $$('input[name="submit"]');
   submitBtn.prop("disabled",true)
@@ -72,30 +71,129 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
 });
 
 
-$$(document).on('pageInit', '.page[data-page="stroryHobby"]', function (e) {
-  var storedData = myApp.formToJSON('#stroryHobbyChoose');
-  myApp.formStoreData('stroryHobbyChoose',storedData);
-  $$("#nextSetp").attr("data-context",JSON.stringify(storedData));
-  console.log($$("#nextSetp").attr("data-context"));
-  if(storedData.hobby.length > 0) {
-    $$('#nextSetp').removeAttr("disabled");
-  }else{
-    $$('#nextSetp').attr("disabled",true);
-  }
+$$(document).on('pageInit', '.page[data-page="stroryMode"]', function (e) {
+  $$('.selectMode').click(function(){
+    if($$(this).find('input').prop("checked"))
+      $$(this).find('input').prop("checked", false);
+    else
+      $$(this).find('input').prop("checked", true);
 
+    var storedData = myApp.formToJSON('#stroryModeChoose');
+    myApp.formStoreData('stroryModeChoose',storedData);
+
+    if(storedData.mode != ""  && storedData.hasOwnProperty('mode')) {
+      $$('#nextSetp').removeAttr("disabled");
+    }else{
+      $$('#nextSetp').attr("disabled",true);
+    }
+  });
+});
+
+
+$$(document).on('pageInit', '.page[data-page="stroryHobby"]', function (e) {
   $$('.hobbyitem').click(function(){
     if($$(this).find('input').prop("checked"))
       $$(this).find('input').prop("checked", false);
     else
       $$(this).find('input').prop("checked", true);
 
-    storedData = myApp.formToJSON('#stroryHobbyChoose');
+    var storedData = myApp.formToJSON('#stroryHobbyChoose');
     myApp.formStoreData('stroryHobbyChoose',storedData);
-    $$("#nextSetp").attr("data-context",JSON.stringify(storedData));
-    if(storedData.hobby.length > 0) {
-      $$('#nextSetp').removeAttr("disabled");
+
+    console.log(storedData);
+    if(storedData.hobby != "" && storedData.hasOwnProperty('hobby') ) {
+      $$('#nextSetp2').removeAttr("disabled");
     }else{
-      $$('#nextSetp').attr("disabled",true);
+      $$('#nextSetp2').attr("disabled",true);
+    }
+  });
+});
+
+
+$$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
+
+  $$('.radioItem').click(function(){
+    $$("input[name='item']").val("");
+    if($$(this).find('input').prop("checked"))
+      $$(this).find('input').prop("checked", false);
+    else
+      $$(this).find('input').prop("checked", true);
+
+    console.log(storedData);
+    var storedData = myApp.formToJSON('#stroryDetailChoose');
+    myApp.formStoreData('stroryDetailChoose',storedData);
+
+  });
+
+  $$("input[name='item']").on('input', function(){
+    var radioItem = $$("input[name='radioItem']");
+    radioItem.prop("checked", false);
+  });
+
+  $$("input[name='title']").on('input', function(){
+    var storedData = myApp.formToJSON('#stroryDetailChoose');
+    myApp.formStoreData('stroryDetailChoose',storedData);
+  });
+
+  $$('#finishStep').click(function(){
+    // {"mode":"give","hobby":"1","detail":{"title":"123","radioItem":"2","item":""},
+    // "location":{"latitude":24.148657699999998,"longitude":120.67413979999999,"accuracy":30}}
+
+    var mode =  myApp.formGetData('stroryModeChoose').mode;
+    var hobby =  myApp.formGetData('stroryHobbyChoose').hobby;
+    var detail =  myApp.formGetData('stroryDetailChoose');
+
+    var data = {
+      mode,
+      hobby,
+      detail
+    };
+
+    if(!data.mode){
+      myApp.alert("","Error")
+      location.href = '/story'
+      return false;
+    }
+
+    if(!data.hobby){
+      myApp.alert("","Error")
+      location.href = '/story'
+      return false;
+    }
+    if(data.detail.title == ""){
+      myApp.alert("Please enter a title","Error")
+      return false;
+    }
+
+    var location = {};
+    navigator.geolocation.getCurrentPosition(GetLocationAndSubmit);
+
+    function GetLocationAndSubmit(loc) {
+      console.log(loc);
+      location = {
+        latitude: loc.coords.latitude,
+        longitude: loc.coords.longitude,
+        accuracy: loc.coords.accuracy
+      }
+      data.location = location;
+      console.log(JSON.stringify(data));
+
+      $$.ajax({
+        url: "/postStorys",
+        type:"POST",
+        data : data,
+        success: function(result){
+          var books = JSON.parse(result);
+          console.log(books);
+          showBookList(books);
+          myApp.hidePreloader();
+          $$('#bookListLength').text(books.length+" 本書");
+        },
+        error:function(xhr, ajaxOptions, thrownError){
+          myApp.alert(xhr.status);
+          myApp.alert(thrownError);
+        }
+      });
     }
   });
 });

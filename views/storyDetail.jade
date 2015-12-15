@@ -1,0 +1,36 @@
+.navbar
+    .navbar-inner
+        .left
+          a.back.link(href='#')
+            i.icon.icon-back-blue
+            span Back
+        .right
+          a#finishStep Finish
+    .pages
+      .page.navbar-fixed(data-page='stroryDetail')
+        .page-content
+          form#stroryDetailChoose
+            .list-block
+              .item-content
+                .item-inner
+                  .item-input
+                    input(type='text', name='title', placeholder='Title')
+              .row
+                .col-50.tablet-50.radioItem 手機
+                  input(type='radio', name='radioItem', value='1')
+                .col-50.tablet-50.radioItem 平板
+                  input(type='radio', name='radioItem', value='2')
+              .row
+                .col-50.tablet-50.radioItem iphone
+                  input(type='radio', name='radioItem', value='1')
+                .col-50.tablet-50.radioItem 電腦
+                  input(type='radio', name='radioItem', value='2')
+              .row
+                .col-50.tablet-50.radioItem 筆電
+                  input(type='radio', name='radioItem', value='1')
+                .col-50.tablet-50.radioItem 筆電
+                  input(type='radio', name='radioItem', value='1')
+              .item-content
+                .item-inner
+                  .item-input
+                    input(type='text', name='item', placeholder='Without your item? Enter a new one !')
