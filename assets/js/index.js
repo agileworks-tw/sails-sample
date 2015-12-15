@@ -129,6 +129,10 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
   $$("input[name='item']").on('input', function(){
     var radioItem = $$("input[name='radioItem']");
     radioItem.prop("checked", false);
+
+    var storedData = myApp.formToJSON('#stroryDetailChoose');
+    myApp.formStoreData('stroryDetailChoose',storedData);
+    
   });
 
   $$("input[name='title']").on('input', function(){

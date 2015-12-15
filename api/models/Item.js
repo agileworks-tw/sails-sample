@@ -10,7 +10,7 @@ module.exports = {
     }
   },
   associations: function() {
-
+    Item.belongsTo(Like);
   },
   options: {
     classMethods: {},

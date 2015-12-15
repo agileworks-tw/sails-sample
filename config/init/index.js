@@ -85,6 +85,24 @@ module.exports = {
     });
 
     await Like.bulkCreate(like);
-    
+
+
+
+    let post = {
+      id: 2,
+      title: "testTitle",
+      content: 'content',
+      mode: "give",
+      createdAt: "2015-12-15 10:09:07",
+      updatedAt: "2015-12-15 10:09:07",
+      ItemId: 17,
+      UserId: 1,
+      geometry: {
+        type: 'Point',
+        coordinates: [39.807222,-76.984722]
+      }
+    }
+
+    let createPost = await Post.create(post);
   }
 }
