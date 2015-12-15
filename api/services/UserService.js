@@ -22,7 +22,7 @@ module.exports = {
     }
   },
 
-  updateUserItem: async({LikeId,ItemArray}) => {
+  updateUserLike: async({LikeId,likeArray}) => {
     try {
       let user = await User.findById(userId);
       let userLike = await user.setLikes(likeArray);
