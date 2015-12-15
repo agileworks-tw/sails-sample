@@ -32,7 +32,7 @@ describe('about Item Service operation.', function() {
 
         let update = await like3c.getItems();
         update.length.should.be.an.above(check.length);
-        
+
         done();
       } catch (e) {
         sails.log.error(e);
