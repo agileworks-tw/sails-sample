@@ -22,11 +22,11 @@ describe('about flow operation.', () => {
     }
   });
 
-  it('findAll post use promise function', (done) => {
+  it.skip('findAll post use promise function', (done) => {
 
   });
 
-  it('findAll post use async/await function', async (done) => {
+  it.skip('findAll post use async/await function', async (done) => {
     try {
 
       done();

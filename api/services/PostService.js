@@ -15,4 +15,14 @@ module.exports = {
   },
 
 
+  getNearbyPost: async({latitude, longitude}) => {
+    try {
+      sails.log.info({latitude, longitude});
+      let post;
+      return post;
+    } catch (e) {
+      throw e;
+    }
+  }
+
 }
