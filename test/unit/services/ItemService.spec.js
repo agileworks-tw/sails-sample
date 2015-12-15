@@ -1,4 +1,4 @@
-describe.only('about Item Service operation.', function() {
+describe('about Item Service operation.', function() {
 
   describe('update lile item', () => {
 
