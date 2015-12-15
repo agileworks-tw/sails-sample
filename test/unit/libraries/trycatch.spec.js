@@ -1,4 +1,4 @@
-describe('about try/catch operation.', () => {
+describe.skip('about try/catch operation.', () => {
 
   it('use try function', (done) => {
 
@@ -10,8 +10,5 @@ describe('about try/catch operation.', () => {
     }
 
   });
-
-
-
 
 });

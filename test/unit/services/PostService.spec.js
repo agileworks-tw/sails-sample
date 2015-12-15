@@ -82,7 +82,7 @@ describe('about Post Service operation.', function() {
 
 
 
-  describe.only('get post', () => {
+  describe('get post', () => {
 
     let post;
     before(async (done) => {
