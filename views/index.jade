@@ -26,7 +26,7 @@ head
             nav.navigation-items
               .wrapper
                 ul.main-navigation.navigation-top-header
-                ul.user-area
+                ul.main-navigation
                   li
                     a(href='/auth/facebook') Login 
                 a.submit-item(href='/story')
@@ -34,11 +34,11 @@ head
                     span Submit Your Item
                   .icon
                     i.fa.fa-plus
-                .toggle-navigation
-                  .icon
-                    .line
-                    .line
-                    .line
+                //- .toggle-navigation
+                //-   .icon
+                //-     .line
+                //-     .line
+                //-     .line
         // end Navigation
         // Page Canvas
         #page-canvas
@@ -61,41 +61,41 @@ head
                 // /.toggle-navigation
                 #map.has-parallax
                 // /#map
-                .search-bar.horizontal
-                  form.main-search.border-less-inputs(role='form', method='post')
-                    .input-row
-                      .form-group
-                        input#keyword.form-control(type='text', placeholder='Enter Keyword')
-                      // /.form-group
-                      .form-group
-                        .input-group.location
-                          input#location.form-control(type='text', placeholder='Enter Location')
-                          span.input-group-addon
-                            i.fa.fa-map-marker.geolocation(data-toggle='tooltip', data-placement='bottom', title='Find my position')
-                      // /.form-group
-                      .form-group
-                        select(name='category', multiple='', title='Select Category', data-live-search='true')
-                          option(value='1') Stores
-                          option.sub-category(value='2') Apparel
-                          option.sub-category(value='3') Computers
-                          option.sub-category(value='4') Nature
-                          option(value='5') Tourism
-                          option(value='6') Restaurant &amp; Bars
-                          option.sub-category(value='7') Bars
-                          option.sub-category(value='8') Vegetarian
-                          option.sub-category(value='9') Steak &amp; Grill
-                          option(value='10') Sports
-                          option.sub-category(value='11') Cycling
-                          option.sub-category(value='12') Water Sports
-                          option.sub-category(value='13') Winter Sports
-                      // /.form-group
-                      .form-group
-                        button.btn.btn-default(type='submit')
-                          i.fa.fa-search
-                      // /.form-group
-                    // /.input-row
-                  // /.main-search
-                // /.search-bar
+                //- .search-bar.horizontal
+                //-   form.main-search.border-less-inputs(role='form', method='post')
+                //-     .input-row
+                //-       .form-group
+                //-         input#keyword.form-control(type='text', placeholder='Enter Keyword')
+                //-       // /.form-group
+                //-       .form-group
+                //-         .input-group.location
+                //-           input#location.form-control(type='text', placeholder='Enter Location')
+                //-           span.input-group-addon
+                //-             i.fa.fa-map-marker.geolocation(data-toggle='tooltip', data-placement='bottom', title='Find my position')
+                //-       // /.form-group
+                //-       .form-group
+                //-         select(name='category', multiple='', title='Select Category', data-live-search='true')
+                //-           option(value='1') Stores
+                //-           option.sub-category(value='2') Apparel
+                //-           option.sub-category(value='3') Computers
+                //-           option.sub-category(value='4') Nature
+                //-           option(value='5') Tourism
+                //-           option(value='6') Restaurant &amp; Bars
+                //-           option.sub-category(value='7') Bars
+                //-           option.sub-category(value='8') Vegetarian
+                //-           option.sub-category(value='9') Steak &amp; Grill
+                //-           option(value='10') Sports
+                //-           option.sub-category(value='11') Cycling
+                //-           option.sub-category(value='12') Water Sports
+                //-           option.sub-category(value='13') Winter Sports
+                //-       // /.form-group
+                //-       .form-group
+                //-         button.btn.btn-default(type='submit')
+                //-           i.fa.fa-search
+                //-       // /.form-group
+                //-     // /.input-row
+                //-   // /.main-search
+                //- // /.search-bar
               // end Map
               // Items List
               .items-list
