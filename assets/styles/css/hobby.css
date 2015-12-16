@@ -1,5 +1,16 @@
 form .row {
+  position: relative;
   margin: 0px;
+}
+
+.row span {
+  position: absolute;
+  /*background-color: #01cbbb;*/
+  color: #fff;
+  text-shadow: 1px 1px #888;
+  /*margin-top: 10%;*/
+  margin-left: 40%;
+  font-size: 25px;
 }
 
 #stroryDetail .row {
@@ -10,9 +21,10 @@ div[class*="col-"] {
   background: #fff;
   text-align: center;
   color: #000;
-  border: 1px solid #ddd;
-  padding: 5px;
-  height: 150px
+  border: 2px solid #fff;
+  /*padding: 5px;*/
+  height: 150px;
+  overflow:hidden;
 }
 
 #greeting {
