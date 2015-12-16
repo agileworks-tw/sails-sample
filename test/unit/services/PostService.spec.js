@@ -130,6 +130,8 @@ describe('about Post Service operation.', function() {
         updatedAt: "2015-12-15 10:09:07",
         ItemId: item.id,
         UserId: 1,
+        latitude: 24.148657699999998,
+        longitude: 120.67413979999999,
         geometry: {
           type: 'Point',
           coordinates: [24.148657699999998,120.67413979999999]
@@ -138,19 +140,46 @@ describe('about Post Service operation.', function() {
 
       let createPost = await Post.create(post);
 
+      let itemPost = await Item.create({
+        itemname: 'PS4',
+        LikeId: like3c.id
+      });
+
+      for(let i =0 ;i < 10; i++){
+
+        let latitude = 51.5377994 + Math.random()/100;
+        let longitude = -0.1006775 + Math.random()/100;
+        let post = {
+          title: "testTitle",
+          content: 'content',
+          mode: "give",
+          createdAt: "2015-12-15 10:09:07",
+          updatedAt: "2015-12-15 10:09:07",
+          ItemId: itemPost.id,
+          UserId: 1,
+          latitude: latitude,
+          longitude: longitude,
+          geometry: {
+            type: 'Point',
+            coordinates: [latitude,longitude]
+          }
+        }
+        let createPost = await Post.create(post);
+      }
+
       done();
     });
 
-    it('should success.', async (done) => {
+    it.only('should success.', async (done) => {
       try {
 
-        let send = {
-          latitude: 24.148657699999998,
-          longitude: 120.67413979999999
-        }
+        // let send = {
+        //   latitude: 24.148657699999998,
+        //   longitude: 120.67413979999999
+        // }
         // 未實作 PostService.getPost()
-        let getData = await PostService.getNearbyPost(send);
-
+        let getData = await PostService.getNearbyPost();
+        // let getData;
         // 返回的Json
         // "data": [
         //   {
@@ -168,11 +197,14 @@ describe('about Post Service operation.', function() {
         //     "color": ""
         //   }
         // ]
-        getData.data.should.be.an.Array;
-        getData.data[0].title = post.title;
-        getData.data[0].location = send.latitude;
-        getData.data[0].longitude = send.longitude;
-        getData.data[0].longitude = send.longitude;
+
+        sails.log.info(JSON.stringify(getData.data[0],null,2));
+
+        getData.data.should.be.Array;
+        getData.data[0].title.should.be.equal(post.title);
+        // getData.data[0].location = send.latitude;
+        // getData.data[0].longitude = send.longitude;
+        // getData.data[0].longitude = send.longitude;
 
         done();
       } catch (e) {
