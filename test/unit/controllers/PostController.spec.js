@@ -1,6 +1,6 @@
 import sinon from 'sinon';
 
-describe.only('about Post Controller operation.', function() {
+describe('about Post Controller operation.', function() {
 
   let like, item;
   before(async (done) => {
