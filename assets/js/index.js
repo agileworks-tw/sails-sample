@@ -131,7 +131,7 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
 
     var storedData = myApp.formToJSON('#stroryDetailChoose');
     myApp.formStoreData('stroryDetailChoose',storedData);
-    
+
   });
 
   $$("input[name='title']").on('input', function(){
@@ -183,19 +183,15 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
       console.log(JSON.stringify(data));
 
       $$.ajax({
-        url: "/postStorys",
+        url: "/postStory",
         type:"POST",
         data : data,
         success: function(result){
-          var books = JSON.parse(result);
-          console.log(books);
-          showBookList(books);
-          myApp.hidePreloader();
-          $$('#bookListLength').text(books.length+" 本書");
+          console.log(result);
         },
         error:function(xhr, ajaxOptions, thrownError){
-          myApp.alert(xhr.status);
-          myApp.alert(thrownError);
+          console.log(xhr.status);
+          console.log(thrownError);
         }
       });
     }
