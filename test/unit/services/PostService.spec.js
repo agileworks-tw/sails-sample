@@ -6,34 +6,38 @@ describe('about Post Service operation.', function() {
 
     let like, item;
     before(async (done) => {
+      try {
+        let user = await User.create({
+          "username": "testPost",
+    			"email": "testPost@gmail.com",
+    			"age": 18
+        });
 
-      let user = await User.create({
-        "username": "testPost",
-  			"email": "testPost@gmail.com",
-  			"age": 18
-      });
+        sinon.stub(UserService, 'getLoginState', (req) => {
+          return true;
+        });
 
-      sinon.stub(UserService, 'getLoginState', (req) => {
-        return true;
-      });
+        sinon.stub(UserService, 'getLoginUser', (req) => {
+          return user;
+        });
 
-      sinon.stub(UserService, 'getLoginUser', (req) => {
-        return user;
-      });
+        like = await Like.create({
+          title: '測試PO文'
+        });
 
-      like = await Like.create({
-        title: '測試PO文'
-      });
+        item = await Item.create({
+          itemname: '測試PO文品項',
+          LikeId: like.id
+        })
 
-      item = await Item.create({
-        itemname: '測試PO文品項',
-        LikeId: like.id
-      })
-
-      done();
+        done();
+      } catch (e) {
+        sails.log.error(e);
+        done(e);
+      }
     });
 
-    after( (done) => {
+    after(async (done) => {
       UserService.getLoginState.restore();
       UserService.getLoginUser.restore();
       done();

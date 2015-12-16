@@ -14,13 +14,11 @@ module.exports = {
 
       }
 
-      
-
       let post = await Post.create({
         title: data.detail.title,
         content: '',
         mode: data.mode,
-        ItemId: data.detail.radioItem || itme.itemname,
+        ItemId: data.detail.radioItem || itme.id,
         UserId: user.id,
         geometry: {
           type: 'Point',

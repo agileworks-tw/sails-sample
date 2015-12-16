@@ -1,13 +1,13 @@
 import sinon from 'sinon';
 
-describe.only('about Post Controller operation.', function() {
-  
+describe('about Post Controller operation.', function() {
+
   let like, item;
   before(async (done) => {
 
     let user = await User.create({
       "username": "testPost",
-      "email": "testPost@gmail.com",
+      "email": "testPostController@gmail.com",
       "age": 18
     });
 
