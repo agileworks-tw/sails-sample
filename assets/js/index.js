@@ -47,7 +47,6 @@ $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function (e) {
 });
 
 $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
-
   var emailInput = $$('input[name="email"]');
   var submitBtn = $$('input[name="submit"]');
   submitBtn.prop("disabled",true)
