@@ -29,7 +29,8 @@ module.exports.policies = {
     'hobbyView': ['sessionAuth']
   },
   'PostController': {
-    'getAllPost': []
+    'getAllPost': [],
+    'postStory': []
   }
   /***************************************************************************
   *                                                                          *

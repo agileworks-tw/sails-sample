@@ -67,7 +67,8 @@ module.exports.routes = {
 
   'post /updateHobbyAndMail': 'UserController.updateHobbyAndMail',
   'get /hobby': 'UserController.hobbyView',
-  'post /getAllPost' : 'PostController.getAllPost'
+  'post /getAllPost' : 'PostController.getAllPost',
+  'post /postStory': 'PostController.postStory'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
