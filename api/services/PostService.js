@@ -11,10 +11,10 @@ module.exports = {
           LikeId: data.hobby,
           itemname: data.detail.item
         });
-        sails.log.info('??????!!!!!!!!!!',itme.itemname);
+        // sails.log.info('??????!!!!!!!!!!',itme.itemname);
       }
 
-      sails.log.info("!!!!!!!!",data);
+      // sails.log.info("!!!!!!!!",data);
 
       let post = await Post.create({
         title: data.detail.title,

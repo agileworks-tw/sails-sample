@@ -1,6 +1,7 @@
 module.exports = {
   findAll: async () => {
     try {
+      return await User.findAll();
       return await Item.findAll();
     } catch (e) {
       throw e;
