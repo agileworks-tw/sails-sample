@@ -1,9 +1,9 @@
 module.exports = {
 
-  create: async(data) => {
+  create: async(data,req) => {
     try {
 
-      let user = UserService.getLoginUser();
+      let user = UserService.getLoginUser(req);
 
       let itme;
       if( !data.detail.radioItem ){
