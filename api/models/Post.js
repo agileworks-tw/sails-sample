@@ -11,9 +11,9 @@ module.exports = {
       type: Sequelize.ENUM('get', 'give'),
       allowNull: false
     },
-    geometry: {
-      type: Sequelize.GEOMETRY
-    },
+    // geometry: {
+    //   type: Sequelize.GEOMETRY
+    // },
     latitude: {
       type: Sequelize.DOUBLE,
       allowNull: true,
@@ -34,12 +34,6 @@ module.exports = {
   options: {
     classMethods: {},
     instanceMethods: {},
-    hooks: {
-      bothCoordsOrNone: async function() {
-         if ((this.latitude === null) !== (this.longitude === null)) {
-           throw new Error('Require either both latitude and longitude or neither')
-         }
-       }
-    }
+    hooks: {}
   }
 };

@@ -97,4 +97,17 @@ describe('about Post Controller operation.', function() {
   });
 
 
+  it('get all post should success.', async (done) => {
+    try {
+      let result = await request(sails.hooks.http.app)
+      .post('/getAllPost');
+      sails.log.info(result);
+      result.status.should.be.equal(200);
+
+      done();
+    } catch (e) {
+      done(e);
+    }
+  });
+
 });

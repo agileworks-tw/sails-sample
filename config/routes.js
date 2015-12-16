@@ -66,7 +66,8 @@ module.exports.routes = {
   'get /auth/:provider/:action': 'AuthController.callback',
 
   'post /updateHobbyAndMail': 'UserController.updateHobbyAndMail',
-  'get /hobby': 'UserController.hobbyView'
+  'get /hobby': 'UserController.hobbyView',
+  'post /getAllPost' : 'PostController.getAllPost'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

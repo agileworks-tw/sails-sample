@@ -16,8 +16,8 @@ module.exports.bootstrap = async (cb) => {
     sails.services.passport.loadStrategies();
     let user = await User.create({username: 'testuser', email: 'test@gmail.com'});
     let passport = await Passport.create({provider: 'local', password: 'testuser'});
-    let post = await Post.create({title: 'testTitle', mode:'give'});
-    let result = await user.setPosts([post]);
+    // let post = await Post.create({title: 'testTitle', mode:'give'});
+    // let result = await user.setPosts([post]);
     // await user.setPassports([passport]);
 
     if (sails.config.environment === 'development' || sails.config.environment === 'test') {

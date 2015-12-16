@@ -110,10 +110,35 @@ module.exports = {
       LikeId: likeFashion.id
     });
 
-    for(let i =0 ;i < 10; i++){
+    var randomInt = function (low, high) {
+      return Math.floor(Math.random() * (high - low) + low);
+    };
 
-      let latitude = 51.5377994 + Math.random()/100;
-      let longitude = -0.1006775 + Math.random()/100;
+    for(let i =0 ;i < 50; i++){
+
+      let latitude = 51.5377994 + Math.random()/20;
+      let longitude = -0.1006775 + Math.random()/20;
+
+      let item = [
+        '手機',
+        '平板',
+        '電腦',
+        '筆電',
+        'iphone',
+        '衣服',
+        '褲子',
+        '帽子',
+        '鞋子',
+        '包包',
+        '皮夾'
+      ];
+
+      let itemPost = await Item.create({
+        itemname: item[randomInt(0,item.length)],
+        LikeId: likeFashion.id
+      });
+
+
       let post = {
         title: "testTitle",
         content: 'content',

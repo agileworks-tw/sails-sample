@@ -34,31 +34,31 @@ module.exports = {
   },
 
 
-  getNearbyPost: async() => {
+  getAllPost: async() => {
     try {
-      // sails.log.info({latitude, longitude});
-
-      let getAllPost = await Post.findAll({
+      let getPost = await Post.findAll({
         include:[{
-            model: Item,
-            include: Like
-          },
-          User
-        ]
+          model: Item,
+          include: Like
+        },{
+          model: User
+        }]
       });
-      sails.log.info(getAllPost[0]);
+      sails.log.info(getPost[0]);
 
 
-      let postArray = await* getAllPost.map((post) => {
+      let postArray = getPost.map((post) => {
         let data = {
           title: post.title,
+          mode: post.mode,
           location : post.Item.itemname,
           latitude: post.latitude,
           longitude: post.longitude,
           url: `/postDetail/${post.id}`,
           type: post.Item.Like.title,
-          type_icon: post.Item.Like.icon,
-          // gallery:[]
+          // type_icon: post.Item.Like.icon,
+          type_icon: "../icons/store/apparel/bags.png",
+          gallery:['../images/3c.png']
         };
         return data;
       });
