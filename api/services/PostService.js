@@ -20,7 +20,7 @@ module.exports = {
         title: data.detail.title,
         content: '',
         mode: data.mode,
-        ItemId: data.detail.radioItem || itme.name,
+        ItemId: data.detail.radioItem || itme.itemname,
         UserId: user.id,
         geometry: {
           type: 'Point',
