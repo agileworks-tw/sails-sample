@@ -58,7 +58,7 @@ module.exports = {
           type: post.Item.Like.title,
           // type_icon: post.Item.Like.icon,
           type_icon: "../icons/store/apparel/bags.png",
-          gallery:['../images/3c.png']
+          gallery:['../img/hobby/3c.png']
         };
         return data;
       });

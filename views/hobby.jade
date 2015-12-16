@@ -6,8 +6,8 @@ block body
         .navbar
           .navbar-inner
             // We need cool sliding animation on title element, so we have additional "sliding" class
-            a.left(href='index-directory.html')
-              img(src='/img/logo.png', alt='logo')
+            a.left.external(href='/')
+              img(src='/img/logo.png', alt='logo', style="height: 45px;")
             -if(isHasMail == "true")
               a#nextSetp.right(href='templates/finish.html', data-context="" disabled) Next
             -else
