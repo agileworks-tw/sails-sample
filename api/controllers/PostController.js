@@ -29,6 +29,19 @@ module.exports = {
       sails.log.error(e);
       res.serverError(e);
     }
+  },
+
+  getPostById: async (req, res) => {
+    try {
+      console.log("==== getPostById ===",req.param('id'));
+      let post = await PostService.getPostById(req.param('id'));
+      res.view('postDetail',{
+        post
+      });
+    } catch (e) {
+      sails.log.error(e);
+      res.serverError(e);
+    }
   }
 
 

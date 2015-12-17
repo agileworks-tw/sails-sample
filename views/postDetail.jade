@@ -1,0 +1,126 @@
+doctype html(lang='en-US')
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(href='/fonts/font-awesome.css', rel='stylesheet', type='text/css')
+  link(href='http://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+  link(rel='stylesheet', href='../styles/bootstrap/css/bootstrap.min.css', type='text/css')
+  link(rel='stylesheet', href='../styles/mapCss/bootstrap-select.min.css', type='text/css')
+  link(rel='stylesheet', href='../styles/mapCss/owl.carousel.css', type='text/css')
+  link(rel='stylesheet', href='../styles/mapCss/style.css', type='text/css')
+  link(rel='stylesheet', href='../styles/mapCss/user.style.css', type='text/css')
+  link(rel='stylesheet', href='../styles/mapCss/colors/blue.css', type='text/css')
+  title Spotter - Universal Directory Listing HTML Template
+  body#page-top.page-subpage.page-item-detail.navigation-off-canvas(onunload='')
+    // Outer Wrapper
+    #outer-wrapper
+      // Inner Wrapper
+      #inner-wrapper
+        // Navigation
+        .header
+          .wrapper
+            .brand
+              a(href='/')
+                img(src='../img/logo.png', alt='logo' style="height: 45px;")
+            nav.navigation-items
+              .wrapper
+                ul.main-navigation.navigation-top-header
+                ul.main-navigation
+                  li
+                    a(href='/auth/facebook') Login 
+                a.submit-item(href='submit.html')
+                  .content
+                    span Submit Your Item
+                  .icon
+                    i.fa.fa-plus
+        // end Navigation
+        // Page Canvas
+        #page-canvas
+          // Off Canvas Navigation
+          nav.off-canvas-navigation
+            header Navigation
+            .main-navigation.navigation-off-canvas
+          // end Off Canvas Navigation
+          // Page Content
+          #page-content
+            #map-detail
+            section.container
+              .row
+                // Item Detail Content
+                -console.log(post)
+                .col-md-9
+                  section#main-content.block
+                    header.page-title
+                      .title
+                        h1 #{post.title}
+                        figure #{post.itemname}
+                    .row
+                      // Detail Sidebar
+                      aside#detail-sidebar.col-md-4.col-sm-4
+                        // Contact
+                        section
+                          header
+                            h3 Contact
+                          address
+                            div #{post.username}
+                            //- div 63 Birch Street
+                            //- div Granada Hills, CA 91344
+                            figure
+                              //- .info
+                              //-   i.fa.fa-mobile
+                              //-   span 818-832-5258
+                              //- .info
+                              //-   i.fa.fa-phone
+                              //-   span +1 123 456 789
+                              .info
+                                i.fa.fa-globe
+                                a(href='#') #{post.email}
+                      .col-md-8.col-sm-8
+                        section
+                          article.item-gallery
+                            .owl-carousel.item-slider
+                              .slide
+                                img(src='/img/hobby/3c.png', data-hash='1', alt='')
+                          article.block
+                            header
+                              h2 Description
+                            p
+                              | Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam.
+                              | Donec neque massa, viverra interdum eros ut, imperdiet pellentesque mauris.
+                              | Proin sit amet scelerisque risus. Donec semper semper erat ut mollis.
+                              | Curabitur suscipit, justo eu dignissim lacinia, ante sapien pharetra duin
+                              | consectetur eros augue sed ex. Donec a odio rutrum, hendrerit sapien vitae,
+                              | euismod arcu. Suspendisse potenti. Integer ut diam venenatis, pellentesque
+                              | felis eget, elementum enim. Suspendisse sit amet massa commodo nulla iaculis
+                              | fermentum. Integer eget tincidunt est, in imperdiet risus.
+                              | Morbi sit amet urna purus.
+                      // end Inner Wrapper
+                    // end Outer Wrapper
+                    script(type='text/javascript', src='/js/map/jquery-2.1.0.min.js')
+                    script(type='text/javascript', src='/js/map/before.load.js')
+                    script(type='text/javascript', src='http://maps.google.com/maps/api/js?sensor=false&libraries=places')
+                    script(type='text/javascript', src='/js/map/jquery-migrate-1.2.1.min.js')
+                    script(type='text/javascript', src='/js/map/bootstrap-select.min.js')
+                    script(type='text/javascript', src='/js/map/richmarker-compiled.js')
+                    script(type='text/javascript', src='/js/map/smoothscroll.js')
+                    script(type='text/javascript', src='/js/map/bootstrap-select.min.js')
+                    script(type='text/javascript', src='/js/map/jquery.hotkeys.js')
+                    script(type='text/javascript', src='/js/map/custom.js')
+                    script(type='text/javascript', src='/js/map/maps.js')
+                    script.
+                      var itemID = 1;
+                      $.getJSON('/json/items.json.txt')
+                      .done(function(json) {
+                        $.each(json.data, function(a) {
+                          if( json.data[a].id == itemID ) {
+                            itemDetailMap(json.data[a]);
+                            }
+                        });
+                      })
+                      .fail(function( jqxhr, textStatus, error ) {
+                        console.log(error);
+                      });
+                      $(window).load(function(){
+                        var rtl = false; // Use RTL
+                        initializeOwl(rtl);
+                      });

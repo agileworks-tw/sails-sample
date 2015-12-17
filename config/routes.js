@@ -66,7 +66,8 @@ module.exports.routes = {
 
   'get /story' : 'PostController.story',
   'post /getAllPost' : 'PostController.getAllPost',
-  'post /postStory': 'PostController.postStory'
+  'post /postStory': 'PostController.postStory',
+  'get /postDetail/:id': 'PostController.getPostById',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
