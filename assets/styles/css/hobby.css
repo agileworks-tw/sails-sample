@@ -6,13 +6,21 @@ form .row {
 .row span {
   position: absolute;
   /*background-color: #01cbbb;*/
-  widows: 100%;
+  width: 100%;
   color: #fff;
   text-shadow: 1px 1px #888;
   /*margin-top: 10%;*/
   /*margin-left: 40%;*/
   font-size: 25px;
   background-color: rgba(0,0,0,0.3);
+}
+
+.hobbyitem {
+  position: relative;
+}
+
+img.category {
+  width: 100%;
 }
 
 #stroryDetail .row {
