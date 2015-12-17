@@ -189,8 +189,8 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
         data : data,
         success: function(result){
           console.log(result);
+          window.location.href = '/';
           myApp.hideIndicator();
-          location.href = '/';
         },
         error:function(xhr, ajaxOptions, thrownError){
           myApp.alert('Due to internet connection issues, please try again later or check you GPS status. thank you.','Error');
