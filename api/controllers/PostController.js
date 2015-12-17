@@ -35,7 +35,7 @@ module.exports = {
       res.serverError(e);
     }
   },
-  
+
   getAllPost: async (req, res) => {
     try {
       let result = await PostService.getAllPost();
@@ -48,8 +48,10 @@ module.exports = {
 
   storyCategory: async(req, res) => {
     try {
-      res.view('storyCategory',{
 
+      let categorys = await PostService.getAllCategory();
+      res.view('storyCategory',{
+        categorys
       });
     } catch (e) {
       sails.log.error(e);

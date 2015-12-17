@@ -81,36 +81,38 @@ $$(document).on('pageInit', '.page[data-page="storyMode"]', function (e) {
     var storedData = myApp.formToJSON('#storyModeChoose');
     myApp.formStoreData('storyModeChoose',storedData);
 
-    if(storedData.mode != ""  && storedData.hasOwnProperty('mode')) {
-      $$('#nextSetp').removeAttr("disabled");
-    }else{
-      $$('#nextSetp').attr("disabled",true);
-    }
+    mainView.router.loadPage('/storyCategory')
+    // if(storedData.mode != ""  && storedData.hasOwnProperty('mode')) {
+    //   $$('#nextSetp').removeAttr("disabled");
+    // }else{
+    //   $$('#nextSetp').attr("disabled",true);
+    // }
   });
 });
 
 
-$$(document).on('pageInit', '.page[data-page="stroryHobby"]', function (e) {
+$$(document).on('pageInit', '.page[data-page="storyCategory"]', function (e) {
   $$('.hobbyitem').click(function(){
     if($$(this).find('input').prop("checked"))
       $$(this).find('input').prop("checked", false);
     else
       $$(this).find('input').prop("checked", true);
 
-    var storedData = myApp.formToJSON('#stroryHobbyChoose');
-    myApp.formStoreData('stroryHobbyChoose',storedData);
+    var storedData = myApp.formToJSON('#storyCategoryChoose');
+    myApp.formStoreData('storyCategoryChoose',storedData);
 
+    mainView.router.loadPage('/storyDetail')
     console.log(storedData);
-    if(storedData.hobby != "" && storedData.hasOwnProperty('hobby') ) {
-      $$('#nextSetp2').removeAttr("disabled");
-    }else{
-      $$('#nextSetp2').attr("disabled",true);
-    }
+    // if(storedData.hobby != "" && storedData.hasOwnProperty('hobby') ) {
+    //   $$('#nextSetp2').removeAttr("disabled");
+    // }else{
+    //   $$('#nextSetp2').attr("disabled",true);
+    // }
   });
 });
 
 
-$$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
+$$(document).on('pageInit', '.page[data-page="storyDetail"]', function (e) {
 
   $$('.radioItem').click(function(){
     $$("input[name='item']").val("");
@@ -120,8 +122,8 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
       $$(this).find('input').prop("checked", true);
 
     console.log(storedData);
-    var storedData = myApp.formToJSON('#stroryDetailChoose');
-    myApp.formStoreData('stroryDetailChoose',storedData);
+    var storedData = myApp.formToJSON('#storyDetailChoose');
+    myApp.formStoreData('storyDetailChoose',storedData);
 
   });
 
@@ -129,14 +131,14 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
     var radioItem = $$("input[name='radioItem']");
     radioItem.prop("checked", false);
 
-    var storedData = myApp.formToJSON('#stroryDetailChoose');
-    myApp.formStoreData('stroryDetailChoose',storedData);
+    var storedData = myApp.formToJSON('#storyDetailChoose');
+    myApp.formStoreData('storyDetailChoose',storedData);
 
   });
 
   $$("input[name='title']").on('input', function(){
-    var storedData = myApp.formToJSON('#stroryDetailChoose');
-    myApp.formStoreData('stroryDetailChoose',storedData);
+    var storedData = myApp.formToJSON('#storyDetailChoose');
+    myApp.formStoreData('storyDetailChoose',storedData);
   });
 
   $$('#finishStep').click(function(){
@@ -145,8 +147,8 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
     myApp.showIndicator();
 
     var mode =  myApp.formGetData('storyModeChoose').mode;
-    var hobby =  myApp.formGetData('stroryHobbyChoose').hobby;
-    var detail =  myApp.formGetData('stroryDetailChoose');
+    var hobby =  myApp.formGetData('storyCategoryChoose').hobby;
+    var detail =  myApp.formGetData('storyDetailChoose');
 
     var data = {
       mode,

@@ -108,4 +108,14 @@ module.exports = {
     }
   },
 
+  getAllCategory: async() => {
+    try {
+      let like = await Like.findAll();
+      sails.log.info(like);
+      return like;
+    } catch (e) {
+      throw e;
+    }
+  }
+
 }
