@@ -40,9 +40,7 @@ module.exports.routes = {
     view: 'index2'
   },
 
-  '/storyHobby':{
-    view: 'storyHobby'
-  },
+  '/storyCategory': 'PostController.storyCategory',
 
   '/storyDetail':{
     view: 'storyDetail'
@@ -67,7 +65,7 @@ module.exports.routes = {
   'get /story' : 'PostController.story',
   'post /getAllPost' : 'PostController.getAllPost',
   'post /postStory': 'PostController.postStory',
-  'get /postDetail/:id': 'PostController.getPostById',
+  'get /postDetail/:id': 'PostController.getPostById'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

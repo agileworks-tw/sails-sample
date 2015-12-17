@@ -1,3 +1,5 @@
+
+
 module.exports = {
 
   story: async (req, res) => {
@@ -21,16 +23,6 @@ module.exports = {
     }
   },
 
-  getAllPost: async (req, res) => {
-    try {
-      let result = await PostService.getAllPost();
-      res.ok(result);
-    } catch (e) {
-      sails.log.error(e);
-      res.serverError(e);
-    }
-  },
-
   getPostById: async (req, res) => {
     try {
       console.log("==== getPostById ===",req.param('id'));
@@ -42,8 +34,27 @@ module.exports = {
       sails.log.error(e);
       res.serverError(e);
     }
+  },
+  
+  getAllPost: async (req, res) => {
+    try {
+      let result = await PostService.getAllPost();
+      res.ok(result);
+    } catch (e) {
+      sails.log.error(e);
+      res.serverError(e);
+    }
+  },
+
+  storyCategory: async(req, res) => {
+    try {
+      res.view('storyCategory',{
+
+      });
+    } catch (e) {
+      sails.log.error(e);
+      res.serverError(e);
+    }
   }
-
-
 
 }
