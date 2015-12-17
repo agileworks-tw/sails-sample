@@ -101,7 +101,8 @@ $$(document).on('pageInit', '.page[data-page="storyCategory"]', function (e) {
     var storedData = myApp.formToJSON('#storyCategoryChoose');
     myApp.formStoreData('storyCategoryChoose',storedData);
 
-    mainView.router.loadPage('/storyDetail')
+    var id = $$(this).find('input').val();
+    mainView.router.loadPage('/storyDetail/'+id)
     console.log(storedData);
     // if(storedData.hobby != "" && storedData.hasOwnProperty('hobby') ) {
     //   $$('#nextSetp2').removeAttr("disabled");

@@ -57,6 +57,19 @@ module.exports = {
       sails.log.error(e);
       res.serverError(e);
     }
+  },
+
+  getStoryCategoryItemById: async(req, res) => {
+    try {
+
+      let categoryItems = await ItemService.findByLikeId(req.param('id'));
+      res.view('storyDetail',{
+        categoryItems
+      });
+    } catch (e) {
+      sails.log.error(e);
+      res.serverError(e);
+    }
   }
 
 }
