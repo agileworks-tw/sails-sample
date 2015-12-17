@@ -71,15 +71,15 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
 });
 
 
-$$(document).on('pageInit', '.page[data-page="stroryMode"]', function (e) {
+$$(document).on('pageInit', '.page[data-page="storyMode"]', function (e) {
   $$('.selectMode').click(function(){
     if($$(this).find('input').prop("checked"))
       $$(this).find('input').prop("checked", false);
     else
       $$(this).find('input').prop("checked", true);
 
-    var storedData = myApp.formToJSON('#stroryModeChoose');
-    myApp.formStoreData('stroryModeChoose',storedData);
+    var storedData = myApp.formToJSON('#storyModeChoose');
+    myApp.formStoreData('storyModeChoose',storedData);
 
     if(storedData.mode != ""  && storedData.hasOwnProperty('mode')) {
       $$('#nextSetp').removeAttr("disabled");
@@ -142,8 +142,9 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
   $$('#finishStep').click(function(){
     // {"mode":"give","hobby":"1","detail":{"title":"123","radioItem":"2","item":""},
     // "location":{"latitude":24.148657699999998,"longitude":120.67413979999999,"accuracy":30}}
+    myApp.showIndicator();
 
-    var mode =  myApp.formGetData('stroryModeChoose').mode;
+    var mode =  myApp.formGetData('storyModeChoose').mode;
     var hobby =  myApp.formGetData('stroryHobbyChoose').hobby;
     var detail =  myApp.formGetData('stroryDetailChoose');
 
@@ -188,8 +189,11 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
         data : data,
         success: function(result){
           console.log(result);
+          myApp.hideIndicator();
+          location.href = '/';
         },
         error:function(xhr, ajaxOptions, thrownError){
+          myApp.alert('Due to internet connection issues, please try again later or check you GPS status. thank you.','Error');
           console.log(xhr.status);
           console.log(thrownError);
         }

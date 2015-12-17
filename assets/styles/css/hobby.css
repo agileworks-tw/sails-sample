@@ -49,13 +49,13 @@ div[class*="col-"] {
   font-size: 25px;
 }
 
-#stroryModeChoose {
+#storyModeChoose {
   height: 100%
 }
-#stroryModeChoose .row{
+#storyModeChoose .row{
   height: 50%;
 }
-#stroryModeChoose .selectMode{
+#storyModeChoose .selectMode{
   height: 100%;
 }
 
