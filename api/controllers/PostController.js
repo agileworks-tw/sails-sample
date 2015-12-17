@@ -1,3 +1,5 @@
+
+
 module.exports = {
 
   story: async (req, res) => {
@@ -29,8 +31,19 @@ module.exports = {
       sails.log.error(e);
       res.serverError(e);
     }
+  },
+
+  storyHobby: async(req, res) => {
+    try {
+
+
+      res.view('storyHobby',{
+
+      });
+    } catch (e) {
+      sails.log.error(e);
+      res.serverError(e);
+    }
   }
-
-
 
 }

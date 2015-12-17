@@ -40,9 +40,7 @@ module.exports.routes = {
     view: 'index2'
   },
 
-  '/storyHobby':{
-    view: 'storyHobby'
-  },
+  '/storyHobby': 'PostController.storyHobby',
 
   '/storyDetail':{
     view: 'storyDetail'
@@ -66,7 +64,8 @@ module.exports.routes = {
 
   'get /story' : 'PostController.story',
   'post /getAllPost' : 'PostController.getAllPost',
-  'post /postStory': 'PostController.postStory'
+  'post /postStory': 'PostController.postStory',
+  'get /api/flickr/search/:tag': 'FlickrService.search'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
