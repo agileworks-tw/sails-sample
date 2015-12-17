@@ -1,4 +1,4 @@
-describe.only('about Item Service operation.', function() {
+describe('about Item Service operation.', function() {
 
   describe('update lile item', () => {
 
@@ -60,7 +60,7 @@ describe.only('about Item Service operation.', function() {
     it('find should success', async (done) =>{
       try{
         let likearray = await ItemService.findByLikeId(like3c.id);
-        console.log("!!!",likearray);
+        
         likearray.should.be.Array;
         done();
       } catch (e) {
