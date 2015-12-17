@@ -51,12 +51,18 @@ div[class*="col-"] {
 
 #storyModeChoose {
   height: 100%
+  text-align:center;
 }
 #storyModeChoose .row{
   height: 50%;
 }
 #storyModeChoose .selectMode{
   height: 100%;
+}
+#storyModeChoose img {
+  height: 100%;
+  /*display:inline-block;*/
+  width: 100%;
 }
 
 ::-webkit-input-placeholder {

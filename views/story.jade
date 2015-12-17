@@ -14,9 +14,11 @@ block body
             .page-content
               form#storyModeChoose
                 .row.no-gutter
-                  .col-100.selectMode Give
-                    input(type='radio', name='mode', value='give')
+                  .col-100.selectMode
+                    input(type='radio', name='mode', value='give', style="display: none;")
+                    img(src='../img/give.png')
                 .row.no-gutter
-                  .col-100.selectMode Get
-                    input(type='radio', name='mode', value='get')
+                  .col-100.selectMode
+                    input(type='radio', name='mode', value='get', style="display: none;")
+                    img(src='../img/get.png')
   block scripts
