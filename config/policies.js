@@ -31,7 +31,8 @@ module.exports.policies = {
   'PostController': {
     'story': ['sessionAuth'],
     'getAllPost': [],
-    'postStory': []
+    'postStory': [],
+    'getPostById': []
   }
   /***************************************************************************
   *                                                                          *

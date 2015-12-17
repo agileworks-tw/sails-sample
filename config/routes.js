@@ -65,7 +65,7 @@ module.exports.routes = {
   'get /story' : 'PostController.story',
   'post /getAllPost' : 'PostController.getAllPost',
   'post /postStory': 'PostController.postStory',
-  'get /api/flickr/search/:tag': 'FlickrService.search'
+  'get /postDetail/:id': 'PostController.getPostById'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

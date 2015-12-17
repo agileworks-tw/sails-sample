@@ -33,7 +33,6 @@ module.exports = {
     }
   },
 
-
   getAllPost: async() => {
     try {
       let getPost = await Post.findAll({
@@ -70,6 +69,43 @@ module.exports = {
     } catch (e) {
       throw e;
     }
-  }
+  },
+
+  getPostById: async(id) => {
+    try {
+      let getPost = await await Post.findOne({
+        where:{
+          id: id
+        },
+        include:[{
+          model: Item,
+          include: Like
+        },{
+          model: User
+        }]
+      });
+      sails.log.info(getPost);
+
+      let data = {
+        title: getPost.title,
+        mode: getPost.mode,
+        location : getPost.Item.itemname,
+        latitude: getPost.latitude,
+        longitude: getPost.longitude,
+        url: `/getPostDetail/${getPost.id}`,
+        type: getPost.Item.Like.title,
+        // type_icon: getPost.Item.Like.icon,
+        type_icon: "../icons/store/apparel/bags.png",
+        gallery:['../img/hobby/3c.png'],
+        username: getPost.User.username,
+        email: getPost.User.email,
+        itemname: getPost.Item.itemname,
+      };
+
+      return data;
+    } catch (e) {
+      throw e;
+    }
+  },
 
 }
