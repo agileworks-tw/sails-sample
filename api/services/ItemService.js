@@ -18,6 +18,19 @@ module.exports = {
     } catch (e) {
       throw e;
     }
+  },
+
+  findByLikeId: async(id) => {
+    try{
+      let findlike = await Item.findAll({
+        where:{
+          LikeId: id
+        }
+      });
+      return findlike;
+    } catch (e) {
+      throw e;
+    }
   }
 
 
