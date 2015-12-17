@@ -40,7 +40,7 @@ module.exports.routes = {
     view: 'index2'
   },
 
-  '/storyHobby': 'PostController.storyHobby',
+  '/storyCategory': 'PostController.storyCategory',
 
   '/storyDetail':{
     view: 'storyDetail'

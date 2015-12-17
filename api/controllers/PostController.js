@@ -33,11 +33,11 @@ module.exports = {
     }
   },
 
-  storyHobby: async(req, res) => {
+  storyCategory: async(req, res) => {
     try {
 
 
-      res.view('storyHobby',{
+      res.view('storyCategory',{
 
       });
     } catch (e) {
