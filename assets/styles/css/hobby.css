@@ -23,7 +23,7 @@ img.category {
   width: 100%;
 }
 
-#stroryDetail .row {
+#storyDetail .row {
   margin: 5px;
 }
 
@@ -37,36 +37,57 @@ div[class*="col-"] {
   overflow:hidden;
 }
 
+#registerFinish {
+  background-image: url(../../img/greeting.jpg);
+  background-size: 100% 100%;
+}
+
+@media (min-width: 768px){
+  #registerFinish {
+    background-image: url(../../img/greeting-big.jpg);
+    background-size: 100% 100%;
+  }
+}
+
+
 #greeting {
   padding: 10%;
   margin-top: 20%;
+  color: #fff;
 }
 
 #greeting .button {
   margin-right: 30%;
-  margin-left: 30%
+  margin-left: 30%;
+  opacity:1 ;
 }
 
 #greeting input {
   text-align: center;
 }
 
-#stroryDetailChoose input {
+#storyDetailChoose input {
   text-align: center;
 }
 
-#stroryDetailChoose [name=title] {
+#storyDetailChoose [name=title] {
   font-size: 25px;
 }
 
 #storyModeChoose {
   height: 100%
+  text-align:center;
 }
 #storyModeChoose .row{
   height: 50%;
 }
 #storyModeChoose .selectMode{
   height: 100%;
+}
+#storyModeChoose img {
+  height: 100%;
+  /*display:inline-block;*/
+  width: 100%;
 }
 
 ::-webkit-input-placeholder {

@@ -43,11 +43,10 @@ head
           // end Off Canvas Navigation
           // Page Content
           #page-content
-            #map-detail
+            #map-detail(data-json = post)
             section.container
               .row
                 // Item Detail Content
-                -console.log(post)
                 .col-md-9
                   section#main-content.block
                     header.page-title
@@ -81,19 +80,19 @@ head
                             .owl-carousel.item-slider
                               .slide
                                 img(src='/img/hobby/3c.png', data-hash='1', alt='')
-                          article.block
-                            header
-                              h2 Description
-                            p
-                              | Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam.
-                              | Donec neque massa, viverra interdum eros ut, imperdiet pellentesque mauris.
-                              | Proin sit amet scelerisque risus. Donec semper semper erat ut mollis.
-                              | Curabitur suscipit, justo eu dignissim lacinia, ante sapien pharetra duin
-                              | consectetur eros augue sed ex. Donec a odio rutrum, hendrerit sapien vitae,
-                              | euismod arcu. Suspendisse potenti. Integer ut diam venenatis, pellentesque
-                              | felis eget, elementum enim. Suspendisse sit amet massa commodo nulla iaculis
-                              | fermentum. Integer eget tincidunt est, in imperdiet risus.
-                              | Morbi sit amet urna purus.
+                          //- article.block
+                          //-   header
+                          //-     h2 Description
+                          //-   p
+                          //-     | Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam.
+                          //-     | Donec neque massa, viverra interdum eros ut, imperdiet pellentesque mauris.
+                          //-     | Proin sit amet scelerisque risus. Donec semper semper erat ut mollis.
+                          //-     | Curabitur suscipit, justo eu dignissim lacinia, ante sapien pharetra duin
+                          //-     | consectetur eros augue sed ex. Donec a odio rutrum, hendrerit sapien vitae,
+                          //-     | euismod arcu. Suspendisse potenti. Integer ut diam venenatis, pellentesque
+                          //-     | felis eget, elementum enim. Suspendisse sit amet massa commodo nulla iaculis
+                          //-     | fermentum. Integer eget tincidunt est, in imperdiet risus.
+                          //-     | Morbi sit amet urna purus.
                       // end Inner Wrapper
                     // end Outer Wrapper
                     script(type='text/javascript', src='/js/map/jquery-2.1.0.min.js')
@@ -108,18 +107,20 @@ head
                     script(type='text/javascript', src='/js/map/custom.js')
                     script(type='text/javascript', src='/js/map/maps.js')
                     script.
-                      var itemID = 1;
-                      $.getJSON('/json/items.json.txt')
-                      .done(function(json) {
-                        $.each(json.data, function(a) {
-                          if( json.data[a].id == itemID ) {
-                            itemDetailMap(json.data[a]);
-                            }
-                        });
-                      })
-                      .fail(function( jqxhr, textStatus, error ) {
-                        console.log(error);
-                      });
+                      //- var itemID = 1;
+                      //- console.log(JSON.parse($('#map-detail').attr('data-json')));
+                      itemDetailMap(JSON.parse($('#map-detail').attr('data-json')));
+                      //- $.getJSON('/json/items.json.txt')
+                      //- .done(function(json) {
+                      //-   $.each(json.data, function(a) {
+                      //-     if( json.data[a].id == itemID ) {
+                      //-       itemDetailMap(json.data[a]);
+                      //-       }
+                      //-   });
+                      //- })
+                      //- .fail(function( jqxhr, textStatus, error ) {
+                      //-   console.log(error);
+                      //- });
                       $(window).load(function(){
                         var rtl = false; // Use RTL
                         initializeOwl(rtl);
