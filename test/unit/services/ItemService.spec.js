@@ -15,7 +15,7 @@ describe('about Item Service operation.', function() {
       done();
     });
 
-    it.only('update should success.', async (done) => {
+    it('update should success.', async (done) => {
       try {
 
         console.log(like3c)

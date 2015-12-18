@@ -10,7 +10,7 @@ module.exports = {
 
   create: async({LikeId,itemname}) => {
     try{
-      let pic = await FlickrService.search(itemname);
+      let pic = await FlickrService.searchGetty(itemname);
       let createItem = await Item.create({
         itemname: itemname,
         LikeId: LikeId,

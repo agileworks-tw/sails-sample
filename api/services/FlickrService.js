@@ -1,4 +1,5 @@
 var Flickr = require("node-flickr");
+var ConnectSdk = require("connectsdk");
 var keys = {"api_key": "c82bbfe5b720373012b6bcbae70fe0c6"}
 
 module.exports = {
@@ -19,6 +20,35 @@ module.exports = {
       return result;
 
     } catch (e) {
+      throw e;
+    }
+  },
+
+  searchGetty: async (tags) => {
+    try{
+
+      var connectSdk = new ConnectSdk (
+          sails.config.getty.ConnectSDK_ApiKey,
+          sails.config.getty.ConnectSDK_ApiSecret,
+          sails.config.getty.ConnectSDK_UserName,
+          sails.config.getty.ConnectSDK_UserPassword)
+
+      var search = connectSdk
+          .search()
+          .images()
+          .withPage(1)
+          .withPageSize(1)
+          .withPhrase(tags)
+
+      let result = await new Promise((done) => {
+        search.execute(function(err, response) {
+            if (err) throw err
+            console.log(response.images[0].display_sizes[0].uri);
+            done(response.images[0].display_sizes[0].uri)
+        })
+      });
+      return result;
+    }catch (e) {
       throw e;
     }
   }
