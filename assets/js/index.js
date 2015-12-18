@@ -173,17 +173,20 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function (e) {
     };
 
     if(!data.mode){
+      myApp.hideIndicator();
       myApp.alert("","Error")
-      location.href = '/story'
+      lmainView.router.loadPage('/story')
       return false;
     }
 
     if(!data.hobby){
+      myApp.hideIndicator();
       myApp.alert("","Error")
-      location.href = '/story'
+      mainView.router.loadPage('/storyCategory')
       return false;
     }
     if(data.detail.title == ""){
+      myApp.hideIndicator();
       myApp.alert("Please enter a title","Error")
       return false;
     }
@@ -207,7 +210,11 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function (e) {
         data : data,
         success: function(result){
           console.log(result);
+          myApp.formDeleteData('storyModeChoose');
+          myApp.formDeleteData('storyCategoryChoose');
+          myApp.formDeleteData('storyDetailChoose');
           window.location.href = '/';
+
           myApp.hideIndicator();
         },
         error:function(xhr, ajaxOptions, thrownError){
