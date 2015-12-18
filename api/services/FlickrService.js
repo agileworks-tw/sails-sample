@@ -29,9 +29,9 @@ module.exports = {
 
       var connectSdk = new ConnectSdk (
           sails.config.getty.ConnectSDK_ApiKey,
-          sails.config.getty.ConnectSDK_ApiSecret,
-          sails.config.getty.ConnectSDK_UserName,
-          sails.config.getty.ConnectSDK_UserPassword)
+          sails.config.getty.ConnectSDK_ApiSecret)
+          // sails.config.getty.ConnectSDK_UserName,
+          // sails.config.getty.ConnectSDK_UserPassword)
 
       var search = connectSdk
           .search()
