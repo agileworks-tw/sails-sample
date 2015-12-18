@@ -19,13 +19,13 @@
                     span
                       | #{categorys[index].title}
                     input(type='radio', name='hobby', value=categorys[index].id, style="display: none;")
-                    img.category(src='/img/hobby/fashation.png')
+                    img.category(src=categorys[index].pic)
                   -if(index+1 < categorys.length)
                     .col-100.tablet-50.hobbyitem 
                       span
                         | #{categorys[index+1].title}
                       input(type='radio', name='hobby', value=categorys[index+1].id, style="display: none;")
-                      img.category(src='/img/hobby/lipstick.png')
+                      img.category(src=categorys[index+1].pic)
               -index++
             //- .row.no-gutter
             //-   .col-100.tablet-50.hobbyitem

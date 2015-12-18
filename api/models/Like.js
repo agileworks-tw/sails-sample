@@ -2,6 +2,9 @@ module.exports = {
   attributes: {
     title: {
       type: Sequelize.STRING,
+    },
+    pic: {
+      type: Sequelize.STRING,
     }
   },
   associations: function() {
