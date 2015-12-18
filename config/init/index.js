@@ -6,25 +6,25 @@ let self = module.exports = {
 
   basicData: async () => {
     like = [
-      {title: '時尚', pic: '/img/hobby/fashation.png'},
-      {title: '美妝保養', pic: '/img/hobby/lipstick.png'},
-      {title: '設計工藝', pic: ''},
-      {title: '生活3C', pic: ''},
-      {title: '運動用品', pic: ''},
-      {title: '攝影拍照', pic: ''},
-      {title: '名牌精品', pic: ''},
-      {title: '復古風情', pic: ''},
-      {title: '遊戲玩物', pic: ''},
-      {title: '傢具傢居', pic: ''},
-      {title: '課本買賣', pic: ''},
-      {title: '書籍雜誌', pic: ''},
-      {title: '樂器樂譜', pic: ''},
-      {title: '廚房家電', pic: ''},
-      {title: '寶寶時尚', pic: ''},
-      {title: '寵物用品', pic: ''},
-      {title: '票卷交換', pic: ''},
-      {title: '哩哩扣扣', pic: ''},
-      {title: '預售代購', pic: ''}
+      {title: '時尚', pic: '/img/hobby/fashion-woman.png'},
+      {title: '美妝保養', pic: '/img/hobby/beauty.png'},
+      {title: '設計工藝', pic: '/img/hobby/Design-Process.png'},
+      {title: '生活3C', pic: '/img/hobby/TechnologyProducts.png'},
+      {title: '運動用品', pic: '/img/hobby/sport-foot.png'},
+      {title: '攝影拍照', pic: '/img/hobby/camera.png'},
+      {title: '名牌精品', pic: '/img/hobby/famousbrand.png'},
+      {title: '復古風情', pic: '/img/hobby/Retro.png'},
+      {title: '遊戲玩物', pic: '/img/hobby/game.png'},
+      {title: '傢具傢居', pic: '/img/hobby/couch.png'},
+      {title: '課本買賣', pic: '/img/hobby/books.png'},
+      {title: '書籍雜誌', pic: '/img/hobby/magazines.png'},
+      {title: '樂器樂譜', pic: '/img/hobby/ukulele.png'},
+      {title: '廚房家電', pic: '/img/hobby/Kitchen.png'},
+      {title: '寶寶時尚', pic: '/img/hobby/baby.png'},
+      {title: '寵物用品', pic: '/img/hobby/dog.png'},
+      {title: '票卷交換', pic: '/img/hobby/tickets.png'},
+      {title: '哩哩扣扣', pic: '/img/hobby/other.png'},
+      {title: '預售代購', pic: '/img/hobby/art.png'}
     ];
     await Like.bulkCreate(like);
     await self.testData();
