@@ -1,9 +1,11 @@
 // import fs from 'fs-extra';
 
-module.exports = {
+let like;
+
+let self = module.exports = {
 
   basicData: async () => {
-    let like = [
+    like = [
       {title: '時尚', pic: '/img/hobby/fashation.png'},
       {title: '美妝保養', pic: '/img/hobby/lipstick.png'},
       {title: '設計工藝', pic: ''},
@@ -24,8 +26,16 @@ module.exports = {
       {title: '哩哩扣扣', pic: ''},
       {title: '預售代購', pic: ''}
     ];
+    await Like.bulkCreate(like);
+    await self.testData();
+  },
 
-    let likeFashion = await Like.create(like[0]);
+  testData: async () => {
+    let likeFashion = await Like.findOne({
+      where:{
+        title: like[0].title
+      }
+    });
     let itemlistFashion = [
       '衣服',
       '褲子',
@@ -41,7 +51,11 @@ module.exports = {
       })
     });
 
-    let likeFashion2 = await Like.create(like[1]);
+    let likeFashion2 = await Like.findOne({
+      where:{
+        title: like[1].title
+      }
+    });
     let itemlistFashion2 = [
       "化妝品",
       '化妝包',
@@ -56,7 +70,11 @@ module.exports = {
       })
     });
 
-    let likeDesign = await Like.create(like[2]);
+    let likeDesign = await Like.findOne({
+      where:{
+        title: like[2].title
+      }
+    });
     let itemlistDesign = [
       '桌子',
       '畫',
@@ -69,7 +87,11 @@ module.exports = {
       })
     });
 
-    let likeIC = await Like.create(like[3]);
+    let likeIC = await Like.findOne({
+      where:{
+        title: like[3].title
+      }
+    });
     let itemlistIC = [
       '手機',
       '平板',
@@ -83,10 +105,6 @@ module.exports = {
         LikeId: likeIC.id
       })
     });
-
-    await Like.bulkCreate(like);
-
-
 
     let post = {
       title: "testTitle",
