@@ -7,6 +7,9 @@ module.exports = {
     quantity:{
       type: Sequelize.INTEGER,
       defaultValue: 0
+    },
+    pic:{
+      type: Sequelize.STRING
     }
   },
   associations: function() {

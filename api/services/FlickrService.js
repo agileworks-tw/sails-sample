@@ -9,7 +9,7 @@ module.exports = {
       let flickr = new Flickr(keys);
 
       let result = await new Promise((done) => {
-        flickr.get("photos.search", {"tags": tags}, (err, result) => {
+        flickr.get("photos.search", {"text": tags, "licenses": 9}, (err, result) => {
             let img = result.photos.photo[0];
             let url = `https://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`;
             console.log(url);

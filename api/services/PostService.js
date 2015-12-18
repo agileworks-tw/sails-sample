@@ -11,7 +11,10 @@ module.exports = {
           LikeId: data.hobby,
           itemname: data.detail.item
         });
-
+      }else{
+        itme = await Item.findById(data.detail.radioItem );
+        itme.quantity++;
+        await itme.save();
       }
 
       let post = await Post.create({
@@ -47,6 +50,7 @@ module.exports = {
 
 
       let postArray = getPost.map((post) => {
+        let pic = post.Item.pic || '/img/items/1.jpg'
         let data = {
           title: post.title,
           mode: post.mode,
@@ -57,7 +61,7 @@ module.exports = {
           type: post.Item.Like.title,
           // type_icon: post.Item.Like.icon,
           type_icon: "../icons/store/apparel/bags.png",
-          gallery:['../img/hobby/3c.png']
+          gallery:[pic]
         };
         return data;
       });
@@ -86,6 +90,7 @@ module.exports = {
       });
       sails.log.info(getPost);
 
+      let pic = getPost.Item.pic || '/img/items/1.jpg';
       let data = {
         title: getPost.title,
         mode: getPost.mode,
@@ -96,7 +101,7 @@ module.exports = {
         type: getPost.Item.Like.title,
         // type_icon: getPost.Item.Like.icon,
         type_icon: "../icons/store/apparel/bags.png",
-        gallery:['../img/hobby/3c.png'],
+        gallery:[pic],
         username: getPost.User.username,
         email: getPost.User.email,
         itemname: getPost.Item.itemname,

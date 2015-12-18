@@ -10,9 +10,11 @@ module.exports = {
 
   create: async({LikeId,itemname}) => {
     try{
+      let pic = await FlickrService.search(itemname);
       let createItem = await Item.create({
         itemname: itemname,
-        LikeId: LikeId
+        LikeId: LikeId,
+        pic: pic
       });
       return createItem;
     } catch (e) {
@@ -25,7 +27,8 @@ module.exports = {
       let findlike = await Item.findAll({
         where:{
           LikeId: id
-        }
+        },
+        order: 'quantity DESC'
       });
       return findlike;
     } catch (e) {

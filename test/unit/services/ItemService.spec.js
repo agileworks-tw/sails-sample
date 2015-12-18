@@ -15,7 +15,7 @@ describe('about Item Service operation.', function() {
       done();
     });
 
-    it('update should success.', async (done) => {
+    it.only('update should success.', async (done) => {
       try {
 
         console.log(like3c)
@@ -24,10 +24,9 @@ describe('about Item Service operation.', function() {
 
         let send = {
           LikeId: like3c.id,
-          itemname: '123'
+          itemname: 'iphone6s'
         }
 
-        // 完成 ItemService.create
         await ItemService.create(send);
 
         let update = await like3c.getItems();
@@ -60,7 +59,7 @@ describe('about Item Service operation.', function() {
     it('find should success', async (done) =>{
       try{
         let likearray = await ItemService.findByLikeId(like3c.id);
-        
+
         likearray.should.be.Array;
         done();
       } catch (e) {
