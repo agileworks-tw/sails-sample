@@ -25,13 +25,18 @@
                       span
                         | #{categoryItems[index].itemname}
                       input(type='radio', name='radioItem', value=categoryItems[index].id, style="display: none;")
-                      img.category(src='/img/hobby/fashation.png')
+                      -var pic =  categoryItems[index].pic ? categoryItems[index].pic : '/img/items/1.jpg'
+                      img.category(src= pic)
+                      img.checked(src='img/checked.png' style="display: none;")
                     -if(index+1 < categoryItems.length)
                       .col-50.tablet-50.radioItem.hobbyitem
+                        -console.log(categoryItems[index+1].pic);
                         span
                           | #{categoryItems[index+1].itemname}
                         input(type='radio', name='radioItem', value=categoryItems[index+1].id, style="display: none;")
-                        img.category(src='/img/hobby/fashation.png')
+                        -var pic =  categoryItems[index+1].pic ? categoryItems[index+1].pic : '/img/items/1.jpg'
+                        img.category(src= pic)
+                        img.checked(src='img/checked.png' style="display: none;")
                 -index++;
               //- .row
               //-   .col-50.tablet-50.radioItem iphone

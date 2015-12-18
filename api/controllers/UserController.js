@@ -50,8 +50,10 @@ module.exports = {
         res.redirect('/')
 
       console.log("!!")
+      let categorys =  await PostService.getAllCategory();
       res.view('hobby',{
-        isHasMail
+        isHasMail,
+        categorys
       });
     } catch (e) {
       sails.log.error(e);

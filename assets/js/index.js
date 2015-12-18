@@ -30,10 +30,13 @@ $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function (e) {
   }
 
   $$('.hobbyitem').click(function(){
-    if($$(this).find('input').prop("checked"))
+    if($$(this).find('input').prop("checked")){
+      $$(this).find('.checked').hide();
       $$(this).find('input').prop("checked", false);
-    else
+    }else{
+      $$(this).find('.checked').show();
       $$(this).find('input').prop("checked", true);
+    }
 
     storedData = myApp.formToJSON('#hobbySelect');
     myApp.formStoreData('hobbySelect',storedData);
@@ -47,6 +50,12 @@ $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function (e) {
 });
 
 $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
+
+  var hobby =  myApp.formGetData('hobbySelect').hobby[0];
+  console.log(hobby);
+  if( !hobby ){
+    mainView.router.loadPage('#')
+  }
   var emailInput = $$('input[name="email"]');
   var submitBtn = $$('input[name="submit"]');
   submitBtn.prop("disabled",true)
@@ -73,10 +82,12 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
 
 $$(document).on('pageInit', '.page[data-page="storyMode"]', function (e) {
   $$('.selectMode').click(function(){
-    if($$(this).find('input').prop("checked"))
+    if($$(this).find('input').prop("checked")){
       $$(this).find('input').prop("checked", false);
-    else
+    }else{
       $$(this).find('input').prop("checked", true);
+    }
+
 
     var storedData = myApp.formToJSON('#storyModeChoose');
     myApp.formStoreData('storyModeChoose',storedData);
@@ -116,11 +127,15 @@ $$(document).on('pageInit', '.page[data-page="storyCategory"]', function (e) {
 $$(document).on('pageInit', '.page[data-page="storyDetail"]', function (e) {
 
   $$('.radioItem').click(function(){
+    $$('.checked').hide();
     $$("input[name='item']").val("");
-    if($$(this).find('input').prop("checked"))
+    if($$(this).find('input').prop("checked")){
+      $$(this).find('.checked').hide();
       $$(this).find('input').prop("checked", false);
-    else
+    }else{
+      $$(this).find('.checked').show();
       $$(this).find('input').prop("checked", true);
+    }
 
     console.log(storedData);
     var storedData = myApp.formToJSON('#storyDetailChoose');
@@ -131,7 +146,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function (e) {
   $$("input[name='item']").on('input', function(){
     var radioItem = $$("input[name='radioItem']");
     radioItem.prop("checked", false);
-
+    $$('.checked').hide();
     var storedData = myApp.formToJSON('#storyDetailChoose');
     myApp.formStoreData('storyDetailChoose',storedData);
 

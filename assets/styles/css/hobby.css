@@ -15,6 +15,13 @@ form .row {
   background-color: rgba(0,0,0,0.3);
 }
 
+.row img.checked {
+  position: absolute;
+  opacity: 0.5;
+  left: calc(50% - 50px);
+  top: 40px;
+}
+
 .hobbyitem {
   position: relative;
 }
