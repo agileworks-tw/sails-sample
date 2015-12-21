@@ -81,7 +81,7 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
             else {
                 markerContent.innerHTML =
                     '<div class="map-marker ' + json.data[i].color + '">' +
-                        '<div class="icon">' +
+                        '<div class="icon ' + json.data[i].mode + '">' +
                         '<img src="' + json.data[i].type_icon +  '">' +
                         '</div>' +
                     '</div>';
@@ -537,7 +537,7 @@ function itemDetailMap(json){
     var markerContent = document.createElement('DIV');
     markerContent.innerHTML =
         '<div class="map-marker">' +
-            '<div class="icon">' +
+            '<div class="icon ' + json.mode + '">' +
             icon +
             '</div>' +
         '</div>';

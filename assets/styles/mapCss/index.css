@@ -51,3 +51,13 @@
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut;
 }
+
+
+
+.map-marker .get {
+  border: 3px solid #28a7e1;
+}
+
+.map-marker .give {
+  border: 3px solid #f39800;
+}
