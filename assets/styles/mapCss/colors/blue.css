@@ -7078,17 +7078,3 @@ body.navigation-top-header .header .wrapper .toggle-navigation {
     opacity: 0;
   }
 }
-
-/* hotfix for find-my-loc button */
-span.find-my-loc{
-  cursor: pointer;
-  position: absolute;
-  right: 10px;
-  padding: 5px;
-  width: 28px;
-  height: 26px;
-  display: table;
-  top: 80px;
-  z-index: 3;
-  background-color: white;
-}

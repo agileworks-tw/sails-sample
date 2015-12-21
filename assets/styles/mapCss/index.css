@@ -51,3 +51,17 @@
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut;
 }
+
+/* hotfix for find-my-loc button */
+span.find-my-loc{
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  padding: 5px;
+  width: 28px;
+  height: 26px;
+  display: table;
+  top: 80px;
+  z-index: 3;
+  background-color: white;
+}
