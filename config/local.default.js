@@ -29,5 +29,9 @@ module.exports = {
         callbackURL: "http://localhost:1337/auth/facebook/callback"
       }
     }
+  },
+  getty: {
+    ConnectSDK_ApiKey: '',
+    ConnectSDK_ApiSecret: '',
   }
 }
