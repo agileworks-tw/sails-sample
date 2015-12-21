@@ -2,7 +2,6 @@ module.exports = {
   index: async (req, res) => {
     try {
       let userLogin = await UserService.getLoginState(req);
-      sails.log.info("!!!!!!!!!!",userLogin)
       res.view('index',{
         userLogin
       });
