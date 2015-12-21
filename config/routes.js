@@ -40,10 +40,6 @@ module.exports.routes = {
     view: 'main'
   },
 
-  '/storyHobby':{
-    view: 'storyHobby'
-  },
-
   '/storyDetail':{
     view: 'storyDetail'
   },
