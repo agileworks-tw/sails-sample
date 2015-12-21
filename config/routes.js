@@ -32,9 +32,6 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'index'
-  },
 
   '/2': {
     view: 'index2'
@@ -60,6 +57,7 @@ module.exports.routes = {
   'post /updateHobbyAndMail': 'UserController.updateHobbyAndMail',
   'get /hobby': 'UserController.hobbyView',
 
+  'get /': 'UserController.index',
   'get /story' : 'PostController.story',
   'get /storyCategory': 'PostController.storyCategory',
   'get /storyDetail/:id': 'PostController.getStoryCategoryItemById',

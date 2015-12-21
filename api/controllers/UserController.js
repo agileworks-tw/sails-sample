@@ -1,9 +1,10 @@
 module.exports = {
   index: async (req, res) => {
     try {
-      let users = await UserService.findAll();
-      sails.log.info('=== users ===', users);
-      res.ok({users});
+      let userLogin = await UserService.getLoginState(req);
+      res.view('index',{
+        userLogin
+      });
     } catch (e) {
       res.serverError(e);
     }

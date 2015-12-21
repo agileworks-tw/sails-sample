@@ -31,8 +31,9 @@ head
                 ul.main-navigation.navigation-top-header
                 ul.main-navigation
                   li
-                    a(href='/auth/facebook') Login 
-                a.submit-item(href='/story')
+                    -if (!userLogin) 
+                      a(href='/auth/facebook') Login 
+                a.submit-item(href='/story')            
                   .content
                     span Submit Your Item
                   .icon
