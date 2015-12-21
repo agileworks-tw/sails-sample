@@ -6,14 +6,31 @@ form .row {
 .row span {
   position: absolute;
   /*background-color: #01cbbb;*/
+  width: 100%;
   color: #fff;
   text-shadow: 1px 1px #888;
   /*margin-top: 10%;*/
-  margin-left: 40%;
+  /*margin-left: 40%;*/
   font-size: 25px;
+  background-color: rgba(0,0,0,0.3);
 }
 
-#stroryDetail .row {
+.row img.checked {
+  position: absolute;
+  opacity: 0.5;
+  left: calc(50% - 50px);
+  top: 40px;
+}
+
+.hobbyitem {
+  position: relative;
+}
+
+img.category {
+  width: 100%;
+}
+
+#storyDetail .row {
   margin: 5px;
 }
 
@@ -23,40 +40,61 @@ div[class*="col-"] {
   color: #000;
   border: 2px solid #fff;
   /*padding: 5px;*/
-  height: 150px;
+  height: 180px;
   overflow:hidden;
 }
+
+#registerFinish {
+  background-image: url(../../img/greeting.jpg);
+  background-size: 100% 100%;
+}
+
+@media (min-width: 768px){
+  #registerFinish {
+    background-image: url(../../img/greeting-big.jpg);
+    background-size: 100% 100%;
+  }
+}
+
 
 #greeting {
   padding: 10%;
   margin-top: 20%;
+  color: #fff;
 }
 
 #greeting .button {
   margin-right: 30%;
-  margin-left: 30%
+  margin-left: 30%;
+  opacity:1 ;
 }
 
 #greeting input {
   text-align: center;
 }
 
-#stroryDetailChoose input {
+#storyDetailChoose input {
   text-align: center;
 }
 
-#stroryDetailChoose [name=title] {
+#storyDetailChoose [name=title] {
   font-size: 25px;
 }
 
-#stroryModeChoose {
+#storyModeChoose {
   height: 100%
+  text-align:center;
 }
-#stroryModeChoose .row{
+#storyModeChoose .row{
   height: 50%;
 }
-#stroryModeChoose .selectMode{
+#storyModeChoose .selectMode{
   height: 100%;
+}
+#storyModeChoose img {
+  height: 100%;
+  /*display:inline-block;*/
+  width: 100%;
 }
 
 ::-webkit-input-placeholder {

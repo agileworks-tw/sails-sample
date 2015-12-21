@@ -1,9 +1,10 @@
 module.exports = {
   index: async (req, res) => {
     try {
-      let users = await UserService.findAll();
-      sails.log.info('=== users ===', users);
-      res.ok({users});
+      let userLogin = await UserService.getLoginState(req);
+      res.view('index',{
+        userLogin
+      });
     } catch (e) {
       res.serverError(e);
     }
@@ -50,8 +51,10 @@ module.exports = {
         res.redirect('/')
 
       console.log("!!")
+      let categorys =  await PostService.getAllCategory();
       res.view('hobby',{
-        isHasMail
+        isHasMail,
+        categorys
       });
     } catch (e) {
       sails.log.error(e);

@@ -1,31 +1,41 @@
 // import fs from 'fs-extra';
 
-module.exports = {
+let like;
+
+let self = module.exports = {
 
   basicData: async () => {
-    let like = [
-      {title: '時尚'},
-      {title: '美妝保養'},
-      {title: '設計工藝'},
-      {title: '生活3C'},
-      {title: '運動用品'},
-      {title: '攝影拍照'},
-      {title: '名牌精品'},
-      {title: '復古風情'},
-      {title: '遊戲玩物'},
-      {title: '傢具傢居'},
-      {title: '課本買賣'},
-      {title: '書籍雜誌'},
-      {title: '樂器樂譜'},
-      {title: '廚房家電'},
-      {title: '寶寶時尚'},
-      {title: '寵物用品'},
-      {title: '票卷交換'},
-      {title: '哩哩扣扣'},
-      {title: '預售代購'}
+    like = [
+      {title: '時尚', pic: '/img/hobby/fashion-woman.png'},
+      {title: '美妝保養', pic: '/img/hobby/beauty.png'},
+      {title: '設計工藝', pic: '/img/hobby/Design-Process.png'},
+      {title: '生活3C', pic: '/img/hobby/TechnologyProducts.png'},
+      {title: '運動用品', pic: '/img/hobby/sport-foot.png'},
+      {title: '攝影拍照', pic: '/img/hobby/camera.png'},
+      {title: '名牌精品', pic: '/img/hobby/famousbrand.png'},
+      {title: '復古風情', pic: '/img/hobby/Retro.png'},
+      {title: '遊戲玩物', pic: '/img/hobby/game.png'},
+      {title: '傢具傢居', pic: '/img/hobby/couch.png'},
+      {title: '課本買賣', pic: '/img/hobby/books.png'},
+      {title: '書籍雜誌', pic: '/img/hobby/magazines.png'},
+      {title: '樂器樂譜', pic: '/img/hobby/ukulele.png'},
+      {title: '廚房家電', pic: '/img/hobby/Kitchen.png'},
+      {title: '寶寶時尚', pic: '/img/hobby/baby.png'},
+      {title: '寵物用品', pic: '/img/hobby/dog.png'},
+      {title: '票卷交換', pic: '/img/hobby/tickets.png'},
+      {title: '哩哩扣扣', pic: '/img/hobby/other.png'},
+      {title: '預售代購', pic: '/img/hobby/art.png'}
     ];
+    await Like.bulkCreate(like);
+    await self.testData();
+  },
 
-    let likeFashion = await Like.create(like[0]);
+  testData: async () => {
+    let likeFashion = await Like.findOne({
+      where:{
+        title: like[0].title
+      }
+    });
     let itemlistFashion = [
       '衣服',
       '褲子',
@@ -41,7 +51,11 @@ module.exports = {
       })
     });
 
-    let likeFashion2 = await Like.create(like[1]);
+    let likeFashion2 = await Like.findOne({
+      where:{
+        title: like[1].title
+      }
+    });
     let itemlistFashion2 = [
       "化妝品",
       '化妝包',
@@ -56,7 +70,11 @@ module.exports = {
       })
     });
 
-    let likeDesign = await Like.create(like[2]);
+    let likeDesign = await Like.findOne({
+      where:{
+        title: like[2].title
+      }
+    });
     let itemlistDesign = [
       '桌子',
       '畫',
@@ -69,7 +87,11 @@ module.exports = {
       })
     });
 
-    let likeIC = await Like.create(like[3]);
+    let likeIC = await Like.findOne({
+      where:{
+        title: like[3].title
+      }
+    });
     let itemlistIC = [
       '手機',
       '平板',
@@ -83,10 +105,6 @@ module.exports = {
         LikeId: likeIC.id
       })
     });
-
-    await Like.bulkCreate(like);
-
-
 
     let post = {
       title: "testTitle",

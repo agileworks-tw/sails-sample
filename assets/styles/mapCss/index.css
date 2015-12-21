@@ -65,3 +65,11 @@ span.find-my-loc{
   z-index: 3;
   background-color: white;
 }
+
+.map-marker .get {
+  border: 3px solid #28a7e1;
+}
+
+.map-marker .give {
+  border: 3px solid #f39800;
+}

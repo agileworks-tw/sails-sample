@@ -49,6 +49,19 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
         var activeMarker = false;
         var lastClicked = false;
 
+        // Try HTML5 geolocation. (get-my-loc)
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        }
+
         for (var i = 0; i < json.data.length; i++) {
 
             // Google map marker content -----------------------------------------------------------------------------------
@@ -68,7 +81,7 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
             else {
                 markerContent.innerHTML =
                     '<div class="map-marker ' + json.data[i].color + '">' +
-                        '<div class="icon">' +
+                        '<div class="icon ' + json.data[i].mode + '">' +
                         '<img src="' + json.data[i].type_icon +  '">' +
                         '</div>' +
                     '</div>';
@@ -524,7 +537,7 @@ function itemDetailMap(json){
     var markerContent = document.createElement('DIV');
     markerContent.innerHTML =
         '<div class="map-marker">' +
-            '<div class="icon">' +
+            '<div class="icon ' + json.mode + '">' +
             icon +
             '</div>' +
         '</div>';

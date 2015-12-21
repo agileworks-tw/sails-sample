@@ -1,3 +1,5 @@
+
+
 module.exports = {
 
   story: async (req, res) => {
@@ -21,6 +23,19 @@ module.exports = {
     }
   },
 
+  getPostById: async (req, res) => {
+    try {
+      console.log("==== getPostById ===",req.param('id'));
+      let post = await PostService.getPostById(req.param('id'));
+      res.view('postDetail',{
+        post
+      });
+    } catch (e) {
+      sails.log.error(e);
+      res.serverError(e);
+    }
+  },
+
   getAllPost: async (req, res) => {
     try {
       let result = await PostService.getAllPost();
@@ -29,8 +44,32 @@ module.exports = {
       sails.log.error(e);
       res.serverError(e);
     }
+  },
+
+  storyCategory: async(req, res) => {
+    try {
+
+      let categorys = await PostService.getAllCategory();
+      res.view('storyCategory',{
+        categorys
+      });
+    } catch (e) {
+      sails.log.error(e);
+      res.serverError(e);
+    }
+  },
+
+  getStoryCategoryItemById: async(req, res) => {
+    try {
+
+      let categoryItems = await ItemService.findByLikeId(req.param('id'));
+      res.view('storyDetail',{
+        categoryItems
+      });
+    } catch (e) {
+      sails.log.error(e);
+      res.serverError(e);
+    }
   }
-
-
 
 }

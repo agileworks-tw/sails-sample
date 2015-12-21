@@ -11,7 +11,10 @@ module.exports = {
           LikeId: data.hobby,
           itemname: data.detail.item
         });
-
+      }else{
+        itme = await Item.findById(data.detail.radioItem );
+        itme.quantity++;
+        await itme.save();
       }
 
       let post = await Post.create({
@@ -33,7 +36,6 @@ module.exports = {
     }
   },
 
-
   getAllPost: async() => {
     try {
       let getPost = await Post.findAll({
@@ -48,6 +50,7 @@ module.exports = {
 
 
       let postArray = getPost.map((post) => {
+        let pic = post.Item.pic || '/img/items/1.jpg'
         let data = {
           title: post.title,
           mode: post.mode,
@@ -58,7 +61,7 @@ module.exports = {
           type: post.Item.Like.title,
           // type_icon: post.Item.Like.icon,
           type_icon: "../icons/store/apparel/bags.png",
-          gallery:['../img/hobby/3c.png']
+          gallery:[pic]
         };
         return data;
       });
@@ -67,6 +70,54 @@ module.exports = {
         data: postArray
       }
       return postArray;
+    } catch (e) {
+      throw e;
+    }
+  },
+
+  getPostById: async(id) => {
+    try {
+      let getPost = await await Post.findOne({
+        where:{
+          id: id
+        },
+        include:[{
+          model: Item,
+          include: Like
+        },{
+          model: User
+        }]
+      });
+      sails.log.info(getPost);
+
+      let pic = getPost.Item.pic || '/img/items/1.jpg';
+      let data = {
+        title: getPost.title,
+        mode: getPost.mode,
+        location : getPost.Item.itemname,
+        latitude: getPost.latitude,
+        longitude: getPost.longitude,
+        url: `/getPostDetail/${getPost.id}`,
+        type: getPost.Item.Like.title,
+        // type_icon: getPost.Item.Like.icon,
+        type_icon: "../icons/store/apparel/bags.png",
+        gallery:[pic],
+        username: getPost.User.username,
+        email: getPost.User.email,
+        itemname: getPost.Item.itemname,
+      };
+
+      return data;
+    } catch (e) {
+      throw e;
+    }
+  },
+
+  getAllCategory: async() => {
+    try {
+      let like = await Like.findAll();
+      sails.log.info(like);
+      return like;
     } catch (e) {
       throw e;
     }

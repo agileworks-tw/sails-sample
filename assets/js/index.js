@@ -30,10 +30,13 @@ $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function (e) {
   }
 
   $$('.hobbyitem').click(function(){
-    if($$(this).find('input').prop("checked"))
+    if($$(this).find('input').prop("checked")){
+      $$(this).find('.checked').hide();
       $$(this).find('input').prop("checked", false);
-    else
+    }else{
+      $$(this).find('.checked').show();
       $$(this).find('input').prop("checked", true);
+    }
 
     storedData = myApp.formToJSON('#hobbySelect');
     myApp.formStoreData('hobbySelect',storedData);
@@ -47,6 +50,12 @@ $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function (e) {
 });
 
 $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
+
+  var hobby =  myApp.formGetData('hobbySelect').hobby[0];
+  console.log(hobby);
+  if( !hobby ){
+    mainView.router.loadPage('#')
+  }
   var emailInput = $$('input[name="email"]');
   var submitBtn = $$('input[name="submit"]');
   submitBtn.prop("disabled",true)
@@ -71,81 +80,91 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function (e) {
 });
 
 
-$$(document).on('pageInit', '.page[data-page="stroryMode"]', function (e) {
+$$(document).on('pageInit', '.page[data-page="storyMode"]', function (e) {
   $$('.selectMode').click(function(){
-    if($$(this).find('input').prop("checked"))
+    if($$(this).find('input').prop("checked")){
       $$(this).find('input').prop("checked", false);
-    else
-      $$(this).find('input').prop("checked", true);
-
-    var storedData = myApp.formToJSON('#stroryModeChoose');
-    myApp.formStoreData('stroryModeChoose',storedData);
-
-    if(storedData.mode != ""  && storedData.hasOwnProperty('mode')) {
-      $$('#nextSetp').removeAttr("disabled");
     }else{
-      $$('#nextSetp').attr("disabled",true);
+      $$(this).find('input').prop("checked", true);
     }
+
+
+    var storedData = myApp.formToJSON('#storyModeChoose');
+    myApp.formStoreData('storyModeChoose',storedData);
+
+    mainView.router.loadPage('/storyCategory')
+    // if(storedData.mode != ""  && storedData.hasOwnProperty('mode')) {
+    //   $$('#nextSetp').removeAttr("disabled");
+    // }else{
+    //   $$('#nextSetp').attr("disabled",true);
+    // }
   });
 });
 
 
-$$(document).on('pageInit', '.page[data-page="stroryHobby"]', function (e) {
+$$(document).on('pageInit', '.page[data-page="storyCategory"]', function (e) {
   $$('.hobbyitem').click(function(){
     if($$(this).find('input').prop("checked"))
       $$(this).find('input').prop("checked", false);
     else
       $$(this).find('input').prop("checked", true);
 
-    var storedData = myApp.formToJSON('#stroryHobbyChoose');
-    myApp.formStoreData('stroryHobbyChoose',storedData);
+    var storedData = myApp.formToJSON('#storyCategoryChoose');
+    myApp.formStoreData('storyCategoryChoose',storedData);
 
+    var id = $$(this).find('input').val();
+    mainView.router.loadPage('/storyDetail/'+id)
     console.log(storedData);
-    if(storedData.hobby != "" && storedData.hasOwnProperty('hobby') ) {
-      $$('#nextSetp2').removeAttr("disabled");
-    }else{
-      $$('#nextSetp2').attr("disabled",true);
-    }
+    // if(storedData.hobby != "" && storedData.hasOwnProperty('hobby') ) {
+    //   $$('#nextSetp2').removeAttr("disabled");
+    // }else{
+    //   $$('#nextSetp2').attr("disabled",true);
+    // }
   });
 });
 
 
-$$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
+$$(document).on('pageInit', '.page[data-page="storyDetail"]', function (e) {
 
   $$('.radioItem').click(function(){
+    $$('.checked').hide();
     $$("input[name='item']").val("");
-    if($$(this).find('input').prop("checked"))
+    if($$(this).find('input').prop("checked")){
+      $$(this).find('.checked').hide();
       $$(this).find('input').prop("checked", false);
-    else
+    }else{
+      $$(this).find('.checked').show();
       $$(this).find('input').prop("checked", true);
+    }
 
     console.log(storedData);
-    var storedData = myApp.formToJSON('#stroryDetailChoose');
-    myApp.formStoreData('stroryDetailChoose',storedData);
+    var storedData = myApp.formToJSON('#storyDetailChoose');
+    myApp.formStoreData('storyDetailChoose',storedData);
 
   });
 
   $$("input[name='item']").on('input', function(){
     var radioItem = $$("input[name='radioItem']");
     radioItem.prop("checked", false);
-
-    var storedData = myApp.formToJSON('#stroryDetailChoose');
-    myApp.formStoreData('stroryDetailChoose',storedData);
+    $$('.checked').hide();
+    var storedData = myApp.formToJSON('#storyDetailChoose');
+    myApp.formStoreData('storyDetailChoose',storedData);
 
   });
 
   $$("input[name='title']").on('input', function(){
-    var storedData = myApp.formToJSON('#stroryDetailChoose');
-    myApp.formStoreData('stroryDetailChoose',storedData);
+    var storedData = myApp.formToJSON('#storyDetailChoose');
+    myApp.formStoreData('storyDetailChoose',storedData);
   });
 
   $$('#finishStep').click(function(){
     // {"mode":"give","hobby":"1","detail":{"title":"123","radioItem":"2","item":""},
     // "location":{"latitude":24.148657699999998,"longitude":120.67413979999999,"accuracy":30}}
+    myApp.showIndicator();
 
-    var mode =  myApp.formGetData('stroryModeChoose').mode;
-    var hobby =  myApp.formGetData('stroryHobbyChoose').hobby;
-    var detail =  myApp.formGetData('stroryDetailChoose');
+    var mode =  myApp.formGetData('storyModeChoose').mode;
+    var hobby =  myApp.formGetData('storyCategoryChoose').hobby;
+    var detail =  myApp.formGetData('storyDetailChoose');
 
     var data = {
       mode,
@@ -154,17 +173,20 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
     };
 
     if(!data.mode){
+      myApp.hideIndicator();
       myApp.alert("","Error")
-      location.href = '/story'
+      lmainView.router.loadPage('/story')
       return false;
     }
 
     if(!data.hobby){
+      myApp.hideIndicator();
       myApp.alert("","Error")
-      location.href = '/story'
+      mainView.router.loadPage('/storyCategory')
       return false;
     }
     if(data.detail.title == ""){
+      myApp.hideIndicator();
       myApp.alert("Please enter a title","Error")
       return false;
     }
@@ -188,8 +210,15 @@ $$(document).on('pageInit', '.page[data-page="stroryDetail"]', function (e) {
         data : data,
         success: function(result){
           console.log(result);
+          myApp.formDeleteData('storyModeChoose');
+          myApp.formDeleteData('storyCategoryChoose');
+          myApp.formDeleteData('storyDetailChoose');
+          window.location.href = '/';
+
+          myApp.hideIndicator();
         },
         error:function(xhr, ajaxOptions, thrownError){
+          myApp.alert('Due to internet connection issues, please try again later or check you GPS status. thank you.','Error');
           console.log(xhr.status);
           console.log(thrownError);
         }

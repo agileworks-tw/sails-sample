@@ -15,6 +15,23 @@ block body
         .pages
           .page.navbar-fixed(data-page='hobbyPage')
             .page-content
-              form#hobbySelect.store-data
-                include ./hobbyItems.jade
+              form#hobbySelect
+                -var index = 0
+                each category in categorys
+                  -if(index % 2 == 0)
+                    .row.no-gutter
+                      .col-100.tablet-50.hobbyitem
+                        span
+                          | #{categorys[index].title}
+                        input(type='checkbox', name='hobby', value=categorys[index].id, style="display: none;")
+                        img.category(src=categorys[index].pic)
+                        img.checked(src='img/checked.png' style="display: none;")
+                      -if(index+1 < categorys.length)
+                        .col-100.tablet-50.hobbyitem 
+                          span
+                            | #{categorys[index+1].title}
+                          input(type='checkbox', name='hobby', value=categorys[index+1].id, style="display: none;")
+                          img.category(src=categorys[index+1].pic)
+                          img.checked(src='img/checked.png' style="display: none;")
+                  -index++
   block scripts

@@ -7,29 +7,47 @@
         .right
           a#finishStep Finish
     .pages
-      .page.navbar-fixed(data-page='stroryDetail')
+      .page.navbar-fixed(data-page='storyDetail')
         .page-content
-          form#stroryDetailChoose
+          -console.log(categoryItems);
+          form#storyDetailChoose
             .list-block
               .item-content
                 .item-inner
                   .item-input
-                    input(type='text', name='title', placeholder='Title')
-              .row
-                .col-50.tablet-50.radioItem 手機
-                  input(type='radio', name='radioItem', value='1')
-                .col-50.tablet-50.radioItem 平板
-                  input(type='radio', name='radioItem', value='2')
-              .row
-                .col-50.tablet-50.radioItem iphone
-                  input(type='radio', name='radioItem', value='1')
-                .col-50.tablet-50.radioItem 電腦
-                  input(type='radio', name='radioItem', value='2')
-              .row
-                .col-50.tablet-50.radioItem 筆電
-                  input(type='radio', name='radioItem', value='1')
-                .col-50.tablet-50.radioItem 筆電
-                  input(type='radio', name='radioItem', value='1')
+                    input(type='text', name='title', placeholder='Enter title here!')
+              -console.log(categoryItems.length);
+              -var index = 0
+              each item in categoryItems
+                -if(index % 2 == 0)
+                  .row
+                    .col-50.tablet-50.radioItem.hobbyitem
+                      span
+                        | #{categoryItems[index].itemname}
+                      input(type='radio', name='radioItem', value=categoryItems[index].id, style="display: none;")
+                      -var pic =  categoryItems[index].pic ? categoryItems[index].pic : '/img/items/1.jpg'
+                      img.category(src= pic)
+                      img.checked(src='img/checked.png' style="display: none;")
+                    -if(index+1 < categoryItems.length)
+                      .col-50.tablet-50.radioItem.hobbyitem
+                        -console.log(categoryItems[index+1].pic);
+                        span
+                          | #{categoryItems[index+1].itemname}
+                        input(type='radio', name='radioItem', value=categoryItems[index+1].id, style="display: none;")
+                        -var pic =  categoryItems[index+1].pic ? categoryItems[index+1].pic : '/img/items/1.jpg'
+                        img.category(src= pic)
+                        img.checked(src='img/checked.png' style="display: none;")
+                -index++;
+              //- .row
+              //-   .col-50.tablet-50.radioItem iphone
+              //-     input(type='radio', name='radioItem', value='1')
+              //-   .col-50.tablet-50.radioItem 電腦
+              //-     input(type='radio', name='radioItem', value='2')
+              //- .row
+              //-   .col-50.tablet-50.radioItem 筆電
+              //-     input(type='radio', name='radioItem', value='1')
+              //-   .col-50.tablet-50.radioItem 筆電
+              //-     input(type='radio', name='radioItem', value='1')
               .item-content
                 .item-inner
                   .item-input

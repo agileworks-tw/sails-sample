@@ -24,10 +24,9 @@ describe('about Item Service operation.', function() {
 
         let send = {
           LikeId: like3c.id,
-          itemname: '123'
+          itemname: 'iphone6s'
         }
 
-        // 完成 ItemService.create
         await ItemService.create(send);
 
         let update = await like3c.getItems();
@@ -40,6 +39,34 @@ describe('about Item Service operation.', function() {
       }
     });
 
+  });
+
+  describe('find like item', () => {
+
+    let like3c;
+    before(async (done) => {
+
+      like3c = await Like.create({
+        title: '測試用生活3C'
+      });
+      await Item.create({
+        itemname: "Server",
+        LikeId: like3c.id
+      })
+      done();
+    });
+
+    it('find should success', async (done) =>{
+      try{
+        let likearray = await ItemService.findByLikeId(like3c.id);
+
+        likearray.should.be.Array;
+        done();
+      } catch (e) {
+        sails.log.error(e);
+        done(e);
+      }
+    });
   });
 
 });
