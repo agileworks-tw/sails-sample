@@ -49,7 +49,7 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
         var activeMarker = false;
         var lastClicked = false;
 
-        // Try HTML5 geolocation.
+        // Try HTML5 geolocation. (get-my-loc)
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
