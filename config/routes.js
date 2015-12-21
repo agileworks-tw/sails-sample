@@ -65,7 +65,12 @@ module.exports.routes = {
   'get /storyDetail/:id': 'PostController.getStoryCategoryItemById',
   'post /getAllPost' : 'PostController.getAllPost',
   'post /postStory': 'PostController.postStory',
-  'get /postDetail/:id': 'PostController.getPostById'
+  'get /postDetail/:id': 'PostController.getPostById',
+
+  //image
+  'get /testUpload' : 'ImageController.index',
+  'post /api/uploadImage' : 'ImageController.upload'
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
