@@ -1,4 +1,6 @@
 
+import config from '../../config/local'
+
 module.exports = {
   index: async (req,res) => {
     res.writeHead(200, {'content-type': 'text/html'});
@@ -12,16 +14,13 @@ module.exports = {
   },
   upload: async  (req, res) => {
     try {
-      let config = {
-        dirname: '../../assets/img/upload'
-      };
 
       let promise = new Promise((resolve, reject) => {
-        req.file('image').upload(config, async (err, files) => {
+        req.file('image').upload(config.uploadImage, async (err, files) => {
           resolve(files);
         });
       });
-      
+
       let files = await promise.then();
       let uploadImages = [];
       for (let i in files) {
