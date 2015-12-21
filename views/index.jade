@@ -56,13 +56,18 @@ head
             .map-canvas.list-width-30
               // Map
               .map
+                // find-my-loc 
+                .location     
+                  span.input-group-addon.find-my-loc.geolocation
+                    i.fa.fa-map-marker.geolocation(data-toggle='tooltip', data-placement='bottom', title='Find my position')
+                // end find-my-loc
                 .toggle-navigation
                   .icon
                     .line
                     .line
                     .line
                 // /.toggle-navigation
-                #map.has-parallax
+                #map.has-parallax        
                 // /#map
                 //- .search-bar.horizontal
                 //-   form.main-search.border-less-inputs(role='form', method='post')
