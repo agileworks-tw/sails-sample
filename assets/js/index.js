@@ -263,11 +263,7 @@ function saveImagesAndPost(data) {
     contentType: false,
     processData: false,
     success: function(result) {
-      var images = [];
-      result.forEach(function(img, i) {
-        images[i] = img;
-      });
-      data.images = JSON.stringify(images);
+      data.images = result[0].src;
       savePost(data);
     },
     error: function(xhr, ajaxOptions, thrownError) {
