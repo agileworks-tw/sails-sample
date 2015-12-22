@@ -33,5 +33,8 @@ module.exports = {
   getty: {
     ConnectSDK_ApiKey: '',
     ConnectSDK_ApiSecret: '',
+  },
+  uploadImage: {
+    dirname: '../../assets/img/upload'
   }
 }
