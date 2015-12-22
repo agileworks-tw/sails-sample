@@ -77,7 +77,7 @@ describe('about Post Service operation.', function() {
           "hobby": like.id,
           "detail": {
             "title": "123",
-            "item": "iphone7s"
+            "item": "iphone"
           },
           "location": {
             "latitude": 24.148657699999998,
