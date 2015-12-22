@@ -50,8 +50,8 @@ module.exports = {
     try {
       sails.log.info(userId,postId);
       let user = await User.findById(userId);
-      await user.addPost(postId);
-      return 'ok';
+      let favorites =  await user.addPost(postId);
+      return favorites;
     } catch (e) {
       throw e;
     }

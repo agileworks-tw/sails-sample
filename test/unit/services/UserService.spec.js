@@ -107,11 +107,11 @@ describe('about User Service operation.', function() {
           userId: testUser.id,
           postId: createPost.id
         }
-        
+
         let before = await testUser.getPosts();
         let result = await UserService.addUserFavorite(send);
         let after = await testUser.getPosts();
-        result.should.be.equal('ok');
+        result.should.be.an.Array;
         after.length.should.be.above(before.length)
         done();
 

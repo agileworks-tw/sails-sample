@@ -68,6 +68,8 @@ module.exports.routes = {
   'post /postStory': 'PostController.postStory',
   'get /postDetail/:id': 'PostController.getPostById',
 
+  'post /addUserFavorite/:id': 'UserController.addUserFavorite',
+
   //image
   'get /testUpload' : 'ImageController.index',
   'post /api/uploadImage' : 'ImageController.upload'
