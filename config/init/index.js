@@ -108,6 +108,8 @@ let self = module.exports = {
 
     let post = {
       title: "testTitle",
+      startDate: "2015-12-25",
+      endDate: "2015-12-31",
       content: 'content',
       mode: "give",
       createdAt: "2015-12-15 10:09:07",
@@ -159,6 +161,8 @@ let self = module.exports = {
 
       let post = {
         title: "testTitle",
+        startDate: "2015-12-25",
+        endDate: "2015-12-31",
         content: 'content',
         mode: "give",
         createdAt: "2015-12-15 10:09:07",

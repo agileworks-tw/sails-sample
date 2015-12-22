@@ -16,6 +16,14 @@
                 .item-inner
                   .item-input
                     input(type='text', name='title', placeholder='Enter title here!')
+              .item-content
+                .item-inner
+                  .item-input
+                      input(type='text', name='startDate', placeholder='Your post date', readonly id='calendar-default')
+              .item-content
+                .item-inner
+                  .item-input
+                      input(type='text', name='endDate', placeholder='Your end date', readonly id='calendar-default2')
               -console.log(categoryItems.length);
               -var index = 0
               each item in categoryItems
@@ -52,3 +60,7 @@
                 .item-inner
                   .item-input
                     input(type='text', name='item', placeholder='Without your item? Enter a new one !')
+              .item-content
+                .item-inner
+                  .item-input
+                    textarea(name='content',placeholder='Enter items instruction !')
