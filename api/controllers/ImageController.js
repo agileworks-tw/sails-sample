@@ -26,7 +26,7 @@ module.exports = {
       for (let i in files) {
         if(files[i].type.split('/')[0] == 'image') {
           let name = files[i].filename;
-          let path = files[i].fd.split('/assets')[1];
+          let path = files[i].fd.split('/.tmp/public')[1];
           uploadImages.push({
             name: name,
             src: path

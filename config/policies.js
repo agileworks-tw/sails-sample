@@ -33,6 +33,9 @@ module.exports.policies = {
     'getAllPost': [],
     'postStory': [],
     'getPostById': []
+  },
+  'ImageController': {
+    'upload': []
   }
   /***************************************************************************
   *                                                                          *
