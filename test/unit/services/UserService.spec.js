@@ -61,7 +61,7 @@ describe('about User Service operation.', function() {
 
   });
 
-  describe.only('User Favorite', () => {
+  describe('User Favorite', () => {
 
     let testUser, post, item, createPost;
     before(async (done) => {
