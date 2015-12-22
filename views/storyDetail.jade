@@ -1,3 +1,5 @@
+
+link(rel='stylesheet', href='styles/css/storyDetail.css', type='text/css')
 .navbar
     .navbar-inner
         .left
@@ -10,12 +12,21 @@
       .page.navbar-fixed(data-page='storyDetail')
         .page-content
           -console.log(categoryItems);
+          form#storyImageUpload
+            .list-block
+              .item-content
+                .item-inner
+                  .item-input.fileUpload-input
+                    .fileUpload.btn.btn-primary
+                      span Upload photos
+                      input.uploadBtn.upload(form="storyImageUpload" type='file', name='image', multiple='multiple')
+          
           form#storyDetailChoose
             .list-block
               .item-content
                 .item-inner
                   .item-input
-                    input(type='text', name='title', placeholder='Enter title here!')
+                    input(type='text', name='title', placeholder='Enter title here!')  
               -console.log(categoryItems.length);
               -var index = 0
               each item in categoryItems

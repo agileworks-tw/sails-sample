@@ -28,7 +28,8 @@ module.exports = {
         geometry: {
           type: 'Point',
           coordinates: [data.location.latitude,data.location.longitude]
-        }
+        },
+        images: data.images
       });
       return post;
     } catch (e) {

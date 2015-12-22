@@ -2,8 +2,10 @@ module.exports = {
   index: async (req, res) => {
     try {
       let userLogin = await UserService.getLoginState(req);
+      let loginedUser = await UserService.getLoginUser(req);
       res.view('main',{
-        userLogin
+        userLogin,
+        loginedUser
       });
     } catch (e) {
       res.serverError(e);

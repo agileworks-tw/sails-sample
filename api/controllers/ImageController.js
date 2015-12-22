@@ -33,6 +33,7 @@ module.exports = {
           });
         }
       }
+      console.log("==== imageUpload:upload =====\n",uploadImages);
       return res.json(uploadImages);
     } catch (e) {
       res.serverError(e);

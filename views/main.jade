@@ -30,14 +30,13 @@ head
               .wrapper
                 ul.main-navigation.navigation-top-header
                 ul.main-navigation
-                #{userLogin}
                 -if (!userLogin) 
                   a.submit-item(href='/auth/facebook') 
                     .content
                       span Login!
                     .icon
                       i.fa.fa-sign-in
-                -else 
+                -else
                   a.submit-item(href='/story')
                     .content
                       span Submit Your Item
@@ -131,21 +130,15 @@ head
         script(type='text/javascript', src='/js/map/jquery.hotkeys.js')
         script(type='text/javascript', src='/js/map/jquery.nouislider.all.min.js')
         script(type='text/javascript', src='/js/map/jquery.mCustomScrollbar.concat.min.js')
-        script(type='text/javascript', src='http://maps.google.com/maps/api/js?sensor=false&libraries=places')
+        // removed sensor paramate to avoid warring.
+        //- script(type='text/javascript', src='http://maps.google.com/maps/api/js?sensor=false&libraries=places')
+        script(type='text/javascript', src='http://maps.google.com/maps/api/js?libraries=places')
         script(type='text/javascript', src='/js/map/infobox.js')
         script(type='text/javascript', src='/js/map/richmarker-compiled.js')
         script(type='text/javascript', src='/js/map/markerclusterer.js')
         script(type='text/javascript', src='/js/map/custom.js')
         script(type='text/javascript', src='/js/map/maps.js')
         script.
-          
-          //- window.setTimeout(function() {
-          //-   $('#splash').addClass('animated fadeOut');
-          //-   window.setTimeout(function() {
-          //-     $('#splash').hide();
-          //-   },1000);
-          //- }, 2000);
-          
           var _latitude = 51.541216;
           var _longitude = -0.095678;
           //- var jsonPath = '/json/items.json.txt';
