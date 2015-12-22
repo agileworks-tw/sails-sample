@@ -31,6 +31,7 @@ head
                 ul.main-navigation.navigation-top-header
                 ul.main-navigation
                   li
+                  -if (!userLogin) 
                     a(href='/auth/facebook') Login 
                 a.submit-item(href='/story')
                   .content

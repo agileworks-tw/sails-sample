@@ -2,7 +2,7 @@ module.exports = {
   index: async (req, res) => {
     try {
       let userLogin = await UserService.getLoginState(req);
-      res.view('index',{
+      res.view('main',{
         userLogin
       });
     } catch (e) {
