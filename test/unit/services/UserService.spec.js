@@ -82,6 +82,9 @@ describe('about User Service operation.', function() {
       post = {
         title: "testTitle",
         content: 'content',
+        startDate: "2015-12-25",
+        endDate: "2015-12-31",
+        price: "200",
         mode: "give",
         createdAt: "2015-12-15 10:09:07",
         updatedAt: "2015-12-15 10:09:07",

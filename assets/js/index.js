@@ -197,7 +197,12 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     myApp.formStoreData('storyDetailChoose', storedData);
   });
 
-  $$('#finishStep').click(function() {
+  $$("input[name='price']").on('input', function(){
+    var storedData = myApp.formToJSON('#storyDetailChoose');
+    myApp.formStoreData('storyDetailChoose',storedData);
+  });
+
+  $$('#finishStep').click(function(){
     // {"mode":"give","hobby":"1","detail":{"title":"123","radioItem":"2","item":""},
     // "location":{"latitude":24.148657699999998,"longitude":120.67413979999999,"accuracy":30}}
     myApp.showIndicator();
@@ -241,7 +246,12 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
       data.detail.startDate = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate();
     }
 
-    console.log(JSON.stringify(data));
+    if(data.detail.price == ""){
+      myApp.hideIndicator();
+      myApp.alert("Please input price","Error")
+      return false;
+    }
+
     var location = {};
     navigator.geolocation.getCurrentPosition(GetLocationAndSubmit);
 
@@ -253,6 +263,8 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
         accuracy: loc.coords.accuracy
       }
       data.location = location;
+
+      console.log(JSON.stringify(data));
 
       var imageCount = $("input.upload").get(0).files.length;
       if ((imageCount != null) && (imageCount > 0)) {

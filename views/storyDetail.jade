@@ -30,8 +30,16 @@ link(rel='stylesheet', href='styles/css/storyDetail.css', type='text/css')
               .item-content
                 .item-inner
                   .item-input
+<<<<<<< HEAD
                     input(type='text', name='postPeriod', placeholder='Posting period', id='calendar-postPeriod', readonly)
                   
+=======
+                      input(type='text', name='endDate', placeholder='Your end date', readonly id='calendar-default2')
+              .item-content
+                .item-inner
+                  .item-input
+                      input(type='number', name='price', placeholder='input price')        
+>>>>>>> f93774191f32374fb6f412fad7f0254741f88342
               -console.log(categoryItems.length);
               -var index = 0
               each item in categoryItems
