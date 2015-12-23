@@ -47,6 +47,7 @@ describe('about Post Controller operation.', function() {
           "title": "123",
           "startDate": "2015-12-25",
           "endDate": "2015-12-31",
+          "price": "200",
           "radioItem": item.id,
           "item": ""
         },
@@ -79,6 +80,7 @@ describe('about Post Controller operation.', function() {
           "title": "123",
           "startDate": "2015-12-25",
           "endDate": "2015-12-31",
+          "price": "200",
           "item": "iphone"
         },
         "location": {
