@@ -128,6 +128,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
 
   // init f7-calendar
   var now = new Date();
+  // set a range time picker
   var calendarStartDate = myApp.calendar({
     input: '#calendar-postPeriod',
     rangePicker: true,

@@ -55,6 +55,7 @@ module.exports = {
       let postArray = getPost.map((post) => {
         let pic = post.images || post.Item.pic || '/img/items/1.jpg'
         let data = {
+          id:post.id,
           title: post.title,
           mode: post.mode,
           location : post.Item.itemname,
