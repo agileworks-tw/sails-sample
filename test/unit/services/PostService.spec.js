@@ -50,6 +50,9 @@ describe('about Post Service operation.', function() {
           "hobby": like.id,
           "detail": {
             "title": "123",
+            "startDate": "2015-12-25",
+            "endDate": "2015-12-31",
+
             "radioItem": item.id,
             "item": ""
           },
@@ -77,6 +80,9 @@ describe('about Post Service operation.', function() {
           "hobby": like.id,
           "detail": {
             "title": "123",
+            "startDate": "2015-12-25",
+            "endDate": "2015-12-31",
+            "instruction": "instruction",
             "item": "iphone7s"
           },
           "location": {
@@ -122,6 +128,9 @@ describe('about Post Service operation.', function() {
 
         post = {
           title: "testTitle",
+          startDate: "2015-12-25",
+          endDate: "2015-12-31",
+          instruction: 'instruction',
           content: 'content',
           mode: "give",
           createdAt: "2015-12-15 10:09:07",
@@ -149,6 +158,9 @@ describe('about Post Service operation.', function() {
           let longitude = -0.1006775 + Math.random()/100;
           let post = {
             title: "testTitle",
+            startDate: "2015-12-25",
+            endDate: "2015-12-31",
+            instruction: 'instruction',
             content: 'content',
             mode: "give",
             createdAt: "2015-12-15 10:09:07",

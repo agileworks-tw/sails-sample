@@ -126,6 +126,13 @@ $$(document).on('pageInit', '.page[data-page="storyCategory"]', function (e) {
 
 $$(document).on('pageInit', '.page[data-page="storyDetail"]', function (e) {
 
+  var calendarDefault = myApp.calendar({
+    input: '#calendar-default',
+  });
+  var calendarDefault2 = myApp.calendar({
+    input: '#calendar-default2',
+  });
+
   $$('.radioItem').click(function(){
     $$('.checked').hide();
     $$("input[name='item']").val("");
@@ -149,13 +156,28 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function (e) {
     $$('.checked').hide();
     var storedData = myApp.formToJSON('#storyDetailChoose');
     myApp.formStoreData('storyDetailChoose',storedData);
-
   });
 
   $$("input[name='title']").on('input', function(){
     var storedData = myApp.formToJSON('#storyDetailChoose');
     myApp.formStoreData('storyDetailChoose',storedData);
   });
+
+  $$("textarea[name='content']").on('input', function(){
+    var storedData = myApp.formToJSON('#storyDetailChoose');
+    myApp.formStoreData('storyDetailChoose',storedData);
+  });
+
+  $$("input[name='startDate']").on('input', function(){
+    var storedData = myApp.formToJSON('#storyDetailChoose');
+    myApp.formStoreData('storyDetailChoose',storedData);
+  });
+
+  $$("input[name='endDate']").on('input', function(){
+    var storedData = myApp.formToJSON('#storyDetailChoose');
+    myApp.formStoreData('storyDetailChoose',storedData);
+  });
+
 
   $$('#finishStep').click(function(){
     // {"mode":"give","hobby":"1","detail":{"title":"123","radioItem":"2","item":""},
@@ -188,6 +210,18 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function (e) {
     if(data.detail.title == ""){
       myApp.hideIndicator();
       myApp.alert("Please enter a title","Error")
+      return false;
+    }
+
+    if(!data.detail.startDate){
+      myApp.hideIndicator();
+      myApp.alert("Please choice today","Error")
+      return false;
+    }
+
+    if(Date.parse(data.detail.startDate) >= Date.parse(data.detail.endDate)){
+      myApp.hideIndicator();
+      myApp.alert("Please choice right day","Error")
       return false;
     }
 
