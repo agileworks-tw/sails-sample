@@ -30,14 +30,19 @@ head
               .wrapper
                 ul.main-navigation.navigation-top-header
                 ul.main-navigation
-                  li
-                  -if (!userLogin) 
-                    a(href='/auth/facebook') Login 
-                a.submit-item(href='/story')
-                  .content
-                    span Submit Your Item
-                  .icon
-                    i.fa.fa-plus
+                #{userLogin}
+                -if (!userLogin) 
+                  a.submit-item(href='/auth/facebook') 
+                    .content
+                      span Login!
+                    .icon
+                      i.fa.fa-sign-in
+                -else 
+                  a.submit-item(href='/story')
+                    .content
+                      span Submit Your Item
+                    .icon
+                      i.fa.fa-plus
                 //- .toggle-navigation
                 //-   .icon
                 //-     .line

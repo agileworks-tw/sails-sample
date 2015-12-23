@@ -4,8 +4,15 @@ module.exports = {
       type: Sequelize.STRING,
       allowNull: false
     },
+    startDate: {
+      type: Sequelize.DATEONLY,
+      allowNull: false
+    },
+    endDate: {
+      type: Sequelize.DATEONLY
+    },
     content: {
-      type: Sequelize.STRING,
+      type: Sequelize.STRING
     },
     mode: {
       type: Sequelize.ENUM('get', 'give'),
