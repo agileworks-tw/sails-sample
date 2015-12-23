@@ -36,8 +36,8 @@ module.exports.routes = {
     view: 'index2'
   },
 
-  '/main': {
-    view: 'main'
+  '/': {
+    view: 'index'
   },
 
   '/storyDetail':{
@@ -60,13 +60,15 @@ module.exports.routes = {
   'post /updateHobbyAndMail': 'UserController.updateHobbyAndMail',
   'get /hobby': 'UserController.hobbyView',
 
-  'get /': 'UserController.index',
+  'get /main': 'UserController.index',
   'get /story' : 'PostController.story',
   'get /storyCategory': 'PostController.storyCategory',
   'get /storyDetail/:id': 'PostController.getStoryCategoryItemById',
   'post /getAllPost' : 'PostController.getAllPost',
   'post /postStory': 'PostController.postStory',
   'get /postDetail/:id': 'PostController.getPostById',
+
+  'post /addUserFavorite/:id': 'UserController.addUserFavorite',
 
   //image
   'get /testUpload' : 'ImageController.index',

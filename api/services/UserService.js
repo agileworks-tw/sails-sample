@@ -44,5 +44,27 @@ module.exports = {
     } catch (e) {
       throw e;
     }
-  }
+  },
+
+  addUserFavorite: async({userId,postId}) => {
+    try {
+      sails.log.info(userId,postId);
+      let user = await User.findById(userId);
+      let favorites =  await user.addPost(postId);
+      return favorites;
+    } catch (e) {
+      throw e;
+    }
+  },
+
+  getUserFavorite: async({userId}) => {
+    try {
+      sails.log.info(userId);
+      let user = await User.findById(userId);
+      let favoritePost = await user.getPosts();
+      return favoritePost;
+    } catch (e) {
+      throw e;
+    }
+  },
 }
