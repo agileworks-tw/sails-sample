@@ -25,6 +25,7 @@ module.exports = {
     User.hasMany(Post);
     User.hasMany(Passport);
     User.belongsToMany(Like, {through: 'UserLike'});
+    User.belongsToMany(Post, {through: 'UserFavorite'});
   },
   options: {
     classMethods: {},

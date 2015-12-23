@@ -42,6 +42,7 @@ module.exports = {
   associations: function() {
     Post.belongsTo(Item);
     Post.belongsTo(User);
+    Post.belongsToMany(User, {through: 'UserFavorite'});
   },
   options: {
     classMethods: {},

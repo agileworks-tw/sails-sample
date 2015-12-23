@@ -24,7 +24,7 @@ describe('about Post Controller operation.', function() {
     });
 
     item = await Item.create({
-      itemname: '測試PO文品項',
+      itemname: 'server',
       LikeId: like.id
     })
 
@@ -79,7 +79,7 @@ describe('about Post Controller operation.', function() {
           "title": "123",
           "startDate": "2015-12-25",
           "endDate": "2015-12-31",
-          "item": "iphone7s"
+          "item": "iphone"
         },
         "location": {
           "latitude": 24.148657699999998,
