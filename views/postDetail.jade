@@ -58,10 +58,14 @@ head
                     header.page-title
                       .detailFavbox
                         .favbox.left
-                          a.favboxa(data-id="'+id+'")
+                          a.favboxa(data-id="#{post.id}")
                               i.fa.fa-lg.fa-heart
-
                       .title
+                        div.price 
+                        -if (post.price)
+                          span $#{post.price}
+                        -else
+                          span (no price now)
                         h1 #{post.title}
                         figure #{post.itemname}
                     .row

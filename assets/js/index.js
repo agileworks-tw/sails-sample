@@ -222,21 +222,21 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
 
     if (!data.mode) {
       myApp.hideIndicator();
-      myApp.alert("", "Error")
+      myApp.alert("", "Please try again due to Internet issues :(")
       mainView.router.loadPage('/story')
       return false;
     }
 
     if (!data.hobby) {
       myApp.hideIndicator();
-      myApp.alert("", "Error")
+      myApp.alert("", "Please try again due to Internet issues :(")
       mainView.router.loadPage('/storyCategory')
       return false;
     }
 
     if (!data.detail || data.detail.title == "") {
       myApp.hideIndicator();
-      myApp.alert("Please enter a title", "Error")
+      myApp.alert("Don't forget to enter a nice title :)", "Error")
       return false;
     }
 
@@ -248,7 +248,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
 
     if(data.detail.price == ""){
       myApp.hideIndicator();
-      myApp.alert("Please input price","Error")
+      myApp.alert("Please give your item/service a nice price :)","Error")
       return false;
     }
 
