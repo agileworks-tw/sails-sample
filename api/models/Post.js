@@ -11,6 +11,10 @@ module.exports = {
     endDate: {
       type: Sequelize.DATEONLY
     },
+    price: {
+      type: Sequelize.INTEGER,
+      allowNull: false
+    },
     content: {
       type: Sequelize.STRING
     },

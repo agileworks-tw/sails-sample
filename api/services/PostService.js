@@ -21,6 +21,7 @@ module.exports = {
         title: data.detail.title,
         startDate: data.detail.startDate,
         endDate: data.detail.endDate,
+        price: data.detail.price,
         content: data.detail.content,
         mode: data.mode,
         ItemId: data.detail.radioItem || itme.id,

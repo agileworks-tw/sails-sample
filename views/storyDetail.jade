@@ -24,6 +24,10 @@
                 .item-inner
                   .item-input
                       input(type='text', name='endDate', placeholder='Your end date', readonly id='calendar-default2')
+              .item-content
+                .item-inner
+                  .item-input
+                      input(type='number', name='price', placeholder='input price')        
               -console.log(categoryItems.length);
               -var index = 0
               each item in categoryItems

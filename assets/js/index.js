@@ -178,6 +178,10 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function (e) {
     myApp.formStoreData('storyDetailChoose',storedData);
   });
 
+  $$("input[name='price']").on('input', function(){
+    var storedData = myApp.formToJSON('#storyDetailChoose');
+    myApp.formStoreData('storyDetailChoose',storedData);
+  });
 
   $$('#finishStep').click(function(){
     // {"mode":"give","hobby":"1","detail":{"title":"123","radioItem":"2","item":""},
@@ -225,6 +229,11 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function (e) {
       return false;
     }
 
+    if(data.detail.price == ""){
+      myApp.hideIndicator();
+      myApp.alert("Please input price","Error")
+      return false;
+    }
     var location = {};
     navigator.geolocation.getCurrentPosition(GetLocationAndSubmit);
 

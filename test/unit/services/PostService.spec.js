@@ -52,7 +52,7 @@ describe('about Post Service operation.', function() {
             "title": "123",
             "startDate": "2015-12-25",
             "endDate": "2015-12-31",
-
+            "price": "200",
             "radioItem": item.id,
             "item": ""
           },
@@ -82,7 +82,7 @@ describe('about Post Service operation.', function() {
             "title": "123",
             "startDate": "2015-12-25",
             "endDate": "2015-12-31",
-            "instruction": "instruction",
+            "price": "200",
             "item": "iphone7s"
           },
           "location": {
@@ -130,7 +130,7 @@ describe('about Post Service operation.', function() {
           title: "testTitle",
           startDate: "2015-12-25",
           endDate: "2015-12-31",
-          instruction: 'instruction',
+          price: "200",
           content: 'content',
           mode: "give",
           createdAt: "2015-12-15 10:09:07",
@@ -160,7 +160,7 @@ describe('about Post Service operation.', function() {
             title: "testTitle",
             startDate: "2015-12-25",
             endDate: "2015-12-31",
-            instruction: 'instruction',
+            price: "200",
             content: 'content',
             mode: "give",
             createdAt: "2015-12-15 10:09:07",
