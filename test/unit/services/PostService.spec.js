@@ -83,7 +83,7 @@ describe('about Post Service operation.', function() {
             "startDate": "2015-12-25",
             "endDate": "2015-12-31",
             "price": "200",
-            "item": "iphone7s"
+            "item": "iphone"
           },
           "location": {
             "latitude": 24.148657699999998,

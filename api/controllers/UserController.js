@@ -50,12 +50,27 @@ module.exports = {
       if(!isHasMail)
         res.redirect('/')
 
-      console.log("!!")
       let categorys =  await PostService.getAllCategory();
       res.view('hobby',{
         isHasMail,
         categorys
       });
+    } catch (e) {
+      sails.log.error(e);
+      res.serverError(e);
+    }
+  },
+
+  addUserFavorite: async (req, res) => {
+    try {
+      sails.log.info("=== addUserFavorite ===",req.param('id'));
+      let user = await UserService.getLoginUser();
+      let data = {
+        userId: user.id,
+        postId: req.param('id')
+      };
+      let result =  await UserService.addUserFavorite(data);
+      res.ok(result);
     } catch (e) {
       sails.log.error(e);
       res.serverError(e);
