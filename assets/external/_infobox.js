@@ -2,8 +2,8 @@ function drawInfobox(category, infoboxContent, json, i){
 
     if(json.data[i].color)          { var color = json.data[i].color }
         else                        { color = '' }
-    if( json.data[i].price )        { var price = '<div class="price">' + json.data[i].price +  '</div>' }
-        else                        { price = '' }
+    if( json.data[i].price )        { var price = '<div class="price">$' + json.data[i].price +  '</div>' }
+        else                        { price = '(no price now)' }
     if(json.data[i].id)             { var id = json.data[i].id }
         else                        { id = '' }
     if(json.data[i].url)            { var url = json.data[i].url }
@@ -19,6 +19,7 @@ function drawInfobox(category, infoboxContent, json, i){
 
     var ibContent = '';
     ibContent =
+   '<div class="favbox" ><a class="favboxa" data-id="'+id+'"><i class="fa fa-lg fa-heart"></i></a></div>' +
     '<div class="infobox ' + color + '">' +
         '<div class="inner">' +
             '<div class="image">' +
@@ -32,7 +33,7 @@ function drawInfobox(category, infoboxContent, json, i){
                 '</div>' +
                 '<a href="' + url +  '" class="description">' +
                     '<div class="meta">' +
-                        price +
+                         price +
                         '<h2>' + title +  '</h2>' +
                         '<figure>' + location +  '</figure>' +
                         '<i class="fa fa-angle-right"></i>' +

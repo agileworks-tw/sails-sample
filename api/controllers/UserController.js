@@ -2,8 +2,10 @@ module.exports = {
   index: async (req, res) => {
     try {
       let userLogin = await UserService.getLoginState(req);
+      let loginedUser = await UserService.getLoginUser(req);
       res.view('main',{
-        userLogin
+        userLogin,
+        loginedUser
       });
     } catch (e) {
       res.serverError(e);
@@ -64,7 +66,7 @@ module.exports = {
   addUserFavorite: async (req, res) => {
     try {
       sails.log.info("=== addUserFavorite ===",req.param('id'));
-      let user = await UserService.getLoginUser();
+      let user = await UserService.getLoginUser(req);
       let data = {
         userId: user.id,
         postId: req.param('id')

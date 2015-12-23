@@ -31,7 +31,8 @@ module.exports = {
         geometry: {
           type: 'Point',
           coordinates: [data.location.latitude,data.location.longitude]
-        }
+        },
+        images: data.images
       });
       return post;
     } catch (e) {
@@ -49,14 +50,16 @@ module.exports = {
           model: User
         }]
       });
-      sails.log.info(getPost[0]);
+      sails.log.info("getPost[0]=>",getPost[0]);
 
 
       let postArray = getPost.map((post) => {
-        let pic = post.Item.pic || '/img/items/1.jpg'
+        let pic = post.images || post.Item.pic || '/img/items/1.jpg'
         let data = {
+          id:post.id,
           title: post.title,
           mode: post.mode,
+          price: post.price,
           location : post.Item.itemname,
           latitude: post.latitude,
           longitude: post.longitude,
@@ -93,8 +96,9 @@ module.exports = {
       });
       sails.log.info(getPost);
 
-      let pic = getPost.Item.pic || '/img/items/1.jpg';
+      let pic = getPost.images || getPost.Item.pic || '/img/items/1.jpg';
       let data = {
+        id: getPost.id,
         title: getPost.title,
         mode: getPost.mode,
         location : getPost.Item.itemname,
