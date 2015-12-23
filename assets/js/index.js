@@ -126,6 +126,27 @@ $$(document).on('pageInit', '.page[data-page="storyCategory"]', function(e) {
 
 $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
 
+  // init f7-calendar
+  var now = new Date();
+  var calendarStartDate = myApp.calendar({
+    input: '#calendar-postPeriod',
+    rangePicker: true,
+    disabled: function(date) {
+      // enable today
+      if (date.getFullYear() == now.getFullYear() &&
+        date.getMonth() == now.getMonth() &&
+        date.getDate() == now.getDate()) {
+        return false;
+      }
+      // only enable future time
+      if (date.getTime() < now.getTime()) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  });
+
   $$('.radioItem').click(function() {
     $$('.checked').hide();
     $$("input[name='item']").val("");
@@ -157,9 +178,20 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     myApp.formStoreData('storyDetailChoose', storedData);
   });
 
+  $$("textarea[name='content']").on('input', function() {
+    var storedData = myApp.formToJSON('#storyDetailChoose');
+    myApp.formStoreData('storyDetailChoose', storedData);
+  });
+
+  $$("input[name='postPeriod']").on('change', function() {
+    var storedData = myApp.formToJSON('#storyDetailChoose');
+    myApp.formStoreData('storyDetailChoose', storedData);
+    console.log("period=>", $(this).val());
+  });
+
   $$("input[name='image']").on('change', function() {
-  // $("body").delegate(".uploadBtn", "change", function() {
-    console.log("!!!"+$(this).val());
+    // $("body").delegate(".uploadBtn", "change", function() {
+    console.log("!!!" + $(this).val());
     var storedData = myApp.formToJSON('#storyDetailChoose');
     myApp.formStoreData('storyDetailChoose', storedData);
   });
@@ -175,8 +207,12 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
 
     var data = {};
     data.mode = formMode.mode;
-    data.hobby= formHobby.hobby;
+    data.hobby = formHobby.hobby;
     data.detail = detail;
+
+    // re-assembling date period field.
+    data.detail.startDate = $("#calendar-postPeriod").val().split(" - ")[0];
+    data.detail.endDate = $("#calendar-postPeriod").val().split(" - ")[1];
 
     if (!data.mode) {
       myApp.hideIndicator();
@@ -198,8 +234,13 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
       return false;
     }
 
-    console.log(JSON.stringify(data));
+    // By default give today to startDate if use hasn't selsect period.
+    if (!data.detail.startDate) {
+      var now = new Date();
+      data.detail.startDate = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate();
+    }
 
+    console.log(JSON.stringify(data));
     var location = {};
     navigator.geolocation.getCurrentPosition(GetLocationAndSubmit);
 
@@ -213,17 +254,15 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
       data.location = location;
 
       var imageCount = $("input.upload").get(0).files.length;
-      console.log("imageCount=>",imageCount);
-      if ( (imageCount != null) && (imageCount > 0) ) {
+      if ((imageCount != null) && (imageCount > 0)) {
         saveImagesAndPost(data);
-      // } else {
-      //   savePost(data);
-      //   console.log("no-images");
+      } else {
+        savePost(data);
       }
+    } // end GetLocationAndSubmit
+  }); // end finishStep-click
 
-    }
-  });
-});
+}); // end storyDetail-pageInit
 
 
 function savePost(data) {
@@ -237,7 +276,7 @@ function savePost(data) {
       myApp.formDeleteData('storyModeChoose');
       myApp.formDeleteData('storyCategoryChoose');
       myApp.formDeleteData('storyDetailChoose');
-      window.location.href = '/';
+      window.location.href = '/main';
       myApp.hideIndicator();
     },
     error: function(xhr, ajaxOptions, thrownError) {
@@ -246,14 +285,13 @@ function savePost(data) {
       console.log(thrownError);
     }
   }); // end ajax
-
 }; // end savePost
 
 
 function saveImagesAndPost(data) {
   // submit to upload post image.
   var formData = new FormData($('form')[1]);
-  console.log("formData",formData);
+  console.log("formData", formData);
   $$.ajax({
     url: "/api/uploadImage",
     type: "POST",

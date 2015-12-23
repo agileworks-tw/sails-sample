@@ -45,6 +45,8 @@ describe('about Post Controller operation.', function() {
         "hobby": like.id,
         "detail": {
           "title": "123",
+          "startDate": "2015-12-25",
+          "endDate": "2015-12-31",
           "radioItem": item.id,
           "item": ""
         },
@@ -75,6 +77,8 @@ describe('about Post Controller operation.', function() {
         "hobby": like.id,
         "detail": {
           "title": "123",
+          "startDate": "2015-12-25",
+          "endDate": "2015-12-31",
           "item": "iphone7s"
         },
         "location": {

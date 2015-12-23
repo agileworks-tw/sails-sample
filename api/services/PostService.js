@@ -19,7 +19,9 @@ module.exports = {
 
       let post = await Post.create({
         title: data.detail.title,
-        content: '',
+        startDate: data.detail.startDate,
+        endDate: data.detail.endDate,
+        content: data.detail.content,
         mode: data.mode,
         ItemId: data.detail.radioItem || itme.id,
         UserId: user.id,
