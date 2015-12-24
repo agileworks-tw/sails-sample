@@ -1,5 +1,5 @@
 module.exports = {
-  findAll: async () => {
+  findAll: async() => {
     try {
       return await Item.findAll();
     } catch (e) {
@@ -8,9 +8,13 @@ module.exports = {
   },
 
 
-  create: async({LikeId,itemname}) => {
-    try{
-      let pic = await FlickrService.searchGetty(itemname);
+  create: async({
+    LikeId, itemname, pic
+  }) => {
+    try {
+      if (pic == undefined || pic == null) {
+        let pic = await FlickrService.searchGetty(itemname);
+      }
       let createItem = await Item.create({
         itemname: itemname,
         LikeId: LikeId,
@@ -23,9 +27,9 @@ module.exports = {
   },
 
   findByLikeId: async(id) => {
-    try{
+    try {
       let findlike = await Item.findAll({
-        where:{
+        where: {
           LikeId: id
         },
         order: 'quantity DESC'
