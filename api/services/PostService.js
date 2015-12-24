@@ -95,6 +95,7 @@ module.exports = {
 
       let pic = getPost.Item.pic || '/img/items/1.jpg';
       let data = {
+        id: getPost.id,
         title: getPost.title,
         mode: getPost.mode,
         location : getPost.Item.itemname,
