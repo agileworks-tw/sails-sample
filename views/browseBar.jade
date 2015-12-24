@@ -1,0 +1,29 @@
+extends ./layout
+
+block body
+  .views
+      .view.view-main.layout-white
+        .navbar
+          .navbar-inner
+            // We need cool sliding animation on title element, so we have additional "sliding" class
+            a.left.external(href='/')
+              img(src='/img/logo.png', alt='logo', style="height: 45px;")
+            //- a#nextSetp.right(href='/storyCategory', data-context="" disabled) Next
+        .pages
+          .page.navbar-fixed(data-page='browseBar')
+            iframe(src='http://localhost:1337/main', style="height: 100%; width: 100%;")
+            .page-content
+            .toolbar.tabbar.tabbar-labels
+              .toolbar-inner
+                a.tab-link.active(href='tab1')
+                  i.icon.demo-icon-1
+                  span.tabbar-label Label1
+                  a.tab-link(href='tab2')
+                    i.icon.demo-icon-2
+                    span.tabbar-label Label2
+                    a.tab-link(href='tab3')
+                      i.icon.demo-icon-3
+                      span.tabbar-label Label3
+                      a.tab-link(href='tab4')
+                        i.icon.demo-icon-4
+                        span.tabbar-label Label4
