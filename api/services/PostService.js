@@ -5,16 +5,20 @@ module.exports = {
 
       let user = UserService.getLoginUser(req);
 
-      let itme;
+      let item;
       if( !data.detail.radioItem ){
-        itme = await ItemService.create({
+        var itemData = {
           LikeId: data.hobby,
           itemname: data.detail.item
-        });
+        }
+        if(data.detail.images!=undefined || data.detail.images!=null){
+          itemData.pic = data.detail.images;
+        }
+        item = await ItemService.create(itemData);
       }else{
-        itme = await Item.findById(data.detail.radioItem );
-        itme.quantity++;
-        await itme.save();
+        item = await Item.findById(data.detail.radioItem);
+        item.quantity++;
+        await item.save();
       }
 
       let post = await Post.create({
@@ -24,7 +28,7 @@ module.exports = {
         price: data.detail.price,
         content: data.detail.content,
         mode: data.mode,
-        ItemId: data.detail.radioItem || itme.id,
+        ItemId: data.detail.radioItem || item.id,
         UserId: user.id,
         latitude: data.location.latitude,
         longitude: data.location.longitude,
