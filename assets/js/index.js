@@ -218,21 +218,21 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
 
     if (!data.mode) {
       myApp.hideIndicator();
-      myApp.alert("", "Please try again due to Internet issues :(")
-      mainView.router.loadPage('/story')
+      myApp.alert("", "Please try again due to Internet issues :(");
+      mainView.router.loadPage('/story');
       return false;
     }
 
     if (!data.hobby) {
       myApp.hideIndicator();
-      myApp.alert("", "Please try again due to Internet issues :(")
-      mainView.router.loadPage('/storyCategory')
+      myApp.alert("", "Please try again due to Internet issues :(");
+      mainView.router.loadPage('/storyCategory');
       return false;
     }
 
     if (!data.detail || data.detail.title == "") {
       myApp.hideIndicator();
-      myApp.alert("Don't forget to enter a nice title :)", "Error")
+      myApp.alert("Don't forget to enter a nice title :)", "Error");
       return false;
     }
 
@@ -246,14 +246,14 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     data.detail.startDate = $("#calendar-postPeriod").val().split(" - ")[0];
     data.detail.endDate = $("#calendar-postPeriod").val().split(" - ")[1];
 
-    if (data.detail.price == "") {
+    if (!data.detail.price || data.detail.price == "") {
       myApp.hideIndicator();
       myApp.alert("Please give your item/service a nice price :)", "Error")
       return false;
     }
 
     var location = {};
-    navigator.geolocation.getCurrentPosition(GetLocationAndSubmit);
+    navigator.geolocation.getCurrentPosition(GetLocationAndSubmit, GetNoGPSOrGetErr);
 
     function GetLocationAndSubmit(loc) {
       console.log(loc);
@@ -273,6 +273,13 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
         savePost(data);
       }
     } // end GetLocationAndSubmit
+
+    function GetNoGPSOrGetErr() {
+      myApp.hideIndicator();
+      myApp.alert('Due to internet connection issues, please try again later or check you GPS status. thank you.', 'Error');
+
+    } // end GetNoGPS
+
   }); // end finishStep-click
 
 }); // end storyDetail-pageInit
@@ -293,6 +300,7 @@ function savePost(data) {
       myApp.hideIndicator();
     },
     error: function(xhr, ajaxOptions, thrownError) {
+      myApp.hideIndicator();
       myApp.alert('Due to internet connection issues, please try again later or check you GPS status. thank you.', 'Error');
       console.log(xhr.status);
       console.log(thrownError);
@@ -314,10 +322,12 @@ function saveImagesAndPost(data) {
     contentType: false,
     processData: false,
     success: function(result) {
+      myApp.hideIndicator();
       data.images = result[0].src;
       savePost(data);
     },
     error: function(xhr, ajaxOptions, thrownError) {
+      myApp.hideIndicator();
       myApp.alert('due to internet issues, upload image failed.', 'Error');
       console.log(xhr.status);
       console.log(thrownError);
