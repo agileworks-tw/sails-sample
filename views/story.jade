@@ -21,4 +21,14 @@ block body
                   .col-100.selectMode
                     input(type='radio', name='mode', value='get', style="display: none;")
                     img(src='../img/get.png')
+            .toolbar.tabbar.tabbar-labels
+              .toolbar-inner
+                a.tab-link.active(href='/browseBar')
+                  img(src='/img/map.png', alt='map', style="height: 35px;")
+                a.tab-link(href='/postDetail')
+                  img(src='/img/list.png', alt='list', style="height: 35px;")
+                a.tab-link(href='/search')
+                  img(src='/img/search.png', alt='search', style="height: 35px;")
+                a.tab-link(href='/story')
+                  img(src='/img/build.png', alt='build', style="height: 35px;")
   block scripts

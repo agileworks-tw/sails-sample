@@ -11,19 +11,25 @@ block body
             //- a#nextSetp.right(href='/storyCategory', data-context="" disabled) Next
         .pages
           .page.navbar-fixed(data-page='browseBar')
-            iframe(src='http://localhost:1337/main', style="height: 100%; width: 100%;")
-            .page-content
+            //- iframe(src='http://localhost:1337/main', style="height: 100%; width: 100%;")
             .toolbar.tabbar.tabbar-labels
               .toolbar-inner
-                a.tab-link.active(href='tab1')
-                  i.icon.demo-icon-1
-                  span.tabbar-label Label1
-                  a.tab-link(href='tab2')
-                    i.icon.demo-icon-2
-                    span.tabbar-label Label2
-                    a.tab-link(href='tab3')
-                      i.icon.demo-icon-3
-                      span.tabbar-label Label3
-                      a.tab-link(href='tab4')
-                        i.icon.demo-icon-4
-                        span.tabbar-label Label4
+                a.tab-link.active(href='#tab1')
+                  img(src='/img/map.png', alt='map', style="height: 35px;")
+                a.tab-link(href='/postDetail')
+                  img(src='/img/list.png', alt='list', style="height: 35px;")
+                a.tab-link(href='/search')
+                  img(src='/img/search.png', alt='search', style="height: 35px;")
+                a.tab-link(href='/story')
+                  img(src='/img/build.png', alt='build', style="height: 35px;")
+            .page-content
+              .content-block
+                .tabs
+                 #tab1.tab.active
+                  iframe(src='http://localhost:1337/main', style="height: 100%; width: 100%;")
+                 #tab2.tab
+                  iframe(src='http://localhost:1337/postDetail', style="height: 100%; width: 100%;")
+                 #tab3.tab
+                  iframe(src='http://localhost:1337/search', style="height: 100%; width: 100%;")
+                 #tab4.tab
+                   iframe(src='http://localhost:1337/story', style="height: 100%; width: 100%;")     
