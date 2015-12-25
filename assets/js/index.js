@@ -216,10 +216,6 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     data.hobby = formHobby.hobby;
     data.detail = detail;
 
-    // re-assembling date period field.
-    data.detail.startDate = $("#calendar-postPeriod").val().split(" - ")[0];
-    data.detail.endDate = $("#calendar-postPeriod").val().split(" - ")[1];
-
     if (!data.mode) {
       myApp.hideIndicator();
       myApp.alert("", "Please try again due to Internet issues :(")
@@ -246,6 +242,10 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
       data.detail.startDate = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate();
     }
 
+    // re-assembling date period field.
+    data.detail.startDate = $("#calendar-postPeriod").val().split(" - ")[0];
+    data.detail.endDate = $("#calendar-postPeriod").val().split(" - ")[1];
+
     if(data.detail.price == ""){
       myApp.hideIndicator();
       myApp.alert("Please give your item/service a nice price :)","Error")
@@ -266,7 +266,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
 
       console.log(JSON.stringify(data));
 
-      var imageCount = $("input.upload").get(0).files.length;
+      var imageCount = $("input.uploadBtn").get(0).files.length;
       if ((imageCount != null) && (imageCount > 0)) {
         saveImagesAndPost(data);
       } else {

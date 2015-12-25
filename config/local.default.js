@@ -6,7 +6,7 @@ module.exports = {
   connections:{
     mysql: {
       'user': process.env.MYSQL_ENV_MYSQL_USER_NAME || "admin",
-      'password': process.env.MYSQL_ENV_MYSQL_USER_PASS || "root",
+      'password': process.env.MYSQL_ENV_MYSQL_ADMIN_PASS || "root",
       'database': process.env.MYSQL_ENV_MYSQL_USER_DB ||'trademuch',
       'dialect': 'mysql',
       options: {

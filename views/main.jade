@@ -30,6 +30,11 @@ head
               .wrapper
                 ul.main-navigation.navigation-top-header
                 ul.main-navigation
+                  a.submit-item.checkResults(href='#!')
+                    .content
+                      span Item list
+                    .icon
+                      i.fa.fa-bars
                 -if (!userLogin) 
                   a.submit-item(href='/auth/facebook') 
                     .content
@@ -114,8 +119,18 @@ head
               .items-list
                 .inner
                   header
-                    h3 Results
+                    h3#results Results
                   ul.results.list
+                  .header
+                    .wrapper
+                      nav.navigation-items
+                        .wrapper
+                          ul.main-navigation
+                            a.submit-item.checkTop(href='#!') back to top
+                              .content
+                                span back to top
+                              .icon
+                                i.fa.fa-angle-double-up
                 // results
               // end Items List
             // end Map Canvas
@@ -139,6 +154,7 @@ head
         script(type='text/javascript', src='/js/map/custom.js')
         script(type='text/javascript', src='/js/map/maps.js')
         script(type='text/javascript', src='/js/favbox.js')
+        script(type='text/javascript', src='/js/main.js')
         script.
           var _latitude = 51.541216;
           var _longitude = -0.095678;
