@@ -5,6 +5,7 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "connectsdk": "^1.0.4",
     "ejs": "~0.8.4",
     "grunt": "0.4.2",
     "grunt-contrib-clean": "~0.5.0",
@@ -34,8 +35,7 @@
     "sails-hook-sequelize": "^1.0.1",
     "sinon": "^1.16.1",
     "sqlite3": "^3.1.1",
-    "validator": "^4.3.0",
-    "connectsdk": "^1.0.4"
+    "validator": "^4.3.0"
   },
   "scripts": {
     "debug": "node debug app.js",
@@ -50,6 +50,7 @@
   "license": "",
   "devDependencies": {
     "chai": "^3.4.1",
+    "grunt-cli": "^0.1.13",
     "grunt-bower-task": "^0.4.0",
     "grunt-contrib-sass": "^0.9.2",
     "grunt-mocha-istanbul": "^3.0.1",
