@@ -328,12 +328,12 @@ function saveImagesAndPost(data) {
 
 // Show/hide preloader for remote ajax loaded pages
 // Probably should be removed on a production/local app
-// $$(document).on('ajaxStart', function(e) {
-//   myApp.showIndicator();
-// });
-// $$(document).on('ajaxComplete', function() {
-//   myApp.hideIndicator();
-// });
+$$(document).on('ajaxStart', function(e) {
+  myApp.showIndicator();
+});
+$$(document).on('ajaxComplete', function() {
+  myApp.hideIndicator();
+});
 
 
 /* ===== Change statusbar bg when panel opened/closed ===== */
