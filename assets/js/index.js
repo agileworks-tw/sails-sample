@@ -197,12 +197,12 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     myApp.formStoreData('storyDetailChoose', storedData);
   });
 
-  $$("input[name='price']").on('input', function(){
+  $$("input[name='price']").on('input', function() {
     var storedData = myApp.formToJSON('#storyDetailChoose');
-    myApp.formStoreData('storyDetailChoose',storedData);
+    myApp.formStoreData('storyDetailChoose', storedData);
   });
 
-  $$('#finishStep').click(function(){
+  $$('#finishStep').click(function() {
     // {"mode":"give","hobby":"1","detail":{"title":"123","radioItem":"2","item":""},
     // "location":{"latitude":24.148657699999998,"longitude":120.67413979999999,"accuracy":30}}
     myApp.showIndicator();
@@ -246,9 +246,9 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     data.detail.startDate = $("#calendar-postPeriod").val().split(" - ")[0];
     data.detail.endDate = $("#calendar-postPeriod").val().split(" - ")[1];
 
-    if(data.detail.price == ""){
+    if (data.detail.price == "") {
       myApp.hideIndicator();
-      myApp.alert("Please give your item/service a nice price :)","Error")
+      myApp.alert("Please give your item/service a nice price :)", "Error")
       return false;
     }
 
