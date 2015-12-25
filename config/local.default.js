@@ -36,5 +36,9 @@ module.exports = {
   },
   uploadImage: {
     dirname: '../public/images/upload'
+  },
+  appn:{
+    key: '',
+    secret: ''
   }
 }

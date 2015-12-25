@@ -2,8 +2,8 @@ var util = require('util');
 var crypto = require('crypto');
 var _ = require('lodash');
 
-let key = 'VO0CvjP9ld2lJn0hIrHO4lmt6EgWX1KqF8sz';
-let secret = 'FkiQXEWDfLcJb55oXFI6uiwonHY1XnxaNTri';
+let key = sails.config.appn.key;
+let secret = sails.config.appn.secret;
 
 module.exports = {
 

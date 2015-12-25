@@ -49,7 +49,7 @@ describe('about Flickr Service operation.', function() {
         sails.log.info("@@@@@@@@@@@",check);
 
         data.check_value = check;
-        data.API_Key =  'VO0CvjP9ld2lJn0hIrHO4lmt6EgWX1KqF8sz';
+        data.API_Key =  sails.config.appn.key;
         console.log(data);
 
         let result = await request('https://zoomnow.net')
