@@ -19,8 +19,8 @@ link(rel='stylesheet', href='styles/css/storyDetail.css', type='text/css')
                   .item-input.fileUpload-input
                     .fileUpload.btn.btn-primary
                       span Upload photos
-                      input.uploadBtn.upload(form='storyImageUpload' type='file', name='image')
-          
+                      input#imgUpload.uploadBtn.upload(form='storyImageUpload', type='file', accept="image/*", name='image', capture)
+          script(type='text/javascript', src='/js/storyDetail.js')
           form#storyDetailChoose
             .list-block
               .item-content
@@ -63,7 +63,7 @@ link(rel='stylesheet', href='styles/css/storyDetail.css', type='text/css')
               //-   .col-50.tablet-50.radioItem 電腦
               //-     input(type='radio', name='radioItem', value='2')
               //- .row
-              //-   .col-50.tablet-50.radioItem 筆電
+              / /-   .col-50.tablet-50.radioItem 筆電
               //-     input(type='radio', name='radioItem', value='1')
               //-   .col-50.tablet-50.radioItem 筆電
               //-     input(type='radio', name='radioItem', value='1')
@@ -74,4 +74,5 @@ link(rel='stylesheet', href='styles/css/storyDetail.css', type='text/css')
               .item-content
                 .item-inner
                   .item-input
-                    textarea(name='content',placeholder='Enter items instruction !')
+                    textarea(name='content',placeholder='Enter items instruction !')            
+    

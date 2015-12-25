@@ -100,3 +100,8 @@ div.favbox > a > i {
 #outer-wrapper #page-canvas{
   height: auto;
 }
+
+/* hotfix for item result list height */
+.items-list .inner .results,.items-list .inner {
+  height: auto;
+}

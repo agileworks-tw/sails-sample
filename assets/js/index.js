@@ -216,10 +216,6 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     data.hobby = formHobby.hobby;
     data.detail = detail;
 
-    // re-assembling date period field.
-    data.detail.startDate = $("#calendar-postPeriod").val().split(" - ")[0];
-    data.detail.endDate = $("#calendar-postPeriod").val().split(" - ")[1];
-
     if (!data.mode) {
       myApp.hideIndicator();
       myApp.alert("", "Please try again due to Internet issues :(")
@@ -245,6 +241,11 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
       var now = new Date();
       data.detail.startDate = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate();
     }
+
+    // re-assembling date period field.
+    data.detail.startDate = $("#calendar-postPeriod").val().split(" - ")[0];
+    data.detail.endDate = $("#calendar-postPeriod").val().split(" - ")[1];
+
 
     if(data.detail.price == ""){
       myApp.hideIndicator();
@@ -328,12 +329,12 @@ function saveImagesAndPost(data) {
 
 // Show/hide preloader for remote ajax loaded pages
 // Probably should be removed on a production/local app
-$$(document).on('ajaxStart', function(e) {
-  myApp.showIndicator();
-});
-$$(document).on('ajaxComplete', function() {
-  myApp.hideIndicator();
-});
+// $$(document).on('ajaxStart', function(e) {
+//   myApp.showIndicator();
+// });
+// $$(document).on('ajaxComplete', function() {
+//   myApp.hideIndicator();
+// });
 
 
 /* ===== Change statusbar bg when panel opened/closed ===== */
