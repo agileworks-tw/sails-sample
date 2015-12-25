@@ -17,10 +17,11 @@ link(rel='stylesheet', href='styles/css/storyDetail.css', type='text/css')
               .item-content
                 .item-inner
                   .item-input.fileUpload-input
-                    .fileUpload.btn.btn-primary
+                    .btn.btn-primary.fileUpload-btn
                       span Upload photos
-                      input.uploadBtn.upload(form='storyImageUpload' type='file', name='image')
-          
+                      input.uploadBtn(form='storyImageUpload', type='file', accept="image/*", name='image', capture)
+                    img.preview 
+          script(type='text/javascript', src='/js/storyDetail.js')
           form#storyDetailChoose
             .list-block
               .item-content
@@ -34,7 +35,7 @@ link(rel='stylesheet', href='styles/css/storyDetail.css', type='text/css')
               .item-content
                 .item-inner
                   .item-input
-                      input(type='number', name='price', placeholder='Give a price') 
+                    input(type='tel', pattern="\d*", name='price', placeholder='Give a price') 
               -console.log(categoryItems.length);
               -var index = 0
               each item in categoryItems
@@ -74,4 +75,5 @@ link(rel='stylesheet', href='styles/css/storyDetail.css', type='text/css')
               .item-content
                 .item-inner
                   .item-input
-                    textarea(name='content',placeholder='Enter items instruction !')
+                    textarea(name='content',placeholder='Enter items instruction !')            
+    

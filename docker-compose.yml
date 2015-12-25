@@ -1,7 +1,7 @@
 build:
-  container_name: sailsSample_build
+  container_name: trademuch
   image: miiixr/picklete_env
-  command: "/bin/bash -l -c 'npm i && node_modules/.bin/grunt buildDev'"
+  command: "/bin/bash -l -c 'npm i && node_modules/.bin/grunt'"
 
   working_dir: /sailsSample
   volumes:
@@ -15,6 +15,7 @@ test:
     service: test
 
   external_links:
+
     - mysql
 
   working_dir: /picklete
@@ -22,7 +23,7 @@ test:
     - ./:/picklete
 
 web:
-  container_name: sailsSample
+  contianer_name: trademuch
   image: miiixr/picklete_env
   extends:
     file: ./dockerConfig/development.yml

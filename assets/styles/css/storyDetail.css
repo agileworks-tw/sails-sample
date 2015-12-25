@@ -1,16 +1,30 @@
-.fileUpload {
-  top:-20px;
+/* fileUpload-input */
+div.fileUpload-input {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 1px;
+}
+div.fileUpload-input > img {
+  max-width: 100%;
+  max-height: 150px;
+  border-color: rgba(69, 69, 69, 0.89);
+  border-width: 1px;
+  border-style: outset;
+  display: none;
+}
+div.fileUpload-btn {
+  top: -20px;
   position: relative;
   overflow: hidden;
   margin: 10px;
 }
-.fileUpload > span {
+div.fileUpload-btn > span {
   padding-top: 30px;
   padding-bottom: 30px;
   padding-left: 60px;
   padding-right: 60px;
 }
-.fileUpload input.upload, input.submit {
+div.fileUpload-btn > input.uploadBtn, input.submit {
   position: absolute;
   top: 0;
   right: 0;
@@ -20,9 +34,6 @@
   cursor: pointer;
   opacity: 0;
   filter: alpha(opacity=0);
-}
-.fileUpload-input {
-  text-align: center;
 }
 input#uploadFile {
   margin-bottom: 10px;
