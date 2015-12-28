@@ -1,0 +1,155 @@
+doctype html(lang='en-US')
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width = device-width, initial-scale = 1.0, minimum-scale = 1, maximum-scale = 1, user-scalable = no')
+  meta(name='apple-mobile-web-app-capable', content='yes')
+  meta(name='mobile-web-app-capable', content='yes')
+  meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
+  link(href='/fonts/font-awesome.css', rel='stylesheet', type='text/css')
+  link(href='http://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+  link(rel='stylesheet', href='styles/bootstrap/css/bootstrap.min.css', type='text/css')
+  link(rel='stylesheet', href='styles/mapCss/bootstrap-select.min.css', type='text/css')
+  link(rel='stylesheet', href='styles/mapCss/owl.carousel.css', type='text/css')
+  link(rel='stylesheet', href='styles/mapCss/jquery.mCustomScrollbar.css', type='text/css')
+  link(rel='stylesheet', href='styles/mapCss/style.css', type='text/css')
+  link(rel='stylesheet', href='styles/mapCss/colors/blue.css', type='text/css')
+  link(rel='stylesheet', href='styles/mapCss/user.style.css', type='text/css')
+  link(rel='stylesheet', href='styles/mapCss/index.css', type='text/css')
+  title Spotter - Universal Directory Listing HTML Template
+  body#page-top.map-fullscreen.page-homepage.navigation-off-canvas(onunload='')
+    // Outer Wrapper
+    //- #splash
+    //-   img(src='../img/logo.png', alt='logo')
+    #outer-wrapper
+      // Inner Wrapper
+      #inner-wrapper
+        // Navigation
+        .header
+          //- .wrapper
+          //-   .brand
+          //-     a(href='/')
+          //-       img(src='../img/logo.png', alt='logo' style="height: 45px;")
+        //-     nav.navigation-items
+        //-       .wrapper
+        //-         ul.main-navigation.navigation-top-header
+        //-         ul.main-navigation
+        //-           a.submit-item.checkResults(href='#!')
+        //-             .content
+        //-               span Item list
+        //-             .icon
+        //-               i.fa.fa-bars
+        //-         -if (!userLogin) 
+        //-           a.submit-item(href='/auth/facebook') 
+        //-             .content
+        //-               span Login!
+        //-             .icon
+        //-               i.fa.fa-sign-in
+        //-         -else
+        //-           a.submit-item(href='/story')
+        //-             .content
+        //-               span Submit Your Item
+        //-             .icon
+        //-               i.fa.fa-plus
+        //-         //- .toggle-navigation
+        //-         //-   .icon
+        //-         //-     .line
+        //-         //-     .line
+        //-         //-     .line
+        //- // end Navigation
+        // Page Canvas
+        #page-canvas
+          // Off Canvas Navigation
+          nav.off-canvas-navigation
+            header Navigation
+            .main-navigation.navigation-off-canvas
+          // end Off Canvas Navigation
+          // Page Content
+          #page-content
+            // Map Canvas
+            .map-canvas.list-width-30
+              // Map
+              .map
+                // find-my-loc 
+                .location     
+                  span.input-group-addon.find-my-loc.geolocation
+                    i.fa.fa-map-marker.geolocation(data-toggle='tooltip', data-placement='bottom', title='Find my position')
+                // end find-my-loc
+                .toggle-navigation
+                  .icon
+                    .line
+                    .line
+                    .line
+                // /.toggle-navigation
+                #map.has-parallax       
+            
+              
+              // Items List
+              //- .items-list
+              //-   .inner
+              //-     header
+              //-       h3#results Results
+              //-     ul.results.list
+              //-     .header
+              //-       .wrapper
+              //-         nav.navigation-items
+              //-           .wrapper
+              //-             ul.main-navigation
+              //-               a.submit-item.checkTop(href='#!') back to top
+              //-                 .content
+              //-                   span back to top
+              //-                 .icon
+              //-                   i.fa.fa-angle-double-up
+                // results
+              // end Items List
+            // end Map Canvas
+          // end Inner Wrapper
+        // end Outer Wrapper
+        script(type='text/javascript', src='/js/map/jquery-2.1.0.min.js')
+        script(type='text/javascript', src='/js/map/before.load.js')
+        script(type='text/javascript', src='/js/map/jquery-migrate-1.2.1.min.js')
+        script(type='text/javascript', src='/styles/bootstrap/js/bootstrap.min.js')
+        script(type='text/javascript', src='/js/map/smoothscroll.js')
+        script(type='text/javascript', src='/js/map/bootstrap-select.min.js')
+        script(type='text/javascript', src='/js/map/jquery.hotkeys.js')
+        script(type='text/javascript', src='/js/map/jquery.nouislider.all.min.js')
+        script(type='text/javascript', src='/js/map/jquery.mCustomScrollbar.concat.min.js')
+        // removed sensor paramate to avoid warring.
+        //- script(type='text/javascript', src='http://maps.google.com/maps/api/js?sensor=false&libraries=places')
+        script(type='text/javascript', src='http://maps.google.com/maps/api/js?libraries=places')
+        script(type='text/javascript', src='/js/map/infobox.js')
+        script(type='text/javascript', src='/js/map/richmarker-compiled.js')
+        script(type='text/javascript', src='/js/map/markerclusterer.js')
+        script(type='text/javascript', src='/js/map/custom.js')
+        script(type='text/javascript', src='/js/map/maps.js')
+        script(type='text/javascript', src='/js/favbox.js')
+        script(type='text/javascript', src='/js/main.js')
+        script.
+          var _latitude = 51.541216;
+          var _longitude = -0.095678;
+          //- var jsonPath = '/json/items.json.txt';
+          // Load JSON data and create Google Maps
+          $.ajax({
+            url: "/getAllPost",
+            type:"POST",
+            success: function(json){
+              console.log(json);
+              createHomepageGoogleMap(_latitude,_longitude,json);
+            },
+            error:function(xhr, ajaxOptions, thrownError){
+              console.log(xhr.status);
+              console.log(thrownError);
+            }
+          });
+          //- $.getJSON(jsonPath)
+          //- .done(function(json) {
+          //-   createHomepageGoogleMap(_latitude,_longitude,json);
+          //- })
+          //- .fail(function( jqxhr, textStatus, error ) {
+          //-   console.log(error);
+          //- });
+          // Set if language is RTL and load Owl Carousel
+          $(window).load(function(){
+          var rtl = false; // Use RTL
+            initializeOwl(rtl);
+          });
+          autoComplete();

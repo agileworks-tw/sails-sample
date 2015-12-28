@@ -36,8 +36,12 @@
      view: 'index2'
    },
 
-   '/browseBar': {
-     view: 'browseBar'
+   '/main': {
+     view: 'main'
+   },
+
+   '/map': {
+     view: 'map'
    },
 
    '/': {

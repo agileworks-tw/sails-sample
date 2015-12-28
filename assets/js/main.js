@@ -10,6 +10,9 @@ $(".checkTop").click(function(e) {
   goToByScroll("page-top");
 });
 
+/*
+ * search form submit event and button
+ */
 $("#formSearch").on('submit', function(e) {
   var keyword = $(".searchbar-input > input").val();
   if (keyword) {
@@ -20,8 +23,6 @@ $("#formSearch").on('submit', function(e) {
   }
 }); // end on
 
-
-// search button
 $("#search-btn").click(function(e) {
   var keyword = $(".searchbar-input > input").val();
   if (keyword) {
@@ -32,7 +33,9 @@ $("#search-btn").click(function(e) {
   }
 }); // end click
 
-/* ====================================================================== */
+/*
+ *
+ */
 
 function goToByScroll(id) {
   // Remove "link" from the ID
