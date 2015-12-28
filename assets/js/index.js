@@ -237,14 +237,14 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     }
 
     // By default give today to startDate if use hasn't selsect period.
-    if (!data.detail.startDate) {
+    if (!data.detail.startDate || data.detail.startDate==undefined) {
       var now = new Date();
       data.detail.startDate = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate();
+    } else {
+      // re-assembling date period field.
+      data.detail.startDate = $("#calendar-postPeriod").val().split(" - ")[0];
+      data.detail.endDate = $("#calendar-postPeriod").val().split(" - ")[1];
     }
-
-    // re-assembling date period field.
-    data.detail.startDate = $("#calendar-postPeriod").val().split(" - ")[0];
-    data.detail.endDate = $("#calendar-postPeriod").val().split(" - ")[1];
 
     if (!data.detail.price || data.detail.price == "") {
       myApp.hideIndicator();
@@ -260,8 +260,8 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
 
     var options = {
       enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 5000
+      timeout: 2500,
+      maximumAge: 2500
     };
 
     function success(loc) {
@@ -281,32 +281,32 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
         type: 'POST',
         dataType: 'jsonp',
         success: function(loc) {
-          myApp.hideIndicator();
-          console.log("geoip location=>", location);
+          console.log("geoip location=>", loc);
           location = {
             latitude: loc.lat,
             longitude: loc.lon,
-            accuracy: 500
+            accuracy: 5000
           }
           data.location = location;
+          submit();
         },
         error: function(err) {
-          myApp.hideIndicator();
+          // to-do
           // if get geoip's data failed then give a default loaciotn from user setting.
           location = {
             latitude: 51.541216,
             longitude: -0.095678,
-            accuracy: 500
+            accuracy: 5000
           }
           data.location = location;
+          submit();
         }
       });
       // submit after get location either geoip or default.
-      submit();
     } // end GetNoGPS
 
     function submit() {
-      console.log(JSON.stringify(data));
+      console.log("data before submit=>", (data));
       var imageCount = $("input.uploadBtn").get(0).files.length;
       if ((imageCount != null) && (imageCount > 0)) {
         saveImagesAndPost(data);
@@ -316,7 +316,6 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     }
 
   }); // end finishStep-click
-
 }); // end storyDetail-pageInit
 
 
