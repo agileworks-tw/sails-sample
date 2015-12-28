@@ -1,35 +1,92 @@
 extends ./layout
 
 block body
-  .views
-      .view.view-main.layout-white
-        .navbar
-          .navbar-inner
-            // We need cool sliding animation on title element, so we have additional "sliding" class
-            a.left.external(href='/')
-              img(src='/img/logo.png', alt='logo', style="height: 45px;")
-            //- a#nextSetp.right(href='/storyCategory', data-context="" disabled) Next
-        .pages
-          .page.navbar-fixed(data-page='browseBar')
-            //- iframe(src='http://localhost:1337/main', style="height: 100%; width: 100%;")
-            .toolbar.tabbar.tabbar-labels
-              .toolbar-inner
-                a.tab-link.active(href='#tab1')
-                  img(src='/img/map.png', alt='map', style="height: 35px;")
-                a.tab-link(href='/postDetail')
-                  img(src='/img/list.png', alt='list', style="height: 35px;")
-                a.tab-link(href='/search')
-                  img(src='/img/search.png', alt='search', style="height: 35px;")
-                a.tab-link(href='/story')
-                  img(src='/img/build.png', alt='build', style="height: 35px;")
-            .page-content
-              .content-block
-                .tabs
-                 #tab1.tab.active
-                  iframe(src='http://localhost:1337/main', style="height: 100%; width: 100%;")
-                 #tab2.tab
-                  iframe(src='http://localhost:1337/postDetail', style="height: 100%; width: 100%;")
-                 #tab3.tab
-                  iframe(src='http://localhost:1337/search', style="height: 100%; width: 100%;")
-                 #tab4.tab
-                   iframe(src='http://localhost:1337/story', style="height: 100%; width: 100%;")     
+  .views.tabs.toolbar-through.layout-white
+    #mapView.view.view-main.tab.active
+      .navbar
+        .navbar-inner
+          a.left.external(href='/')
+            img(src='/img/logo.png', alt='logo', style="height: 45px;")
+      .pages.navbar-through
+        .page.no-swipeback(data-page='mapView')
+          .page-content
+            iframe(src='http://localhost:1337/main', style="height: 100%; width: 100%;")  
+          // We need cool sliding animation on title element, so we have additional "sliding" class
+    #mapView.view.tab
+      .navbar
+        .navbar-inner
+          .center.sliding.i18n(data-i18n='app.name')
+      .pages.navbar-through
+        .page.no-swipeback(data-page='mapView')
+          .page-content                
+    #listView.view.tab
+      .navbar
+        .navbar-inner
+          a.left.external(href='/')
+            img(src='/img/logo.png', alt='logo', style="height: 45px;")
+          .center.sliding.i18n(data-i18n='app.name')
+      .pages.navbar-through
+        .page(data-page='listView').page-content
+          .card.demo-card-header-pic
+            .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
+            .card-content
+              .card-content-inner
+                p.color-gray Posted on January 21, 2015
+                p Quisque eget vestibulum nulla...
+            .card-footer
+              a.link(href='#') Like
+          .card.demo-card-header-pic
+            .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
+            .card-content
+              .card-content-inner
+                p.color-gray Posted on January 21, 2015
+                p Quisque eget vestibulum nulla...
+            .card-footer
+              a.link(href='#') Like
+          .card.demo-card-header-pic
+            .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
+            .card-content
+              .card-content-inner
+                p.color-gray Posted on January 21, 2015
+                p Quisque eget vestibulum nulla...
+            .card-footer
+              a.link(href='#') Like            
+    #searchView.view.tab
+      .navbar
+        .navbar-inner
+          a.left.external(href='/')
+            img(src='/img/logo.png', alt='logo', style="height: 45px;")
+          .center.sliding.i18n(data-i18n='app.name')
+      .pages.navbar-through
+        .page(data-page='searchView')
+          // Search bar
+          form.searchbar
+           .searchbar-input
+             input.i18n(type='search', data-i18n='[placeholder]global.search')
+             a.searchbar-clear(href='#')
+           a.searchbar-cancel.i18n(href='#', data-i18n='global.cancel')
+          // Search bar overlay
+          .searchbar-overlay
+          .page-content
+            .list-block.contacts-list.searchbar-found
+              .list-group
+                ul    
+            .content-block.searchbar-not-found.i18n(data-i18n='index.nothing_found')
+    #buildView.view.tab
+      .navbar
+        .navbar-inner
+          .center.sliding.i18n(data-i18n='app.name')
+      .pages.navbar-through
+        //- .page.navbar-fixed(data-page='buildView')
+        .page.no-swipeback(data-page='buildView')
+          .page-content
+    .toolbar.tabbar.tabbar-labels
+      .toolbar-inner
+        a.tab-link.active(href='#mapView')
+          img(src='/img/map.png', alt='map', style="height: 35px;")  
+        a.tab-link(href='#listView')
+          img(src='/img/list.png', alt='list', style="height: 35px;")
+        a.tab-link(href='#searchView')
+          img(src='/img/search.png', alt='search', style="height: 35px;")
+        a.tab-link(href='/story')
+          img(src='/img/build.png', alt='build', style="height: 35px;")
