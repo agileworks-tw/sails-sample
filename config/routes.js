@@ -36,6 +36,10 @@ module.exports.routes = {
     view: 'index2'
   },
 
+  '/browseBar': {
+    view: 'browseBar'
+  },
+
   '/': {
     view: 'index'
   },
