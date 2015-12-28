@@ -39,9 +39,9 @@ module.exports = {
     try {
       var keyword = req.param('keyword');
       console.log("==== getPostByKeyword ===", keyword);
-      let results = await PostService.getPostByKeyword(keyword);
+      let items = await PostService.getPostByKeyword(keyword);
       res.ok({
-        results
+        items
       });
     } catch (e) {
       sails.log.error(e);

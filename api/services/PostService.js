@@ -158,19 +158,10 @@ module.exports = {
           }]
         });
         // // sails.log.info(getPost);
-        // console.log("getPost.images==>",getPost.images);
-        // console.log("getPost[0].Item==>",getPost[0].Item);
-        // console.log("getPost[0].Item.pic==>",getPost[0].Item.pic);
-
         var data = [];
-
         getPosts.forEach(function(post) {
-
-          console.log("this post title=>", post.title);
-          console.log("this item itemname=>", post.Item.itemname);
-
-
-          let pic = post.images || post.Item.pic || '/img/items/1.jpg';
+          let pic = post.images || post.Item.pic;
+          if(!pic) pic = '/img/items/1.jpg';
           data.push({
             id: post.id,
             price: post.price,
@@ -188,10 +179,8 @@ module.exports = {
             email: post.User.email,
             itemname: post.Item.itemname,
           });
-
-        });
+        }); // end forEach
         console.log("data length=>", data.length);
-
         return data;
       } catch (e) {
         throw e;
