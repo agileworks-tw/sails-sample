@@ -1,3 +1,5 @@
+
+link(rel='stylesheet', href='styles/css/storyDetail.css', type='text/css')
 .navbar
     .navbar-inner
         .left
@@ -10,6 +12,16 @@
       .page.navbar-fixed(data-page='storyDetail')
         .page-content
           -console.log(categoryItems);
+          form#storyImageUpload
+            .list-block
+              .item-content
+                .item-inner
+                  .item-input.fileUpload-input
+                    .btn.btn-primary.fileUpload-btn
+                      span Upload photos
+                      input.uploadBtn(form='storyImageUpload', type='file', accept="image/*", name='image', capture)
+                    img.preview 
+          script(type='text/javascript', src='/js/storyDetail.js')
           form#storyDetailChoose
             .list-block
               .item-content
@@ -19,15 +31,12 @@
               .item-content
                 .item-inner
                   .item-input
-                      input(type='text', name='startDate', placeholder='Your post date', readonly id='calendar-default')
+                    input(type='tel', pattern="\d*", name='price', placeholder='Give a price')
               .item-content
                 .item-inner
                   .item-input
-                      input(type='text', name='endDate', placeholder='Your end date', readonly id='calendar-default2')
-              .item-content
-                .item-inner
-                  .item-input
-                      input(type='number', name='price', placeholder='input price')        
+                    input(type='text', name='postPeriod', placeholder='Posting period', id='calendar-postPeriod', readonly)
+   
               -console.log(categoryItems.length);
               -var index = 0
               each item in categoryItems
@@ -67,4 +76,5 @@
               .item-content
                 .item-inner
                   .item-input
-                    textarea(name='content',placeholder='Enter items instruction !')
+                    textarea(name='content',placeholder='Enter items instruction !')            
+    

@@ -36,6 +36,11 @@ module.exports = {
       allowNull: true,
       defaultValue: null,
       validate: { min: -180, max: 180 }
+    },
+    images:{
+      type:Sequelize.STRING,
+      allowNull: true,
+      defaultValue: null
     }
   },
   associations: function() {

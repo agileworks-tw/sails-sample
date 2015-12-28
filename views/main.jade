@@ -1,7 +1,10 @@
 doctype html(lang='en-US')
 head
   meta(charset='UTF-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  meta(name='viewport', content='width = device-width, initial-scale = 1.0, minimum-scale = 1, maximum-scale = 1, user-scalable = no')
+  meta(name='apple-mobile-web-app-capable', content='yes')
+  meta(name='mobile-web-app-capable', content='yes')
+  meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
   link(href='/fonts/font-awesome.css', rel='stylesheet', type='text/css')
   link(href='http://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
   link(rel='stylesheet', href='styles/bootstrap/css/bootstrap.min.css', type='text/css')
@@ -30,14 +33,18 @@ head
               .wrapper
                 ul.main-navigation.navigation-top-header
                 ul.main-navigation
-                #{userLogin}
+                  a.submit-item.checkResults(href='#!')
+                    .content
+                      span Item list
+                    .icon
+                      i.fa.fa-bars
                 -if (!userLogin) 
                   a.submit-item(href='/auth/facebook') 
                     .content
                       span Login!
                     .icon
                       i.fa.fa-sign-in
-                -else 
+                -else
                   a.submit-item(href='/story')
                     .content
                       span Submit Your Item
@@ -73,50 +80,25 @@ head
                     .line
                     .line
                 // /.toggle-navigation
-                #map.has-parallax        
-                // /#map
-                //- .search-bar.horizontal
-                //-   form.main-search.border-less-inputs(role='form', method='post')
-                //-     .input-row
-                //-       .form-group
-                //-         input#keyword.form-control(type='text', placeholder='Enter Keyword')
-                //-       // /.form-group
-                //-       .form-group
-                //-         .input-group.location
-                //-           input#location.form-control(type='text', placeholder='Enter Location')
-                //-           span.input-group-addon
-                //-             i.fa.fa-map-marker.geolocation(data-toggle='tooltip', data-placement='bottom', title='Find my position')
-                //-       // /.form-group
-                //-       .form-group
-                //-         select(name='category', multiple='', title='Select Category', data-live-search='true')
-                //-           option(value='1') Stores
-                //-           option.sub-category(value='2') Apparel
-                //-           option.sub-category(value='3') Computers
-                //-           option.sub-category(value='4') Nature
-                //-           option(value='5') Tourism
-                //-           option(value='6') Restaurant &amp; Bars
-                //-           option.sub-category(value='7') Bars
-                //-           option.sub-category(value='8') Vegetarian
-                //-           option.sub-category(value='9') Steak &amp; Grill
-                //-           option(value='10') Sports
-                //-           option.sub-category(value='11') Cycling
-                //-           option.sub-category(value='12') Water Sports
-                //-           option.sub-category(value='13') Winter Sports
-                //-       // /.form-group
-                //-       .form-group
-                //-         button.btn.btn-default(type='submit')
-                //-           i.fa.fa-search
-                //-       // /.form-group
-                //-     // /.input-row
-                //-   // /.main-search
-                //- // /.search-bar
-              // end Map
+                #map.has-parallax       
+            
+              
               // Items List
               .items-list
                 .inner
                   header
-                    h3 Results
+                    h3#results Results
                   ul.results.list
+                  .header
+                    .wrapper
+                      nav.navigation-items
+                        .wrapper
+                          ul.main-navigation
+                            a.submit-item.checkTop(href='#!') back to top
+                              .content
+                                span back to top
+                              .icon
+                                i.fa.fa-angle-double-up
                 // results
               // end Items List
             // end Map Canvas
@@ -131,21 +113,17 @@ head
         script(type='text/javascript', src='/js/map/jquery.hotkeys.js')
         script(type='text/javascript', src='/js/map/jquery.nouislider.all.min.js')
         script(type='text/javascript', src='/js/map/jquery.mCustomScrollbar.concat.min.js')
-        script(type='text/javascript', src='http://maps.google.com/maps/api/js?sensor=false&libraries=places')
+        // removed sensor paramate to avoid warring.
+        //- script(type='text/javascript', src='http://maps.google.com/maps/api/js?sensor=false&libraries=places')
+        script(type='text/javascript', src='http://maps.google.com/maps/api/js?libraries=places')
         script(type='text/javascript', src='/js/map/infobox.js')
         script(type='text/javascript', src='/js/map/richmarker-compiled.js')
         script(type='text/javascript', src='/js/map/markerclusterer.js')
         script(type='text/javascript', src='/js/map/custom.js')
         script(type='text/javascript', src='/js/map/maps.js')
+        script(type='text/javascript', src='/js/favbox.js')
+        script(type='text/javascript', src='/js/main.js')
         script.
-          
-          //- window.setTimeout(function() {
-          //-   $('#splash').addClass('animated fadeOut');
-          //-   window.setTimeout(function() {
-          //-     $('#splash').hide();
-          //-   },1000);
-          //- }, 2000);
-          
           var _latitude = 51.541216;
           var _longitude = -0.095678;
           //- var jsonPath = '/json/items.json.txt';

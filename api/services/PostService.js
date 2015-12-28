@@ -5,16 +5,20 @@ module.exports = {
 
       let user = UserService.getLoginUser(req);
 
-      let itme;
+      let item;
       if( !data.detail.radioItem ){
-        itme = await ItemService.create({
+        var itemData = {
           LikeId: data.hobby,
           itemname: data.detail.item
-        });
+        }
+        if(data.detail.images!=undefined || data.detail.images!=null){
+          itemData.pic = data.detail.images;
+        }
+        item = await ItemService.create(itemData);
       }else{
-        itme = await Item.findById(data.detail.radioItem );
-        itme.quantity++;
-        await itme.save();
+        item = await Item.findById(data.detail.radioItem);
+        item.quantity++;
+        await item.save();
       }
 
       let post = await Post.create({
@@ -24,14 +28,15 @@ module.exports = {
         price: data.detail.price,
         content: data.detail.content,
         mode: data.mode,
-        ItemId: data.detail.radioItem || itme.id,
+        ItemId: data.detail.radioItem || item.id,
         UserId: user.id,
         latitude: data.location.latitude,
         longitude: data.location.longitude,
         geometry: {
           type: 'Point',
           coordinates: [data.location.latitude,data.location.longitude]
-        }
+        },
+        images: data.images
       });
       return post;
     } catch (e) {
@@ -49,14 +54,16 @@ module.exports = {
           model: User
         }]
       });
-      sails.log.info(getPost[0]);
+      sails.log.info("getPost[0]=>",getPost[0]);
 
 
       let postArray = getPost.map((post) => {
-        let pic = post.Item.pic || '/img/items/1.jpg'
+        let pic = post.images || post.Item.pic || '/img/items/1.jpg'
         let data = {
+          id:post.id,
           title: post.title,
           mode: post.mode,
+          price: post.price,
           location : post.Item.itemname,
           latitude: post.latitude,
           longitude: post.longitude,
@@ -93,9 +100,10 @@ module.exports = {
       });
       sails.log.info(getPost);
 
-      let pic = getPost.Item.pic || '/img/items/1.jpg';
+      let pic = getPost.images || getPost.Item.pic || '/img/items/1.jpg';
       let data = {
         id: getPost.id,
+        price: getPost.price,
         title: getPost.title,
         mode: getPost.mode,
         location : getPost.Item.itemname,

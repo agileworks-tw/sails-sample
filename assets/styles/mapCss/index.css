@@ -12,8 +12,7 @@
   height: auto;
   width: auto;
 }
-
-#splash  img {
+#splash img {
   width: 40%;
   position: fixed;
   top: 45%;
@@ -21,14 +20,12 @@
   margin-top: -20%;
   margin-left: -20%;
 }
-
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-
 @-webkit-keyframes fadeOut {
   from {
     opacity: 1;
@@ -37,7 +34,6 @@
     opacity: 0;
   }
 }
-
 @keyframes fadeOut {
   from {
     opacity: 1;
@@ -46,14 +42,16 @@
     opacity: 0;
   }
 }
-
 .fadeOut {
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut;
 }
 
+
+
 /* hotfix for find-my-loc button */
-span.find-my-loc{
+
+span.find-my-loc {
   cursor: pointer;
   position: absolute;
   right: 10px;
@@ -66,10 +64,44 @@ span.find-my-loc{
   background-color: white;
 }
 
+/* map-marker */
+
 .map-marker .get {
   border: 3px solid #28a7e1;
 }
-
 .map-marker .give {
   border: 3px solid #f39800;
+}
+
+/* infobox之img最小高度*/
+
+.infobox .inner .image img {
+  min-height: 140px;
+}
+
+/* faviraite-button */
+div.favbox {
+    position: absolute;
+    right: 0px;
+    top: 30px;
+    z-index: 9999;
+    padding: 7.6px;
+    background-color: #36b6ff;
+    color: white;
+}
+div.favbox > a > i:hover {
+    color: red;
+}
+div.favbox > a > i {
+    color: white;
+}
+
+/* hotfix for postDetail's description section */
+#outer-wrapper #page-canvas{
+  height: auto;
+}
+
+/* hotfix for item result list height */
+.items-list .inner .results,.items-list .inner {
+  height: auto;
 }
