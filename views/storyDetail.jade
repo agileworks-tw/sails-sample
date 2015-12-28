@@ -31,11 +31,12 @@ link(rel='stylesheet', href='styles/css/storyDetail.css', type='text/css')
               .item-content
                 .item-inner
                   .item-input
-                    input(type='text', name='postPeriod', placeholder='Posting period', id='calendar-postPeriod', readonly)
+                    input(type='tel', pattern="\d*", name='price', placeholder='Give a price')
               .item-content
                 .item-inner
                   .item-input
-                    input(type='tel', pattern="\d*", name='price', placeholder='Give a price') 
+                    input(type='text', name='postPeriod', placeholder='Posting period', id='calendar-postPeriod', readonly)
+   
               -console.log(categoryItems.length);
               -var index = 0
               each item in categoryItems

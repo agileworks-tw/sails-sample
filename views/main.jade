@@ -1,7 +1,10 @@
 doctype html(lang='en-US')
 head
   meta(charset='UTF-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  meta(name='viewport', content='width = device-width, initial-scale = 1.0, minimum-scale = 1, maximum-scale = 1, user-scalable = no')
+  meta(name='apple-mobile-web-app-capable', content='yes')
+  meta(name='mobile-web-app-capable', content='yes')
+  meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
   link(href='/fonts/font-awesome.css', rel='stylesheet', type='text/css')
   link(href='http://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
   link(rel='stylesheet', href='styles/bootstrap/css/bootstrap.min.css', type='text/css')
@@ -77,44 +80,9 @@ head
                     .line
                     .line
                 // /.toggle-navigation
-                #map.has-parallax        
-                // /#map
-                //- .search-bar.horizontal
-                //-   form.main-search.border-less-inputs(role='form', method='post')
-                //-     .input-row
-                //-       .form-group
-                //-         input#keyword.form-control(type='text', placeholder='Enter Keyword')
-                //-       // /.form-group
-                //-       .form-group
-                //-         .input-group.location
-                //-           input#location.form-control(type='text', placeholder='Enter Location')
-                //-           span.input-group-addon
-                //-             i.fa.fa-map-marker.geolocation(data-toggle='tooltip', data-placement='bottom', title='Find my position')
-                //-       // /.form-group
-                //-       .form-group
-                //-         select(name='category', multiple='', title='Select Category', data-live-search='true')
-                //-           option(value='1') Stores
-                //-           option.sub-category(value='2') Apparel
-                //-           option.sub-category(value='3') Computers
-                //-           option.sub-category(value='4') Nature
-                //-           option(value='5') Tourism
-                //-           option(value='6') Restaurant &amp; Bars
-                //-           option.sub-category(value='7') Bars
-                //-           option.sub-category(value='8') Vegetarian
-                //-           option.sub-category(value='9') Steak &amp; Grill
-                //-           option(value='10') Sports
-                //-           option.sub-category(value='11') Cycling
-                //-           option.sub-category(value='12') Water Sports
-                //-           option.sub-category(value='13') Winter Sports
-                //-       // /.form-group
-                //-       .form-group
-                //-         button.btn.btn-default(type='submit')
-                //-           i.fa.fa-search
-                //-       // /.form-group
-                //-     // /.input-row
-                //-   // /.main-search
-                //- // /.search-bar
-              // end Map
+                #map.has-parallax       
+            
+              
               // Items List
               .items-list
                 .inner

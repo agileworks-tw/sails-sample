@@ -51,15 +51,31 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
 
         // Try HTML5 geolocation. (get-my-loc)
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
+          navigator.geolocation.getCurrentPosition(
+            function(position) {
+              var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+              map.setCenter(pos);
+            },
+            function() {
+              // handleLocationError(true, infoWindow, map.getCenter());
+              $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
+                console.log("geoip loc=>",data);
+                  var pos = {
+                    lat: data.lat,
+                    lng: data.lon
+                  };
+                  map.setCenter(pos);
+               });
+            },
+            {
+              enableHighAccuracy: true,
+              timeout: 5000,
+              maximumAge: 5000
+            }
+          );
         }
 
         for (var i = 0; i < json.data.length; i++) {

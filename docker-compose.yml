@@ -1,51 +1,48 @@
+
+# test:
+#   container_name: sailsSample_test
+#   image: miiixr/picklete_env
+#   extends:
+#     file: ./dockerConfig/development.yml
+#     service: test
+#
+#   external_links:
+#
+#     - mysql
+#
+#   working_dir: /picklete
+#   volumes:
+#     - ./:/picklete
+#
+# mysql:
+#   container_name: mysql
+#   image: dgraziotin/mysql
+#   extends:
+#     file: ./dockerConfig/development.yml
+#     service: mysql
+#   volumes:
+#     - ../database:/var/lib/mysql/
+#
+#   restart: always
+
 build:
-  container_name: trademuch
+  container_name: trademuch-build
   image: miiixr/picklete_env
-  command: "/bin/bash -l -c 'npm i && node_modules/.bin/grunt'"
-
-  working_dir: /sailsSample
+  command: "/bin/bash -l -c 'npm i | grunt build'"
+  working_dir: /app
   volumes:
-    - ./:/sailsSample
-
-test:
-  container_name: sailsSample_test
-  image: miiixr/picklete_env
-  extends:
-    file: ./dockerConfig/development.yml
-    service: test
-
-  external_links:
-
-    - mysql
-
-  working_dir: /picklete
-  volumes:
-    - ./:/picklete
+    - ./:/app
 
 web:
-  contianer_name: trademuch
+  container_name: trademuch
   image: miiixr/picklete_env
-  extends:
-    file: ./dockerConfig/development.yml
-    service: web
-
+  command: "/bin/bash -l -c 'npm start'"
+  ports:
+    - "1333:1337"
+  working_dir: /app
+  volumes:
+    - ./:/app
   external_links:
     - mysql
-
-  working_dir: /sailsSample
-  volumes:
-    - ./:/sailsSample
-
-  restart: always
-
-
-mysql:
-  container_name: mysql
-  image: dgraziotin/mysql
-  extends:
-    file: ./dockerConfig/development.yml
-    service: mysql
-  volumes:
-    - ../database:/var/lib/mysql/
 
   restart: always
