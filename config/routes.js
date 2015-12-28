@@ -82,7 +82,7 @@
    'get /search': {
      view: 'search'
    },
-   'post /search/:keyword': 'PostController.getPostByKeyword'
+   'get /search/:keyword': 'PostController.getPostByKeyword'
 
    /***************************************************************************
     *                                                                          *
