@@ -431,6 +431,7 @@ function createHomepageGoogleMap(_latitude, _longitude, json) {
           maximumAge: 3000
         });
       } else {
+        alert('Geo Location is not supported');
         console.log('Geo Location is not supported');
       }
     });
