@@ -253,32 +253,61 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     }
 
     var location = {};
-    navigator.geolocation.getCurrentPosition(GetLocationAndSubmit, GetNoGPSOrGetErr);
+    navigator.geolocation.getCurrentPosition(
+      success,
+      error,
+      options);
 
-    function GetLocationAndSubmit(loc) {
-      console.log(loc);
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 5000
+    };
+
+    function success(loc) {
+      console.log("html5 location=>",loc);
       location = {
         latitude: loc.coords.latitude,
         longitude: loc.coords.longitude,
         accuracy: loc.coords.accuracy
       }
       data.location = location;
+      submit();
+    } // end GetLocationAndSubmit
 
+    function error(err) {
+      myApp.hideIndicator();
+      // myApp.alert('Due to internet connection issues, please try again later or check you GPS status. thank you.', 'Error');
+      jQuery.ajax({
+        url: 'http://ip-api.com/json/',
+        type: 'POST',
+        dataType: 'jsonp',
+        success: function(loc) {
+          console.log("geoip location=>",location);
+          // var loc = loc.regionName || loc.country || 'Taipai'; // or e.g. SPXX0050
+          location = {
+            latitude: loc.lat,
+            longitude: loc.lon,
+            accuracy: 500
+          }
+          data.location = location;
+        },
+        error: function(err){
+
+        }
+      });
+      submit();
+    } // end GetNoGPS
+
+    function submit() {
       console.log(JSON.stringify(data));
-
       var imageCount = $("input.uploadBtn").get(0).files.length;
       if ((imageCount != null) && (imageCount > 0)) {
         saveImagesAndPost(data);
       } else {
         savePost(data);
       }
-    } // end GetLocationAndSubmit
-
-    function GetNoGPSOrGetErr() {
-      myApp.hideIndicator();
-      myApp.alert('Due to internet connection issues, please try again later or check you GPS status. thank you.', 'Error');
-
-    } // end GetNoGPS
+    }
 
   }); // end finishStep-click
 
