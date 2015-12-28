@@ -141,9 +141,13 @@ module.exports = {
         let getPosts = await await Post.findAll({
           where: {
             $or: [{
-              'title': keyword
+              'title': {
+                $like: '%'+keyword+'%'
+              }
             }, {
-              'content': keyword
+              'content': {
+                $like: '%'+keyword+'%'
+              }
             }]
           },
           include: [{
@@ -186,7 +190,7 @@ module.exports = {
           });
 
         });
-        console.log("data length=>",data.length);
+        console.log("data length=>", data.length);
 
         return data;
       } catch (e) {
