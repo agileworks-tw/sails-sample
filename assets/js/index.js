@@ -276,15 +276,13 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     } // end GetLocationAndSubmit
 
     function error(err) {
-      myApp.hideIndicator();
-      // myApp.alert('Due to internet connection issues, please try again later or check you GPS status. thank you.', 'Error');
       jQuery.ajax({
         url: 'http://ip-api.com/json/',
         type: 'POST',
         dataType: 'jsonp',
         success: function(loc) {
+          myApp.hideIndicator();
           console.log("geoip location=>",location);
-          // var loc = loc.regionName || loc.country || 'Taipai'; // or e.g. SPXX0050
           location = {
             latitude: loc.lat,
             longitude: loc.lon,
@@ -293,9 +291,17 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
           data.location = location;
         },
         error: function(err){
-
+          myApp.hideIndicator();
+          // if get geoip's data failed then give a default loaciotn from user setting.
+          location = {
+            latitude: 51.541216,
+            longitude: -0.095678,
+            accuracy: 500
+          }
+          data.location = location;
         }
       });
+      // submit after get location either geoip or default.
       submit();
     } // end GetNoGPS
 

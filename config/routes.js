@@ -36,6 +36,10 @@
      view: 'index2'
    },
 
+   '/browseBar': {
+     view: 'browseBar'
+   },
+
    '/': {
      view: 'index'
    },
@@ -68,16 +72,17 @@
    'post /postStory': 'PostController.postStory',
    'get /postDetail/:id': 'PostController.getPostById',
 
+   'post /addUserFavorite/:id': 'UserController.addUserFavorite',
+
+   // image
+   'get /testUpload': 'ImageController.index',
+   'post /api/uploadImage': 'ImageController.upload',
+
+   // search
    'get /search': {
      view: 'search'
    },
-   'post /search/:keyword': 'PostController.getPostByKeyword',
-
-   'post /addUserFavorite/:id': 'UserController.addUserFavorite',
-
-   //image
-   'get /testUpload': 'ImageController.index',
-   'post /api/uploadImage': 'ImageController.upload'
+   'post /search/:keyword': 'PostController.getPostByKeyword'
 
    /***************************************************************************
     *                                                                          *
