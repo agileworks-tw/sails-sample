@@ -25,37 +25,37 @@ head
       #inner-wrapper
         // Navigation
         .header
-          .wrapper
-            .brand
-              a(href='/')
-                img(src='../img/logo.png', alt='logo' style="height: 45px;")
-            nav.navigation-items
-              .wrapper
-                ul.main-navigation.navigation-top-header
-                ul.main-navigation
-                  a.submit-item.checkResults(href='#!')
-                    .content
-                      span Item list
-                    .icon
-                      i.fa.fa-bars
-                -if (!userLogin) 
-                  a.submit-item(href='/auth/facebook') 
-                    .content
-                      span Login!
-                    .icon
-                      i.fa.fa-sign-in
-                -else
-                  a.submit-item(href='/story')
-                    .content
-                      span Submit Your Item
-                    .icon
-                      i.fa.fa-plus
-                //- .toggle-navigation
-                //-   .icon
-                //-     .line
-                //-     .line
-                //-     .line
-        // end Navigation
+          //- .wrapper
+          //-   .brand
+          //-     a(href='/')
+          //-       img(src='../img/logo.png', alt='logo' style="height: 45px;")
+        //-     nav.navigation-items
+        //-       .wrapper
+        //-         ul.main-navigation.navigation-top-header
+        //-         ul.main-navigation
+        //-           a.submit-item.checkResults(href='#!')
+        //-             .content
+        //-               span Item list
+        //-             .icon
+        //-               i.fa.fa-bars
+        //-         -if (!userLogin) 
+        //-           a.submit-item(href='/auth/facebook') 
+        //-             .content
+        //-               span Login!
+        //-             .icon
+        //-               i.fa.fa-sign-in
+        //-         -else
+        //-           a.submit-item(href='/story')
+        //-             .content
+        //-               span Submit Your Item
+        //-             .icon
+        //-               i.fa.fa-plus
+        //-         //- .toggle-navigation
+        //-         //-   .icon
+        //-         //-     .line
+        //-         //-     .line
+        //-         //-     .line
+        //- // end Navigation
         // Page Canvas
         #page-canvas
           // Off Canvas Navigation
@@ -84,21 +84,21 @@ head
             
               
               // Items List
-              .items-list
-                .inner
-                  header
-                    h3#results Results
-                  ul.results.list
-                  .header
-                    .wrapper
-                      nav.navigation-items
-                        .wrapper
-                          ul.main-navigation
-                            a.submit-item.checkTop(href='#!') back to top
-                              .content
-                                span back to top
-                              .icon
-                                i.fa.fa-angle-double-up
+              //- .items-list
+              //-   .inner
+              //-     header
+              //-       h3#results Results
+              //-     ul.results.list
+              //-     .header
+              //-       .wrapper
+              //-         nav.navigation-items
+              //-           .wrapper
+              //-             ul.main-navigation
+              //-               a.submit-item.checkTop(href='#!') back to top
+              //-                 .content
+              //-                   span back to top
+              //-                 .icon
+              //-                   i.fa.fa-angle-double-up
                 // results
               // end Items List
             // end Map Canvas

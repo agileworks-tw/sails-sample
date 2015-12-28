@@ -265,7 +265,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     };
 
     function success(loc) {
-      console.log("html5 location=>",loc);
+      console.log("html5 location=>", loc);
       location = {
         latitude: loc.coords.latitude,
         longitude: loc.coords.longitude,
@@ -282,7 +282,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
         dataType: 'jsonp',
         success: function(loc) {
           myApp.hideIndicator();
-          console.log("geoip location=>",location);
+          console.log("geoip location=>", location);
           location = {
             latitude: loc.lat,
             longitude: loc.lon,
@@ -290,7 +290,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
           }
           data.location = location;
         },
-        error: function(err){
+        error: function(err) {
           myApp.hideIndicator();
           // if get geoip's data failed then give a default loaciotn from user setting.
           location = {
@@ -369,6 +369,16 @@ function saveImagesAndPost(data) {
     }
   }); // end ajax
 }; // end saveImages
+
+
+// search-result
+function showSearchResult(data) {
+  console.log("f7 showSearchResult");
+  var searchResultTemplate = $$('script#searchResult').html();
+  var compiledSearchResultTemplate = Template7.compile(searchResultTemplate);
+  myApp.template7Data.searchResult = data;
+  $$('#search-result').html(compiledSearchResultTemplate(data));
+}; // end search-result
 
 
 // Show/hide preloader for remote ajax loaded pages
