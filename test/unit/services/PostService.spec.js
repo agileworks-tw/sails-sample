@@ -153,7 +153,6 @@ describe('about Post Service operation.', function() {
         });
 
         for (let i = 0; i < 10; i++) {
-
           let latitude = 51.5377994 + Math.random() / 100;
           let longitude = -0.1006775 + Math.random() / 100;
           let post = {
@@ -175,8 +174,28 @@ describe('about Post Service operation.', function() {
             }
           }
           let createPost = await Post.create(post);
-
         }
+
+        let searchPost = {
+          title: "searchPost",
+          startDate: "2015-12-25",
+          endDate: "2015-12-31",
+          price: "200",
+          content: 'content',
+          mode: "give",
+          createdAt: "2015-12-15 10:09:07",
+          updatedAt: "2015-12-15 10:09:07",
+          ItemId: 17,
+          UserId: 1,
+          latitude: 39.807222,
+          longitude: -76.984722,
+          geometry: {
+            type: 'Point',
+            coordinates: [39.807222, -76.984722]
+          }
+        }
+        let createSearchPost = await Post.create(searchPost);
+
         done();
       } catch (e) {
         done(e)
@@ -216,28 +235,8 @@ describe('about Post Service operation.', function() {
     });
 
     // search
-    it.only('search should success.', async(done) => {
+    it('search should success.', async(done) => {
       try {
-
-        let searchPost = {
-          title: "searchPost",
-          startDate: "2015-12-25",
-          endDate: "2015-12-31",
-          price: "200",
-          content: 'content',
-          mode: "give",
-          createdAt: "2015-12-15 10:09:07",
-          updatedAt: "2015-12-15 10:09:07",
-          ItemId: 17,
-          UserId: 1,
-          latitude: 39.807222,
-          longitude: -76.984722,
-          geometry: {
-            type: 'Point',
-            coordinates: [39.807222, -76.984722]
-          }
-        }
-        let createSearchPost = await Post.create(searchPost);
 
         let getData = await PostService.getPostByKeyword("searchPost");
 
