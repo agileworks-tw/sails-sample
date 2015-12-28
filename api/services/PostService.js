@@ -1,21 +1,21 @@
 module.exports = {
 
-  create: async(data,req) => {
+  create: async(data, req) => {
     try {
 
       let user = UserService.getLoginUser(req);
 
       let item;
-      if( !data.detail.radioItem ){
+      if (!data.detail.radioItem) {
         var itemData = {
           LikeId: data.hobby,
           itemname: data.detail.item
         }
-        if(data.detail.images!=undefined || data.detail.images!=null){
+        if (data.detail.images != undefined || data.detail.images != null) {
           itemData.pic = data.detail.images;
         }
         item = await ItemService.create(itemData);
-      }else{
+      } else {
         item = await Item.findById(data.detail.radioItem);
         item.quantity++;
         await item.save();
@@ -34,7 +34,7 @@ module.exports = {
         longitude: data.location.longitude,
         geometry: {
           type: 'Point',
-          coordinates: [data.location.latitude,data.location.longitude]
+          coordinates: [data.location.latitude, data.location.longitude]
         },
         images: data.images
       });
@@ -47,31 +47,31 @@ module.exports = {
   getAllPost: async() => {
     try {
       let getPost = await Post.findAll({
-        include:[{
+        include: [{
           model: Item,
           include: Like
-        },{
+        }, {
           model: User
         }]
       });
-      sails.log.info("getPost[0]=>",getPost[0]);
+      sails.log.info("getPost[0]=>", getPost[0]);
 
 
       let postArray = getPost.map((post) => {
         let pic = post.images || post.Item.pic || '/img/items/1.jpg'
         let data = {
-          id:post.id,
+          id: post.id,
           title: post.title,
           mode: post.mode,
           price: post.price,
-          location : post.Item.itemname,
+          location: post.Item.itemname,
           latitude: post.latitude,
           longitude: post.longitude,
           url: `/postDetail/${post.id}`,
           type: post.Item.Like.title,
           // type_icon: post.Item.Like.icon,
           type_icon: "../icons/store/apparel/bags.png",
-          gallery:[pic]
+          gallery: [pic]
         };
         return data;
       });
@@ -88,13 +88,13 @@ module.exports = {
   getPostById: async(id) => {
     try {
       let getPost = await await Post.findOne({
-        where:{
+        where: {
           id: id
         },
-        include:[{
+        include: [{
           model: Item,
           include: Like
-        },{
+        }, {
           model: User
         }]
       });
@@ -106,14 +106,14 @@ module.exports = {
         price: getPost.price,
         title: getPost.title,
         mode: getPost.mode,
-        location : getPost.Item.itemname,
+        location: getPost.Item.itemname,
         latitude: getPost.latitude,
         longitude: getPost.longitude,
         url: `/getPostDetail/${getPost.id}`,
         type: getPost.Item.Like.title,
         // type_icon: getPost.Item.Like.icon,
         type_icon: "../icons/store/apparel/bags.png",
-        gallery:[pic],
+        gallery: [pic],
         username: getPost.User.username,
         email: getPost.User.email,
         itemname: getPost.Item.itemname,
@@ -133,6 +133,65 @@ module.exports = {
     } catch (e) {
       throw e;
     }
-  }
+  },
+
+  // search
+  getPostByKeyword: async(keyword) => {
+      try {
+        let getPosts = await await Post.findAll({
+          where: {
+            $or: [{
+              'title': keyword
+            }, {
+              'content': keyword
+            }]
+          },
+          include: [{
+            model: Item,
+            include: Like
+          }, {
+            model: User
+          }]
+        });
+        // // sails.log.info(getPost);
+        // console.log("getPost.images==>",getPost.images);
+        // console.log("getPost[0].Item==>",getPost[0].Item);
+        // console.log("getPost[0].Item.pic==>",getPost[0].Item.pic);
+
+        var data = [];
+
+        getPosts.forEach(function(post) {
+
+          console.log("this post title=>", post.title);
+          console.log("this item itemname=>", post.Item.itemname);
+
+
+          let pic = post.images || post.Item.pic || '/img/items/1.jpg';
+          data.push({
+            id: post.id,
+            price: post.price,
+            title: post.title,
+            mode: post.mode,
+            location: post.Item.itemname,
+            latitude: post.latitude,
+            longitude: post.longitude,
+            url: `/getPostDetail/${post.id}`,
+            type: post.Item.Like.title,
+            // type_icon: getPost.Item.Like.icon,
+            type_icon: "../icons/store/apparel/bags.png",
+            gallery: [pic],
+            username: post.User.username,
+            email: post.User.email,
+            itemname: post.Item.itemname,
+          });
+
+        });
+        console.log("data length=>",data.length);
+
+        return data;
+      } catch (e) {
+        throw e;
+      }
+    } // end search
 
 }
