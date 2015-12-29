@@ -38,7 +38,7 @@ describe.skip('about User Controller operation.', function() {
     });
   });
 
-  describe.only('UserController Favorite', () => {
+  describe('UserController Favorite', () => {
 
     let testUser, post, item, createPost;
     before(async (done) => {
