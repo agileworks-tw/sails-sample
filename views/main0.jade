@@ -15,11 +15,11 @@ block body
           .page.toolbar-fixed(data-page='home')
             .toolbar.tabbar
               .toolbar-inner
-                a.tab-link.active(href='#tab1')
+                a.tab-link.active(href='#mapView')
                   img(src='/img/map.png', alt='map', style="height: 35px;")  
-                a.tab-link(href='#tab2')
+                a.tab-link(href='#favoriteView')
                   img(src='/img/list.png', alt='list', style="height: 35px;")
-                a.tab-link(href='#tab3')
+                a.tab-link(href='#searchView')
                   img(src='/img/search.png', alt='search', style="height: 35px;")
                 a.link(href='/story')
                   img(src='/img/build.png', alt='build', style="height: 35px;")
@@ -27,10 +27,10 @@ block body
             .page-content
               .content-block
                 .tabs
-                  #tab1.tab.active
+                  #mapView.tab.active
                     iframe(src='/map', style="height: 100%; width: 100%; border: 0;")
                   |               
-                  #tab2.tab
+                  #favoriteView.tab
                     .card.demo-card-header-pic
                       .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
                       .card-content
@@ -56,7 +56,7 @@ block body
                       .card-footer
                         a.link(href='templates/finish.html') Like            
                   |               
-                  #tab3.tab
+                  #searchView.tab
                     form#formSearch.searchbar
                      // Search bar
                      .searchbar-input
@@ -86,7 +86,4 @@ block body
                               </li>
                             {{/each}}
                           // Items List
-                  |               
-                  #tab4.tab
-                    p Tab 4
     link(rel="stylesheet", href="/styles/css/main.css")
