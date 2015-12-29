@@ -8,6 +8,11 @@ module.exports = {
       type: Sequelize.STRING,
       unique: true
     },
+    location: {
+      type: Sequelize.STRING,
+      allowNull: true,
+      defaultValue: null
+    },
     age: {
       type: Sequelize.INTEGER
     },
