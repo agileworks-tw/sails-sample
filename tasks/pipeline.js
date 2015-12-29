@@ -30,7 +30,6 @@ var jsFilesToInject = [
   'js/dependencies/sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
-  '!bower/jquery/jquery.js',
   'js/dependencies/**/*.js',
   'bower/**/*.js',
   'js/*.js',
