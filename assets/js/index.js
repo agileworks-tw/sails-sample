@@ -6,6 +6,8 @@ var myApp = new Framework7({
   pushState: true,
   swipeBackPage: false,
   init: false,
+  imagesLazyLoadSequential: true,
+  imagesLazyLoadThreshold: 50
 });
 
 // Expose Internal DOM library
@@ -18,7 +20,7 @@ var mainView = myApp.addView('.view-main', {
 });
 
 $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function(e) {
-  console.log("!!!!!!!!");
+  console.log("hobbyPage!!!!!!!!");
   var storedData = myApp.formToJSON('#hobbySelect');
   myApp.formStoreData('hobbySelect', storedData);
   $$("#nextSetp").attr("data-context", JSON.stringify(storedData));
@@ -47,37 +49,113 @@ $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function(e) {
       $$('#nextSetp').attr("disabled", true);
     }
   });
-});
+
+}); // end hobbyPage
+
 
 $$(document).on('pageInit', '.page[data-page="finish"]', function(e) {
 
-  var hobby = myApp.formGetData('hobbySelect').hobby[0];
-  console.log(hobby);
-  if (!hobby) {
-    mainView.router.loadPage('#')
-  }
-  var emailInput = $$('input[name="email"]');
-  var submitBtn = $$('input[name="submit"]');
-  submitBtn.prop("disabled", true)
-  emailInput.on('input', function() {
-    if ($$(this).val() != "")
-      submitBtn.removeAttr("disabled");
-    else
-      submitBtn.attr("disabled", true);
-  });
+  var hobby = myApp.formGetData('hobbySelect').hobby;
+  console.log("selected hobbys=>", hobby);
 
-  $$('#singUp-form').on('submitted', function(e) {
-    if (e.detail.data == 'ok') {
-      location.href = '/'
+  if (!hobby || !hobby[0]) {
+    window.location.replace(window.location.pathname + window.location.search);
+  }
+
+  $("body").delegate("#singUp-form", "submit", function(e) {
+    e.preventDefault();
+    var addr = $("input[name='addr']").val();
+    addressToLatLng(addr);
+  }); // end on-submit
+
+  $("body").delegate("input[name='submit']", "click", function(e) {
+    e.preventDefault();
+    var email = $$('input[name="email"]').val();
+    console.log("email=>", email);
+    if (!email || email.length == 0) {
+      myApp.alert('Enter your EMAIL please :)', 'Woops!');
+      return false;
+    } else {
+      var addr = $("input[name='addr']").val();
+      if (addr) {
+        addressToLatLng(addr);
+      } else {
+        getGeoIpLocation();
+      }
     }
   });
 
-  $$('#singUp-form').on('submitError', function(e) {
-    console.log(e);
-    myApp.alert('Your email address has already been used.', 'Error');
-  });
+  function addressToLatLng(addr) {
+    var jsUrl = "http://maps.google.com/maps/api/js?libraries=places";
+    $.getScript(jsUrl)
+      .done(function(script, textStatus) {
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({
+          "address": addr
+        }, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+            var location = {
+              latitude: latitude,
+              longitude: longitude
+            };
+            submitSingUpForm(location);
+          } else {
+            // if no result than use geoip
+            getGeoIpLocation();
+          }
+        });
+      }); // end getscript
+  }; // end addressToLatLng
 
-});
+  function getGeoIpLocation() {
+    $$.ajax({
+      url: 'http://ip-api.com/json/',
+      type: 'POST',
+      dataType: 'jsonp',
+      success: function(loc) {
+        var geoLoc = JSON.parse(loc);
+        var latitude = geoLoc.lat;
+        var longitude =  geoLoc.lon;
+        var location = {
+          latitude: latitude,
+          longitude: longitude
+        };
+        submitSingUpForm(location);
+      }
+    }); // end ajax
+  }; // end getGeoIpLocation
+
+  function submitSingUpForm(location) {
+    var email = $("input[name='email']").val();
+    var hobby = $("input[name='hobby']").val();
+    var data = {
+      hobby: hobby,
+      location: location
+    };
+    if (email) {
+      data.email = email;
+    }
+    console.log("regForm data=>", data);
+
+    jQuery.ajax({
+      url: '/updateHobbyAndMail',
+      type: 'POST',
+      data: data,
+      success: function(data) {
+        // if (data == "ok") {
+        window.location.href = 'main';
+        // }
+      },
+      error: function(err) {
+        console.log(err);
+        myApp.alert('Your email address has already been used.', 'OH-NO!');
+      }
+    }); // end ajax
+  }; // end submitSingUpForm
+
+}); // end page-finish
 
 
 $$(document).on('pageInit', '.page[data-page="storyMode"]', function(e) {
@@ -87,8 +165,6 @@ $$(document).on('pageInit', '.page[data-page="storyMode"]', function(e) {
     } else {
       $$(this).find('input').prop("checked", true);
     }
-
-
     var storedData = myApp.formToJSON('#storyModeChoose');
     myApp.formStoreData('storyModeChoose', storedData);
 
@@ -237,7 +313,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     }
 
     // By default give today to startDate if use hasn't selsect period.
-    if (!data.detail.startDate || data.detail.startDate==undefined) {
+    if (!data.detail.startDate || data.detail.startDate == undefined) {
       var now = new Date();
       data.detail.startDate = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate();
     } else {
@@ -276,7 +352,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     } // end GetLocationAndSubmit
 
     function error(err) {
-      jQuery.ajax({
+      $$.ajax({
         url: 'http://ip-api.com/json/',
         type: 'POST',
         dataType: 'jsonp',
@@ -301,8 +377,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
           data.location = location;
           submit();
         }
-      });
-      // submit after get location either geoip or default.
+      }); // end ajax
     } // end GetNoGPS
 
     function submit() {
@@ -313,61 +388,58 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
       } else {
         savePost(data);
       }
-    }
+    }; // end submit
+
+    function savePost(data) {
+      // save post
+      $$.ajax({
+        url: "/postStory",
+        type: "POST",
+        data: data,
+        success: function(result) {
+          console.log(result);
+          myApp.formDeleteData('storyModeChoose');
+          myApp.formDeleteData('storyCategoryChoose');
+          myApp.formDeleteData('storyDetailChoose');
+          window.location.href = '/main';
+          myApp.hideIndicator();
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          myApp.hideIndicator();
+          myApp.alert('Due to internet connection issues, please try again later or check you GPS status. thank you.', 'Error');
+          console.log(xhr.status);
+          console.log(thrownError);
+        }
+      }); // end ajax
+    }; // end savePost
+
+    function saveImagesAndPost(data) {
+      // submit to upload post image.
+      var formData = new FormData($('form')[1]);
+      console.log("formData", formData);
+      $$.ajax({
+        url: "/api/uploadImage",
+        type: "POST",
+        data: formData,
+        cache: false,
+        dataType: "json",
+        contentType: false,
+        processData: false,
+        success: function(result) {
+          data.images = result[0].src;
+          savePost(data);
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          myApp.hideIndicator();
+          myApp.alert('due to internet issues, upload image failed. please try it again.', 'Error');
+          console.log(xhr.status);
+          console.log(thrownError);
+        }
+      }); // end ajax
+    }; // end saveImages
 
   }); // end finishStep-click
 }); // end storyDetail-pageInit
-
-
-function savePost(data) {
-  // save post
-  $$.ajax({
-    url: "/postStory",
-    type: "POST",
-    data: data,
-    success: function(result) {
-      console.log(result);
-      myApp.formDeleteData('storyModeChoose');
-      myApp.formDeleteData('storyCategoryChoose');
-      myApp.formDeleteData('storyDetailChoose');
-      window.location.href = '/main';
-      myApp.hideIndicator();
-    },
-    error: function(xhr, ajaxOptions, thrownError) {
-      myApp.hideIndicator();
-      myApp.alert('Due to internet connection issues, please try again later or check you GPS status. thank you.', 'Error');
-      console.log(xhr.status);
-      console.log(thrownError);
-    }
-  }); // end ajax
-}; // end savePost
-
-
-function saveImagesAndPost(data) {
-  // submit to upload post image.
-  var formData = new FormData($('form')[1]);
-  console.log("formData", formData);
-  $$.ajax({
-    url: "/api/uploadImage",
-    type: "POST",
-    data: formData,
-    cache: false,
-    dataType: "json",
-    contentType: false,
-    processData: false,
-    success: function(result) {
-      myApp.hideIndicator();
-      data.images = result[0].src;
-      savePost(data);
-    },
-    error: function(xhr, ajaxOptions, thrownError) {
-      myApp.hideIndicator();
-      myApp.alert('due to internet issues, upload image failed.', 'Error');
-      console.log(xhr.status);
-      console.log(thrownError);
-    }
-  }); // end ajax
-}; // end saveImages
 
 
 // search-result
