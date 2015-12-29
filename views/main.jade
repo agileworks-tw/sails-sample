@@ -6,7 +6,7 @@ block body
       .navbar
         .navbar-inner
           .wrapper
-            a.left.external(href='/')
+            a.left.external(href='/main')
               img(src='/img/logo.png', alt='logo', style="height: 45px;") 
           .wrapper
             a.right.top.external(href='/auth/facebook')
@@ -14,8 +14,8 @@ block body
 
       .pages.navbar-through
         .page.no-swipeback(data-page='mapView')
-          .page-content
-            iframe(src='/map', style="height: 100%; width: 100%; border: 0;")  
+          .page-content.map-view
+            iframe(src='/map', style="height: 99%; width: 100%; border: 0;overflow:hidden;", frameborder="0", scrolling="no")  
           // We need cool sliding animation on title element, so we have additional "sliding" class
     #mapView.view.tab
       .navbar
