@@ -10,7 +10,32 @@ $(".checkTop").click(function(e) {
   goToByScroll("page-top");
 });
 
-/* ====================================================================== */
+/*
+ * search form submit event and button
+ */
+$("#formSearch").on('submit', function(e) {
+  var keyword = $(".searchbar-input > input").val();
+  if (keyword) {
+    e.preventDefault();
+    goSearch(keyword);
+  } else {
+    alert("Don't forget to type something!")
+  }
+}); // end on
+
+$("#search-btn").click(function(e) {
+  var keyword = $(".searchbar-input > input").val();
+  if (keyword) {
+    e.preventDefault();
+    goSearch(keyword);
+  } else {
+    alert("Don't forget to type something!")
+  }
+}); // end click
+
+/*
+ *
+ */
 
 function goToByScroll(id) {
   // Remove "link" from the ID
@@ -20,4 +45,22 @@ function goToByScroll(id) {
       scrollTop: $("#" + id).offset().top
     },
     'slow');
-}
+}; // end goToByScroll
+
+
+function goSearch(keyword) {
+  $.ajax({
+    url: "/search/" + keyword,
+    type: "GET",
+    success: function(result) {
+      console.log(result);
+      showSearchResult(result);
+    },
+    error: function(xhr, ajaxOptions, thrownError) {
+      console.log("xhr.status,thrownError=>", xhr.status, thrownError);
+      if (xhr.status == 403) {
+        // to-do print it out
+      }
+    }
+  }); // end ajax
+}; // end goSearch

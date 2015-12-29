@@ -1,7 +1,6 @@
-
 module.exports = {
 
-  story: async (req, res) => {
+  story: async(req, res) => {
     try {
       res.view('story');
     } catch (e) {
@@ -10,11 +9,11 @@ module.exports = {
     }
   },
 
-  postStory: async (req, res) => {
+  postStory: async(req, res) => {
     try {
-      console.log("==== postStory ===",req.body);
+      console.log("==== postStory ===", req.body);
       let data = req.body;
-      await PostService.create(data,req);
+      await PostService.create(data, req);
       res.ok('ok');
     } catch (e) {
       sails.log.error(e);
@@ -22,11 +21,11 @@ module.exports = {
     }
   },
 
-  getPostById: async (req, res) => {
+  getPostById: async(req, res) => {
     try {
-      console.log("==== getPostById ===",req.param('id'));
+      console.log("==== getPostById ===", req.param('id'));
       let post = await PostService.getPostById(req.param('id'));
-      res.view('postDetail',{
+      res.view('postDetail', {
         post
       });
     } catch (e) {
@@ -35,7 +34,22 @@ module.exports = {
     }
   },
 
-  getAllPost: async (req, res) => {
+  // search
+  getPostByKeyword: async(req, res) => {
+    try {
+      var keyword = req.param('keyword');
+      console.log("==== getPostByKeyword ===", keyword);
+      let items = await PostService.getPostByKeyword(keyword);
+      res.ok({
+        items
+      });
+    } catch (e) {
+      sails.log.error(e);
+      res.serverError(e);
+    }
+  },
+
+  getAllPost: async(req, res) => {
     try {
       let result = await PostService.getAllPost();
       res.ok(result);
@@ -49,7 +63,7 @@ module.exports = {
     try {
 
       let categorys = await PostService.getAllCategory();
-      res.view('storyCategory',{
+      res.view('storyCategory', {
         categorys
       });
     } catch (e) {
@@ -62,7 +76,7 @@ module.exports = {
     try {
 
       let categoryItems = await ItemService.findByLikeId(req.param('id'));
-      res.view('storyDetail',{
+      res.view('storyDetail', {
         categoryItems
       });
     } catch (e) {

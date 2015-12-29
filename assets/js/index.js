@@ -237,14 +237,14 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     }
 
     // By default give today to startDate if use hasn't selsect period.
-    if (!data.detail.startDate) {
+    if (!data.detail.startDate || data.detail.startDate==undefined) {
       var now = new Date();
       data.detail.startDate = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate();
+    } else {
+      // re-assembling date period field.
+      data.detail.startDate = $("#calendar-postPeriod").val().split(" - ")[0];
+      data.detail.endDate = $("#calendar-postPeriod").val().split(" - ")[1];
     }
-
-    // re-assembling date period field.
-    data.detail.startDate = $("#calendar-postPeriod").val().split(" - ")[0];
-    data.detail.endDate = $("#calendar-postPeriod").val().split(" - ")[1];
 
     if (!data.detail.price || data.detail.price == "") {
       myApp.hideIndicator();
@@ -260,12 +260,12 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
 
     var options = {
       enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 5000
+      timeout: 2500,
+      maximumAge: 2500
     };
 
     function success(loc) {
-      console.log("html5 location=>",loc);
+      console.log("html5 location=>", loc);
       location = {
         latitude: loc.coords.latitude,
         longitude: loc.coords.longitude,
@@ -276,31 +276,37 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     } // end GetLocationAndSubmit
 
     function error(err) {
-      myApp.hideIndicator();
-      // myApp.alert('Due to internet connection issues, please try again later or check you GPS status. thank you.', 'Error');
       jQuery.ajax({
         url: 'http://ip-api.com/json/',
         type: 'POST',
         dataType: 'jsonp',
         success: function(loc) {
-          console.log("geoip location=>",location);
-          // var loc = loc.regionName || loc.country || 'Taipai'; // or e.g. SPXX0050
+          console.log("geoip location=>", loc);
           location = {
             latitude: loc.lat,
             longitude: loc.lon,
-            accuracy: 500
+            accuracy: 5000
           }
           data.location = location;
+          submit();
         },
-        error: function(err){
-
+        error: function(err) {
+          // to-do
+          // if get geoip's data failed then give a default loaciotn from user setting.
+          location = {
+            latitude: 51.541216,
+            longitude: -0.095678,
+            accuracy: 5000
+          }
+          data.location = location;
+          submit();
         }
       });
-      submit();
+      // submit after get location either geoip or default.
     } // end GetNoGPS
 
     function submit() {
-      console.log(JSON.stringify(data));
+      console.log("data before submit=>", (data));
       var imageCount = $("input.uploadBtn").get(0).files.length;
       if ((imageCount != null) && (imageCount > 0)) {
         saveImagesAndPost(data);
@@ -310,7 +316,6 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     }
 
   }); // end finishStep-click
-
 }); // end storyDetail-pageInit
 
 
@@ -363,6 +368,16 @@ function saveImagesAndPost(data) {
     }
   }); // end ajax
 }; // end saveImages
+
+
+// search-result
+function showSearchResult(data) {
+  console.log("f7 showSearchResult");
+  var searchResultTemplate = $$('script#searchResult').html();
+  var compiledSearchResultTemplate = Template7.compile(searchResultTemplate);
+  myApp.template7Data.searchResult = data;
+  $$('#search-result').html(compiledSearchResultTemplate(data));
+}; // end search-result
 
 
 // Show/hide preloader for remote ajax loaded pages
