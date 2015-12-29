@@ -37,7 +37,7 @@
    },
 
    '/main': {
-     view: 'main'
+     view: 'main0'
    },
 
    '/map': {
