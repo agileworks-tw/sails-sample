@@ -9,7 +9,7 @@ $(function() {
     // preview selected pic.
     var reader = new FileReader();
     reader.onload = function(e) {
-      console.log("e.target.result=>", e.target.result);
+      // console.log("e.target.result=>", e.target.result);
       $('img.preview').show('slow', function() {
           $('img.preview').attr('src', e.target.result);
       });

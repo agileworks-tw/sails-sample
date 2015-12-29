@@ -33,7 +33,8 @@ module.exports.policies = {
     'story': ['sessionAuth'],
     'getAllPost': [],
     'postStory': [],
-    'getPostById': []
+    'getPostById': [],
+    'getPostByKeyword': []
   },
   'ImageController': {
     'upload': []

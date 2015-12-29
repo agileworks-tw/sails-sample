@@ -1,187 +1,126 @@
-doctype html(lang='en-US')
-head
-  meta(charset='UTF-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1.0')
-  link(href='/fonts/font-awesome.css', rel='stylesheet', type='text/css')
-  link(href='http://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
-  link(rel='stylesheet', href='styles/bootstrap/css/bootstrap.min.css', type='text/css')
-  link(rel='stylesheet', href='styles/mapCss/bootstrap-select.min.css', type='text/css')
-  link(rel='stylesheet', href='styles/mapCss/owl.carousel.css', type='text/css')
-  link(rel='stylesheet', href='styles/mapCss/jquery.mCustomScrollbar.css', type='text/css')
-  link(rel='stylesheet', href='styles/mapCss/style.css', type='text/css')
-  link(rel='stylesheet', href='styles/mapCss/colors/blue.css', type='text/css')
-  link(rel='stylesheet', href='styles/mapCss/user.style.css', type='text/css')
-  link(rel='stylesheet', href='styles/mapCss/index.css', type='text/css')
-  title Spotter - Universal Directory Listing HTML Template
-  body#page-top.map-fullscreen.page-homepage.navigation-off-canvas(onunload='')
-    // Outer Wrapper
-    //- #splash
-    //-   img(src='../img/logo.png', alt='logo')
-    #outer-wrapper
-      // Inner Wrapper
-      #inner-wrapper
-        // Navigation
-        .header
+extends ./layout
+
+block body
+  .views.tabs.toolbar-through.layout-white
+    #mapView.view.view-main.tab.active
+      .navbar
+        .navbar-inner
           .wrapper
-            .brand
-              a(href='/')
-                img(src='../img/logo.png', alt='logo' style="height: 45px;")
-            nav.navigation-items
-              .wrapper
-                ul.main-navigation.navigation-top-header
-                ul.main-navigation
-                  a.submit-item.checkResults(href='#!')
-                    .content
-                      span Item list
-                    .icon
-                      i.fa.fa-bars
-                -if (!userLogin) 
-                  a.submit-item(href='/auth/facebook') 
-                    .content
-                      span Login!
-                    .icon
-                      i.fa.fa-sign-in
-                -else
-                  a.submit-item(href='/story')
-                    .content
-                      span Submit Your Item
-                    .icon
-                      i.fa.fa-plus
-                //- .toggle-navigation
-                //-   .icon
-                //-     .line
-                //-     .line
-                //-     .line
-        // end Navigation
-        // Page Canvas
-        #page-canvas
-          // Off Canvas Navigation
-          nav.off-canvas-navigation
-            header Navigation
-            .main-navigation.navigation-off-canvas
-          // end Off Canvas Navigation
-          // Page Content
-          #page-content
-            // Map Canvas
-            .map-canvas.list-width-30
-              // Map
-              .map
-                // find-my-loc 
-                .location     
-                  span.input-group-addon.find-my-loc.geolocation
-                    i.fa.fa-map-marker.geolocation(data-toggle='tooltip', data-placement='bottom', title='Find my position')
-                // end find-my-loc
-                .toggle-navigation
-                  .icon
-                    .line
-                    .line
-                    .line
-                // /.toggle-navigation
-                #map.has-parallax        
-                // /#map
-                //- .search-bar.horizontal
-                //-   form.main-search.border-less-inputs(role='form', method='post')
-                //-     .input-row
-                //-       .form-group
-                //-         input#keyword.form-control(type='text', placeholder='Enter Keyword')
-                //-       // /.form-group
-                //-       .form-group
-                //-         .input-group.location
-                //-           input#location.form-control(type='text', placeholder='Enter Location')
-                //-           span.input-group-addon
-                //-             i.fa.fa-map-marker.geolocation(data-toggle='tooltip', data-placement='bottom', title='Find my position')
-                //-       // /.form-group
-                //-       .form-group
-                //-         select(name='category', multiple='', title='Select Category', data-live-search='true')
-                //-           option(value='1') Stores
-                //-           option.sub-category(value='2') Apparel
-                //-           option.sub-category(value='3') Computers
-                //-           option.sub-category(value='4') Nature
-                //-           option(value='5') Tourism
-                //-           option(value='6') Restaurant &amp; Bars
-                //-           option.sub-category(value='7') Bars
-                //-           option.sub-category(value='8') Vegetarian
-                //-           option.sub-category(value='9') Steak &amp; Grill
-                //-           option(value='10') Sports
-                //-           option.sub-category(value='11') Cycling
-                //-           option.sub-category(value='12') Water Sports
-                //-           option.sub-category(value='13') Winter Sports
-                //-       // /.form-group
-                //-       .form-group
-                //-         button.btn.btn-default(type='submit')
-                //-           i.fa.fa-search
-                //-       // /.form-group
-                //-     // /.input-row
-                //-   // /.main-search
-                //- // /.search-bar
-              // end Map
-              // Items List
-              .items-list
-                .inner
-                  header
-                    h3#results Results
-                  ul.results.list
-                  .header
-                    .wrapper
-                      nav.navigation-items
-                        .wrapper
-                          ul.main-navigation
-                            a.submit-item.checkTop(href='#!') back to top
-                              .content
-                                span back to top
-                              .icon
-                                i.fa.fa-angle-double-up
-                // results
-              // end Items List
-            // end Map Canvas
-          // end Inner Wrapper
-        // end Outer Wrapper
-        script(type='text/javascript', src='/js/map/jquery-2.1.0.min.js')
-        script(type='text/javascript', src='/js/map/before.load.js')
-        script(type='text/javascript', src='/js/map/jquery-migrate-1.2.1.min.js')
-        script(type='text/javascript', src='/styles/bootstrap/js/bootstrap.min.js')
-        script(type='text/javascript', src='/js/map/smoothscroll.js')
-        script(type='text/javascript', src='/js/map/bootstrap-select.min.js')
-        script(type='text/javascript', src='/js/map/jquery.hotkeys.js')
-        script(type='text/javascript', src='/js/map/jquery.nouislider.all.min.js')
-        script(type='text/javascript', src='/js/map/jquery.mCustomScrollbar.concat.min.js')
-        // removed sensor paramate to avoid warring.
-        //- script(type='text/javascript', src='http://maps.google.com/maps/api/js?sensor=false&libraries=places')
-        script(type='text/javascript', src='http://maps.google.com/maps/api/js?libraries=places')
-        script(type='text/javascript', src='/js/map/infobox.js')
-        script(type='text/javascript', src='/js/map/richmarker-compiled.js')
-        script(type='text/javascript', src='/js/map/markerclusterer.js')
-        script(type='text/javascript', src='/js/map/custom.js')
-        script(type='text/javascript', src='/js/map/maps.js')
-        script(type='text/javascript', src='/js/favbox.js')
-        script(type='text/javascript', src='/js/main.js')
-        script.
-          var _latitude = 51.541216;
-          var _longitude = -0.095678;
-          //- var jsonPath = '/json/items.json.txt';
-          // Load JSON data and create Google Maps
-          $.ajax({
-            url: "/getAllPost",
-            type:"POST",
-            success: function(json){
-              console.log(json);
-              createHomepageGoogleMap(_latitude,_longitude,json);
-            },
-            error:function(xhr, ajaxOptions, thrownError){
-              console.log(xhr.status);
-              console.log(thrownError);
-            }
-          });
-          //- $.getJSON(jsonPath)
-          //- .done(function(json) {
-          //-   createHomepageGoogleMap(_latitude,_longitude,json);
-          //- })
-          //- .fail(function( jqxhr, textStatus, error ) {
-          //-   console.log(error);
-          //- });
-          // Set if language is RTL and load Owl Carousel
-          $(window).load(function(){
-          var rtl = false; // Use RTL
-            initializeOwl(rtl);
-          });
-          autoComplete();
+            a.left.external(href='/')
+              img(src='/img/logo.png', alt='logo', style="height: 45px;") 
+          .wrapper
+            a.right.top.external(href='/auth/facebook')
+              img.action(src='/img/build.png', alt='build', style="height: 35px;")
+
+      .pages.navbar-through
+        .page.no-swipeback(data-page='mapView')
+          .page-content
+            iframe(src='/map', style="height: 100%; width: 100%; border: 0;")  
+          // We need cool sliding animation on title element, so we have additional "sliding" class
+    #mapView.view.tab
+      .navbar
+        .navbar-inner
+          .center.sliding.i18n(data-i18n='app.name')
+      .pages.navbar-through
+        .page.no-swipeback(data-page='mapView')
+          .page-content                
+    #listView.view.tab
+      .navbar
+        .navbar-inner
+          a.left.external(href='/')
+            img(src='/img/logo.png', alt='logo', style="height: 45px;")
+          .center.sliding.i18n(data-i18n='app.name')
+      .pages.navbar-through
+        .page(data-page='listView').page-content
+          .card.demo-card-header-pic
+            .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
+            .card-content
+              .card-content-inner
+                p.color-gray Posted on January 21, 2015
+                p Quisque eget vestibulum nulla...
+            .card-footer
+              a.link(href='#') Like
+          .card.demo-card-header-pic
+            .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
+            .card-content
+              .card-content-inner
+                p.color-gray Posted on January 21, 2015
+                p Quisque eget vestibulum nulla...
+            .card-footer
+              a.link(href='#') Like
+          .card.demo-card-header-pic
+            .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
+            .card-content
+              .card-content-inner
+                p.color-gray Posted on January 21, 2015
+                p Quisque eget vestibulum nulla...
+            .card-footer
+              a.link(href='#') Like            
+    #searchView.view.tab
+      .navbar
+        .navbar-inner
+          .wrapper
+            a.left.external(href='/')
+              img(src='/img/logo.png', alt='logo', style="height: 45px;")
+          .wrapper
+            a#search-btn.right.top(href='#!')
+              img.action(src='/img/search.png', alt='search', style="height: 35px;")
+          .center.sliding.i18n(data-i18n='app.name')
+      .pages.navbar-through
+        .page(data-page='searchView')  
+          form#formSearch.searchbar
+           // Search bar
+           .searchbar-input
+             input.i18n(type='search', data-i18n='[placeholder]global.search')
+             a.searchbar-clear(href='#') clear
+             a.searchbar-cancel.i18n(href='#', data-i18n='global.cancel') cancel
+          // Search bar overlay
+          .searchbar-overlay
+          .page-content
+            .list-block.contacts-list.searchbar-found
+              .list-group
+                ul#search-result.items-list
+                //f7
+                script(type='text/template7', id="searchResult").
+                  {{#each this.items}}
+                    <li class="">
+                      <div class="card demo-card-header-pic">
+                        <div style="background-image:url({{gallery}})" valign="middle" class="card-header color-white no-border">{{itemname}}</div>
+                        <div class="card-content">
+                          <div class="card-content-inner">
+                            <p class="color-gray">Posted on January 21, 2015</p>
+                            <p>Quisque eget vestibulum nulla...</p>
+                          </div>
+                        </div>
+                        <div class="card-footer"><a href="#" data-id="undefined" class="link">Like</a></div>
+                      </div>
+                    </li>
+                  {{/each}}
+                // Items List
+                //- .items-list
+                //-   .inner
+                //-     header
+                //-       h3#results Results
+                //-     ul.results.list
+              
+              
+            .content-block.searchbar-not-found.i18n(data-i18n='index.nothing_found')
+    #buildView.view.tab
+      .navbar
+        .navbar-inner
+          .center.sliding.i18n(data-i18n='app.name')
+      .pages.navbar-through
+        //- .page.navbar-fixed(data-page='buildView')
+        .page.no-swipeback(data-page='buildView')
+          .page-content
+    .toolbar.tabbar.tabbar-labels
+      .toolbar-inner
+        a.tab-link.active(href='#mapView')
+          img(src='/img/map.png', alt='map', style="height: 35px;")  
+        a.tab-link(href='#listView')
+          img(src='/img/list.png', alt='list', style="height: 35px;")
+        a.tab-link(href='#searchView')
+          img(src='/img/search.png', alt='search', style="height: 35px;")
+        a.tab-link(href='/story')
+          img(src='/img/build.png', alt='build', style="height: 35px;")
+    link(rel="stylesheet", href="/styles/css/main.css")

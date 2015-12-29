@@ -197,12 +197,12 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     myApp.formStoreData('storyDetailChoose', storedData);
   });
 
-  $$("input[name='price']").on('input', function(){
+  $$("input[name='price']").on('input', function() {
     var storedData = myApp.formToJSON('#storyDetailChoose');
-    myApp.formStoreData('storyDetailChoose',storedData);
+    myApp.formStoreData('storyDetailChoose', storedData);
   });
 
-  $$('#finishStep').click(function(){
+  $$('#finishStep').click(function() {
     // {"mode":"give","hobby":"1","detail":{"title":"123","radioItem":"2","item":""},
     // "location":{"latitude":24.148657699999998,"longitude":120.67413979999999,"accuracy":30}}
     myApp.showIndicator();
@@ -218,63 +218,104 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
 
     if (!data.mode) {
       myApp.hideIndicator();
-      myApp.alert("", "Please try again due to Internet issues :(")
-      mainView.router.loadPage('/story')
+      myApp.alert("", "Please try again due to Internet issues :(");
+      mainView.router.loadPage('/story');
       return false;
     }
 
     if (!data.hobby) {
       myApp.hideIndicator();
-      myApp.alert("", "Please try again due to Internet issues :(")
-      mainView.router.loadPage('/storyCategory')
+      myApp.alert("", "Please try again due to Internet issues :(");
+      mainView.router.loadPage('/storyCategory');
       return false;
     }
 
     if (!data.detail || data.detail.title == "") {
       myApp.hideIndicator();
-      myApp.alert("Don't forget to enter a nice title :)", "Error")
+      myApp.alert("Don't forget to enter a nice title :)", "Error");
       return false;
     }
 
     // By default give today to startDate if use hasn't selsect period.
-    if (!data.detail.startDate) {
+    if (!data.detail.startDate || data.detail.startDate==undefined) {
       var now = new Date();
       data.detail.startDate = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate();
+    } else {
+      // re-assembling date period field.
+      data.detail.startDate = $("#calendar-postPeriod").val().split(" - ")[0];
+      data.detail.endDate = $("#calendar-postPeriod").val().split(" - ")[1];
     }
 
-    // re-assembling date period field.
-    data.detail.startDate = $("#calendar-postPeriod").val().split(" - ")[0];
-    data.detail.endDate = $("#calendar-postPeriod").val().split(" - ")[1];
-
-    if(data.detail.price == ""){
+    if (!data.detail.price || data.detail.price == "") {
       myApp.hideIndicator();
-      myApp.alert("Please give your item/service a nice price :)","Error")
+      myApp.alert("Please give your item/service a nice price :)", "Error")
       return false;
     }
 
     var location = {};
-    navigator.geolocation.getCurrentPosition(GetLocationAndSubmit);
+    navigator.geolocation.getCurrentPosition(
+      success,
+      error,
+      options);
 
-    function GetLocationAndSubmit(loc) {
-      console.log(loc);
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 2500,
+      maximumAge: 2500
+    };
+
+    function success(loc) {
+      console.log("html5 location=>", loc);
       location = {
         latitude: loc.coords.latitude,
         longitude: loc.coords.longitude,
         accuracy: loc.coords.accuracy
       }
       data.location = location;
+      submit();
+    } // end GetLocationAndSubmit
 
-      console.log(JSON.stringify(data));
+    function error(err) {
+      jQuery.ajax({
+        url: 'http://ip-api.com/json/',
+        type: 'POST',
+        dataType: 'jsonp',
+        success: function(loc) {
+          console.log("geoip location=>", loc);
+          location = {
+            latitude: loc.lat,
+            longitude: loc.lon,
+            accuracy: 5000
+          }
+          data.location = location;
+          submit();
+        },
+        error: function(err) {
+          // to-do
+          // if get geoip's data failed then give a default loaciotn from user setting.
+          location = {
+            latitude: 51.541216,
+            longitude: -0.095678,
+            accuracy: 5000
+          }
+          data.location = location;
+          submit();
+        }
+      });
+      // submit after get location either geoip or default.
+    } // end GetNoGPS
 
+    function submit() {
+      console.log("data before submit=>", (data));
       var imageCount = $("input.uploadBtn").get(0).files.length;
       if ((imageCount != null) && (imageCount > 0)) {
         saveImagesAndPost(data);
       } else {
         savePost(data);
       }
-    } // end GetLocationAndSubmit
-  }); // end finishStep-click
+    }
 
+  }); // end finishStep-click
 }); // end storyDetail-pageInit
 
 
@@ -293,6 +334,7 @@ function savePost(data) {
       myApp.hideIndicator();
     },
     error: function(xhr, ajaxOptions, thrownError) {
+      myApp.hideIndicator();
       myApp.alert('Due to internet connection issues, please try again later or check you GPS status. thank you.', 'Error');
       console.log(xhr.status);
       console.log(thrownError);
@@ -314,16 +356,28 @@ function saveImagesAndPost(data) {
     contentType: false,
     processData: false,
     success: function(result) {
+      myApp.hideIndicator();
       data.images = result[0].src;
       savePost(data);
     },
     error: function(xhr, ajaxOptions, thrownError) {
+      myApp.hideIndicator();
       myApp.alert('due to internet issues, upload image failed.', 'Error');
       console.log(xhr.status);
       console.log(thrownError);
     }
   }); // end ajax
 }; // end saveImages
+
+
+// search-result
+function showSearchResult(data) {
+  console.log("f7 showSearchResult");
+  var searchResultTemplate = $$('script#searchResult').html();
+  var compiledSearchResultTemplate = Template7.compile(searchResultTemplate);
+  myApp.template7Data.searchResult = data;
+  $$('#search-result').html(compiledSearchResultTemplate(data));
+}; // end search-result
 
 
 // Show/hide preloader for remote ajax loaded pages

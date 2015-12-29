@@ -14,6 +14,7 @@ head
   title Spotter - Universal Directory Listing HTML Template
   body#page-top.page-subpage.page-item-detail.navigation-off-canvas(onunload='')
     // Outer Wrapper
+    #fb-root
     #outer-wrapper
       // Inner Wrapper
       #inner-wrapper
@@ -89,6 +90,7 @@ head
                               .info
                                 i.fa.fa-globe
                                 a(href='#') #{post.email || ''}
+                              .fb-comments(data-href="http://localhost:1337/postDetail/#{post.id}" data-width="400" data-numposts="5")           
                       .col-md-8.col-sm-8
                         section
                           article.item-gallery
@@ -138,6 +140,14 @@ head
                       //- .fail(function( jqxhr, textStatus, error ) {
                       //-   console.log(error);
                       //- });
+                      (function(d, s, id) {
+                      var js, fjs = d.getElementsByTagName(s)[0];
+                      if (d.getElementById(id)) return;
+                      js = d.createElement(s); js.id = id;
+                      js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5&appId=915539495181624";
+                      fjs.parentNode.insertBefore(js, fjs);
+                      }(document, 'script', 'facebook-jssdk'));
+                      
                       $(window).load(function(){
                         var rtl = false; // Use RTL
                         initializeOwl(rtl);
