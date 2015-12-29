@@ -34,11 +34,23 @@ module.exports = {
     }
   },
 
-  updateUserMail: async({userId,userMail}) => {
+  updateUserMail: async({userId,userMail,userLocation}) => {
     try {
-      sails.log.info(userId,userMail);
+      sails.log.info("updateUserMail(userId,userMail)=>",userId,userMail);
       let user = await User.findById(userId);
       user.email = userMail;
+      user = await user.save();
+      return user;
+    } catch (e) {
+      throw e;
+    }
+  },
+
+  updateUserLocation: async({userId,userLocation}) => {
+    try {
+      sails.log.info("updateUserLocation(userId,userLocation)=>",userId,userLocation);
+      let user = await User.findById(userId);
+      user.location = userLocation;
       user = await user.save();
       return user;
     } catch (e) {

@@ -1,9 +1,9 @@
 module.exports = {
-  index: async (req, res) => {
+  index: async(req, res) => {
     try {
       let userLogin = await UserService.getLoginState(req);
       let loginedUser = await UserService.getLoginUser(req);
-      res.view('main',{
+      res.view('main', {
         userLogin,
         loginedUser
       });
@@ -12,48 +12,52 @@ module.exports = {
     }
   },
 
-  find: async (req, res) => {
+  find: async(req, res) => {
     try {
       let users = await UserService.findAll();
-      res.ok({users});
+      res.ok({
+        users
+      });
     } catch (e) {
       res.serverError(e);
     }
   },
 
-  updateHobbyAndMail: async (req, res) => {
+  updateHobbyAndMail: async(req, res) => {
+    console.log("====updateHobbyAndMail===", req.body);
     try {
-      console.log("====updateHobbyAndMail===",req.body);
       let data = req.body;
       let user = AuthService.getLoginUser(req);
 
-      if( !data.hasOwnProperty('eamil') ){
+      if (data.email) {
         await UserService.updateUserMail({
           userId: user.id,
           userMail: data.email
         });
       }
+      await UserService.updateUserLocation({
+        userId: user.id,
+        userLocation: data.location
+      });
       await UserService.updateUserLike({
         userId: user.id,
         likeArray: data.hobby
       });
-
       res.ok('ok');
-
     } catch (e) {
       sails.log.error(e);
       res.serverError(e);
     }
   },
 
-  hobbyView: async (req, res) => {
+  hobbyView: async(req, res) => {
     try {
       let isHasMail = req.query.hasMail;
-      if(!isHasMail)
+      if (!isHasMail)
         res.redirect('/')
 
-      let categorys =  await PostService.getAllCategory();
-      res.view('hobby',{
+      let categorys = await PostService.getAllCategory();
+      res.view('hobby', {
         isHasMail,
         categorys
       });
@@ -63,15 +67,15 @@ module.exports = {
     }
   },
 
-  addUserFavorite: async (req, res) => {
+  addUserFavorite: async(req, res) => {
     try {
-      sails.log.info("=== addUserFavorite ===",req.param('id'));
+      sails.log.info("=== addUserFavorite ===", req.param('id'));
       let user = await UserService.getLoginUser(req);
       let data = {
         userId: user.id,
         postId: req.param('id')
       };
-      let result =  await UserService.addUserFavorite(data);
+      let result = await UserService.addUserFavorite(data);
       res.ok(result);
     } catch (e) {
       sails.log.error(e);
