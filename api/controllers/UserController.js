@@ -77,7 +77,17 @@ module.exports = {
       sails.log.error(e);
       res.serverError(e);
     }
-  }
+  },
 
-
+  getUserFavorites: async(req, res) => {
+    try {
+      console.log("==== getUserFavorites ===", req.body);
+      let data = req.body;
+      await UserService.create(data, req);
+      res.ok('ok');
+    } catch (e) {
+      sails.log.error(e);
+      res.serverError(e);
+    }
+  },
 }

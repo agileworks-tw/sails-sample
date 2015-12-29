@@ -77,6 +77,8 @@
    'get /postDetail/:id': 'PostController.getPostById',
 
    'post /addUserFavorite/:id': 'UserController.addUserFavorite',
+   'get /getUserFavorites': 'UserController.getUserFavorites',
+
 
    // image
    'get /testUpload': 'ImageController.index',
