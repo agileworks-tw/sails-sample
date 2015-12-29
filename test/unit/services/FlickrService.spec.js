@@ -34,7 +34,7 @@ describe('about Flickr Service operation.', function() {
   });
 
 
-  describe.only('test appn', () => {
+  describe('test appn', () => {
 
     it('appn', async (done) => {
       try {
