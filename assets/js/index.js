@@ -94,9 +94,12 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function(e) {
           "address": addr
         }, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
-            var lat = results[0].geometry.location.lat();
-            var lon = results[0].geometry.location.lng();
-            var location = lat + "," + lon;
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+            var location = {
+              latitude: latitude,
+              longitude: longitude
+            };
             submitSingUpForm(location);
           } else {
             // if no result than use geoip
@@ -113,7 +116,12 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function(e) {
       dataType: 'jsonp',
       success: function(loc) {
         var geoLoc = JSON.parse(loc);
-        var location = geoLoc.lat + "," + geoLoc.lon;
+        var latitude = geoLoc.lat;
+        var longitude =  geoLoc.lon;
+        var location = {
+          latitude: latitude,
+          longitude: longitude
+        };
         submitSingUpForm(location);
       }
     }); // end ajax

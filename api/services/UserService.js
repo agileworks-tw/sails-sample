@@ -50,7 +50,8 @@ module.exports = {
     try {
       sails.log.info("updateUserLocation(userId,userLocation)=>",userId,userLocation);
       let user = await User.findById(userId);
-      user.location = userLocation;
+      user.latitude = userLocation.latitude;
+      user.longitude = userLocation.longitude;
       user = await user.save();
       return user;
     } catch (e) {

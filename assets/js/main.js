@@ -28,7 +28,6 @@ $("#search-btn").click(function(e) {
   if (keyword) {
     e.preventDefault();
     goSearch(keyword);
-    addressToLatLng("桂林街106號")
   } else {
     alert("Don't forget to type something!")
   }

@@ -8,10 +8,17 @@ module.exports = {
       type: Sequelize.STRING,
       unique: true
     },
-    location: {
-      type: Sequelize.STRING,
+    latitude: {
+      type: Sequelize.DOUBLE,
       allowNull: true,
-      defaultValue: null
+      defaultValue: null,
+      validate: { min: -90, max: 90 }
+    },
+    longitude: {
+      type: Sequelize.DOUBLE,
+      allowNull: true,
+      defaultValue: null,
+      validate: { min: -180, max: 180 }
     },
     age: {
       type: Sequelize.INTEGER
