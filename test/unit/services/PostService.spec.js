@@ -5,12 +5,12 @@ describe('about Post Service operation.', function() {
   describe('post new item', () => {
 
     let like, item;
-    before(async (done) => {
+    before(async(done) => {
       try {
         let user = await User.create({
           "username": "testPost",
-    			"email": "testPost@gmail.com",
-    			"age": 18
+          "email": "testPost@gmail.com",
+          "age": 18
         });
 
         sinon.stub(UserService, 'getLoginState', (req) => {
@@ -37,13 +37,13 @@ describe('about Post Service operation.', function() {
       }
     });
 
-    after(async (done) => {
+    after(async(done) => {
       UserService.getLoginState.restore();
       UserService.getLoginUser.restore();
       done();
     });
 
-    it('should success.', async (done) => {
+    it('should success.', async(done) => {
       try {
         let send = {
           "mode": "give",
@@ -73,7 +73,7 @@ describe('about Post Service operation.', function() {
       }
     });
 
-    it('should add new Item success.', async (done) => {
+    it('should add new Item success.', async(done) => {
       try {
         let send = {
           "mode": "give",
@@ -115,7 +115,7 @@ describe('about Post Service operation.', function() {
   describe('get post', () => {
 
     let post, item;
-    before(async (done) => {
+    before(async(done) => {
       try {
         let like3c = await Like.create({
           title: '測試Ｇet生活3C'
@@ -141,7 +141,7 @@ describe('about Post Service operation.', function() {
           longitude: 120.67413979999999,
           geometry: {
             type: 'Point',
-            coordinates: [24.148657699999998,120.67413979999999]
+            coordinates: [24.148657699999998, 120.67413979999999]
           }
         }
 
@@ -152,10 +152,9 @@ describe('about Post Service operation.', function() {
           LikeId: like3c.id
         });
 
-        for(let i =0 ;i < 10; i++){
-
-          let latitude = 51.5377994 + Math.random()/100;
-          let longitude = -0.1006775 + Math.random()/100;
+        for (let i = 0; i < 10; i++) {
+          let latitude = 51.5377994 + Math.random() / 100;
+          let longitude = -0.1006775 + Math.random() / 100;
           let post = {
             title: "testTitle",
             startDate: "2015-12-25",
@@ -171,18 +170,39 @@ describe('about Post Service operation.', function() {
             longitude: longitude,
             geometry: {
               type: 'Point',
-              coordinates: [latitude,longitude]
+              coordinates: [latitude, longitude]
             }
           }
           let createPost = await Post.create(post);
         }
+
+        let searchPost = {
+          title: "searchPost",
+          startDate: "2015-12-25",
+          endDate: "2015-12-31",
+          price: "200",
+          content: 'content',
+          mode: "give",
+          createdAt: "2015-12-15 10:09:07",
+          updatedAt: "2015-12-15 10:09:07",
+          ItemId: 17,
+          UserId: 1,
+          latitude: 39.807222,
+          longitude: -76.984722,
+          geometry: {
+            type: 'Point',
+            coordinates: [39.807222, -76.984722]
+          }
+        }
+        let createSearchPost = await Post.create(searchPost);
+
         done();
       } catch (e) {
         done(e)
       }
     });
 
-    it('should success.', async (done) => {
+    it('should success.', async(done) => {
       try {
 
         let getData = await PostService.getAllPost();
@@ -204,8 +224,25 @@ describe('about Post Service operation.', function() {
         //   }
         // ]
 
-        sails.log.info(JSON.stringify(getData.data[0],null,2));
+        sails.log.info(JSON.stringify(getData.data[0], null, 2));
         getData.data.should.be.Array;
+
+        done();
+      } catch (e) {
+        sails.log.error(e);
+        done(e);
+      }
+    });
+
+    // search
+    it('search should success.', async(done) => {
+      try {
+
+        let getData = await PostService.getPostByKeyword("searchPost");
+
+        sails.log.info("search result=>", getData);
+        getData.length.should.be.equal(1);
+        getData.should.be.Array;
 
         done();
       } catch (e) {
