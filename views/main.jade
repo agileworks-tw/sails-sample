@@ -18,11 +18,13 @@ block body
                 a.mapView.tab-link.active(href='#mapView')
                   img(src='/img/map.png', alt='map')  
                 a.favoriteView.tab-link(href='#favoriteView')
-                  img(src='/img/list.png', alt='list')
+                  img(src='/img/favorite.png', alt='list')
                 a.searchView.tab-link(href='#searchView')
                   img(src='/img/search.png', alt='search')
+                a.listView.tab-link(href='#listView')
+                  img(src='/img/list.png', alt='list')
                 a.storyView.link(href='/story')
-                  img(src='/img/build.png', alt='build')
+                  img(src='/img/add.png', alt='add')
             |         
             .page-content
               .content-block(style="height: 100%;")
@@ -76,6 +78,7 @@ block body
                               </li>
                             {{/each}}
                           // Result List
+                          
                   |               
                   #listView.tab
                     .card.demo-card-header-pic
