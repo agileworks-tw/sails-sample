@@ -33,6 +33,7 @@ describe('about Flickr Service operation.', function() {
 
   });
 
+
   // secret "APPN" test
   describe.skip('test appn', () => {
 

@@ -10,7 +10,7 @@ block body
                 img(src='/img/logo.png', alt='logo', style="height: 45px;") 
             .wrapper
               a.right.top.external(href='/auth/facebook')
-                img.action(src='/img/build.png', alt='build', style="height: 35px;")
+                img.action(src='/img/login.png', alt='login', style="height: 35px;")
         .pages
           .page.toolbar-fixed(data-page='home')
             .toolbar.tabbar
@@ -18,11 +18,13 @@ block body
                 a.tab-link.active(href='#mapView')
                   img(src='/img/map.png', alt='map', style="height: 35px;")  
                 a.tab-link(href='#favoriteView')
-                  img(src='/img/list.png', alt='list', style="height: 35px;")
+                  img(src='/img/favorite.png', alt='favorite', style="height: 35px;")
                 a.tab-link(href='#searchView')
                   img(src='/img/search.png', alt='search', style="height: 35px;")
+                a.tab-link(href='#listView')
+                  img(src='/img/list.png', alt='list', style="height: 35px;")
                 a.link(href='/story')
-                  img(src='/img/build.png', alt='build', style="height: 35px;")
+                  img(src='/img/add.png', alt='add', style="height: 35px;")
             |         
             .page-content
               .content-block(style="height: 100%; padding: 0px; margin: 70px 0px")
@@ -35,26 +37,10 @@ block body
                       .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
                       .card-content
                         .card-content-inner
-                          p.color-gray Posted on January 21, 2015
+                          p.color-gray 
                           p Quisque eget vestibulum nulla...
                       .card-footer
-                        a.link(href='templates/finish.html') Like
-                    .card.demo-card-header-pic
-                      .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
-                      .card-content
-                        .card-content-inner
-                          p.color-gray Posted on January 21, 2015
-                          p Quisque eget vestibulum nulla...
-                      .card-footer
-                        a.link(href='templates/finish.html') Like????
-                    .card.demo-card-header-pic
-                      .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
-                      .card-content
-                        .card-content-inner
-                          p.color-gray Posted on January 21, 2015
-                          p Quisque eget vestibulum nulla...
-                      .card-footer
-                        a.link(href='templates/finish.html') Like            
+                        a.link(href='templates/finish.html') Like 
                   |               
                   #searchView.tab
                     form#formSearch.searchbar
@@ -86,4 +72,30 @@ block body
                               </li>
                             {{/each}}
                           // Items List
+                  |               
+                  #listView.tab
+                    .card.demo-card-header-pic
+                      .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
+                      .card-content
+                        .card-content-inner
+                          p.color-gray Posted on January 21, 2015
+                          p Quisque eget vestibulum nulla...
+                      .card-footer
+                        a.link(href='templates/finish.html') Like
+                    .card.demo-card-header-pic
+                      .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
+                      .card-content
+                        .card-content-inner
+                          p.color-gray Posted on January 21, 2015
+                          p Quisque eget vestibulum nulla...
+                      .card-footer
+                        a.link(href='templates/finish.html') Like????
+                    .card.demo-card-header-pic
+                      .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
+                      .card-content
+                        .card-content-inner
+                          p.color-gray Posted on January 21, 2015
+                          p Quisque eget vestibulum nulla...
+                      .card-footer
+                        a.link(href='templates/finish.html') Like 
     link(rel="stylesheet", href="/styles/css/main.css")

@@ -70,7 +70,7 @@ module.exports = {
     }
   },
 
-  getUserFavorite: async({userId}) => {
+  getUserFavorites: async({userId}) => {
     try {
       sails.log.info(userId);
       let user = await User.findById(userId);

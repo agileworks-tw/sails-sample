@@ -131,7 +131,7 @@ describe('about User Service operation.', function() {
           userId: testUser.id,
         }
 
-        let result = await UserService.getUserFavorite(send);
+        let result = await UserService.getUserFavorites(send);
         result.should.be.an.Array;
         done();
 
