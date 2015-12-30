@@ -34,3 +34,6 @@ a.tab-link.active {
 .list-block.contacts-list.searchbar-found {
   padding-top: 15px;
 }
+.map-view {
+  /*height: 100%;*/
+}

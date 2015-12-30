@@ -36,10 +36,6 @@
      view: 'index2'
    },
 
-   '/main': {
-     view: 'main'
-   },
-
    '/map': {
      view: 'map'
    },
