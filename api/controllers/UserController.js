@@ -71,9 +71,10 @@ module.exports = {
         userId: user.id,
         postId: req.param('id')
       };
+      sails.log.info("=== add data ===",data);
       let result =  await UserService.addUserFavorite(data);
       res.ok(result);
-    } catch (e) {
+    }catch (e) {
       sails.log.error(e);
       res.serverError(e);
     }
@@ -81,13 +82,13 @@ module.exports = {
 
   getUserFavorites: async(req, res) => {
     try {
-      console.log("==== getUserFavorites ===", req.body);
-      let data = req.body;
-      await UserService.create(data, req);
-      res.ok('ok');
+      console.log("==== getUserFavorites ===");
+      let user = await UserService.getLoginUser(req);
+      let userFavorites = await UserService.getUserFavorites({userId: user.id});
+      res.ok(userFavorites);
     } catch (e) {
       sails.log.error(e);
       res.serverError(e);
     }
-  },
+  }
 }

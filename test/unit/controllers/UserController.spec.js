@@ -1,8 +1,5 @@
-describe.skip('about User Controller operation.', function() { //skip
-  it('create User should success.', async (done) => {
-    done(new Error('no implement'));
-  });
-
+import sinon from 'sinon';
+describe('about User Controller operation.', function() { //skip
   describe('find user', () => {
 
     it('should success.', async (done) => {
@@ -17,66 +14,64 @@ describe.skip('about User Controller operation.', function() { //skip
     });
 
   });
-
-  describe('delete user', () => {
-    before(async (done) => {
-      done();
-    });
-
-    it('should success.', async (done) => {
-      done(new Error('no implement'));
-    });
-  });
-
-  describe('update user', () => {
-    before(async (done) => {
-      done();
-    });
-
-    it('should success.', async (done) => {
-      done(new Error('no implement'));
-    });
-  });
-
   describe('UserController Favorite', () => {
 
     let testUser, post, item, createPost;
     before(async (done) => {
+      try {
+        testUser = await User.create({
+          "username": "testPost",
+          "email": "testUserController@gmail.com",
+          "age": 18
+        });
 
-      testUser = await User.create({
-  			"username": "testuser",
-      });
+        sinon.stub(UserService, 'getLoginState', (req) => {
+          return true;
+        });
 
-      let like3c = await Like.create({
-        title: '測試Ｇet生活3C'
-      });
+        sinon.stub(UserService, 'getLoginUser', (req) => {
+          return testUser;
+        });
 
-      item = await Item.create({
-        itemname: "Server",
-        LikeId: like3c.id
-      })
+        let like3c = await Like.create({
+          title: '測試Ｇet生活3C'
+        });
 
-      post = {
-        title: "testTitle",
-        content: 'content',
-        startDate: "2015-12-25",
-        endDate: "2015-12-31",
-        price: "200",
-        mode: "give",
-        createdAt: "2015-12-15 10:09:07",
-        updatedAt: "2015-12-15 10:09:07",
-        ItemId: item.id,
-        UserId: 1,
-        latitude: 24.148657699999998,
-        longitude: 120.67413979999999,
-        geometry: {
-          type: 'Point',
-          coordinates: [24.148657699999998,120.67413979999999]
+        item = await Item.create({
+          itemname: "Server",
+          LikeId: like3c.id
+        })
+
+        post = {
+          title: "testTitle",
+          content: 'content',
+          startDate: "2015-12-25",
+          endDate: "2015-12-31",
+          price: "200",
+          mode: "give",
+          createdAt: "2015-12-15 10:09:07",
+          updatedAt: "2015-12-15 10:09:07",
+          ItemId: item.id,
+          UserId: 1,
+          latitude: 24.148657699999998,
+          longitude: 120.67413979999999,
+          geometry: {
+            type: 'Point',
+            coordinates: [24.148657699999998,120.67413979999999]
+          }
         }
+
+        createPost = await Post.create(post);
+
+        done();
+      } catch (e) {
+        done(e)
       }
+    });
 
-      createPost = await Post.create(post);
-
+    after( (done) => {
+      UserService.getLoginState.restore();
+      UserService.getLoginUser.restore();
       done();
     });
 
@@ -88,14 +83,14 @@ describe.skip('about User Controller operation.', function() { //skip
           postId: createPost.id
         }
 
-        // let before = await testUser.getPosts();
+        let before = await testUser.getPosts();
         let result = await request(sails.hooks.http.app)
-        .post('/addUserFavorite');
-        sails.log.info(result);
+        .post('/addUserFavorite/' + testUser.id);
+        // sails.log.info(result);
         result.status.should.be.equal(200);
-        // let after = await testUser.getPosts();
-        // result.should.be.an.Array;
-        // after.length.should.be.above(before.length)
+        let after = await testUser.getPosts();
+        result.should.be.an.Array;
+        after.length.should.be.above(before.length)
         done();
 
       } catch (e) {
@@ -107,12 +102,9 @@ describe.skip('about User Controller operation.', function() { //skip
     it('get favorites should success.', async (done) => {
       try {
 
-        let send = {
-          userId: testUser.id,
-        }
         let result = await request(sails.hooks.http.app)
-        .post('/getUserFavorites');
-        sails.log.info(result);
+        .get('/getUserFavorites');
+        sails.log.info("!!!",result.body);
         result.status.should.be.equal(200);
 
         done();
