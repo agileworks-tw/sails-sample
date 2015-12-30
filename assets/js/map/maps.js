@@ -172,6 +172,7 @@ function createHomepageGoogleMap(_latitude, _longitude, json) {
     // Try HTML5 geolocation. (get-my-loc)
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
+        // success
         function(position) {
           var pos = {
             lat: position.coords.latitude,
@@ -179,6 +180,7 @@ function createHomepageGoogleMap(_latitude, _longitude, json) {
           };
           map.setCenter(pos);
         },
+        // error
         function() {
           // handleLocationError(true, infoWindow, map.getCenter());
           $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
@@ -189,10 +191,12 @@ function createHomepageGoogleMap(_latitude, _longitude, json) {
             };
             map.setCenter(pos);
           });
-        }, {
+        },
+        // option
+        {
           enableHighAccuracy: true,
-          timeout: 5000,
-          maximumAge: 5000
+          timeout: 2500,
+          maximumAge: 2500
         }
       );
     }

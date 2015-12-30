@@ -4,7 +4,7 @@ describe('about Flickr Service operation.', function() {
 
     it('flickr search', async (done) => {
       try {
-        let tags = 'flower';
+        let tags = 'iphone';
         let url = await FlickrService.search(tags);
         url.should.be.an.string;
         done();
@@ -17,9 +17,9 @@ describe('about Flickr Service operation.', function() {
   });
 
 
-  describe('update lile item', () => {
+  describe.only('update lile item', () => {
 
-    it('flickr search', async (done) => {
+    it('getty search', async (done) => {
       try {
         let tags = 'iphone';
         let url = await FlickrService.searchGetty(tags);

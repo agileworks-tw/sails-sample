@@ -6,29 +6,30 @@ block body
         .navbar
           .navbar-inner
             .wrapper
-              a.left.external(href='/')
+              a.left.external.logo(href='/')
                 img(src='/img/logo.png', alt='logo', style="height: 45px;") 
             .wrapper
               a.right.top.external(href='/auth/facebook')
-                img.action(src='/img/build.png', alt='build', style="height: 35px;")
+                img.action(src='/img/build.png', alt='build')
         .pages
           .page.toolbar-fixed(data-page='home')
             .toolbar.tabbar
               .toolbar-inner
-                a.tab-link.active(href='#mapView')
-                  img(src='/img/map.png', alt='map', style="height: 35px;")  
-                a.tab-link(href='#favoriteView')
-                  img(src='/img/list.png', alt='list', style="height: 35px;")
-                a.tab-link(href='#searchView')
-                  img(src='/img/search.png', alt='search', style="height: 35px;")
-                a.link(href='/story')
-                  img(src='/img/build.png', alt='build', style="height: 35px;")
+                a.mapView.tab-link.active(href='#mapView')
+                  img(src='/img/map.png', alt='map')  
+                a.favoriteView.tab-link(href='#favoriteView')
+                  img(src='/img/list.png', alt='list')
+                a.searchView.tab-link(href='#searchView')
+                  img(src='/img/search.png', alt='search')
+                a.storyView.link(href='/story')
+                  img(src='/img/build.png', alt='build')
             |         
             .page-content
-              .content-block(style="height: 100%; padding: 0px; margin: 70px 0px")
+              .content-block(style="height: 100%;")
                 .tabs(style="height: 100%;")
-                  #mapView.tab.active(style="height: 100%;")
-                    iframe(src='/map', style="height: 100%; width: 100%; border: 0;")
+                  | 
+                  #mapView.tab.active(style="height: 95%; overflow:hidden")
+                    iframe#map(src='/map', scrolling="no", frameborder="0", style="height: 580px; width: 100%; border: 0; overflow:hidden")
                   |               
                   #favoriteView.tab
                     .card.demo-card-header-pic
@@ -60,30 +61,35 @@ block body
                     form#formSearch.searchbar
                      // Search bar
                      .searchbar-input
-                       input.i18n(type='search', data-i18n='[placeholder]global.search')
+                       input.i18n(type='search', data-i18n='[placeholder]global.search',focus)
                        a.searchbar-clear(href='#') clear
                        a.searchbar-cancel.i18n(href='#', data-i18n='global.cancel') cancel
                     // Search bar overlay
                     .searchbar-overlay
                     .page-content
-                      .list-block.contacts-list.searchbar-found
+                      .list-block
                         .list-group
                           ul#search-result.items-list
-                          //f7
+                          //f7 search-result callback
                           script(type='text/template7', id="searchResult").
                             {{#each this.items}}
                               <li class="">
                                 <div class="card demo-card-header-pic">
-                                  <div style="background-image:url({{gallery}})" valign="middle" class="card-header color-white no-border">{{itemname}}</div>
+                                  <div style="background-image:url({{gallery}})" valign="middle" class="card-header color-white no-border">
+                                    <span class="card-title"> {{itemname}} <span>
+                                  </div>
                                   <div class="card-content">
                                     <div class="card-content-inner">
                                       <p class="color-gray">Posted on January 21, 2015</p>
                                       <p>Quisque eget vestibulum nulla...</p>
                                     </div>
                                   </div>
-                                  <div class="card-footer"><a href="#" data-id="undefined" class="link">Like</a></div>
+                                  <div class="card-footer">
+                                    <a href="/addUserFavorite/{{id}}" data-id="{{id}}" class="link">Like</a>
+                                    <a href="/postDetail/{{id}}" data-id="{{id}}" class="link external">Detail</a>
+                                  </div>
                                 </div>
                               </li>
                             {{/each}}
-                          // Items List
+                          // Result List
     link(rel="stylesheet", href="/styles/css/main.css")
