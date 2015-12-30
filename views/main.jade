@@ -137,13 +137,13 @@ block body
               
               
             .content-block.searchbar-not-found.i18n(data-i18n='index.nothing_found')
-    #buildView.view.tab
+    #addView.view.tab
       .navbar
         .navbar-inner
           .center.sliding.i18n(data-i18n='app.name')
       .pages.navbar-through
         //- .page.navbar-fixed(data-page='buildView')
-        .page.no-swipeback(data-page='buildView')
+        .page.no-swipeback(data-page='addView')
           .page-content
     .toolbar.tabbar.tabbar-labels
       .toolbar-inner
@@ -156,5 +156,5 @@ block body
         a.tab-link(href='#listView')
           img(src='/img/list.png', alt='list', style="height: 35px;")  
         a.tab-link(href='/story')
-          img(src='/img/build.png', alt='build', style="height: 35px;")
+          img(src='/img/add.png', alt='add', style="height: 35px;")
     link(rel="stylesheet", href="/styles/css/main.css")

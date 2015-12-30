@@ -1,4 +1,4 @@
-describe.skip('about User Controller operation.', function() {
+describe.skip('about User Controller operation.', function() { //skip
   it('create User should success.', async (done) => {
     done(new Error('no implement'));
   });
@@ -88,11 +88,14 @@ describe.skip('about User Controller operation.', function() {
           postId: createPost.id
         }
 
-        let before = await testUser.getPosts();
-        let result = await UserService.addUserFavorite(send);
-        let after = await testUser.getPosts();
-        result.should.be.an.Array;
-        after.length.should.be.above(before.length)
+        // let before = await testUser.getPosts();
+        let result = await request(sails.hooks.http.app)
+        .post('/addUserFavorite');
+        sails.log.info(result);
+        result.status.should.be.equal(200);
+        // let after = await testUser.getPosts();
+        // result.should.be.an.Array;
+        // after.length.should.be.above(before.length)
         done();
 
       } catch (e) {
@@ -107,10 +110,12 @@ describe.skip('about User Controller operation.', function() {
         let send = {
           userId: testUser.id,
         }
-        let result = await UserService.getUserFavorites(send);
-        result.should.be.an.Array;
-        done();
+        let result = await request(sails.hooks.http.app)
+        .post('/getUserFavorites');
+        sails.log.info(result);
+        result.status.should.be.equal(200);
 
+        done();
       } catch (e) {
         sails.log.error(e);
         done(e);
