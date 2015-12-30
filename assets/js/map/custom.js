@@ -17,11 +17,11 @@ $(document).ready(function($) {
 
     adaptBackgroundHeight();
 
-    $('.quick-view, .results .item').live('click',  function(){
-        var id = $(this).attr('id');
-        quickView(id);
-        return false;
-    });
+    // $('.quick-view, .results .item').live('click',  function(){
+    //     var id = $(this).attr('id');
+    //     quickView(id);
+    //     return false;
+    // });
 
     // Scrollbar on "Results" section
 
@@ -548,17 +548,17 @@ function drawItemSpecific(category, json, a){
 
 // Quick View ----------------------------------------------------------------------------------------------------------
 
-function quickView(id){
-    $.ajax({
-        type: 'POST',
-        url: '../external/_modal.html',
-        data: id,
-        success: function (data) {
-            // Create HTML element with loaded data
-            $('body').append(data);
-        }
-    });
-}
+// function quickView(id){
+//     $.ajax({
+//         type: 'POST',
+//         url: '../external/_modal.html',
+//         data: id,
+//         success: function (data) {
+//             // Create HTML element with loaded data
+//             $('body').append(data);
+//         }
+//     });
+// }
 
 // Adapt background height to block element ----------------------------------------------------------------------------
 

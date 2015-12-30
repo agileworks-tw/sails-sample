@@ -10,7 +10,7 @@ block body
                 img(src='/img/logo.png', alt='logo', style="height: 45px;") 
             .wrapper
               a.right.top.external(href='/auth/facebook')
-                img.action(src='/img/build.png', alt='build')
+                img.action(src='/img/login.png', alt='login', style="height: 35px;")
         .pages
           .page.toolbar-fixed(data-page='home')
             .toolbar.tabbar
@@ -36,26 +36,10 @@ block body
                       .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
                       .card-content
                         .card-content-inner
-                          p.color-gray Posted on January 21, 2015
+                          p.color-gray 
                           p Quisque eget vestibulum nulla...
                       .card-footer
-                        a.link(href='templates/finish.html') Like
-                    .card.demo-card-header-pic
-                      .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
-                      .card-content
-                        .card-content-inner
-                          p.color-gray Posted on January 21, 2015
-                          p Quisque eget vestibulum nulla...
-                      .card-footer
-                        a.link(href='templates/finish.html') Like????
-                    .card.demo-card-header-pic
-                      .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
-                      .card-content
-                        .card-content-inner
-                          p.color-gray Posted on January 21, 2015
-                          p Quisque eget vestibulum nulla...
-                      .card-footer
-                        a.link(href='templates/finish.html') Like            
+                        a.link(href='templates/finish.html') Like 
                   |               
                   #searchView.tab
                     form#formSearch.searchbar
@@ -92,4 +76,30 @@ block body
                               </li>
                             {{/each}}
                           // Result List
+                  |               
+                  #listView.tab
+                    .card.demo-card-header-pic
+                      .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
+                      .card-content
+                        .card-content-inner
+                          p.color-gray Posted on January 21, 2015
+                          p Quisque eget vestibulum nulla...
+                      .card-footer
+                        a.link(href='templates/finish.html') Like
+                    .card.demo-card-header-pic
+                      .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
+                      .card-content
+                        .card-content-inner
+                          p.color-gray Posted on January 21, 2015
+                          p Quisque eget vestibulum nulla...
+                      .card-footer
+                        a.link(href='templates/finish.html') Like????
+                    .card.demo-card-header-pic
+                      .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
+                      .card-content
+                        .card-content-inner
+                          p.color-gray Posted on January 21, 2015
+                          p Quisque eget vestibulum nulla...
+                      .card-footer
+                        a.link(href='templates/finish.html') Like 
     link(rel="stylesheet", href="/styles/css/main.css")
