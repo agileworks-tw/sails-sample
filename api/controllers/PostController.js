@@ -40,6 +40,7 @@ module.exports = {
       var keyword = req.param('keyword');
       console.log("==== getPostByKeyword ===", keyword);
       let items = await PostService.getPostByKeyword(keyword);
+      console.log("=== item[0] ===\n",items[0]);
       res.ok({
         items
       });

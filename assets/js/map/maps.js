@@ -143,6 +143,23 @@ function createHomepageGoogleMap(_latitude, _longitude, json) {
     gMap();
   });
 
+  // location infoWindow / tooltiop
+  function fixInfoWindow() {
+      //Here we redefine set() method.
+      //If it is called for map option, we hide InfoWindow, if "noSupress" option isnt true.
+      //As Google doesn't know about this option, its InfoWindows will not be opened.
+      var set = google.maps.InfoWindow.prototype.set;
+      google.maps.InfoWindow.prototype.set = function (key, val) {
+          if (key === 'map') {
+              if (!this.get('noSupress')) {
+                  console.log('This InfoWindow is supressed. To enable it, set "noSupress" option to true');
+                  return;
+              }
+          }
+          set.apply(this, arguments);
+      }
+  }
+
   function gMap() {
     var mapCenter = new google.maps.LatLng(_latitude, _longitude);
     var mapOptions = {
@@ -169,9 +186,16 @@ function createHomepageGoogleMap(_latitude, _longitude, json) {
     var activeMarker = false;
     var lastClicked = false;
 
+    // disable infoWindwo
+    fixInfoWindow();
+    // Marker Options
+    // console.log(map);
+    // var marker = new google.maps.Marker();
+
     // Try HTML5 geolocation. (get-my-loc)
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
+        // success
         function(position) {
           var pos = {
             lat: position.coords.latitude,
@@ -179,6 +203,7 @@ function createHomepageGoogleMap(_latitude, _longitude, json) {
           };
           map.setCenter(pos);
         },
+        // error
         function() {
           // handleLocationError(true, infoWindow, map.getCenter());
           $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
@@ -189,10 +214,12 @@ function createHomepageGoogleMap(_latitude, _longitude, json) {
             };
             map.setCenter(pos);
           });
-        }, {
+        },
+        // option
+        {
           enableHighAccuracy: true,
-          timeout: 5000,
-          maximumAge: 5000
+          timeout: 2500,
+          maximumAge: 2500
         }
       );
     }
@@ -228,7 +255,7 @@ function createHomepageGoogleMap(_latitude, _longitude, json) {
         map: map,
         draggable: false,
         content: markerContent,
-        flat: true
+        flat: true,
       });
 
       newMarkers.push(marker);
@@ -724,6 +751,8 @@ function itemDetailMap(json) {
 // Simple Google Map (contat, submit...)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
 function simpleMap(_latitude, _longitude, draggableMarker) {
   //console.log(_latitude,_longitude,draggableMarker );
   var mapCenter = new google.maps.LatLng(_latitude, _longitude);
@@ -737,8 +766,11 @@ function simpleMap(_latitude, _longitude, draggableMarker) {
     zoomControl: false,
     draggable: true
   };
+
+
   var mapElement = document.getElementById('map-simple');
   var map = new google.maps.Map(mapElement, mapOptions);
+
 
   // Google map marker content -----------------------------------------------------------------------------------
 
