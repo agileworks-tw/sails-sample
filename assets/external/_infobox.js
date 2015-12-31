@@ -19,7 +19,7 @@ function drawInfobox(category, infoboxContent, json, i){
 
     var ibContent = '';
     ibContent =
-   '<div class="favbox" ><a class="favboxa" data-id="'+id+'"><i class="fa fa-lg fa-heart"></i></a></div>' +
+  //  '<div class="favbox" ><a class="favboxa" data-id="'+id+'"><i class="fa fa-lg fa-heart"></i></a></div>' +
     '<div class="infobox ' + color + '">' +
         '<div class="inner">' +
             '<div class="image">' +
