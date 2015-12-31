@@ -9,7 +9,8 @@ block body
               a.left.external.logo(href='/')
                 img(src='/img/logo.png', alt='logo', style="height: 45px;") 
             .wrapper
-              -if loginState
+              -console.log("loginState=>",loginState);
+              -if(!loginState)
                 a.right.top.external(href='/auth/facebook')
                   img.action(src='/img/login.png', alt='login', style="height: 35px;")
         .pages

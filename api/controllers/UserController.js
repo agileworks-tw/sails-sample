@@ -5,7 +5,7 @@ module.exports = {
       let userLogin = await UserService.getLoginState(req);
         console.log("==== user login status ===>", userLogin);
       if(userLogin){
-        let loginedUser = await UserService.getLoginUser(req);
+        loginedUser = await UserService.getLoginUser(req);
         console.log("==== logined User is ===>", loginedUser);
         favorites = await UserService.getUserFavorites({userId:loginedUser.id});
         console.log("==== user favorites are ===>", favorites);
