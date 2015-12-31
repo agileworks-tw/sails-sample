@@ -57,7 +57,7 @@ span.find-my-loc {
   width: 28px;
   height: 26px;
   display: table;
-  top: 80px;
+  bottom: 80px;
   z-index: 3;
   background-color: white;
 }
