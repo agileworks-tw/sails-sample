@@ -53,6 +53,7 @@ block body
                     // Search bar overlay
                     .searchbar-overlay
                     .page-content
+                  
                       .list-block
                         .list-group
                           ul#search-result.items-list
@@ -62,12 +63,14 @@ block body
                               <li class="">
                                 <div class="card demo-card-header-pic">
                                   <div style="background-image:url({{gallery}})" valign="middle" class="card-header color-white no-border">
-                                    <span class="card-title"> {{itemname}} <span>
+                                    <span class="card-title {{mode}}"> [{{itemname}}] {{title}} <span>
                                   </div>
                                   <div class="card-content">
                                     <div class="card-content-inner">
-                                      <p class="color-gray">Posted on January 21, 2015</p>
-                                      <p>Quisque eget vestibulum nulla...</p>
+                                      <p class="color-gray card-desc">
+                                        [<img src="{{type_icon}}" alt="{{type}}">]
+                                        [{{type}}] [{{location}}] [{{username}}]</p>
+                                      <p class="card-content">{{content}}</p>
                                     </div>
                                   </div>
                                   <div class="card-footer">
@@ -77,8 +80,15 @@ block body
                                 </div>
                               </li>
                             {{/each}}
+                            <li class="">
+                              <div class="card">
+                                <div class="card-footer">
+                                  <a href="#!" class="link backTop"></a>
+                                    <a href="#!" class="link backTop">back to top</a>
+                                </div>
+                              </div>
+                            </li>
                           // Result List
-                          
                   |               
                   #listView.tab
                     .card.demo-card-header-pic

@@ -166,6 +166,7 @@ module.exports = {
             id: post.id,
             price: post.price,
             title: post.title,
+            content: post.content,
             mode: post.mode,
             location: post.Item.itemname,
             latitude: post.latitude,
@@ -177,7 +178,7 @@ module.exports = {
             gallery: [pic],
             username: post.User.username,
             email: post.User.email,
-            itemname: post.Item.itemname,
+            itemname: post.Item.itemname
           });
         }); // end forEach
         console.log("data length=>", data.length);

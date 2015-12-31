@@ -1,4 +1,3 @@
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // main page - searchView
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -24,6 +23,10 @@ $$("#formSearch").on('submit', function(e) {
 //   }
 // }); // end click
 
+$$(document).on('click',"a.backTop", function(e) {
+  $$("div.page-content").scrollTop(0)
+}); // end click
+
 function goSearch(keyword) {
   $$.ajax({
     url: "/search/" + keyword,
@@ -43,7 +46,7 @@ function goSearch(keyword) {
 }; // end goSearch
 
 function showSearchResult(data) {
-  console.log("f7 showSearchResult");
+  console.log("f7 showSearchResult=>", data);
   var searchResultTemplate = $$('script#searchResult').html();
   var compiledSearchResultTemplate = Template7.compile(searchResultTemplate);
   window.myApp.template7Data.searchResult = data;

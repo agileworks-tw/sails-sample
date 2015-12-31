@@ -53,12 +53,19 @@ img.action {
 }
 ul#search-result {
   top: -20px;
+}/* map-marker */
+
+.get {
+  border: 1px solid #28a7e1;
+}
+.give {
+  border: 1px solid #f39800;
 }
 
 /* card view */
 
 .card-title {
-  background-color: rgba(128, 152, 161, 0.1);
+  background-color: rgba(128, 152, 161, 0.5);
   width: 100%;
   font-size: 2em;
   text-align: center;
@@ -67,7 +74,11 @@ ul#search-result {
 }
 .card > .card-footer {}
 .demo-card-header-pic > div:first-child {
-  height: 200px;
+  height: 150px;
   background-size: 100%;
   background-position: 50%;
+}
+p.card-desc > img{
+  margin-top: 2px;
+  height:34px;
 }
