@@ -18,29 +18,29 @@ head
     #outer-wrapper
       // Inner Wrapper
       #inner-wrapper
-        // Navigation
-        .header
-          .wrapper
-            .brand
-              a(href='/')
-                img(src='../img/logo.png', alt='logo' style="height: 45px;")
-            nav.navigation-items
-              .wrapper
-                ul.main-navigation.navigation-top-header
-                ul.main-navigation
-                -if (!userLogin) 
-                  a.submit-item(href='/auth/facebook') 
-                    .content
-                      span Login!
-                    .icon
-                      i.fa.fa-sign-in
-                -else
-                  a.submit-item(href='/story')
-                    .content
-                      span Submit Your Item
-                    .icon
-                      i.fa.fa-plus
-        // end Navigation
+        //- // Navigation
+        //- .header
+        //-   .wrapper
+        //-     .brand
+        //-       a(href='/')
+        //-         img(src='../img/logo.png', alt='logo' style="height: 45px;")
+        //-     nav.navigation-items
+        //-       .wrapper
+        //-         ul.main-navigation.navigation-top-header
+        //-         ul.main-navigation
+        //-         -if (!userLogin) 
+        //-           a.submit-item(href='/auth/facebook') 
+        //-             .content
+        //-               span Login!
+        //-             .icon
+        //-               i.fa.fa-sign-in
+        //-         -else
+        //-           a.submit-item(href='/story')
+        //-             .content
+        //-               span Submit Your Item
+        //-             .icon
+        //-               i.fa.fa-plus
+        //- // end Navigation
         // Page Canvas
         #page-canvas
           // Off Canvas Navigation
