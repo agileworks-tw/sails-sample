@@ -52,7 +52,8 @@ module.exports = {
           include: Like
         }, {
           model: User
-        }]
+        }],
+        order: 'createdAt DESC'
       });
       sails.log.info("getPost[0]=>", getPost[0]);
 
@@ -71,7 +72,8 @@ module.exports = {
           type: post.Item.Like.title,
           // type_icon: post.Item.Like.icon,
           type_icon: "../icons/store/apparel/bags.png",
-          gallery: [pic]
+          gallery: [pic],
+          content: post.content
         };
         return data;
       });
