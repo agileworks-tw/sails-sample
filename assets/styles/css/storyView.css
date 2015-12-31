@@ -42,9 +42,9 @@ input#uploadFile {
   width: 1em;
 }
 
-.category {
+/*.category {
   margin-top: 35px;
-}
+}*/
 
 
 #storyImageUpload>.list-block {
@@ -53,4 +53,9 @@ input#uploadFile {
 
 #storyDetailChoose>.list-block {
   margin-top: 0px;
+}
+
+img.preview {
+  margin: auto;
+  display: block !important;
 }

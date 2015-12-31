@@ -18,8 +18,8 @@ form .row {
 .row img.checked {
   position: absolute;
   opacity: 0.5;
-  left: calc(50% - 50px);
-  top: 40px;
+  left: calc(50% - 46px);
+  bottom: calc(50% - 46px)
 }
 
 .hobbyitem {
@@ -40,7 +40,7 @@ div[class*="col-"] {
   color: #000;
   border: 2px solid #fff;
   /*padding: 5px;*/
-  height: 180px;
+  /*height: 180px;*/
   overflow:hidden;
 }
 
