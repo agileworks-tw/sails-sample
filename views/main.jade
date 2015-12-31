@@ -89,13 +89,15 @@ block body
                           // Result List
                   |               
                   #listView.tab
-                    .card.demo-card-header-pic
-                      .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
-                      .card-content
-                        .card-content-inner
-                          p.color-gray Posted on January 21, 2015
-                          p Quisque eget vestibulum nulla...
-                      .card-footer
-                        a.link(href='templates/finish.html') Like
-            |  
-            link(rel="stylesheet", href="/styles/css/main.css")
+                    -console.log(allPosts[0])
+                    each post in allPosts
+                      .card.demo-card-header-pic
+                        .card-header.color-white.no-border(style='background-image:url(#{post.gallery[0]})', valign='bottom') #{post.title}
+                        .card-content
+                          .card-content-inner
+                            p $#{post.price}
+                            p #{post.content}
+                        .card-footer
+                          a.link.external(href=post.url) detail
+              |  
+              link(rel="stylesheet", href="/styles/css/main.css")
