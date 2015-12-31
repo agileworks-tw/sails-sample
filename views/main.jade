@@ -36,13 +36,13 @@ block body
                     if(favorites && favorites.length > 0)
                      each favorite in favorites
                        .card.demo-card-header-pic
-                         .card-header.color-white.no-border(style='background-image:url(#{favorite.gallery[0])', valign='bottom') #{favorite.title}
+                         .card-header.color-white.no-border(style='background-image:url(#{favorite.gallery[0]})', valign='bottom') #{favorite.title}
                          .card-content
                            .card-content-inner
                              p $#{favorite.price}
                              p #{favorite.content}
                          .card-footer
-                           a.link.external(href="/postDetailf7/#{favorite.id}") detail        
+                           a.link(href="/postDetailf7/#{favorite.id}") detail        
                   |               
                   #searchView.tab
                     form#formSearch.searchbar
