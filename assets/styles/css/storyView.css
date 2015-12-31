@@ -54,3 +54,8 @@ input#uploadFile {
 #storyDetailChoose>.list-block {
   margin-top: 0px;
 }
+
+img.preview {
+  margin: auto;
+  display: block !important;
+}
