@@ -41,3 +41,16 @@ input#uploadFile {
   border-width: 0px;
   width: 1em;
 }
+
+.category {
+  margin-top: 35px;
+}
+
+
+#storyImageUpload>.list-block {
+  margin-bottom: 0px;
+}
+
+#storyDetailChoose>.list-block {
+  margin-top: 0px;
+}
