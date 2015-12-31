@@ -19,14 +19,14 @@ function drawInfobox(category, infoboxContent, json, i){
 
     var ibContent = '';
     ibContent =
-   '<div class="favbox" ><a class="favboxa" data-id="'+id+'"><i class="fa fa-lg fa-heart"></i></a></div>' +
+  //  '<div class="favbox" ><a class="favboxa" data-id="'+id+'"><i class="fa fa-lg fa-heart"></i></a></div>' +
     '<div class="infobox ' + color + '">' +
         '<div class="inner">' +
             '<div class="image">' +
                 '<div class="item-specific">' + drawItemSpecific(category, json, i) + '</div>' +
                 '<div class="overlay">' +
                     '<div class="wrapper">' +
-                        '<a href="#" class="quick-view" data-toggle="modal" data-target="#modal" id="' + id + '">Quick View</a>' +
+                        // '<a href="#" class="quick-view" data-toggle="modal" data-target="#modal" id="' + id + '">Quick View</a>' +
                         '<hr>' +
                         '<a href="' + url +  '" class="detail">Go to Detail</a>' +
                     '</div>' +

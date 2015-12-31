@@ -105,7 +105,9 @@ module.exports = {
       });
       sails.log.info(getPost);
 
-      let pic = getPost.images || getPost.Item.pic || '/img/items/1.jpg';
+      let pic = getPost.images || getPost.Item.pic;
+      if(!pic) pic = '/img/items/1.jpg';
+
       let data = {
         id: getPost.id,
         price: getPost.price,

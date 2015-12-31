@@ -1,0 +1,58 @@
+head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  meta(name='author', content='Balakadesign')
+  meta(name='description', content='Trademuch')
+  title Trademuch
+  link(rel='apple-touch-icon-precomposed', sizes='144x144', href='ico/apple-touch-icon-144-precomposed.png')
+  link(rel='apple-touch-icon-precomposed', sizes='114x114', href='ico/apple-touch-icon-114-precomposed.png')
+  link(rel='apple-touch-icon-precomposed', sizes='72x72', href='ico/apple-touch-icon-72-precomposed.png')
+  link(rel='apple-touch-icon-precomposed', href='ico/apple-touch-icon-57-precomposed.png')
+  link(rel='shortcut icon', href='ico/favicon.ico')
+  link(rel='stylesheet', href='styles/mapCss/bootstrap-select.min.css', type='text/css')
+  link(rel='stylesheet', href='styles/landing/barnaul.css', type='text/css')
+  link(rel='stylesheet', href='styles/landing/phone.css', type='text/css')
+  link(rel='stylesheet', href='styles/landing/css/lightbox2/dist/css/lightbox.css', type='text/css')
+  link(rel='stylesheet', href='styles/landing/css/fotorama/fotorama.css', type='text/css')
+  link(rel='stylesheet', href='styles/landing/scrollyeah.min.css', type='text/css')
+  body(data-spy='scroll', data-target='.navbar-collapse', data-offset='76')
+    section#header
+      nav.navbar.navbar-barnaul
+        .container
+          .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#brn-navbar-collapse-1')
+              span.batch.icon32 &#xF0AA;
+          #brn-navbar-collapse-1.collapse.navbar-collapse
+              <ul class="nav navbar-nav">
+              </ul>
+            ul.nav.navbar-nav.navbar-right
+              li
+                a(href='#header') Home
+              li
+                a(href='/main') Start
+    section#brn-promo.iphone-cover-new(data-stellar-background-ratio='0.5', data-stellar-vertical-offset='-76')
+      .container
+        .row
+          #description.col-md-6
+            h1 Welcome to Trade Much.
+              p.lead(data-content='description') Share everything around your nearby locations
+          .col-md-6.col-xs-12(style='position: relative;')
+            .iphone-gallery-wrapper-new
+              .fotorama(data-nav='false')
+                iframe.phoneIframe(src='/main')
+            .iphone-new
+              img.img-responsive(src='img/iPhone_bg2.png', alt='iphone gallery background')
+    script(src='styles/landing/css/jquery/dist/jquery.min.js', type='text/javascript')
+    script(src='styles/landing/css/bootstrap/dist/js/bootstrap.min.js')
+    script(src='styles/landing/css/fotorama/fotorama.js')
+    script(src='styles/landing/css/lightbox2/dist/js/lightbox.min.js', type='text/javascript')
+    script(src='js/scrollyeah.min.js', type='text/javascript')
+    script(src='styles/landing/css/jquery.stellar/jquery.stellar.min.js', type='text/javascript')
+    script(src='styles/landing/css/fitvids/jquery.fitvids.js', type='text/javascript')
+    script(src='styles/landing/css/jquery-validation/dist/jquery.validate.min.js', type='text/javascript')
+    script(src='styles/landing/css/jquery-loadTemplate/jquery.loadTemplate-1.5.0.min.js', type='text/javascript')
+    footer
+      .container
+        .row
+          #rightsDescription.col-sm-6.text-center
+          .col-sm-6.text-center
