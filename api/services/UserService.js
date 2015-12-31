@@ -75,6 +75,7 @@ module.exports = {
       sails.log.info(userId);
       let user = await User.findById(userId);
       let favoritePost = await user.getPosts();
+      console.log(favoritePost)
       return favoritePost;
     } catch (e) {
       throw e;

@@ -18,29 +18,6 @@ head
     #outer-wrapper
       // Inner Wrapper
       #inner-wrapper
-        // Navigation
-        .header
-          .wrapper
-            .brand
-              a(href='/')
-                img(src='../img/logo.png', alt='logo' style="height: 45px;")
-            nav.navigation-items
-              .wrapper
-                ul.main-navigation.navigation-top-header
-                ul.main-navigation
-                -if (!userLogin) 
-                  a.submit-item(href='/auth/facebook') 
-                    .content
-                      span Login!
-                    .icon
-                      i.fa.fa-sign-in
-                -else
-                  a.submit-item(href='/story')
-                    .content
-                      span Submit Your Item
-                    .icon
-                      i.fa.fa-plus
-        // end Navigation
         // Page Canvas
         #page-canvas
           // Off Canvas Navigation
@@ -66,7 +43,7 @@ head
                         -if (post.price)
                           span $#{post.price}
                         -else
-                          span (no price now)
+                          span (free)
                         h1 #{post.title}
                         figure #{post.itemname}
                     .row
@@ -90,7 +67,6 @@ head
                               .info
                                 i.fa.fa-globe
                                 a(href='#') #{post.email || ''}
-                              .fb-comments(data-href="http://localhost:1337/postDetail/#{post.id}" data-width="400" data-numposts="5")           
                       .col-md-8.col-sm-8
                         section
                           article.item-gallery
@@ -102,15 +78,7 @@ head
                             header
                               h2 Description
                             p  #{post.content||'no description now.'}
-                              //- | Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam.
-                              //- | Donec neque massa, viverra interdum eros ut, imperdiet pellentesque mauris.
-                              //- | Proin sit amet scelerisque risus. Donec semper semper erat ut mollis.
-                              //- | Curabitur suscipit, justo eu dignissim lacinia, ante sapien pharetra duin
-                              //- | consectetur eros augue sed ex. Donec a odio rutrum, hendrerit sapien vitae,
-                              //- | euismod arcu. Suspendisse potenti. Integer ut diam venenatis, pellentesque
-                              //- | felis eget, elementum enim. Suspendisse sit amet massa commodo nulla iaculis
-                              //- | fermentum. Integer eget tincidunt est, in imperdiet risus.
-                              //- | Morbi sit amet urna purus.
+                        .fb-comments(data-href="http://localhost:1337/postDetail/#{post.id}" data-width="400" data-numposts="5") 
                       // end Inner Wrapper
                     // end Outer Wrapper
                     script(type='text/javascript', src='/js/map/jquery-2.1.0.min.js')

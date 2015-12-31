@@ -1,39 +1,89 @@
-/* */
-
 .top {
   top: 0;
 }
-a.tab-link.active {
-  box-shadow: 0px 0px 5px rgba(30%, 30%, 30%, 0.9), 0px 0px 15px rgba(20%, 20%, 40%, 0.9);
+
+
+/* hot fix remove page buttom space */
+div.no-buttom-spaces{
+  padding-bottom: 72px;
 }
+/* toolbar and tab */
 
-/* tab */
-
-.tabbar-labels {
+.toolbar {
   height: 64px;
 }
 .toolbar-inner > a > img {
   /* let img in the middle of tab */
-  margin-top: 12px;
+  margin-top: 6px;
+  height: 35px;
+}
+a.link {}
+a.tab-link.active {
+  box-shadow: 0px 0px 5px rgba(30%, 30%, 30%, 0.9), 0px 0px 15px rgba(20%, 20%, 40%, 0.9);
+}
+a.tab-link {}
+
+/* page and view */
+
+.content-block {
+  height: 100%;
+  padding: 0px;
+  margin: 70px 0px -70px 0px;
+}
+#mapView {
+  height: 100%;
+}
+iframe#map {
+  height: 100%;
+  width: 100%;
+  border: 0;
 }
 
-/**/
+/* nav bar */
 
-.action {
+img.action {
+  height: 35px;
   border-radius: 10px;
   border-width: 2px;
   border-color: rgb(33, 113, 198);
   border-style: solid;
   padding: 5px;
 }
+
+/* search view */
+
+#searchView > .page-content {
+  margin: 0px auto;
+  width: 95%;
+}
+ul#search-result {
+  top: -20px;
+}/* map-marker */
+
+.get {
+  border: 1px solid #28a7e1;
+}
+.give {
+  border: 1px solid #f39800;
+}
+
+/* card view */
+
+.card-title {
+  background-color: rgba(128, 152, 161, 0.5);
+  width: 100%;
+  font-size: 2em;
+  text-align: center;
+  top: 0;
+  margin-top: 0%;
+}
+.card > .card-footer {}
 .demo-card-header-pic > div:first-child {
-  height: 200px;
+  height: 150px;
   background-size: 100%;
   background-position: 50%;
 }
-.list-block.contacts-list.searchbar-found {
-  padding-top: 15px;
-}
-.map-view {
-  /*height: 100%;*/
+p.card-desc > img{
+  margin-top: 2px;
+  height:34px;
 }
