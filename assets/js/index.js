@@ -19,6 +19,7 @@ var mainView = myApp.addView('.view-main', {
   // Enable Dynamic Navbar for this view
   dynamicNavbar: true,
 });
+window.mainView = mainView;
 
 
 $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function(e) {

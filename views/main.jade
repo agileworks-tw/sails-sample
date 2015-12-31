@@ -69,13 +69,13 @@ block body
                                     <div class="card-content-inner">
                                       <p class="color-gray card-desc">
                                         [<img src="{{type_icon}}" alt="{{type}}">]
-                                        [{{type}}] [{{location}}] [{{username}}]</p>
+                                        [{{price}}] [{{type}}] [{{location}}] [{{username}}]</p>
                                       <p class="card-content">{{content}}</p>
                                     </div>
                                   </div>
                                   <div class="card-footer">
                                     <a href="/addUserFavorite/{{id}}" data-id="{{id}}" class="link">Like</a>
-                                    <a href="/postDetail/{{id}}" data-id="{{id}}" class="link external">Detail</a>
+                                    <a href="/postDetailf7/{{id}}" data-id="{{id}}" class="link">Detail</a>
                                   </div>
                                 </div>
                               </li>
@@ -92,14 +92,37 @@ block body
                   |               
                   #listView.tab
                     -console.log(allPosts[0])
+                    
+                    //- each post in allPosts
+                    //-   .card.demo-card-header-pic
+                    //-     .card-header.color-white.no-border(style='background-image:url(#{post.gallery[0]})', valign='bottom') #{post.title}
+                    //-     .card-content
+                    //-       .card-content-inner
+                    //-         p $#{post.price}
+                    //-         p #{post.content}
+                    //-     .card-footer
+                    //-       a.link.external(href=post.url) detail
+                          
                     each post in allPosts
                       .card.demo-card-header-pic
-                        .card-header.color-white.no-border(style='background-image:url(#{post.gallery[0]})', valign='bottom') #{post.title}
+                        .card-header.color-white.no-border(style='background-image:url(#{post.gallery[0]})', valign='middle')
+                          span.card-title(class='#{post.mode}')
+                            | [#{post.itemname}] #{post.title} 
+                            span
                         .card-content
                           .card-content-inner
-                            p $#{post.price}
-                            p #{post.content}
+                            p.color-gray.card-desc
+                              | [
+                              img(src='#{post.type_icon}', alt='#{post.type}')
+                              | ]
+                              | [#{post.price}] [#{post.type}] [#{post.location}] [#{post.username}]
+                            p.card-content #{post.content}
                         .card-footer
-                          a.link.external(href=post.url) detail
+                          a.link(href='/addUserFavorite/#{post.id}', data-id='#{post.id}') Like
+                          a.link(href='/postDetailf7/#{post.id}', data-id='#{post.id}') Detail
+                    .card
+                      .card-footer
+                        a.link.backTop(href='#!')
+                        a.link.backTop(href='#!') back to top
               |  
               link(rel="stylesheet", href="/styles/css/main.css")
