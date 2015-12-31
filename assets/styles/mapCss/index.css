@@ -106,3 +106,10 @@ div.favbox > a > i {
 .items-list .inner .results, .items-list .inner {
   height: auto;
 }
+
+/* hot fix remove page buttom space */
+
+#page-content{
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
