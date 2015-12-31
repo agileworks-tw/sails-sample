@@ -717,7 +717,10 @@ function itemDetailMap(json) {
     styles: mapStyles,
     panControl: false,
     zoomControl: false,
-    draggable: false
+    // kent:
+    // disable draggable and double clikc zoom.
+    draggable: false,
+    disableDoubleClickZoom: true
   };
   var mapElement = document.getElementById('map-detail');
   var map = new google.maps.Map(mapElement, mapOptions);
