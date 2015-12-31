@@ -4,9 +4,9 @@ module.exports = {
       // let userLogin = await UserService.getLoginState(req);
       let loginedUser = await UserService.getLoginUser(req);
       let favorites;
-      if(loginedUser){
-        favorites = await UserService.getUserFavorites(loginedUser.id);
-      }
+      // if(loginedUser){
+      //   favorites = await UserService.getUserFavorites(loginedUser.id);
+      // }
       res.view('main', {
         favorites: favorites
       });
