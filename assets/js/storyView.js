@@ -23,7 +23,7 @@ $$(document).on('pageInit', '.page[data-page="storyMode"]', function(e) {
 });
 
 
-$$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
+$$(document).on('pageInit pageReInit', '.page[data-page="storyDetail"]', function(e) {
 
   // if no hobby...
   var category = myApp.formGetData('storyCategoryChoose');
@@ -80,10 +80,11 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     console.log("storedData=>", storedData);
   });
 
-  $$("input[name='item']").on('input', function() {
+  $$("input[name='item']").on('change', function() {
     var radioItem = $$("input[name='radioItem']");
     radioItem.prop("checked", false);
     $$('.checked').hide();
+    var item = $$("input[name='item']").val();
     var storedData = myApp.formToJSON('#storyDetailChoose');
     myApp.formStoreData('storyDetailChoose', storedData);
   });
@@ -114,7 +115,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     myApp.formStoreData('storyDetailChoose', storedData);
   });
 
-  $$('#finishStep').click(function() {
+  $$(document).on('click','#finishStep', function() {
     // {"mode":"give","hobby":"1","detail":{"title":"123","radioItem":"2","item":""},
     // "location":{"latitude":24.148657699999998,"longitude":120.67413979999999,"accuracy":30}}
     myApp.showIndicator();
@@ -126,18 +127,17 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     var data = {};
     data.mode = postMode == undefined ? null : postMode.mode;
     data.hobby = category == undefined ? null : category.hobby;
-    data.detail = detail == undefined ? null : detail;
+    data.detail = detail;
 
     // posting mode
     if (!data.mode || data.mode == null) {
       myApp.hideIndicator();
       mainView.router.loadPage('/story');
-      mainView.router.loadPage('/story');
       return false;
     }
 
     // post title
-    if (!data.detail.title || data.detail.title == "") {
+    if ( !data.detail || (!data.detail.title || data.detail.title == "") ) {
       myApp.hideIndicator();
       myApp.alert("Don't forget to enter a nice title :)", "Oops!");
       return false;
@@ -151,9 +151,10 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     }
 
     // post category
-    if (!data.detail.radioItem) {
+    var customCategory = $$("input[name='item']").val();
+    if ( !data.detail.radioItem && customCategory == "" ) {
       myApp.hideIndicator();
-      myApp.alert("Please select a category :)", "Oops!");
+      myApp.alert("Please select a category or enter a new one. :)", "Oops!");
       return false;
     }
 
