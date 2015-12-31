@@ -717,7 +717,7 @@ function itemDetailMap(json) {
     styles: mapStyles,
     panControl: false,
     zoomControl: false,
-    draggable: true
+    draggable: false
   };
   var mapElement = document.getElementById('map-detail');
   var map = new google.maps.Map(mapElement, mapOptions);
