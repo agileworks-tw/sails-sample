@@ -1,7 +1,7 @@
 module.exports = {
   index: async(req, res) => {
     try {
-      let favorites;
+      let loginedUser, favorites;
       let userLogin = await UserService.getLoginState(req);
         console.log("==== user login status ===>", userLogin);
       if(userLogin){
@@ -13,6 +13,8 @@ module.exports = {
       let allPosts = await PostService.getAllPost();
       res.view('main', {
         favorites: favorites,
+        loginState: userLogin,
+        loginedUser: loginedUser,
         allPosts: allPosts.data
       });
     } catch (e) {
