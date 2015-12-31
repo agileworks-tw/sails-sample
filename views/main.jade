@@ -73,7 +73,7 @@ block body
                                   </div>
                                   <div class="card-footer">
                                     <a href="/addUserFavorite/{{id}}" data-id="{{id}}" class="link">Like</a>
-                                    <a href="/postDetail/{{id}}" data-id="{{id}}" class="link external">Detail</a>
+                                    <a href="/postDetailf7/{{id}}" data-id="{{id}}" class="link">Detail</a>
                                   </div>
                                 </div>
                               </li>
@@ -117,7 +117,7 @@ block body
                             p.card-content #{post.content}
                         .card-footer
                           a.link(href='/addUserFavorite/#{post.id}', data-id='#{post.id}') Like
-                          a.link.external(href='/postDetail/#{post.id}', data-id='#{post.id}') Detail
+                          a.link(href='/postDetailf7/#{post.id}', data-id='#{post.id}') Detail
                     .card
                       .card-footer
                         a.link.backTop(href='#!')

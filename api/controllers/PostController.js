@@ -34,6 +34,19 @@ module.exports = {
     }
   },
 
+  getF7ViewPostById: async(req, res) => {
+    try {
+      console.log("==== getPostById ===", req.param('id'));
+      let post = await PostService.getPostById(req.param('id'));
+      res.view('postDetailF7', {
+        post
+      });
+    } catch (e) {
+      sails.log.error(e);
+      res.serverError(e);
+    }
+  },
+
   // search
   getPostByKeyword: async(req, res) => {
     try {
