@@ -26,8 +26,8 @@ block body
                 a.storyView.link(href='/story')
                   img(src='/img/add.png', alt='add')
             |         
-            .page-content
-              .content-block(style="height: 100%; padding: 0px; margin: 70px 0px")
+            .no-buttom-spaces.page-content
+              .content-block(style="height: 100%; padding: 0px; margin: 72px 0 -72px 0;")
                 .tabs(style="height: calc(100% - 70px*1);")
                   #mapView.tab.active(style="height: 100%;")
                     iframe(src='/map', style="height: 100%; width: 100%; border: 0;")
@@ -52,7 +52,6 @@ block body
                     // Search bar overlay
                     .searchbar-overlay
                     .page-content
-                  
                       .list-block
                         .list-group
                           ul#search-result.items-list
@@ -98,4 +97,5 @@ block body
                           p Quisque eget vestibulum nulla...
                       .card-footer
                         a.link(href='templates/finish.html') Like
-    link(rel="stylesheet", href="/styles/css/main.css")
+            |  
+            link(rel="stylesheet", href="/styles/css/main.css")

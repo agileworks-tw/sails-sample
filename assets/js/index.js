@@ -182,6 +182,13 @@ $$(document).on('pageInit', '.page[data-page="storyCategory"]', function(e) {
 });
 
 
+$$(document).on('pageInit', '.page[data-page="home"]', function(e) {
+  // hotfix for page home's page-content class.
+  // this can overrides f7's setting.
+  $$(".page-content").css("padding-bottom","72px");
+});
+
+
 // Show/hide preloader for remote ajax loaded pages
 // Probably should be removed on a production/local app
 $$(document).on('ajaxStart', function(e) {
