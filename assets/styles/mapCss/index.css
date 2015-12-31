@@ -75,6 +75,7 @@ span.find-my-loc {
 
 .infobox .inner .image img {
   min-height: 140px;
+    min-height: 150px;
 }
 
 /* faviraite-button */
