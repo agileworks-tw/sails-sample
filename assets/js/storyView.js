@@ -218,7 +218,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
           submit();
         },
         error: function(err) {
-          // to-do
+          // todo
           // if get geoip's data failed then give a default loaciotn from user setting.
         }
       }); // end ajax
@@ -247,7 +247,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
           myApp.formDeleteData('storyModeChoose');
           myApp.formDeleteData('storyCategoryChoose');
           myApp.formDeleteData('storyDetailChoose');
-          // window.location.href = '/main';
+          window.location.href = '/main';
           myApp.hideIndicator();
         },
         error: function(xhr, ajaxOptions, thrownError) {
