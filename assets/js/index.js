@@ -19,6 +19,7 @@ var mainView = myApp.addView('.view-main', {
   dynamicNavbar: true,
 });
 
+
 $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function(e) {
   console.log("hobbyPage!!!!!!!!");
   var storedData = myApp.formToJSON('#hobbySelect');
