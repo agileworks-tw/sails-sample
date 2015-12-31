@@ -33,6 +33,9 @@ block body
                     iframe(src='/map', style="height: 100%; width: 100%; border: 0;")
                   |               
                   #favoriteView.tab
+                  ul
+                   each val in []
+                     li= val
                     .card.demo-card-header-pic
                       .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
                       .card-content
