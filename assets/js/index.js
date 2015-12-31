@@ -160,6 +160,28 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function(e) {
 }); // end page-finish
 
 
+$$(document).on('pageInit', '.page[data-page="storyCategory"]', function(e) {
+  $$('.hobbyitem').click(function() {
+    if ($$(this).find('input').prop("checked"))
+      $$(this).find('input').prop("checked", false);
+    else
+      $$(this).find('input').prop("checked", true);
+
+    var storedData = myApp.formToJSON('#storyCategoryChoose');
+    myApp.formStoreData('storyCategoryChoose', storedData);
+
+    var id = $$(this).find('input').val();
+    mainView.router.loadPage('/storyDetail/' + id)
+    console.log(storedData);
+    // if(storedData.hobby != "" && storedData.hasOwnProperty('hobby') ) {
+    //   $$('#nextSetp2').removeAttr("disabled");
+    // }else{
+    //   $$('#nextSetp2').attr("disabled",true);
+    // }
+  });
+});
+
+
 // Show/hide preloader for remote ajax loaded pages
 // Probably should be removed on a production/local app
 $$(document).on('ajaxStart', function(e) {
