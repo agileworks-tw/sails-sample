@@ -71,6 +71,7 @@
    'post /getAllPost': 'PostController.getAllPost',
    'post /postStory': 'PostController.postStory',
    'get /postDetail/:id': 'PostController.getPostById',
+   'get /postDetailf7/:id': 'PostController.getF7ViewPostById',
 
    'post /addUserFavorite/:id': 'UserController.addUserFavorite',
    'get /getUserFavorites': 'UserController.getUserFavorites',
