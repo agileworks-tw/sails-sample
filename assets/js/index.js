@@ -19,6 +19,7 @@ var mainView = myApp.addView('.view-main', {
   // Enable Dynamic Navbar for this view
   dynamicNavbar: true,
 });
+window.mainView = mainView;
 
 
 $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function(e) {
@@ -179,6 +180,13 @@ $$(document).on('pageInit', '.page[data-page="storyCategory"]', function(e) {
     //   $$('#nextSetp2').attr("disabled",true);
     // }
   });
+});
+
+
+$$(document).on('pageInit', '.page[data-page="home"]', function(e) {
+  // hotfix for page home's page-content class.
+  // this can overrides f7's setting.
+  $$(".page-content").css("padding-bottom","72px");
 });
 
 

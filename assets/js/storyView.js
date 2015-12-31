@@ -1,4 +1,3 @@
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // story page - storyView
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,7 +27,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
 
   // if no hobby...
   var category = myApp.formGetData('storyCategoryChoose');
-  if (!category.hobby) {
+  if (!category) {
     mainView.router.loadPage('/storyCategory');
     return false;
   }
@@ -36,7 +35,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
 
   // if no mode
   var postMode = myApp.formGetData('storyModeChoose');
-  if (!postMode.mode) {
+  if (!postMode) {
     mainView.router.loadPage('/story');
     return false;
   }
@@ -125,9 +124,17 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     var detail = myApp.formGetData('storyDetailChoose');
 
     var data = {};
-    data.mode = postMode.mode;
-    data.hobby = category.hobby;
-    data.detail = detail;
+    data.mode = postMode == undefined ? null : postMode.mode;
+    data.hobby = category == undefined ? null : category.hobby;
+    data.detail = detail == undefined ? null : detail;
+
+    // posting mode
+    if (!data.mode || data.mode == null) {
+      myApp.hideIndicator();
+      mainView.router.loadPage('/story');
+      mainView.router.loadPage('/story');
+      return false;
+    }
 
     // post title
     if (!data.detail.title || data.detail.title == "") {
@@ -153,13 +160,19 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
     // post date period
     // By default give today to startDate if use hasn't selsect period.
     if (!data.detail.startDate || data.detail.startDate == undefined) {
-      var now = new Date();
-      data.detail.startDate = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate();
-    } else {
-      // re-assembling date period field.
-      data.detail.startDate = $("#calendar-postPeriod").val().split(" - ")[0];
-      data.detail.endDate = $("#calendar-postPeriod").val().split(" - ")[1];
+      // get value
+      var datePickerValue = $$("#calendar-postPeriod").val();
+
+      if (!datePickerValue || datePickerValue == undefined) {
+        var now = new Date();
+        data.detail.startDate = "" + now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate();
+      } else {
+        // re-assembling date period field.
+        data.detail.startDate = "" + $$("#calendar-postPeriod").val().split(" - ")[0];
+        data.detail.endDate = "" + $$("#calendar-postPeriod").val().split(" - ")[1];
+      }
     }
+    console.log("data.detail.startDate=>", data.detail.startDate);
 
     /*---------------------- get user location ----------------------*/
     var location = {};
@@ -188,16 +201,18 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
 
     // if html5 geo api failed then use geoIp for instead.
     function getLocError(err) {
+
       $$.ajax({
         url: 'http://ip-api.com/json/',
         type: 'POST',
         dataType: 'jsonp',
         success: function(loc) {
-          console.log("geoip location=>", loc);
+          var geoip = JSON.parse(loc);
+          console.log("geoip location=>", geoip);
           location = {
-            latitude: loc.lat,
-            longitude: loc.lon,
-            accuracy: 5000
+            latitude: geoip.lat,
+            longitude: geoip.lon,
+            accuracy: 500
           }
           data.location = location;
           submit();
@@ -207,6 +222,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
           // if get geoip's data failed then give a default loaciotn from user setting.
         }
       }); // end ajax
+
     } // end error
 
     // submit depends on image upload.
@@ -231,7 +247,7 @@ $$(document).on('pageInit', '.page[data-page="storyDetail"]', function(e) {
           myApp.formDeleteData('storyModeChoose');
           myApp.formDeleteData('storyCategoryChoose');
           myApp.formDeleteData('storyDetailChoose');
-          window.location.href = '/main';
+          // window.location.href = '/main';
           myApp.hideIndicator();
         },
         error: function(xhr, ajaxOptions, thrownError) {

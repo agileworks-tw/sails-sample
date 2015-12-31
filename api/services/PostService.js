@@ -52,7 +52,8 @@ module.exports = {
           include: Like
         }, {
           model: User
-        }]
+        }],
+        order: 'createdAt DESC'
       });
       sails.log.info("getPost[0]=>", getPost[0]);
 
@@ -64,6 +65,7 @@ module.exports = {
           title: post.title,
           mode: post.mode,
           price: post.price,
+          // todo : location=?=itemname
           location: post.Item.itemname,
           latitude: post.latitude,
           longitude: post.longitude,
@@ -71,7 +73,10 @@ module.exports = {
           type: post.Item.Like.title,
           // type_icon: post.Item.Like.icon,
           type_icon: "../icons/store/apparel/bags.png",
-          gallery: [pic]
+          gallery: [pic],
+          content: post.content,
+          itemname: post.Item.itemname,
+          username: post.User.username
         };
         return data;
       });
@@ -106,6 +111,7 @@ module.exports = {
         price: getPost.price,
         title: getPost.title,
         mode: getPost.mode,
+        // todo : location=?=itemname
         location: getPost.Item.itemname,
         latitude: getPost.latitude,
         longitude: getPost.longitude,
@@ -168,6 +174,7 @@ module.exports = {
             title: post.title,
             content: post.content,
             mode: post.mode,
+            // todo : location=?=itemname
             location: post.Item.itemname,
             latitude: post.latitude,
             longitude: post.longitude,

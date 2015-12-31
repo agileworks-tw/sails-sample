@@ -26,8 +26,8 @@ block body
                 a.storyView.link(href='/story')
                   img(src='/img/add.png', alt='add')
             |         
-            .page-content
-              .content-block(style="height: 100%; padding: 0px; margin: 70px 0px")
+            .no-buttom-spaces.page-content
+              .content-block(style="height: 100%; padding: 0px; margin: 72px 0 -72px 0;")
                 .tabs(style="height: calc(100% - 70px*1);")
                   #mapView.tab.active(style="height: 100%;")
                     iframe(src='/map', style="height: 100%; width: 100%; border: 0;")
@@ -52,7 +52,6 @@ block body
                     // Search bar overlay
                     .searchbar-overlay
                     .page-content
-                  
                       .list-block
                         .list-group
                           ul#search-result.items-list
@@ -68,7 +67,7 @@ block body
                                     <div class="card-content-inner">
                                       <p class="color-gray card-desc">
                                         [<img src="{{type_icon}}" alt="{{type}}">]
-                                        [{{type}}] [{{location}}] [{{username}}]</p>
+                                        [{{price}}] [{{type}}] [{{location}}] [{{username}}]</p>
                                       <p class="card-content">{{content}}</p>
                                     </div>
                                   </div>
@@ -90,12 +89,38 @@ block body
                           // Result List
                   |               
                   #listView.tab
-                    .card.demo-card-header-pic
-                      .card-header.color-white.no-border(style='background-image:url(http://lorempixel.com/600/337/nature/)', valign='bottom') Journey To Mountains
-                      .card-content
-                        .card-content-inner
-                          p.color-gray Posted on January 21, 2015
-                          p Quisque eget vestibulum nulla...
+                    -console.log(allPosts[0])
+                    
+                    //- each post in allPosts
+                    //-   .card.demo-card-header-pic
+                    //-     .card-header.color-white.no-border(style='background-image:url(#{post.gallery[0]})', valign='bottom') #{post.title}
+                    //-     .card-content
+                    //-       .card-content-inner
+                    //-         p $#{post.price}
+                    //-         p #{post.content}
+                    //-     .card-footer
+                    //-       a.link.external(href=post.url) detail
+                          
+                    each post in allPosts
+                      .card.demo-card-header-pic
+                        .card-header.color-white.no-border(style='background-image:url(#{post.gallery[0]})', valign='middle')
+                          span.card-title(class='#{post.mode}')
+                            | [#{post.itemname}] #{post.title} 
+                            span
+                        .card-content
+                          .card-content-inner
+                            p.color-gray.card-desc
+                              | [
+                              img(src='#{post.type_icon}', alt='#{post.type}')
+                              | ]
+                              | [#{post.price}] [#{post.type}] [#{post.location}] [#{post.username}]
+                            p.card-content #{post.content}
+                        .card-footer
+                          a.link(href='/addUserFavorite/#{id}', data-id='#{post.id}') Like
+                          a.link.external(href='/postDetail/#{id}', data-id='#{post.id}') Detail
+                    .card
                       .card-footer
-                        a.link(href='templates/finish.html') Like
-    link(rel="stylesheet", href="/styles/css/main.css")
+                        a.link.backTop(href='#!')
+                        a.link.backTop(href='#!') back to top
+              |  
+              link(rel="stylesheet", href="/styles/css/main.css")

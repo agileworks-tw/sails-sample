@@ -3,12 +3,14 @@ module.exports = {
     try {
       // let userLogin = await UserService.getLoginState(req);
       let loginedUser = await UserService.getLoginUser(req);
+      let allPosts = await PostService.getAllPost();
       let favorites;
       if(loginedUser){
         favorites = await UserService.getUserFavorites({userId:loginedUser.id});
       }
       res.view('main', {
-        favorites: favorites
+        favorites: favorites,
+        allPosts: allPosts.data
       });
     } catch (e) {
       res.serverError(e);

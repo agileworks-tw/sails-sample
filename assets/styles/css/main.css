@@ -2,6 +2,11 @@
   top: 0;
 }
 
+
+/* hot fix remove page buttom space */
+div.no-buttom-spaces{
+  padding-bottom: 72px;
+}
 /* toolbar and tab */
 
 .toolbar {
@@ -23,7 +28,7 @@ a.tab-link {}
 .content-block {
   height: 100%;
   padding: 0px;
-  margin: 70px 0px;
+  margin: 70px 0px -70px 0px;
 }
 #mapView {
   height: 100%;
