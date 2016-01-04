@@ -22,6 +22,12 @@ var mainView = myApp.addView('.view-main', {
 window.mainView = mainView;
 
 
+// $$(document).on('pageInit pageReInit', '.page[data-page="postDetailF7"]', function(e) {
+//   var id = $$("input#itemId").val();
+//   $$("iframe#item").src = "/postDetail/" + id;
+// });
+
+
 $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function(e) {
   console.log("hobbyPage!!!!!!!!");
   var storedData = myApp.formToJSON('#hobbySelect');
@@ -187,6 +193,34 @@ $$(document).on('pageInit', '.page[data-page="home"]', function(e) {
   // hotfix for page home's page-content class.
   // this can overrides f7's setting.
   $$(".page-content").css("padding-bottom","72px");
+
+});
+
+
+$$(document).on('click','.link.like',function(){
+  var fav = $$(this);
+  var id = fav.attr("data-id");
+  console.log("favboxa id=>",id);
+  $$.ajax({
+    url: "/addUserFavorite/" + id,
+    type: "POST",
+    success: function(result) {
+      console.log(result);
+    },
+    error: function(xhr, ajaxOptions, thrownError) {
+      console.log("xhr.status,thrownError=>",xhr.status,thrownError);
+      if(xhr.status==403){
+        alert("if you like this item, please log in. :)");
+        window.location.assign("/auth/facebook");
+      }
+    }
+  }); // end ajax
+});
+
+
+$$(document).on('click', '.item-link', function(e){
+  console.log("item clicked");
+  $$("iframe#mapView").src = $$(this).attr("data-url");
 });
 
 

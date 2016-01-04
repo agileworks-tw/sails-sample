@@ -72,11 +72,27 @@ module.exports = {
 
   getUserFavorites: async({userId}) => {
     try {
-      sails.log.info(userId);
+      sails.log.info("getUserFavorites:userId=>",userId);
       let user = await User.findById(userId);
-      let favoritePost = await user.getPosts();
-      console.log(favoritePost)
-      return favoritePost;
+      let favorites = await user.getPosts({
+        include: [{
+          model: Item,
+          include: Like
+        }, {
+          model: User
+        }],
+        order: 'createdAt DESC'
+      });
+      favorites.forEach(function(fav){
+        if(fav.images==null){
+          fav.images = '/img/items/1.jpg';
+        }
+      });
+      console.log("favorites=>",favorites)
+      console.log("favorites[0].UserFavorite=>",favorites[0].UserFavorite)
+      console.log("favorites[0].User=>",favorites[0].User)
+      console.log("favorites[0].Item=>",favorites[0].Item)
+      return favorites;
     } catch (e) {
       throw e;
     }
