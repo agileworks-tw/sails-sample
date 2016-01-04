@@ -1,12 +1,16 @@
 .top {
   top: 0;
 }
-
+.center {
+  text-align: center;
+}
 
 /* hot fix remove page buttom space */
-div.no-buttom-spaces{
+
+div.no-buttom-spaces {
   padding-bottom: 72px;
 }
+
 /* toolbar and tab */
 
 .toolbar {
@@ -58,7 +62,9 @@ img.action {
 }
 ul#search-result {
   top: -20px;
-}/* map-marker */
+}
+
+/* map-marker */
 
 .get {
   border: 1px solid #28a7e1;
@@ -83,7 +89,29 @@ ul#search-result {
   background-size: 100%;
   background-position: 50%;
 }
-p.card-desc > img{
+p.card-desc > img {
   margin-top: 2px;
-  height:34px;
+  height: 34px;
+}
+
+/* favorite no login & no favorite*/
+
+p.fav-no-item {
+  margin-top: 50%;
+  font-size: 2em;
+  width: 100%;
+}
+
+p.fav-no-log-in > img {
+  width: 25%;
+}
+
+p.fav-no-log-in {
+  margin-top: 50%;
+  font-size: 2em;
+  width: 100%;
+}
+
+p.fav-no-item > img {
+  width: 25%;
 }
