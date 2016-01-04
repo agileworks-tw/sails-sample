@@ -810,9 +810,10 @@ function pushItemsToArray(json, a, category, visibleItemsArray) {
     '<div class="item" id="' + json.data[a].id + '">' +
     '<a href="#" class="image">' +
     '<div class="inner">' +
-    '<div class="item-specific">' +
+    // '<div class="item-specific"><a href="/postDetailf7/' + json.data[a].id + '>"' +
+    '<div class="item-specific"><a class="link item-link" href="#!" data-id="'+ json.data[a].id +'">' +
     drawItemSpecific(category, json, a) +
-    '</div>' +
+    '</a></div>' +
     '<img src="' + json.data[a].gallery[0] + '" alt="">' +
     '</div>' +
     '</a>' +

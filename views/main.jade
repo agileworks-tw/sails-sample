@@ -32,19 +32,37 @@ block body
               .content-block(style="height: 100%; padding: 0px; margin: 72px 0 -72px 0;")
                 .tabs(style="height: calc(100% - 70px*1);")
                   #mapView.tab.active(style="height: 100%;")
-                    iframe(src='/map', style="height: 100%; width: 100%; border: 0;")
+                    iframe#mapFrame(src='/map', style="height: 100%; width: 100%; border: 0;")
                   |               
                   #favoriteView.tab
-                    if(favorites && favorites.length > 0)
-                     each favorite in favorites
-                       .card.demo-card-header-pic
-                         .card-header.color-white.no-border(style='background-image:url(#{favorite.dataValues.images})', valign='bottom') #{favorite.dataValues.title}
-                         .card-content
-                           .card-content-inner
-                             p $#{favorite.dataValues.price}
-                             p #{favorite.dataValues.content || ''}
-                         .card-footer
-                           a.link(href="/postDetailf7/#{favorite.dataValues.id}") detail
+                    -if(favorites && favorites.length > 0)
+                      each favorite in favorites
+                        .card.demo-card-header-pic
+                          .card-header.color-white.no-border(style='background-image:url(#{favorite.images[0]})', valign='middle')
+                            span.card-title(class='#{favorite.mode}')
+                              | [#{favorite.Item.itemname}] #{favorite.title} 
+                              span
+                          .card-content
+                            .card-content-inner
+                              p.color-gray.card-desc
+                                | [
+                                img(src='#{favorite.type_icon}', alt='#{favorite.type}')
+                                | ]
+                                //- | [$#{favorite.price}] [#{favorite.type}] [#{favorite.location}] [#{favorite.user.username}]
+                              p.card-content #{favorite.content}
+                          .card-footer
+                            a.link.like(href='#!', data-id='#{favorite.id}') Like
+                            a.link(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}') Detail
+                    //-         
+                    //-  each favorite in favorites
+                    //-    .card.demo-card-header-pic
+                    //-      .card-header.color-white.no-border(style='background-image:url(#{favorite.dataValues.images})', valign='bottom') #{favorite.dataValues.title}
+                    //-      .card-content
+                    //-        .card-content-inner
+                    //-          p $#{favorite.dataValues.price}
+                    //-          p #{favorite.dataValues.content || ''}
+                    //-      .card-footer
+                    //-        a.link(href="/postDetailf7/#{favorite.dataValues.id}") detail
                   |               
                   #searchView.tab
                     form#formSearch.searchbar
@@ -71,12 +89,12 @@ block body
                                     <div class="card-content-inner">
                                       <p class="color-gray card-desc">
                                         [<img src="{{type_icon}}" alt="{{type}}">]
-                                        [{{price}}] [{{type}}] [{{location}}] [{{username}}]</p>
+                                        [${{price}}] [{{type}}] [{{location}}] [{{username}}]</p>
                                       <p class="card-content">{{content}}</p>
                                     </div>
                                   </div>
                                   <div class="card-footer">
-                                    <a href="/addUserFavorite/{{id}}" data-id="{{id}}" class="link">Like</a>
+                                    <a href="#!" data-id="{{id}}" class="link like">Like</a>
                                     <a href="/postDetailf7/{{id}}" data-id="{{id}}" class="link">Detail</a>
                                   </div>
                                 </div>
@@ -107,10 +125,10 @@ block body
                               | [
                               img(src='#{post.type_icon}', alt='#{post.type}')
                               | ]
-                              | [#{post.price}] [#{post.type}] [#{post.location}] [#{post.username}]
+                              | [$#{post.price}] [#{post.type}] [#{post.location}] [#{post.username}]
                             p.card-content #{post.content}
                         .card-footer
-                          a.link(href='/addUserFavorite/#{post.id}', data-id='#{post.id}') Like
+                          a.link.like(href='#!', data-id='#{post.id}') Like
                           a.link(href='/postDetailf7/#{post.id}', data-id='#{post.id}') Detail
                     .card
                       .card-footer

@@ -12,7 +12,13 @@ head
   link(rel='stylesheet', href='../styles/mapCss/colors/blue.css', type='text/css')
   link(rel='stylesheet', href='../styles/mapCss/index.css', type='text/css')
   title Spotter - Universal Directory Listing HTML Template
-  body#page-top.page-subpage.page-item-detail.navigation-off-canvas(onunload='')
+  body#page-top.page-subpage.page-item-detail.navigation-off-canvas(onunload='').navbar
+    .navbar-inner
+      .left
+      //-  p
+      //-   a.back.link(href='#', onClick="window.history.back();")
+      //-     i.icon.icon-back-blue
+      //-     span Back
     // Outer Wrapper
     #fb-root
     #outer-wrapper

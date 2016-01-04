@@ -57,9 +57,9 @@ module.exports = {
       });
       sails.log.info("getPost[0]=>", getPost[0]);
 
-
       let postArray = getPost.map((post) => {
-        let pic = post.images || post.Item.pic || '/img/items/1.jpg'
+        let pic = post.images || post.Item.pic;
+        if(!pic) pic = '/img/items/1.jpg';
         let data = {
           id: post.id,
           title: post.title,
@@ -146,7 +146,7 @@ module.exports = {
   // search
   getPostByKeyword: async(keyword) => {
       try {
-        let getPosts = await await Post.findAll({
+        let getPosts = await Post.findAll({
           where: {
             $or: [{
               'title': {
@@ -163,7 +163,8 @@ module.exports = {
             include: Like
           }, {
             model: User
-          }]
+          }],
+          order: 'createdAt DESC'
         });
         // // sails.log.info(getPost);
         var data = [];
