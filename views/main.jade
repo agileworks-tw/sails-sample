@@ -9,8 +9,10 @@ block body
               a.left.external.logo(href='/')
                 img(src='/img/logo.png', alt='logo', style="height: 45px;") 
             .wrapper
-              a.right.top.external(href='/auth/facebook')
-                img.action(src='/img/login.png', alt='login', style="height: 35px;")
+              -console.log("loginState=>",loginState);
+              -if(!loginState)
+                a.right.top.external(href='/auth/facebook')
+                  img.action(src='/img/login.png', alt='login', style="height: 35px;")
         .pages
           .page.toolbar-fixed(data-page='home')
             .toolbar.tabbar
@@ -92,16 +94,6 @@ block body
                   |               
                   #listView.tab
                     -console.log(allPosts[0])
-                    
-                    //- each post in allPosts
-                    //-   .card.demo-card-header-pic
-                    //-     .card-header.color-white.no-border(style='background-image:url(#{post.gallery[0]})', valign='bottom') #{post.title}
-                    //-     .card-content
-                    //-       .card-content-inner
-                    //-         p $#{post.price}
-                    //-         p #{post.content}
-                    //-     .card-footer
-                    //-       a.link.external(href=post.url) detail
                           
                     each post in allPosts
                       .card.demo-card-header-pic
