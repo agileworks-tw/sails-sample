@@ -83,15 +83,19 @@ module.exports = {
         }],
         order: 'createdAt DESC'
       });
-      favorites.forEach(function(fav){
-        if(fav.images==null){
-          fav.images = '/img/items/1.jpg';
-        }
-      });
-      console.log("favorites=>",favorites)
-      console.log("favorites[0].UserFavorite=>",favorites[0].UserFavorite)
-      console.log("favorites[0].User=>",favorites[0].User)
-      console.log("favorites[0].Item=>",favorites[0].Item)
+      console.log("favorites.length=>",favorites.length);
+      if(favorites.length>0){
+        favorites.forEach(function(fav){
+          if(fav.images==null){
+            fav.images = '/img/items/1.jpg';
+          }
+        });
+        // console.log("favorites=>",favorites)
+        console.log("favorites[0]=>",favorites[0]);
+        // console.log("favorites[0].UserFavorite=>",favorites[0].UserFavorite)
+        // console.log("favorites[0].User=>",favorites[0].User)
+        // console.log("favorites[0].Item=>",favorites[0].Item)
+      }
       return favorites;
     } catch (e) {
       throw e;
