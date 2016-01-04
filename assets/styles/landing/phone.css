@@ -1,0 +1,27 @@
+.phoneIframe {
+  width: 100%;
+  height: 590px;
+}
+
+/* iphone gallery media queries */
+/* MD media */
+@media (max-width: 1199px) {
+  .phoneIframe {
+    width: 100%;
+    height: 590px;
+  }
+}
+/* SM media */
+@media (max-width: 991px) {
+  .phoneIframe {
+    width: 100%;
+    height: 590px;
+  }
+}
+/* XS media */
+@media (max-width: 767px) {
+  .phoneIframe {
+    width: 100%;
+    height: 393px;
+  }
+}

@@ -18,7 +18,8 @@ var tmpPath = '.tmp/public/';
 var cssFilesToInject = [
   'styles/**/*.css',
   '!styles/mapCss/**/*.css',
-  '!styles/importer.css'
+  '!styles/importer.css',
+  '!styles/landing/**/*.css'
 ];
 
 
@@ -36,7 +37,8 @@ var jsFilesToInject = [
   '!bower/framework7/js/framework7.min.js',
   '!bower/framework7/js/my-app.js',
   // '!bower/framework7/js/*.js',
-  '!js/map/*.js'
+  '!js/map/*.js',
+  '!js/landing/*.js'
   // Use the "exclude" operator to ignore files
   // '!js/ignore/these/files/*.js'
 ];
