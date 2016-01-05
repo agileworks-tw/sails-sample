@@ -35,6 +35,9 @@ block body
                     iframe#mapFrame(src='/map', style="height: 100%; width: 100%; border: 0;")
                   |               
                   #favoriteView.tab
+                    -if(!loginState)
+                      p.fav-no-log-in.center please log in first.:)
+                       img(src='/img/noLogin.png', alt='noLogin')
                     -if(favorites && favorites.length > 0)
                       each favorite in favorites
                         .card.demo-card-header-pic
@@ -53,16 +56,10 @@ block body
                           .card-footer
                             a.link.like(href='#!', data-id='#{favorite.id}') Like
                             a.link(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}') Detail
-                    //-         
-                    //-  each favorite in favorites
-                    //-    .card.demo-card-header-pic
-                    //-      .card-header.color-white.no-border(style='background-image:url(#{favorite.dataValues.images})', valign='bottom') #{favorite.dataValues.title}
-                    //-      .card-content
-                    //-        .card-content-inner
-                    //-          p $#{favorite.dataValues.price}
-                    //-          p #{favorite.dataValues.content || ''}
-                    //-      .card-footer
-                    //-        a.link(href="/postDetailf7/#{favorite.dataValues.id}") detail
+                    -else  
+                      -if(loginState)
+                        p.fav-no-item.center you have no favorite item yet:(
+                         img(src='/img/brokenHeart.png', alt='brokenHeart')
                   |               
                   #searchView.tab
                     form#formSearch.searchbar
