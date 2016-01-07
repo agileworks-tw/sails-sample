@@ -100,7 +100,10 @@ module.exports = {
           model: Item,
           include: Like
         }, {
-          model: User
+          model: User,
+          include: [{
+            model: Post,
+            include: User}]
         }]
       });
       sails.log.info(getPost);

@@ -75,7 +75,9 @@ head
                                 a(href='#') #{post.email || ''}
                       .col-md-8.col-sm-8
                         section
-                          article.item-gallery
+                          article.item-gallery    
+                          .line-it-button(style='display: none;', data-type='share-a', data-lang='ja')
+
                             .owl-carousel.item-slider
                               .slide
                                 img(src=post.gallery, data-hash='1', alt='')
@@ -99,7 +101,9 @@ head
                     script(type='text/javascript', src='/js/map/custom.js')
                     script(type='text/javascript', src='/js/map/maps.js')
                     script(type='text/javascript', src='/js/favbox.js')
+                    script(src='//scdn.line-apps.com/n/line_it/thirdparty/loader.min.js', async='async')
                     script.
+                      LineIt.loadButton();
                       //- var itemID = 1;
                       //- console.log(JSON.parse($('#map-detail').attr('data-json')));
                       itemDetailMap(JSON.parse($('#map-detail').attr('data-json')));
