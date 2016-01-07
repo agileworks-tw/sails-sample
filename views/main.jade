@@ -19,8 +19,8 @@ block body
               .toolbar-inner
                 a.mapView.tab-link.active(href='#mapView')
                   img(src='/img/map.png', alt='map')  
-                a.favoriteView.tab-link(href='#favoriteView')
-                  img(src='/img/favorite.png', alt='list')
+                a.favoriteView.tab-link(href='#favoriteView', data-login="#{loginState}")
+                  img(src='/img/favorite.png', alt='favorite')
                 a.searchView.tab-link(href='#searchView')
                   img(src='/img/search.png', alt='search')
                 a.listView.tab-link(href='#listView')
@@ -35,9 +35,6 @@ block body
                     iframe#mapFrame(src='/map', style="height: 100%; width: 100%; border: 0;")
                   |               
                   #favoriteView.tab
-                    -if(!loginState)
-                      p.fav-no-log-in.center please log in first.:)
-                       img(src='/img/noLogin.png', alt='noLogin')
                     -if(favorites && favorites.length > 0)
                       each favorite in favorites
                         .card.demo-card-header-pic
@@ -59,7 +56,7 @@ block body
                     -else  
                       -if(loginState)
                         p.fav-no-item.center you have no favorite item yet:(
-                         img(src='/img/brokenHeart.png', alt='brokenHeart')
+                         img(src='/img/blockHeart.png', alt='blockHeart')
                   |               
                   #searchView.tab
                     form#formSearch.searchbar

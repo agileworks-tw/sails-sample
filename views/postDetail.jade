@@ -43,7 +43,11 @@ head
                       .detailFavbox
                         .favbox.left
                           a.favboxa(data-id="#{post.id}")
-                              i.fa.fa-lg.fa-heart
+                            |                            
+                            -if(isFav==true)
+                              i.fa.fa-lg.fa-heart(style="color:red")
+                            -else
+                              i.fa.fa-lg.fa-heart()
                       .title
                         div.price 
                         -if (post.price)
@@ -60,7 +64,7 @@ head
                           header
                             h3 Contact
                           address
-                            div #{post.username}
+                            div #{post.username} 
                             //- div 63 Birch Street
                             //- div Granada Hills, CA 91344
                             figure

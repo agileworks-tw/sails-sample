@@ -31,7 +31,7 @@ function drawInfobox(category, infoboxContent, json, i){
                         '<a data-url="' + url +  '" class="detail item-link">Go to Detail</a>' +
                     '</div>' +
                 '</div>' +
-                '<a data-url="' + url +  '" class="item-link description">' +
+                '<a href="'+url+'"data-url="' + url +  '" class="item-link description">' +
                     '<div class="meta">' +
                          price +
                         '<h2>' + title +  '</h2>' +
