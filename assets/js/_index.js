@@ -209,10 +209,7 @@ $$(document).on('click','.link.like',function(){
     },
     error: function(xhr, ajaxOptions, thrownError) {
       console.log("xhr.status,thrownError=>",xhr.status,thrownError);
-      if(xhr.status==403){
-        alert("if you like this item, please log in. :)");
-        window.location.assign("/auth/facebook");
-      }
+      mainView.router.loadPage('/story');
     }
   }); // end ajax
 });

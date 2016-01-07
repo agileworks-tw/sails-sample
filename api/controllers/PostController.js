@@ -25,8 +25,21 @@ module.exports = {
     try {
       console.log("==== getPostById ===", req.param('id'));
       let post = await PostService.getPostById(req.param('id'));
+
+      let login = await UserService.getLoginState(req);
+      let isFav = false;
+      if(login){
+        let user = await UserService.getLoginUser(req);
+        let UserFavorites = await UserService.getUserFavorites({userId: user.id});
+        console.log("===UserFavorites[0]=>",UserFavorites[0]);
+        let itemId = req.param('id');
+        UserFavorites.forEach(function(fav) {
+          if(fav.id==itemId) isFav = true;
+        }); // end forEach
+      }
       res.view('postDetail', {
-        post
+        post,
+        isFav
       });
     } catch (e) {
       sails.log.error(e);
