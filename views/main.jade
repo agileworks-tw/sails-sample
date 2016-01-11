@@ -40,7 +40,7 @@ block body
                         .card.demo-card-header-pic
                           .card-header.color-white.no-border(style='background-image:url(#{favorite.images[0]})', valign='middle')
                             span.card-title(class='#{favorite.mode}')
-                              | [#{favorite.Item.itemname}] #{favorite.title} 
+                              | [#{favorite.Item.itemname}] #{favorite.title}
                               span
                           .card-content
                             .card-content-inner
@@ -56,7 +56,7 @@ block body
                     -else  
                       -if(loginState)
                         p.fav-no-item.center you have no favorite item yet:(
-                         img(src='/img/blockHeart.png', alt='blockHeart')
+                         img(src='/img/blockHeart.png', alt='blockHeart')               
                   |               
                   #searchView.tab
                     form#formSearch.searchbar
