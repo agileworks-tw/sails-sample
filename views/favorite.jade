@@ -1,0 +1,24 @@
+
+-if(favorites && favorites.length > 0)
+  each favorite in favorites
+    .card.demo-card-header-pic
+      .card-header.color-white.no-border(style='background-image:url(#{favorite.images[0]})', valign='middle')
+        span.card-title(class='#{favorite.mode}')
+          | [#{favorite.Item.itemname}] #{favorite.title}
+          span
+      .card-content
+        .card-content-inner
+          p.color-gray.card-desc
+            | [
+            img(src='#{favorite.type_icon}', alt='#{favorite.type}')
+            | ]
+            //- | [$#{favorite.price}] [#{favorite.type}] [#{favorite.location}] [#{favorite.user.username}]
+          p.card-content #{favorite.content}
+      .card-footer
+        a.link.like(href='#!', data-id='#{favorite.id}') Like
+        a.link(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}') Detail
+-else  
+  -if(loginState)
+    p.fav-no-item.center you have no favorite item yet:(
+     img(src='/img/blockHeart.png', alt='blockHeart')                   
+      

@@ -96,6 +96,10 @@ p.card-desc > img {
 
 /* favorite no login & no favorite*/
 
+div#favoriteView {
+  margin-bottom: 72px;
+}
+
 p.fav-no-item {
   margin-top: 50%;
   font-size: 2em;

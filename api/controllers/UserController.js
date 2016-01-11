@@ -103,5 +103,22 @@ module.exports = {
       sails.log.error(e);
       res.serverError(e);
     }
+  },
+
+  getFavoriteView: async(req, res) => {
+    try {
+      console.log("==== getFavoriteViews ===");
+      let loginState = await UserService.getLoginState(req);
+      let loginedUser = await UserService.getLoginUser(req);
+      let userFavorites = await UserService.getUserFavorites({userId: loginedUser.id});
+      res.view('favorite', {
+        favorites: userFavorites,
+        loginState: loginState,
+        loginedUser: loginedUser
+      });
+    } catch (e) {
+      sails.log.error(e);
+      res.serverError(e);
+    }
   }
 }

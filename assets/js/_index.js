@@ -194,6 +194,10 @@ $$(document).on('pageInit', '.page[data-page="home"]', function(e) {
   // this can overrides f7's setting.
   $$(".page-content").css("padding-bottom","72px");
 
+  $$(".favoriteView").click(function() {
+    $("#favoriteView").load("/favorites");
+  });
+
 });
 
 
