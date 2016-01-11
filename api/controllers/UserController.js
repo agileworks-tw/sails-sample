@@ -1,4 +1,16 @@
 module.exports = {
+  pcOrMobile: async(req, res) => {
+    try {
+      if (/mobile/i.test(req.headers['user-agent'])){
+        res.view('index')
+      }else{
+        res.view('landing')
+      }
+    }catch (e) {
+      console.log(e);
+      res.serverError(e);
+    }
+  },
   index: async(req, res) => {
     try {
       let loginedUser, favorites;
