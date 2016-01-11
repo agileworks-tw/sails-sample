@@ -43,9 +43,7 @@
      view: 'map'
    },
 
-   '/': {
-     view: 'index'
-   },
+   '/': 'UserController.pcOrMobile',
 
    '/storyDetail': {
      view: 'storyDetail'
