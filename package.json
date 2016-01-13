@@ -41,7 +41,10 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "deploy": "grunt prod & rsync -az --exclude=.git --progress ./ deploy@trademuch.trunksys.com:~/trademuch",
+    "remote-start": "ssh deploy@trademuch.trunksys.com 'export NVM_DIR=\"/home/deploy/.nvm\";[ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"; cd trademuch && pm2 start app.js -i 0 --name \"trademuch\"'",
+    "remote-restart": "ssh deploy@trademuch.trunksys.com 'export NVM_DIR=\"/home/deploy/.nvm\";[ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\";cd trademuch;  pm2 restart trademuch'"
   },
   "main": "app.js",
   "repository": {
