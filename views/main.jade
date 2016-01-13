@@ -1,7 +1,7 @@
 extends ./layout
 
 block body
-  .views.layout-white
+  .views
     .view.view-main(data-page='home')
         .navbar
           .navbar-inner
@@ -18,15 +18,18 @@ block body
             .toolbar.tabbar
               .toolbar-inner
                 a.mapView.tab-link.active(href='#mapView')
-                  img(src='/img/map.png', alt='map')  
+                  img(src='/img/map.png', alt='map')
+                  .activeShow
                 a.favoriteView.tab-link(href='#favoriteView', data-login="#{loginState}")
                   img(src='/img/favorite.png', alt='favorite')
-                a.searchView.tab-link(href='#searchView')
-                  img(src='/img/search.png', alt='search')
-                a.listView.tab-link(href='#listView')
-                  img(src='/img/list.png', alt='list')
                 a.storyView.link(href='/story')
                   img(src='/img/add.png', alt='add')
+                a.searchView.tab-link(href='#searchView')
+                  img(src='/img/search.png', alt='search')
+                //- a.listView.tab-link(href='#listView')
+                //-   img(src='/img/list.png', alt='list')
+                a.listView.tab-link(href='#profile')
+                  img(src='/img/login.png', alt='list')
             |         
             .no-buttom-spaces.page-content
               .content-block(style="height: 100%; padding: 0px; margin: 72px 0 -72px 0;")
@@ -105,25 +108,42 @@ block body
                           // Result List
                   |               
                   #listView.tab
-                    -console.log(allPosts[0])
-                          
-                    each post in allPosts
-                      .card.demo-card-header-pic
-                        .card-header.color-white.no-border(style='background-image:url(#{post.gallery[0]})', valign='middle')
-                          span.card-title(class='#{post.mode}')
-                            | [#{post.itemname}] #{post.title} 
-                            span
-                        .card-content
-                          .card-content-inner
-                            p.color-gray.card-desc
-                              | [
-                              img(src='#{post.type_icon}', alt='#{post.type}')
-                              | ]
-                              | [$#{post.price}] [#{post.type}] [#{post.location}] [#{post.username}]
-                            p.card-content #{post.content}
-                        .card-footer
-                          a.link.like(href='#!', data-id='#{post.id}') Like
-                          a.link(href='/postDetailf7/#{post.id}', data-id='#{post.id}') Detail
+                    .card
+                      .card-content
+                        .list-block.media-list
+                          ul
+                            each post in allPosts
+                              li.swipeout
+                                  .swipeout-content
+                                    .item-content
+                                      .item-media
+                                        //- img(src=post.gallery[0], width='80')
+                                        img(src='http://lorempixel.com/80/60/nature/', width='80')
+                                      .item-inner
+                                        .item-title-row
+                                          .item-title #{post.title}
+                                        .item-subtitle #{post.itemname}
+                                  .swipeout-actions-right
+                                    a.action1.bg-pink.like(href='#', data-id='#{post.id}') Like
+                    //- -console.log(allPosts[0])
+                    //-       
+                    //- each post in allPosts
+                    //-   .card.demo-card-header-pic
+                    //-     .card-header.color-white.no-border(style='background-image:url(#{post.gallery[0]})', valign='middle')
+                    //-       span.card-title(class='#{post.mode}')
+                    //-         | [#{post.itemname}] #{post.title} 
+                    //-         span
+                    //-     .card-content
+                    //-       .card-content-inner
+                    //-         p.color-gray.card-desc
+                    //-           | [
+                    //-           img(src='#{post.type_icon}', alt='#{post.type}')
+                    //-           | ]
+                    //-           | [$#{post.price}] [#{post.type}] [#{post.location}] [#{post.username}]
+                    //-         p.card-content #{post.content}
+                    //-     .card-footer
+                    //-       a.link.like(href='#!', data-id='#{post.id}') Like
+                    //-       a.link(href='/postDetailf7/#{post.id}', data-id='#{post.id}') Detail
                     .card
                       .card-footer
                         a.link.backTop(href='#!')
