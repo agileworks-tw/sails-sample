@@ -66,8 +66,8 @@ block body
                                     </div>
                                   </div>
                                   <div class="card-footer">
-                                    <a href="#!" data-id="{{id}}" class="link like">Like</a>
-                                    <a href="/postDetailf7/{{id}}" data-id="{{id}}" class="link">Detail</a>
+                                     <a href="#!" data-id="{{id}}" class="link like">Like</a>
+                                     <a href="/postDetailf7/{{id}}" data-id="{{id}}" class="link">Detail</a>
                                   </div>
                                 </div>
                               </li>
@@ -100,11 +100,22 @@ block body
                               | [$#{post.price}] [#{post.type}] [#{post.location}] [#{post.username}]
                             p.card-content #{post.content}
                         .card-footer
-                          a.link.like(href='#!', data-id='#{post.id}') Like
-                          a.link(href='/postDetailf7/#{post.id}', data-id='#{post.id}') Detail
+                          //- a.link.like(href='#!', data-id='#{post.id}') Like 
+                          .detailFavbox
+                            .favbox.listView
+                              a.link.favboxa.listView(href='#!', data-id="#{post.id}")
+                                |         
+                                -console.log("isFav=============",isFav)                   
+                                -if(isFav==true)
+                                  i.fa.fa-lg.fa-heart(style="color:red")
+                                -else
+                                  i.fa.fa-lg.fa-heart()
+                          .detailbox
+                            .detbox      
+                              a.link(href='/postDetailf7/#{post.id}', data-id='#{post.id}') Detail
                     .card
                       .card-footer
                         a.link.backTop(href='#!')
                         a.link.backTop(href='#!') back to top
               |  
-              link(rel="stylesheet", href="/styles/css/main.css")
+              //- link(rel='stylesheet', href='styles/mapCss/index.css', type='text/css')

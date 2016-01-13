@@ -15,7 +15,15 @@
             //- | [$#{favorite.price}] [#{favorite.type}] [#{favorite.location}] [#{favorite.user.username}]
           p.card-content #{favorite.content}
       .card-footer
-        a.link.like(href='#!', data-id='#{favorite.id}') Like
+        //- a.link.like(href='#!', data-id='#{favorite.id}') Like
+        .detailFavbox
+          .favbox.favoriteView
+            a.link.favboxa.favoriteView(href='#!', data-id="#{favorite.id}")
+              |                            
+              -if(isFav==true)
+                i.fa.fa-lg.fa-heart(style="color:red")
+              -else
+                i.fa.fa-lg.fa-heart()
         a.link(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}') Detail
 -else  
   -if(loginState)
