@@ -95,6 +95,18 @@ ul#search-result {
   position: fixed;
   z-index: 999;
 }
+.categories {
+  position: fixed;
+  z-index: 999;
+  top: 140px;
+  padding: 6px;
+  width: 100%;
+  background-color: #fff;
+}
+.categories .button{
+  margin-left: 10px
+  margin-top: 3px;
+}
 
 
 /* map-marker */

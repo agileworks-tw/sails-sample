@@ -40,10 +40,10 @@ img.category {
 }
 
 div[class*="col-"] {
-  background: #fff;
+  /*background: #fff;*/
   text-align: center;
   color: #000;
-  border: 2px solid #fff;
+  /*border: 2px solid #fff;*/
   /*padding: 5px;*/
   /*height: 180px;*/
   overflow:hidden;
