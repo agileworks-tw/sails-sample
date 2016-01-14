@@ -1,10 +1,10 @@
 
 -if(favorites && favorites.length > 0)
   .card
+    .card-header You like !!
     .card-content 
     .list-block.media-list
       ul
-        -console.log(favorites[0])
         each favorite in favorites
           li.swipeout
               .swipeout-content
@@ -19,6 +19,26 @@
               .swipeout-actions-right
                 //- a.action1.bg-pink.like(href='#', data-id='#{favorite.id}') Like
                 a.action1.bg-blue.like(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}') Detail
+  .card
+    .card-header You may like...
+    .card-content 
+      .list-block.media-list
+        ul
+          //- each post in allPosts
+          each val in [1, 2, 3]
+            - var random = Math.floor(Math.random() * 10)
+            li.swipeout
+                .swipeout-content
+                  .item-content
+                    .item-media
+                      //- img(src=post.gallery[0], width='80')
+                      img(src='http://lorempixel.com/80/60/technics/#{allPosts[random].id % 9}', width='80')
+                    .item-inner
+                      .item-title-row
+                        .item-title #{allPosts[random].title}
+                      .item-subtitle #{allPosts[random].itemname}
+                .swipeout-actions-right
+                  a.action1.bg-pink.like(href='#', data-id='#{allPosts[random].id}') Like
     //- .card.demo-card-header-pic
     //-   .card-header.color-white.no-border(style='background-image:url(#{favorite.images[0]})', valign='middle')
     //-     span.card-title(class='#{favorite.mode}')
