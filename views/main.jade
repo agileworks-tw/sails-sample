@@ -6,7 +6,7 @@ block body
         .navbar
           .navbar-inner
             .wrapper
-              a.left.external.logo(href='/')
+              a.left.external.logo(href='/main')
                 img(src='/img/logo.png', alt='logo', style="height: 45px;") 
             .wrapper
               -console.log("loginState=>",loginState);
@@ -38,63 +38,12 @@ block body
                     iframe#mapFrame(src='/map', style="height: 100%; width: 100%; border: 0;")
                   |               
                   #favoriteView.tab
-                    -if(favorites && favorites.length > 0)
-                      each favorite in favorites
-                        .card.demo-card-header-pic
-                          .card-header.color-white.no-border(style='background-image:url(#{favorite.images[0]})', valign='middle')
-                            span.card-title(class='#{favorite.mode}')
-                              | [#{favorite.Item.itemname}] #{favorite.title} 
-                              span
-                          .card-content
-                            .card-content-inner
-                              p.color-gray.card-desc
-                                | [
-                                img(src='#{favorite.type_icon}', alt='#{favorite.type}')
-                                | ]
-                                //- | [$#{favorite.price}] [#{favorite.type}] [#{favorite.location}] [#{favorite.user.username}]
-                              p.card-content #{favorite.content}
-                          .card-footer
-                            a.link.like(href='#!', data-id='#{favorite.id}') Like
-                            a.link(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}') Detail
-                    -else  
-                      -if(loginState)
-                       .card
-                         .card-content 
-                           .list-block.media-list
-                             ul
-                               li.item-content
-                                 .item-media
-                                   img(src='/img/blockHeart.png', width='80')
-                                 .item-inner
-                                   .item-title-row
-                                     .item-title Opps..
-                                   .item-subtitle You have no favorite item yet
-                        .card
-                          .card-header You may like...
-                          .card-content 
-                            .list-block.media-list
-                              ul
-                                //- each post in allPosts
-                                each val in [1, 2, 3]
-                                  - var random = Math.floor(Math.random() * 10)
-                                  li.swipeout
-                                      .swipeout-content
-                                        .item-content
-                                          .item-media
-                                            //- img(src=post.gallery[0], width='80')
-                                            img(src='http://lorempixel.com/80/60/technics/#{allPosts[random].id % 9}', width='80')
-                                          .item-inner
-                                            .item-title-row
-                                              .item-title #{allPosts[random].title}
-                                            .item-subtitle #{allPosts[random].itemname}
-                                      .swipeout-actions-right
-                                        a.action1.bg-pink.like(href='#', data-id='#{allPosts[random].id}') Like
                   |               
                   #searchView.tab
                     form#formSearch.searchbar
                      // Search bar
                      .searchbar-input
-                       input.i18n(type='search', data-i18n='[placeholder]global.search',focus)
+                       input.i18n(type='search', data-i18n='[placeholder]global.search',autofocus)
                        a.searchbar-clear(href='#') clear
                        a.searchbar-cancel.i18n(href='#', data-i18n='global.cancel') cancel
                     // Search bar overlay
@@ -191,5 +140,3 @@ block body
                         a.link.backTop(href='#!') back to top
                   |  
                   #profile.tab
-                    
-              link(rel="stylesheet", href="/styles/css/main.css")

@@ -27,6 +27,15 @@ $$(document).on('click',"a.backTop", function(e) {
   $$("div.page-content").scrollTop(0)
 }); // end click
 
+$(document).ready(function () {
+  $("select[name='category']").focus(function(){
+  $(this).css("background-color", "#ecf5ff");
+});
+$("select[name='category']").blur(function(){
+  $(this).css("background-color", "#ffffff");
+});
+});
+
 function goSearch(keyword) {
   $$.ajax({
     url: "/search/" + keyword,

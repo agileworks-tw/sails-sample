@@ -137,7 +137,7 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function(e) {
   }; // end getGeoIpLocation
 
   function submitSingUpForm(location) {
-    var email = $("input[name='email']").val();
+    var email = $("input[name='email']").val()
     var hobby = $("input[name='hobby']").val();
     var data = {
       hobby: hobby,
@@ -193,6 +193,10 @@ $$(document).on('pageInit', '.page[data-page="home"]', function(e) {
   // hotfix for page home's page-content class.
   // this can overrides f7's setting.
   $$(".page-content").css("padding-bottom","72px");
+
+  $$(".favoriteView").click(function() {
+    $("#favoriteView").load("/favorites");
+  });
 
 });
 
