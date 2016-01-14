@@ -7,6 +7,12 @@
 .navbar{
   background-color:#01579B !important;
 }
+.navbar-inner{
+  padding-left: 20px;
+}
+.navbar-inner img {
+  height: 35px !important;
+}
 
 /* hot fix remove page buttom space */
 
