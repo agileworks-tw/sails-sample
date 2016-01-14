@@ -86,16 +86,17 @@ img.action {
 
 #searchView > .page-content {
   margin: 0px auto;
-  width: 95%;
+  /*width: 95%;*/
 }
 ul#search-result {
-  top: 90px;
+  top: 74px;
 }
 #formSearch{
   position: fixed;
   z-index: 999;
 }
 .categories {
+  margin: 0;
   position: fixed;
   z-index: 999;
   top: 140px;
