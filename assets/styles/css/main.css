@@ -64,8 +64,13 @@ img.action {
   width: 95%;
 }
 ul#search-result {
-  top: -20px;
+  top: 90px;
 }
+#formSearch{
+  position: fixed;
+  z-index: 999;
+}
+
 
 /* map-marker */
 

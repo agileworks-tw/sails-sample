@@ -137,7 +137,7 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function(e) {
   }; // end getGeoIpLocation
 
   function submitSingUpForm(location) {
-    var email = $("input[name='email']").val();
+    var email = $("input[name='email']").val()
     var hobby = $("input[name='hobby']").val();
     var data = {
       hobby: hobby,
