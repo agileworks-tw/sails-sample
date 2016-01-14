@@ -129,13 +129,15 @@ module.exports = {
   getFavoriteView: async(req, res) => {
     try {
       console.log("==== getFavoriteViews ===");
+      let allPosts = await PostService.getAllPost();
       let loginState = await UserService.getLoginState(req);
       let loginedUser = await UserService.getLoginUser(req);
       let userFavorites = await UserService.getUserFavorites({userId: loginedUser.id});
       res.view('favorite', {
         favorites: userFavorites,
         loginState: loginState,
-        loginedUser: loginedUser
+        loginedUser: loginedUser,
+        allPosts: allPosts.data
       });
     } catch (e) {
       sails.log.error(e);

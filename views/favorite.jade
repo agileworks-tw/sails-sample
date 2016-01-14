@@ -27,6 +27,36 @@
         a.link(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}') Detail
 -else  
   -if(loginState)
-    p.fav-no-item.center you have no favorite item yet:(
-     img(src='/img/blockHeart.png', alt='blockHeart')                   
-      
+   .card
+     .card-content 
+       .list-block.media-list
+         ul
+           li.item-content
+             .item-media
+               img(src='/img/blockHeart.png', width='80')
+             .item-inner
+               .item-title-row
+                 .item-title Opps..
+               .item-subtitle You have no favorite item yet
+    .card
+      .card-header You may like...
+      .card-content 
+        .list-block.media-list
+          ul
+            //- each post in allPosts
+            each val in [1, 2, 3]
+              - var random = Math.floor(Math.random() * 10)
+              li.swipeout
+                  .swipeout-content
+                    .item-content
+                      .item-media
+                        //- img(src=post.gallery[0], width='80')
+                        img(src='http://lorempixel.com/80/60/technics/#{allPosts[random].id % 9}', width='80')
+                      .item-inner
+                        .item-title-row
+                          .item-title #{allPosts[random].title}
+                        .item-subtitle #{allPosts[random].itemname}
+                  .swipeout-actions-right
+                    a.action1.bg-pink.like(href='#', data-id='#{allPosts[random].id}') Like
+                     
+        

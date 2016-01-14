@@ -4,8 +4,19 @@
 .center {
   text-align: center;
 }
+
 .right {
   right: 0px;
+}
+
+.navbar{
+  background-color:#01579B !important;
+}
+.navbar-inner{
+  padding-left: 20px;
+}
+.navbar-inner img {
+  height: 35px !important;
 }
 
 /* hot fix remove page buttom space */
@@ -18,17 +29,31 @@ div.no-buttom-spaces {
 
 .toolbar {
   height: 64px;
+  background-color:#212121 !important;
+}
+.toolbar-inner {
+  padding: 0 0px;
 }
 .toolbar-inner > a > img {
   /* let img in the middle of tab */
   margin-top: 6px;
-  height: 35px;
+  height: 30px;
 }
 a.link {}
 a.tab-link.active {
-  box-shadow: 0px 0px 5px rgba(30%, 30%, 30%, 0.9), 0px 0px 15px rgba(20%, 20%, 40%, 0.9);
+  /*box-shadow: 0px 0px 5px rgba(30%, 30%, 30%, 0.9), 0px 0px 15px rgba(20%, 20%, 40%, 0.9);*/
+  background-color:#424242;
 }
 a.tab-link {}
+
+.toolbar .storyView {
+  background-color: #01579B;
+}
+
+.toolbar .storyView img{
+  /*margin-top: px;*/
+  height: 40px;
+}
 
 /* page and view */
 

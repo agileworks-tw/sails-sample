@@ -2,12 +2,10 @@
 var $ = jQuery.noConflict();
 
 var mapStyles = [{
-  "featureType": "road",
-  "elementType": "labels",
+  "featureType": "administrative",
+  "elementType": "labels.text.fill",
   "stylers": [{
-    "visibility": "simplified"
-  }, {
-    "lightness": 20
+    "color": "#444444"
   }]
 }, {
   "featureType": "administrative.land_parcel",
@@ -16,7 +14,89 @@ var mapStyles = [{
     "visibility": "off"
   }]
 }, {
-  "featureType": "landscape.man_made",
+  "featureType": "landscape",
+  "elementType": "all",
+  "stylers": [{
+    "color": "#f2f2f2"
+  }]
+}, {
+  "featureType": "landscape.natural",
+  "elementType": "all",
+  "stylers": [{
+    "visibility": "off"
+  }]
+}, {
+  "featureType": "poi",
+  "elementType": "all",
+  "stylers": [{
+    "visibility": "on"
+  }, {
+    "color": "#052366"
+  }, {
+    "saturation": "-70"
+  }, {
+    "lightness": "85"
+  }]
+}, {
+  "featureType": "poi",
+  "elementType": "labels",
+  "stylers": [{
+    "visibility": "simplified"
+  }, {
+    "lightness": "-53"
+  }, {
+    "weight": "1.00"
+  }, {
+    "gamma": "0.98"
+  }]
+}, {
+  "featureType": "poi",
+  "elementType": "labels.icon",
+  "stylers": [{
+    "visibility": "simplified"
+  }]
+}, {
+  "featureType": "road",
+  "elementType": "all",
+  "stylers": [{
+    "saturation": -100
+  }, {
+    "lightness": 45
+  }, {
+    "visibility": "on"
+  }]
+}, {
+  "featureType": "road",
+  "elementType": "geometry",
+  "stylers": [{
+    "saturation": "-18"
+  }]
+}, {
+  "featureType": "road",
+  "elementType": "labels",
+  "stylers": [{
+    "visibility": "off"
+  }]
+}, {
+  "featureType": "road.highway",
+  "elementType": "all",
+  "stylers": [{
+    "visibility": "on"
+  }]
+}, {
+  "featureType": "road.arterial",
+  "elementType": "all",
+  "stylers": [{
+    "visibility": "on"
+  }]
+}, {
+  "featureType": "road.arterial",
+  "elementType": "labels.icon",
+  "stylers": [{
+    "visibility": "off"
+  }]
+}, {
+  "featureType": "road.local",
   "elementType": "all",
   "stylers": [{
     "visibility": "on"
@@ -25,101 +105,15 @@ var mapStyles = [{
   "featureType": "transit",
   "elementType": "all",
   "stylers": [{
-    "saturation": -100
-  }, {
-    "visibility": "on"
-  }, {
-    "lightness": 10
-  }]
-}, {
-  "featureType": "road.local",
-  "elementType": "all",
-  "stylers": [{
-    "visibility": "on"
-  }]
-}, {
-  "featureType": "road.local",
-  "elementType": "all",
-  "stylers": [{
-    "visibility": "on"
-  }]
-}, {
-  "featureType": "road.highway",
-  "elementType": "labels",
-  "stylers": [{
-    "visibility": "simplified"
-  }]
-}, {
-  "featureType": "poi",
-  "elementType": "labels",
-  "stylers": [{
     "visibility": "off"
-  }]
-}, {
-  "featureType": "road.arterial",
-  "elementType": "labels",
-  "stylers": [{
-    "visibility": "on"
-  }, {
-    "lightness": 50
   }]
 }, {
   "featureType": "water",
   "elementType": "all",
   "stylers": [{
-    "hue": "#a1cdfc"
+    "color": "#57677a"
   }, {
-    "saturation": 30
-  }, {
-    "lightness": 49
-  }]
-}, {
-  "featureType": "road.highway",
-  "elementType": "geometry",
-  "stylers": [{
-    "hue": "#f49935"
-  }]
-}, {
-  "featureType": "road.arterial",
-  "elementType": "geometry",
-  "stylers": [{
-    "hue": "#fad959"
-  }]
-}, {
-  featureType: 'road.highway',
-  elementType: 'all',
-  stylers: [{
-    hue: '#dddbd7'
-  }, {
-    saturation: -92
-  }, {
-    lightness: 60
-  }, {
-    visibility: 'on'
-  }]
-}, {
-  featureType: 'landscape.natural',
-  elementType: 'all',
-  stylers: [{
-    hue: '#c8c6c3'
-  }, {
-    saturation: -71
-  }, {
-    lightness: -18
-  }, {
-    visibility: 'on'
-  }]
-}, {
-  featureType: 'poi',
-  elementType: 'all',
-  stylers: [{
-    hue: '#d9d5cd'
-  }, {
-    saturation: -70
-  }, {
-    lightness: 20
-  }, {
-    visibility: 'on'
+    "visibility": "on"
   }]
 }];
 
@@ -145,19 +139,19 @@ function createHomepageGoogleMap(_latitude, _longitude, json) {
 
   // location infoWindow / tooltiop
   function fixInfoWindow() {
-      //Here we redefine set() method.
-      //If it is called for map option, we hide InfoWindow, if "noSupress" option isnt true.
-      //As Google doesn't know about this option, its InfoWindows will not be opened.
-      var set = google.maps.InfoWindow.prototype.set;
-      google.maps.InfoWindow.prototype.set = function (key, val) {
-          if (key === 'map') {
-              if (!this.get('noSupress')) {
-                  console.log('This InfoWindow is supressed. To enable it, set "noSupress" option to true');
-                  return;
-              }
-          }
-          set.apply(this, arguments);
+    //Here we redefine set() method.
+    //If it is called for map option, we hide InfoWindow, if "noSupress" option isnt true.
+    //As Google doesn't know about this option, its InfoWindows will not be opened.
+    var set = google.maps.InfoWindow.prototype.set;
+    google.maps.InfoWindow.prototype.set = function(key, val) {
+      if (key === 'map') {
+        if (!this.get('noSupress')) {
+          console.log('This InfoWindow is supressed. To enable it, set "noSupress" option to true');
+          return;
+        }
       }
+      set.apply(this, arguments);
+    }
   }
 
   function gMap() {
@@ -464,7 +458,7 @@ function createHomepageGoogleMap(_latitude, _longitude, json) {
     });
 
     function error(err) {
-      console.log("get location err=>",err);
+      console.log("get location err=>", err);
       alert("we can't get you accurate location now. using internet location for instead.", err);
       // use geoip for instead.
       jQuery.ajax({
@@ -474,7 +468,7 @@ function createHomepageGoogleMap(_latitude, _longitude, json) {
         success: function(loc) {
           console.log("geoip location=>", loc);
           var position = {
-            coords:{
+            coords: {
               latitude: loc.lat,
               longitude: loc.lon
             }
@@ -485,7 +479,7 @@ function createHomepageGoogleMap(_latitude, _longitude, json) {
     };
 
     function success(position) {
-      console.log("get location success=>",position);
+      console.log("get location success=>", position);
       var locationCenter = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       map.setCenter(locationCenter);
       map.setZoom(14);
@@ -811,7 +805,7 @@ function pushItemsToArray(json, a, category, visibleItemsArray) {
     '<a href="#" class="image">' +
     '<div class="inner">' +
     // '<div class="item-specific"><a href="/postDetailf7/' + json.data[a].id + '>"' +
-    '<div class="item-specific"><a class="link item-link" href="#!" data-id="'+ json.data[a].id +'">' +
+    '<div class="item-specific"><a class="link item-link" href="#!" data-id="' + json.data[a].id + '">' +
     drawItemSpecific(category, json, a) +
     '</a></div>' +
     '<img src="' + json.data[a].gallery[0] + '" alt="">' +
