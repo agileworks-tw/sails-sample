@@ -89,11 +89,12 @@ img.action {
   width: 95%;
 }
 ul#search-result {
-  top: 90px;
+  top: 45px;
 }
-#formSearch{
+#formSearch.searchbar{
   position: fixed;
   z-index: 999;
+  margin-top: -2px;
 }
 
 
