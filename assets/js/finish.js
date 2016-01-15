@@ -28,6 +28,7 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function(e) {
     ];
   }
   setOption(list);
+  $('.navbar').addClass('navbar-hidden');
 });
 
   function getRegion() {
@@ -41,7 +42,6 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function(e) {
       $("#regionSelect").trigger('change');
     });
   }
-
 
 
 

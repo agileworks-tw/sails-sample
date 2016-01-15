@@ -38,6 +38,37 @@ block body
                     iframe#mapFrame(src='/map', style="height: 100%; width: 100%; border: 0;")
                   |               
                   #favoriteView.tab
+                    .card
+                     .card-content 
+                       .list-block.media-list
+                         ul
+                           li.item-content
+                             .item-media
+                               img(src='/img/blockHeart.png', width='80')
+                             .item-inner
+                               .item-title-row
+                                 .item-title Opps..
+                               .item-subtitle Please log in to get better user experience, dear friend :)
+                    .card
+                      .card-header You may like...
+                      .card-content 
+                        .list-block.media-list
+                          ul
+                            //- each post in allPosts
+                            each val in [1, 2, 3]
+                              - var random = Math.floor(Math.random() * 10)
+                              li.swipeout
+                                  .swipeout-content
+                                    .item-content
+                                      .item-media
+                                        //- img(src=post.gallery[0], width='80')
+                                        img(src='http://lorempixel.com/80/60/technics/#{allPosts[random].id % 9}', width='80')
+                                      .item-inner
+                                        .item-title-row
+                                          .item-title #{allPosts[random].title}
+                                        .item-subtitle #{allPosts[random].itemname}
+                                  .swipeout-actions-right
+                                    a.action1.bg-pink.like(href='#', data-id='#{allPosts[random].id}') Like
                   |               
                   #searchView.tab
                     form#formSearch.searchbar
@@ -48,6 +79,12 @@ block body
                        a.searchbar-cancel.i18n(href='#', data-i18n='global.cancel') cancel
                     // Search bar overlay
                     .searchbar-overlay
+                    .row.categories
+                      a.button.button-round(href='#', data-keyword='top10') TOP10
+                      a.button.button-round(href='#', data-keyword='iphone') IPhone
+                      a.button.button-round(href='#', data-keyword='test') test
+                      a.button.button-round(href='#', data-keyword='iphone') IPhone
+                      a.button.button-round(href='#', data-keyword='top10') TOP10
                     .page-content
                       .list-block.media-list
                         .list-group

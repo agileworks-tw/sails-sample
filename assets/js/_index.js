@@ -194,7 +194,13 @@ $$(document).on('pageInit', '.page[data-page="home"]', function(e) {
   $$(".page-content").css("padding-bottom","72px");
 
   $$(".favoriteView").click(function() {
-    $("#favoriteView").load("/favorites");
+    var loginState = $(this).attr("data-login");
+    if (loginState=="false") {
+      myApp.hideIndicator();
+      mainView.router.loadPage('/favorites');
+    }else{
+      $("#favoriteView").load("/favorites");
+    }
   });
 
 });
