@@ -13,8 +13,9 @@ form .row {
   /*margin-left: 40%;*/
   font-size: 25px;
   padding-bottom: 8px;
+  padding: 6px;
   /*background-color: rgba(0,0,0,0.3);*/
-  background: linear-gradient(to top, rgba(200,200,200,0), rgba(30,30,30,1)); /*Standard*/
+  background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.7)); /*Standard*/
 }
 
 .row img.checked {
@@ -105,6 +106,7 @@ div[class*="col-"] {
   height: 100%;
   /*display:inline-block;*/
   width: 100%;
+  padding-top: 4px;
 }
 
 ::-webkit-input-placeholder {

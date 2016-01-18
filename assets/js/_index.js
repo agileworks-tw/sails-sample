@@ -58,7 +58,6 @@ $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function(e) {
       $$('#nextSetp').attr("disabled", true);
     }
   });
-
 }); // end hobbyPage
 
 
