@@ -82,6 +82,15 @@ img.action {
   padding: 5px;
 }
 
+a {
+  color: #fff;
+}
+
+i.icon.icon-back-white.icon-back{
+  width: 12px;
+  height: 20px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2012%2020'%3E%3Cpath%20d%3D'M10%2C0l2%2C2l-8%2C8l8%2C8l-2%2C2L0%2C10L10%2C0z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
+
 /* search view */
 
 #searchView > .page-content {
