@@ -1,45 +1,44 @@
 /*profile page*/
 
-.bold{
+.bold {
   font-weight: 900;
 }
-
+.black{
+  color: #000;
+}
 .profile-picture {
-  margin-top: -57px;
+  margin-top: -50px;
   margin-left: 35px;
-  display:inline-block;
+  display: inline-block;
   position: absolute;
-  width:100px;
-  height:100px;
+  width: 100px;
+  height: 100px;
   overflow: hidden;
-  border-radius:60%;
+  border-radius: 60%;
 }
 .profile-picture > img {
-  width:auto;
-  height:100%;
+  width: auto;
+  height: 100%;
   margin-left: -18px;
 }
 .profile-detail {
+  margin-bottom: 50px;
+  margin-left: -80px;
   margin-top: -37px;
   margin-right: 35px;
   text-align: center;
 }
 .profile-detail > span.name {
-  font-size: 24px;
+  font-size: 26px;
   color: #01579b;
 }
-
-.col-50.profile-detail {
-    margin-bottom: 50px;
-    margin-left: -80px;
+.profile-detail > div span {
+  font-size: 17px;
 }
-
-span.like-title {
-  margin-top: 20px;
-}
-span.post {
-  margin-top: 20px;
-}
-span.rate {
-  margin-top: 20px;
+.profile-description {
+  font-size: 14px;
+  padding-left: 16px;
+  height: 40px;
+  padding-top: 11px;
+  margin-top: -12px;
 }

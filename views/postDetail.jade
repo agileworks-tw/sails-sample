@@ -33,15 +33,17 @@ head
           // end Off Canvas Navigation
           // Page Content
           #page-content
-            section.container
-              .row
-                // Item Detail Content
-                .col-md-8.col-sm-8
-                  section
-                    article.item-gallery
-                      .owl-carousel.item-slider
-                        .slide
-                          img(src=post.gallery, data-hash='1', alt='')
+            .content-block
+        
+                  section.container
+                    .row
+                      // Item Detail Content
+                      .col-md-8.col-sm-8
+                        section
+                          article.item-gallery
+                            .owl-carousel.item-slider
+                              .slide
+                                img(src=post.gallery, data-hash='1', alt='')
                 div
                   section#main-content.block
                     header.page-title
@@ -65,7 +67,27 @@ head
                          section
                            article.item-gallery
                              header 
-                             p  #{post.content||'no description now.'}             
+                             p  #{post.content||'no description now.'}
+                             
+                        Contact
+                         section
+                           header
+                             h3 Contact
+                           address
+                                //- div #{post.username} fav="#{isFav}"
+                                //- div 63 Birch Street
+                                //- div Granada Hills, CA 91344
+                             figure
+                                  //- .info
+                                  //-   i.fa.fa-mobile
+                                  //-   span 818-832-5258
+                                  //- .info
+                                  //-   i.fa.fa-phone
+                                  //-   span +1 123 456 789
+                                .info
+                                  i.fa.fa-globe
+                                  a(href='#') #{post.email || ''}      
+                          #map-detail(data-json = post)                                               
                     .row
                       // Detail Sidebar
                       aside#detail-sidebar.col-md-4.col-sm-4
@@ -75,25 +97,25 @@ head
                         //-      header
                         //-        h2 Description
                         //-      p  #{post.content||'no description now.'} 
-                         Contact
-                        section
-                          header
-                            h3 Contact
-                          address
-                            //- div #{post.username} fav="#{isFav}"
-                            //- div 63 Birch Street
-                            //- div Granada Hills, CA 91344
-                            figure
-                              //- .info
-                              //-   i.fa.fa-mobile
-                              //-   span 818-832-5258
-                              //- .info
-                              //-   i.fa.fa-phone
-                              //-   span +1 123 456 789
-                              .info
-                                i.fa.fa-globe
-                                a(href='#') #{post.email || ''}      
-                         #map-detail(data-json = post)                              
+                        //-  Contact
+                        //- section
+                        //-   header
+                        //-     h3 Contact
+                        //-   address
+                        //-     //- div #{post.username} fav="#{isFav}"
+                        //-     //- div 63 Birch Street
+                        //-     //- div Granada Hills, CA 91344
+                        //-     figure
+                        //-       //- .info
+                        //-       //-   i.fa.fa-mobile
+                        //-       //-   span 818-832-5258
+                        //-       //- .info
+                        //-       //-   i.fa.fa-phone
+                        //-       //-   span +1 123 456 789
+                        //-       .info
+                        //-         i.fa.fa-globe
+                        //-         a(href='#') #{post.email || ''}      
+                        //-  #map-detail(data-json = post)                              
                         .fb-comments(data-href="http://localhost:1337/postDetail/#{post.id}" data-width="400" data-numposts="5") 
                       // end Inner Wrapper
                     // end Outer Wrapper

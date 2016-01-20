@@ -1,3 +1,4 @@
+
 .navbar
   .navbar-inner
     .left
@@ -10,4 +11,94 @@
     input#itemId(type="hidden",value='#{post.id}')
     .page-content
       .content-block
-        iframe#item(src='/postDetail/#{post.id}', style="height: 100%; width: 100%; border: 0;")
+        //- iframe#item(src='/postDetail/#{post.id}', style="height: 100%; width: 100%; border: 0;")
+        
+        #fb-root
+        #page-content
+          .content-block
+
+            section.container
+              .row
+              .card
+                .card-content
+                // Item Detail Content
+                  .col-md-8.col-sm-8
+                    section
+                      article.item-gallery
+                        .owl-carousel.item-slider
+                          .slide
+                            img(src=post.gallery, data-hash='1', alt='')
+                            
+              div
+                section#main-content.block
+                  header.page-title
+                    .detailFavbox
+                      .favbox
+                        a.favboxa(data-id="#{post.id}")
+                          |                            
+                          -if(isFav==true)
+                            i.fa.fa-lg.fa-heart(style="color:red")
+                          -else
+                            i.fa.fa-lg.fa-heart()
+                    .title
+                      div.price
+                      -if (post.title)
+                        h1 #{post.title}
+                      -else
+                        span (free)
+                      span $#{post.price}
+                      figure #{post.itemname}
+                      Description
+                       section
+                         article.item-gallery
+                           header 
+                           p  #{post.content||'no description now.'}
+                           
+                      Contact
+                       section
+                         header
+                           h3 Contact
+                         address
+                              //- div #{post.username} fav="#{isFav}"
+                              //- div 63 Birch Street
+                              //- div Granada Hills, CA 91344
+                           figure
+                                //- .info
+                                //-   i.fa.fa-mobile
+                                //-   span 818-832-5258
+                                //- .info
+                                //-   i.fa.fa-phone
+                                //-   span +1 123 456 789
+                              .info
+                                i.fa.fa-globe
+                                a(href='#') #{post.email || ''}      
+                        #map-detail(data-json = post)                                               
+                  .row
+                    // Detail Sidebar
+                    aside#detail-sidebar.col-md-4.col-sm-4
+                      //- Description
+                      //-  section
+                      //-    article.item-gallery
+                      //-      header
+                      //-        h2 Description
+                      //-      p  #{post.content||'no description now.'} 
+                      //-  Contact
+                      //- section
+                      //-   header
+                      //-     h3 Contact
+                      //-   address
+                      //-     //- div #{post.username} fav="#{isFav}"
+                      //-     //- div 63 Birch Street
+                      //-     //- div Granada Hills, CA 91344
+                      //-     figure
+                      //-       //- .info
+                      //-       //-   i.fa.fa-mobile
+                      //-       //-   span 818-832-5258
+                      //-       //- .info
+                      //-       //-   i.fa.fa-phone
+                      //-       //-   span +1 123 456 789
+                      //-       .info
+                      //-         i.fa.fa-globe
+                      //-         a(href='#') #{post.email || ''}      
+                      //-  #map-detail(data-json = post)                              
+                      .fb-comments(data-href="http://localhost:1337/postDetail/#{post.id}" data-width="400" data-numposts="5")
