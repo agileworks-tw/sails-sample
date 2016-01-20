@@ -40,7 +40,7 @@ $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function(e) {
     $$('#nextSetp').attr("disabled", true);
   }
 
-  $$('.hobbyitem').click(function() {
+  $$('.hobbyItem').click(function() {
     if ($$(this).find('input').prop("checked")) {
       $$(this).find('.checked').hide();
       $$(this).find('input').prop("checked", false);
@@ -57,7 +57,28 @@ $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function(e) {
     } else {
       $$('#nextSetp').attr("disabled", true);
     }
+  }); // end click
+
+  /*hobby page back to top */
+  // hide #back-top first
+  $("#back-top").hide();
+  // fade in #back-top
+  $(".page-content").scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('#back-top').fadeIn();
+    } else {
+      $('#back-top').fadeOut();
+    }
   });
+
+  // scroll body to 0px on click
+  $('#back-top').click(function() {
+    $(".page-content").animate({
+      scrollTop: 0
+    }, 400);
+    return false;
+  });
+
 }); // end hobbyPage
 
 
@@ -167,7 +188,7 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function(e) {
 
 
 $$(document).on('pageInit', '.page[data-page="storyCategory"]', function(e) {
-  $$('.hobbyitem').click(function() {
+  $$('.hobbyItem').click(function() {
     if ($$(this).find('input').prop("checked"))
       $$(this).find('input').prop("checked", false);
     else
@@ -194,13 +215,7 @@ $$(document).on('pageInit', '.page[data-page="home"]', function(e) {
   $$(".page-content").css("padding-bottom","72px");
 
   $$(".favoriteView").click(function() {
-    var loginState = $(this).attr("data-login");
-    if (loginState=="false") {
-      myApp.hideIndicator();
-      mainView.router.loadPage('/favorites');
-    }else{
-      $("#favoriteView").load("/favorites");
-    }
+    $("#favoriteView").load("/favorites");
   });
 
 });

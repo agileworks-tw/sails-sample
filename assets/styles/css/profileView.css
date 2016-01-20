@@ -1,0 +1,45 @@
+/*profile page*/
+
+.bold{
+  font-weight: 900;
+}
+
+.profile-picture {
+  margin-top: -57px;
+  margin-left: 35px;
+  display:inline-block;
+  position: absolute;
+  width:100px;
+  height:100px;
+  overflow: hidden;
+  border-radius:60%;
+}
+.profile-picture > img {
+  width:auto;
+  height:100%;
+  margin-left: -18px;
+}
+.profile-detail {
+  margin-top: -37px;
+  margin-right: 35px;
+  text-align: center;
+}
+.profile-detail > span.name {
+  font-size: 24px;
+  color: #01579b;
+}
+
+.col-50.profile-detail {
+    margin-bottom: 50px;
+    margin-left: -80px;
+}
+
+span.like-title {
+  margin-top: 20px;
+}
+span.post {
+  margin-top: 20px;
+}
+span.rate {
+  margin-top: 20px;
+}

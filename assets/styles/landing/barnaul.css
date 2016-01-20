@@ -1363,7 +1363,7 @@ a.text-danger:focus {
 }
 .bg-primary {
   color: #fff;
-  background-color: #cc1433;
+  background-color: #FFEEDD;
 }
 a.bg-primary:hover,
 a.bg-primary:focus {
@@ -3110,7 +3110,7 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   color: #ffffff;
-  background-color: #cc1433;
+  background-color: #FFEEDD;
   border-color: #b5122d;
 }
 .btn-primary:focus,
@@ -3167,7 +3167,7 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #cc1433;
+  background-color: #FFEEDD;
   border-color: #b5122d;
 }
 .btn-primary .badge {
@@ -3606,7 +3606,7 @@ tbody.collapse.in {
   color: #ffffff;
   text-decoration: none;
   outline: 0;
-  background-color: #cc1433;
+  background-color: #FFEEDD;
 }
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
@@ -4128,7 +4128,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #ffffff;
-  background-color: #cc1433;
+  background-color: #FFEEDD;
 }
 .nav-stacked > li {
   float: none;
@@ -4787,7 +4787,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > .active > span:focus {
   z-index: 2;
   color: #ffffff;
-  background-color: #cc1433;
+  background-color: #FFEEDD;
   border-color: #cc1433;
   cursor: default;
 }
@@ -4905,7 +4905,7 @@ a.label:focus {
   background-color: #5e5e5e;
 }
 .label-primary {
-  background-color: #cc1433;
+  background-color: #FFEEDD;
 }
 .label-primary[href]:hover,
 .label-primary[href]:focus {
@@ -5160,7 +5160,7 @@ a.thumbnail.active {
   line-height: 24px;
   color: #ffffff;
   text-align: center;
-  background-color: #cc1433;
+  background-color: #FFEEDD;
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   -webkit-transition: width 0.6s ease;
@@ -5323,7 +5323,7 @@ button.list-group-item {
 .list-group-item.active:focus {
   z-index: 2;
   color: #ffffff;
-  background-color: #cc1433;
+  background-color: #FFEEDD;
   border-color: #cc1433;
 }
 .list-group-item.active .list-group-item-heading,
@@ -5455,7 +5455,7 @@ button.list-group-item-danger.active:hover,
 a.list-group-item-danger.active:focus,
 button.list-group-item-danger.active:focus {
   color: #fff;
-  background-color: #cc1433;
+  background-color: #FFEEDD;
   border-color: #cc1433;
 }
 .list-group-item-heading {
@@ -5724,7 +5724,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel-primary > .panel-heading {
   color: #ffffff;
-  background-color: #cc1433;
+  background-color: #FFEEDD;
   border-color: #cc1433;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
@@ -5804,7 +5804,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel-danger > .panel-heading .badge {
   color: #fdecef;
-  background-color: #cc1433;
+  background-color: #FFEEDD;
 }
 .panel-danger > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #cc1433;
@@ -9095,7 +9095,7 @@ section#header {
 #brn-promo {
   margin-top: 0;
   margin-bottom: 96px;
-  background: url("/img/zi-fullscreen-bg.png") 50% 0 no-repeat #cc1433;
+  background: url("/img/zi-fullscreen-bg.png") 50% 0 no-repeat #FFEEDD;
 }
 #brn-promo h1 {
   margin-top: 96px;
@@ -9305,7 +9305,7 @@ section#header {
 }
 .feature-item:hover {
   color: #fff;
-  background-color: #cc1433;
+  background-color: #FFEEDD;
 }
 .feature-item:hover span,
 .feature-item:hover h5 {
@@ -9373,7 +9373,7 @@ section#header {
 }
 .team-sm-icon:hover {
   color: #fff;
-  background-color: #cc1433;
+  background-color: #FFEEDD;
   text-decoration: none;
 }
 /* ========== PRICING TABLES ========== */
@@ -9411,7 +9411,7 @@ section#header {
   margin-top: 0;
 }
 .pricing-table.pricing-top .pricing-header {
-  background: url("/img/zi-fullscreen-bg.png") 50% 0 #cc1433;
+  background: url("/img/zi-fullscreen-bg.png") 50% 0 #FFEEDD;
   color: #fff;
   padding: 24px 0;
 }
@@ -9483,7 +9483,7 @@ footer p {
 }
 .sm-icon:hover {
   color: #fff;
-  background-color: #cc1433;
+  background-color: #FFEEDD;
   text-decoration: none;
 }
 /* ================================================= MEDIA QUERIES ================================================== */
