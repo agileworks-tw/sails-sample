@@ -2,7 +2,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('build', [
 		'compileAssets',
 		'linkAssetsBuild',
-		'clean:build',
+		// 'clean:build',
 		'copy:build'
 	]);
 };
