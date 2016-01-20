@@ -1,4 +1,4 @@
-describe('about User model operation.', function() {
+describe.skip('about User model operation.', function() {
   it('create User should success.', async (done) => {
     try {
       // let users;
