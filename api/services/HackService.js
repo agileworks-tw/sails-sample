@@ -42,8 +42,9 @@ module.exports = {
           },
           defaults: userArray[i]
         });
+        console.log("!!!!!!!",user);
         postsArray[i].ItemId = item.id;
-        postsArray[i].UserId = user.id;
+        postsArray[i].UserId = user[0].id;
         let post = await Post.create(postsArray[i]);
       });
     } catch (e) {
