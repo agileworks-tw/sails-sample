@@ -1,6 +1,10 @@
 extends ./layout
 
-block body
+block body  
+  p#back-top(style="display:none;")
+    a(href='#top')
+     span
+     | Top       
   .views
     .view.view-main(data-page='home')
         .navbar
@@ -28,8 +32,8 @@ block body
                   img(src='/img/favorite.png', alt='favorite')
                 //- a.listView.tab-link(href='#listView')
                 //-   img(src='/img/login.png', alt='list')
-                a.listView.tab-link(href='#profile')
-                  img(src='/img/login.png', alt='list')
+                a.profileView.tab-link(href='#profileView')
+                  img(src='/img/login.png', alt='profile')
             |         
             .no-buttom-spaces.page-content
               .content-block(style="height: 100%; padding: 0px; margin: 72px 0 -72px 0;")
@@ -38,38 +42,39 @@ block body
                     iframe#mapFrame(src='/map', style="height: 100%; width: 100%; border: 0;")
                   |               
                   #favoriteView.tab
-                    .card
-                     .card-content 
-                       .list-block.media-list
-                         ul
-                           li.item-content
-                             .item-media
-                               img(src='/img/blockHeart.png', width='80')
-                             .item-inner
-                               .item-title-row
-                                 .item-title Opps..
-                               .item-subtitle Please log in to get better user experience, dear friend :)
-                    .card
-                      .card-header You may like...
-                      .card-content 
-                        .list-block.media-list
-                          ul
-                            //- each post in allPosts
-                            each val in [1, 2, 3]
-                              - var random = Math.floor(Math.random() * 10)
-                              li.swipeout
-                                  .swipeout-content
-                                    .item-content
-                                      .item-media
-                                        //- img(src=post.gallery[0], width='80')
-                                        img(src='http://lorempixel.com/80/60/technics/#{allPosts[random].id % 9}', width='80')
-                                      .item-inner
-                                        .item-title-row
-                                          .item-title #{allPosts[random].title}
-                                        .item-subtitle #{allPosts[random].itemname}
-                                  .swipeout-actions-right
-                                    a.action1.bg-pink.like(href='#', data-id='#{allPosts[random].id}') 
-                                      img(src='/img/addlike.png', alt='addlike', style="height: 35px;")
+                    .page-content
+                      .card
+                       .card-content 
+                         .list-block.media-list
+                           ul
+                             li.item-content
+                               .item-media
+                                 img(src='/img/blockHeart.png', width='80')
+                               .item-inner
+                                 .item-title-row
+                                   .item-title Opps..
+                                 .item-subtitle Please log in to get better user experience, dear friend :)
+                      .card
+                        .card-header You may like...
+                        .card-content 
+                          .list-block.media-list
+                            ul
+                              //- each post in allPosts
+                              each val in [1, 2, 3]
+                                - var random = Math.floor(Math.random() * 10)
+                                li.swipeout
+                                    .swipeout-content
+                                      .item-content
+                                        .item-media
+                                          //- img(src=post.gallery[0], width='80')
+                                          img(src='http://lorempixel.com/80/60/technics/#{allPosts[random].id % 9}', width='80')
+                                        .item-inner
+                                          .item-title-row
+                                            .item-title #{allPosts[random].title}
+                                          .item-subtitle #{allPosts[random].itemname}
+                                    .swipeout-actions-right
+                                      a.action1.bg-blue.like(href='#', data-id='#{allPosts[random].id}') 
+                                        img(src='/img/addlike.png', alt='addlike', style="height: 30px;")
                   |               
                   #searchView.tab
                     form#formSearch.searchbar
@@ -86,76 +91,75 @@ block body
                       a.button.button-round(href='#', data-keyword='test') test
                       a.button.button-round(href='#', data-keyword='iphone') IPhone
                       a.button.button-round(href='#', data-keyword='top10') TOP10
+                 
                     .page-content
-                      .list-block.media-list
-                        .list-group
-                          ul#search-result
-                            each post in allPosts
-                              li.swipeout
-                                  .swipeout-content
-                                    .item-content
-                                      .item-media
-                                        //- img(src=post.gallery[0], width='80')
-                                        img(src='http://lorempixel.com/80/60/technics/#{post.id % 9}', width='80')
-                                      .item-inner
-                                        .item-title-row
-                                          .item-title #{post.title}
-                                        .item-subtitle #{post.itemname}
-                                  .swipeout-actions-right
-                                    a.action1.bg-pink.like(href='#', data-id='#{post.id}') 
-                                      img(src='/img/addlike.png', alt='addlike', style="height: 35px;")
-                          //f7 search-result callback
-                          script(type='text/template7', id="searchResult").
-                            {{#each this.items}}
-                              <li class="swipeout">
-                                <div class="swipeout-content">
-                                  <div class="item-content">
-                                    <div class="item-media">
-                                      <img src="http://lorempixel.com/80/60/technics/{{id%9}}" width="80"/>
-                                    </div>
-                                    <div class="item-inner">
-                                      <div class="item-title-row">
-                                        <div class="item-title">{{title}}</div>
+                      .card
+                        .card-content
+                          .list-block.media-list
+                            .list-group
+                              ul#search-result
+                                each post in allPosts
+                                  li.swipeout
+                                      .swipeout-content
+                                        .item-content
+                                          .item-media
+                                            //- img(src=post.gallery[0], width='80')
+                                            img(src='http://lorempixel.com/80/60/technics/#{post.id % 9}', width='80')
+                                          .item-inner
+                                            .item-title-row
+                                              .item-title
+                                                a.link(href='/postDetailf7/#{post.id}') #{post.title}
+                                            .item-subtitle #{post.itemname}
+                                      .swipeout-actions-right
+                                        a.action1.bg-blue.like(href='#', data-id='#{post.id}') 
+                                          img(src='/img/addlike.png', alt='addlike', style="height: 30px;")
+                              //f7 search-result callback
+                              script(type='text/template7', id="searchResult").
+                                {{#each this.items}}
+                                  <li class="swipeout">
+                                    <div class="swipeout-content">
+                                      <div class="item-content">
+                                        <div class="item-media">
+                                          <img src="http://lorempixel.com/80/60/technics/{{id%9}}" width="80"/>
+                                        </div>
+                                        <div class="item-inner">
+                                          <div class="item-title-row">
+                                            <div class="item-title">
+                                              <a class="link" href='/postDetailf7/{{id}}'>{{title}}</a>
+                                            </div>
+                                          </div>
+                                          <div class="item-subtitle">{{itemname}}</div>
+                                        </div>
                                       </div>
-                                      <div class="item-subtitle">{{itemname}}</div>
                                     </div>
-                                  </div>
-                                </div>
-                                <div class="swipeout-actions-right">
-                                  <a href="#" data-id="{{id}}" class="action1 bg-pink like"></a>
-                                    <img src="/img/addlike.png" alt="addlike" style="height: 35px;">
-                                </div>
-                              </li>
-                            {{/each}}
-                            <li class="">
-                              <div class="card">
-                                <div class="card-footer">
-                                  <a href="#!" class="link backTop"></a>
-                                    <a href="#!" class="link backTop">back to top</a>
-                                </div>
-                              </div>
-                            </li>
-                          // Result List
+                                    <div class="swipeout-actions-right">
+                                      <a href="#" data-id="{{id}}" class="action1 bg-pink like"></a>
+                                        <img src="/img/addlike.png" alt="addlike" style="height: 30px;">
+                                    </div>
+                                  </li>
+                                {{/each}}
+                              // Result List
                   |               
-                  #listView.tab
-                    .card
-                      .card-content
-                        .list-block.media-list
-                          ul
-                            each post in allPosts
-                              li.swipeout
-                                  .swipeout-content
-                                    .item-content
-                                      .item-media
-                                        //- img(src=post.gallery[0], width='80')
-                                        img(src='http://lorempixel.com/80/60/technics/#{post.id % 9}', width='80')
-                                      .item-inner
-                                        .item-title-row
-                                          .item-title #{post.title}
-                                        .item-subtitle #{post.itemname}
-                                  .swipeout-actions-right
-                                    a.action1.bg-pink.like(href='#', data-id='#{post.id}')
-                                      img(src='/img/addlike.png', alt='addlike', style="height: 35px;")  
+                  //- #listView.tab
+                  //-   .page-content
+                  //-     .card
+                  //-       .card-content
+                  //-         .list-block.media-list
+                  //-           ul
+                  //-             each post in allPosts
+                  //-               li.swipeout
+                  //-                   .swipeout-content
+                  //-                     .item-content
+                  //-                       .item-media
+                  //-                         //- img(src=post.gallery[0], width='80')
+                  //-                         img(src='http://lorempixel.com/80/60/technics/#{post.id % 9}', width='80')
+                  //-                       .item-inner
+                  //-                         .item-title-row
+                  //-                           .item-title #{post.title}
+                  //-                         .item-subtitle #{post.itemname}
+                  //-                   .swipeout-actions-right
+                  //-                     a.action1.bg-blue.like(href='#', data-id='#{post.id}')
+                  //-                       img(src='/img/addlike.png', alt='addlike', style="height: 30px;")  
                     //- -console.log(allPosts[0])
                     //-       
                     //- each post in allPosts
@@ -175,12 +179,12 @@ block body
                     //-     .card-footer
                     //-       a.link.like(href='#!', data-id='#{post.id}') Like
                     //-       a.link(href='/postDetailf7/#{post.id}', data-id='#{post.id}') Detail
-                    .card
-                      .card-footer
-                        a.link.backTop(href='#!')
-                        a.link.backTop(href='#!') back to top
+                      .card
+                        .card-footer
+                          a.link.backTop(href='#!')
+                          a.link.backTop(href='#!') back to top
                   |  
-                  #profile.tab
+                  #profileView.tab
                     .page-content
                      .content-block
                        .row
@@ -230,4 +234,8 @@ block body
                                        a.action2.bg-blue.Delete(href='#', data-id='#{allPosts[random].id}')
                                          img(src='/img/deletelike.png', alt='deletelike', style="height: 35px;")
                          
-                      
+
+  //- p#back-top
+  //-   a(href='#top')
+  //-     span
+  //-     | Top      

@@ -4,15 +4,13 @@
 .center {
   text-align: center;
 }
-
 .right {
   right: 0px;
 }
-
-.navbar{
-  background-color:#01579B !important;
+.navbar {
+  background-color: #01579B !important;
 }
-.navbar-inner{
+.navbar-inner {
   padding-left: 20px;
 }
 .navbar-inner img {
@@ -29,7 +27,7 @@ div.no-buttom-spaces {
 
 .toolbar {
   height: 64px;
-  background-color:#212121 !important;
+  background-color: #212121 !important;
 }
 .toolbar-inner {
   padding: 0 0px;
@@ -42,15 +40,13 @@ div.no-buttom-spaces {
 a.link {}
 a.tab-link.active {
   /*box-shadow: 0px 0px 5px rgba(30%, 30%, 30%, 0.9), 0px 0px 15px rgba(20%, 20%, 40%, 0.9);*/
-  background-color:#424242;
+  background-color: #424242;
 }
 a.tab-link {}
-
 .toolbar .storyView {
   background-color: #01579B;
 }
-
-.toolbar .storyView img{
+.toolbar .storyView img {
   /*margin-top: px;*/
   height: 40px;
 }
@@ -81,26 +77,26 @@ img.action {
   border-style: solid;
   padding: 5px;
 }
-
 a {
   color: #fff;
 }
-
-i.icon.icon-back-white.icon-back{
+i.icon.icon-back-white.icon-back {
   width: 12px;
   height: 20px;
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2012%2020'%3E%3Cpath%20d%3D'M10%2C0l2%2C2l-8%2C8l8%2C8l-2%2C2L0%2C10L10%2C0z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
+}
 
 /* search view */
 
 #searchView > .page-content {
   margin: 0px auto;
-  /*width: 95%;*/
+  margin-bottom: 60px;
 }
 ul#search-result {
-  top: 74px;
+  margin-top:120px;
+  margin-bottom: -90px;
 }
-#formSearch.searchbar{
+#formSearch.searchbar {
   position: fixed;
   z-index: 999;
   margin-top: -2px;
@@ -114,11 +110,72 @@ ul#search-result {
   width: 100%;
   background-color: #fff;
 }
-.categories .button{
-  margin-left: 10px
-  margin-top: 3px;
+.categories > .button {
+  margin-left: 10px margin-top: 3px;
+}
+.item-title > a {
+  color: #000;
+  font-weight: bold;
 }
 
+.link.backTop{
+  color: #01579b;
+}
+
+/*searchView back to top*/
+
+#back-top {
+  position: fixed;
+  bottom: 30px;
+  z-index: 5001;
+  -webkit-transform: translateZ(1px);
+  -moz-transform: translateZ(1px);
+  -o-transform: translateZ(1px);
+  transform: translateZ(1px);
+  /*overflow-x: hidden;
+  overflow-y: scroll;*/
+}
+#back-top a {
+  width: 65px;
+  display: block;
+  text-align: center;
+  font: 10px/100% Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  position: fixed;
+  bottom: 30px;
+  margin-left: 335px;
+  /* transition */
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  transition: 1s;
+  text-shadow: 0px 0px 8px #000, 0px 0px 10px #444, 0px 0px 12px #666;
+}
+#back-top a:hover {
+  color: #fff;
+  text-shadow: 0px 0px 8px #000, 0px 0px 10px #444, 0px 0px 12px #666;
+}
+#back-top > a > span {
+  width: 65px;
+  height: 65px;
+  display: block;
+  margin-bottom: 7px;
+  background: #01579b url(/img/up-arrow.png) no-repeat center center;
+  background-size: 50%;
+  opacity: 0.7;
+  /* rounded corners */
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  /* transition */
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  transition: 1s;
+}
+#back-top a:hover span {
+  background-color: #01579b;
+}
 
 /* map-marker */
 
@@ -188,19 +245,22 @@ div.favbox > a > i:hover {
 div.favbox > a > i {
   color: white;
 }
+
 /* 調整 for listView的favbox */
-div.favbox.listView{
+
+div.favbox.listView {
   height: 34px;
 }
-div.favbox.listView > a{
+div.favbox.listView > a {
   margin-top: -24px;
 }
 
 /* 調整 for favoriteView的favbox */
-div.favbox.favoriteView{
+
+div.favbox.favoriteView {
   height: 34px;
 }
-div.favbox.favoriteView > a{
+div.favbox.favoriteView > a {
   margin-top: -24px;
 }
 
