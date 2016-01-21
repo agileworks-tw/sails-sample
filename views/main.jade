@@ -28,8 +28,12 @@ block body
                   img(src='/img/search.png', alt='search')
                 a.storyView.link(href='/story')
                   img(src='/img/add.png', alt='add')
-                a.favoriteView.tab-link(href='#favoriteView', data-login="#{loginState}")
-                  img(src='/img/favorite.png', alt='favorite')
+                -if(!loginState)
+                  a.link(href='/favorites')
+                    img(src='/img/favorite.png', alt='favorite')
+                -else
+                  a.favoriteView.tab-link(href='#favoriteView', data-login="#{loginState}")
+                    img(src='/img/favorite.png', alt='favorite')
                 //- a.listView.tab-link(href='#listView')
                 //-   img(src='/img/login.png', alt='list')
                 a.profileView.tab-link(href='#profileView')
@@ -42,40 +46,6 @@ block body
                     iframe#mapFrame(src='/map', style="height: 100%; width: 100%; border: 0;")
                   |               
                   #favoriteView.tab
-                    .page-content
-                      .card
-                       .card-content 
-                         .list-block.media-list
-                           ul
-                             li.item-content
-                               .item-media
-                                 img(src='/img/blockHeart.png', width='80')
-                               .item-inner
-                                 .item-title-row
-                                   .item-title Opps..
-                                 .item-subtitle Please log in to get better user experience, dear friend :)
-                      .card
-                        .card-header You may like...
-                        .card-content 
-                          .list-block.media-list
-                            ul
-                              //- each post in allPosts
-                              each val in [1, 2, 3]
-                                - var random = Math.floor(Math.random() * 10)
-                                li.swipeout
-                                    .swipeout-content
-                                      .item-content
-                                        .item-media
-                                          //- img(src=post.gallery[0], width='80')
-                                          img(src='http://lorempixel.com/80/60/technics/#{allPosts[random].id % 9}', width='80')
-                                        .item-inner
-                                          .item-title-row
-                                            .item-title #{allPosts[random].title}
-                                          .item-subtitle #{allPosts[random].itemname}
-                                    .swipeout-actions-right
-                                      a.action1.bg-blue.like(href='#', data-id='#{allPosts[random].id}') 
-                                        img(src='/img/addlike.png', alt='addlike', style="height: 30px;")
-                  |               
                   #searchView.tab
                     form#formSearch.searchbar
                      // Search bar
