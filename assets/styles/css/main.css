@@ -25,7 +25,7 @@ div.no-buttom-spaces {
 
 /* toolbar and tab */
 
-.toolbar {
+.mainToolbar {
   height: 64px;
   background-color: #212121 !important;
 }
