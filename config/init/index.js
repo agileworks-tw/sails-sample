@@ -27,7 +27,7 @@ let self = module.exports = {
       {title: '預售代購', pic: '/img/hobby/sale.png'}
     ];
     await Like.bulkCreate(like);
-    await self.testData();
+    // await self.testData();
   },
 
   testData: async () => {
