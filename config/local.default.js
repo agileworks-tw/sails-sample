@@ -37,7 +37,7 @@ module.exports = {
     ConnectSDK_ApiSecret: '',
   },
   uploadImage: {
-    dirname: '../public/images/upload'
+    dirname: '../public/images'
   },
   appn:{
     key: '',

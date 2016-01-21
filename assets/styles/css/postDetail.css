@@ -5,14 +5,14 @@
 .card-header {
     margin-top: -20px;
 }
-
+/*
 .card-header > img {
   vertical-align: middle;
   height: 60vw;
   margin-left: 8px;
   margin-top: 18px;
   margin-bottom: 18px;
-}
+}*/
 
 .card-content-inner > p{
   margin-left: 10px;
