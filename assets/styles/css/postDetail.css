@@ -1,0 +1,47 @@
+.bold{
+  font-weight: 900;
+}
+
+.card-header {
+    margin-top: -20px;
+}
+
+.card-header > img {
+  vertical-align: middle;
+  height: 200px;
+  width: 350px;
+  margin-left: 8px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.card-content-inner > p{
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+a.item-link.item-content > img{
+  height: 19px;
+  width: 19px;
+  margin-left: -35px;
+}
+
+p.post-itemname.bold{
+  color: #ADADAD;
+  margin-top: 3px;
+  margin-left: 15px;
+}
+
+span.post-title.bold{
+  font-size: 25px;
+  margin-left: 9px;
+}
+
+span.post-price.bold{
+  font-size: 20px;
+  margin-left: 8px;
+}
+
+.item-media {
+    margin-left: -25px;
+}

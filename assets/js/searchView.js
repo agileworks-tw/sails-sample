@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // main page - searchView
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$$(".categories .button").click(function(){
+$$(".categories .button").click(function() {
   var keyword = $$(this).attr('data-keyword');
   $(".searchbar-input > input").val(keyword);
   goSearch(keyword);
@@ -28,17 +28,17 @@ $$("#formSearch").on('submit', function(e) {
 //   }
 // }); // end click
 
-$$(document).on('click',"a.backTop", function(e) {
-  $$("div.page-content").scrollTop(0)
-}); // end click
+// $$(document).on('click',"a.backTop", function(e) {
+//   $$("div.page-content").scrollTop(0)
+// }); // end click
 
-$(document).ready(function () {
-  $("select[name='category']").focus(function(){
-  $(this).css("background-color", "#ecf5ff");
-});
-$("select[name='category']").blur(function(){
-  $(this).css("background-color", "#ffffff");
-});
+$(document).ready(function() {
+  $("select[name='category']").focus(function() {
+    $(this).css("background-color", "#ecf5ff");
+  });
+  $("select[name='category']").blur(function() {
+    $(this).css("background-color", "#ffffff");
+  });
 });
 
 function goSearch(keyword) {

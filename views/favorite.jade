@@ -18,8 +18,10 @@
                     .item-subtitle #{favorite.Item.itemname}
               .swipeout-actions-right
                 //- a.action1.bg-pink.like(href='#', data-id='#{favorite.id}') Like
-                a.action1.bg-pink.like(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}') Detail
-                a.action1.bg-blue.like(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}') Delete
+                a.action1.bg-pink.detail(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}')
+                  img(src='/img/detail.png', alt='addlike', style="height: 30px;")
+                a.action2.bg-blue.Delete(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}')
+                  img(src='/img/deletelike.png', alt='deletelike', style="height: 30px;")
   .card
     .card-header You may like...
     .card-content 
@@ -39,10 +41,8 @@
                         .item-title #{allPosts[random].title}
                       .item-subtitle #{allPosts[random].itemname}
                 .swipeout-actions-right
-                  a.action1.bg-pink.like(href='#', data-id='#{allPosts[random].id}') Like
-                  //- img.action1.bg-pink.like(href='#', data-id='#{allPosts[random].id}', src='/img/addlike.png' height="42" width="42")
-                  a.action1.bg-blue.like(href='#', data-id='#{allPosts[random].id}') Delete 
-                  //- img.action1.bg-pink.like(href='#', data-id='#{allPosts[random].id}', src='/img/deletelike.png' height="42" width="42") 
+                  a.action1.bg-blue.like(href='#', data-id='#{allPosts[random].id}')
+                    img(src='/img/addlike.png', alt='addlike', style="height: 30px;")
     //- .card.demo-card-header-pic
     //-   .card-header.color-white.no-border(style='background-image:url(#{favorite.images[0]})', valign='middle')
     //-     span.card-title(class='#{favorite.mode}')
@@ -99,8 +99,6 @@
                           .item-title #{allPosts[random].title}
                         .item-subtitle #{allPosts[random].itemname}
                   .swipeout-actions-right
-                    a.action1.bg-pink.like(href='#', data-id='#{allPosts[random].id}') Like
-                    //- img.action1.bg-pink.like(href='#', data-id='#{allPosts[random].id}', src='/img/addlike.png' height="42" width="42")
-                    a.action1.bg-blue.like(href='#', data-id='#{allPosts[random].id}') Delete 
-                    //- img.action1.bg-pink.like(href='#', data-id='#{allPosts[random].id}', src='/img/deletelike.png' height="42" width="42") 
+                    a.action1.bg-blue.like(href='#', data-id='#{allPosts[random].id}')
+                      img(src='/img/addlike.png', alt='addlike', style="height: 30px;")
         

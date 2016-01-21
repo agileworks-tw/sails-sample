@@ -41,7 +41,7 @@ link(rel='stylesheet', href='styles/css/storyDetail.css', type='text/css')
               each item in categoryItems
                 -if(index % 2 == 0)
                   .row
-                    .col-50.tablet-50.radioItem.hobbyitem
+                    .col-50.tablet-50.radioItem.hobbyItem
                       span
                         | #{categoryItems[index].itemname}
                       input(type='radio', name='radioItem', value=categoryItems[index].id, style="display: none;")
@@ -49,7 +49,7 @@ link(rel='stylesheet', href='styles/css/storyDetail.css', type='text/css')
                       img.category(src= pic)
                       img.checked(src='img/checked.png' style="display: none;")
                     -if(index+1 < categoryItems.length)
-                      .col-50.tablet-50.radioItem.hobbyitem
+                      .col-50.tablet-50.radioItem.hobbyItem
                         -console.log(categoryItems[index+1].pic);
                         span
                           | #{categoryItems[index+1].itemname}

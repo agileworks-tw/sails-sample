@@ -2,22 +2,17 @@ form .row {
   position: relative;
   margin: 0px;
 }
-
-.row span {
+.hobbyItem > span {
   position: absolute;
-  /*background-color: #01cbbb;*/
   width: 100%;
   color: #fff;
-  text-shadow: 0px 0px 8px #000,0px 0px 10px #444,0px 0px 12px #666;
-  /*margin-top: 10%;*/
-  /*margin-left: 40%;*/
+  text-shadow: 0px 0px 8px #000, 0px 0px 10px #444, 0px 0px 12px #666;
   font-size: 25px;
   padding-bottom: 8px;
   padding: 6px;
-  /*background-color: rgba(0,0,0,0.3);*/
-  background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.7)); /*Standard*/
+  background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+  /*Standard*/
 }
-
 .row img.checked {
   position: absolute;
   opacity: 0.9;
@@ -26,80 +21,115 @@ form .row {
   bottom: calc(50% - 46px);
   color: #000;
 }
-/*.saturate {-webkit-filter: saturate(3); filter: saturate(3);}*/
-
-.hobbyitem {
+.hobbyItem {
   position: relative;
+  text-align: center;
+  color: #000;
+  overflow: hidden;
 }
-
 img.category {
   width: 100%;
 }
-
 #storyDetail .row {
   margin: 5px;
 }
 
-div[class*="col-"] {
-  /*background: #fff;*/
-  text-align: center;
-  color: #000;
-  /*border: 2px solid #fff;*/
-  /*padding: 5px;*/
-  /*height: 180px;*/
-  overflow:hidden;
+/*hobby page back to top*/
+
+#back-top {
+  position: fixed;
+  bottom: 30px;
+  -webkit-transform: translateZ(1px);
+  -moz-transform: translateZ(1px);
+  -o-transform: translateZ(1px);
+  transform: translateZ(1px);
+  /*overflow-x: hidden;
+  overflow-y: scroll;*/
 }
+#back-top a {
+  width: 65px;
+  display: block;
+  text-align: center;
+  font: 10px/100% Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  position: fixed;
+  bottom: 30px;
+  margin-left: 335px;
+  /* transition */
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  transition: 1s;
+  text-shadow: 0px 0px 8px #000, 0px 0px 10px #444, 0px 0px 12px #666;
+}
+#back-top a:hover {
+  color: #fff;
+  text-shadow: 0px 0px 8px #000, 0px 0px 10px #444, 0px 0px 12px #666;
+}
+#back-top > a > span {
+  width: 65px;
+  height: 65px;
+  display: block;
+  margin-bottom: 7px;
+  background: #01579b url(/img/up-arrow.png) no-repeat center center;
+  background-size: 50%;
+  opacity: 0.7;
+  /* rounded corners */
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  /* transition */
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  transition: 1s;
+}
+#back-top a:hover span {
+  background-color: #01579b;
+}
+
+/**/
 
 #registerFinish {
   background-image: url(../../img/greeting.jpg);
   background-size: 100% 100%;
 }
-
-@media (min-width: 768px){
+@media (min-width: 768px) {
   #registerFinish {
     background-image: url(../../img/greeting-big.jpg);
     background-size: 100% 100%;
   }
 }
-
-
 #greeting {
   padding: 10%;
   margin-top: 20%;
   color: #fff;
 }
-
 #greeting .button {
   margin-right: 30%;
   margin-left: 30%;
-  opacity:1 ;
+  opacity: 1;
 }
-
 #greeting input {
   text-align: center;
 }
-
 #storyDetailChoose input {
   text-align: center;
 }
-
 #regionSelect {
-	font-size: 16px;
+  font-size: 16px;
   text-indent: calc(50% - 25px);
 }
-
 #storyDetailChoose [name=title] {
   font-size: 25px;
 }
-
 #storyModeChoose {
-  height: 100%
-  text-align:center;
+  height: 100% text-align: center;
 }
-#storyModeChoose .row{
+#storyModeChoose .row {
   height: 50%;
 }
-#storyModeChoose .selectMode{
+#storyModeChoose .selectMode {
   height: 100%;
 }
 #storyModeChoose img {
@@ -108,23 +138,20 @@ div[class*="col-"] {
   width: 100%;
   padding-top: 4px;
 }
-
 ::-webkit-input-placeholder {
-   text-align: center;
+  text-align: center;
 }
-
-:-moz-placeholder { /* Firefox 18- */
-   text-align: center;
+:-moz-placeholder {
+  /* Firefox 18- */
+  text-align: center;
 }
-
-::-moz-placeholder {  /* Firefox 19+ */
-   text-align: center;
+::-moz-placeholder {
+  /* Firefox 19+ */
+  text-align: center;
 }
-
 :-ms-input-placeholder {
-   text-align: center;
+  text-align: center;
 }
-
 textarea {
   text-align: center;
 }

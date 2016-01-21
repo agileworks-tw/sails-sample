@@ -1,23 +1,23 @@
 
 .views
-    .view.view-main.layout-white
-      .navbar
-        .navbar-inner
-          // We need cool sliding animation on title element, so we have additional "sliding" class
-          a.back.link(href='#')
-            i.icon.icon-back-white.icon-back
-            span Back
-          //- a#nextSetp.right(href='/storyCategory', data-context="" disabled) Next
-      .pages
-        .page.navbar-fixed(data-page='storyMode')
-          .page-content
-            form#storyModeChoose
-              .row.no-gutter
-                .col-100.selectMode
-                  input(type='radio', name='mode', value='give', style="display: none;")
-                  img(src='../img/give.png')
-              .row.no-gutter
-                .col-100.selectMode
-                  input(type='radio', name='mode', value='get', style="display: none;")
-                  img(src='../img/get.png')
+  .view.view-main.layout-white
+    .navbar
+      .navbar-inner
+        // We need cool sliding animation on title element, so we have additional "sliding" class
+        a.back.link(href='#')
+          i.icon.icon-back-white.icon-back
+          span Back
+        //- a#nextSetp.right(href='/storyCategory', data-context="" disabled) Next
+    .pages
+      .page.navbar-fixed(data-page='storyMode')
+        .page-content
+          form#storyModeChoose
+            .row.no-gutter
+              .col-100.selectMode
+                input(type='radio', name='mode', value='give', style="display: none;")
+                img(src='../img/give.png')
+            .row.no-gutter
+              .col-100.selectMode
+                input(type='radio', name='mode', value='get', style="display: none;")
+                img(src='../img/get.png')
   block scripts

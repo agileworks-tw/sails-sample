@@ -22,10 +22,17 @@ var mainView = myApp.addView('.view-main', {
 window.mainView = mainView;
 
 
-// $$(document).on('pageInit pageReInit', '.page[data-page="postDetailF7"]', function(e) {
-//   var id = $$("input#itemId").val();
-//   $$("iframe#item").src = "/postDetail/" + id;
-// });
+$$(document).on('pageInit pageReInit', '.page[data-page="postDetailF7"]', function(e) {
+  // var id = $$("input#itemId").val();
+  // $$("iframe#item").src = "/postDetail/" + id;
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5&appId=915539495181624";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+});
 
 
 $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function(e) {
@@ -40,7 +47,7 @@ $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function(e) {
     $$('#nextSetp').attr("disabled", true);
   }
 
-  $$('.hobbyitem').click(function() {
+  $$('.hobbyItem').click(function() {
     if ($$(this).find('input').prop("checked")) {
       $$(this).find('.checked').hide();
       $$(this).find('input').prop("checked", false);
@@ -57,7 +64,8 @@ $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function(e) {
     } else {
       $$('#nextSetp').attr("disabled", true);
     }
-  });
+  }); // end click
+
 }); // end hobbyPage
 
 
@@ -167,7 +175,7 @@ $$(document).on('pageInit', '.page[data-page="finish"]', function(e) {
 
 
 $$(document).on('pageInit', '.page[data-page="storyCategory"]', function(e) {
-  $$('.hobbyitem').click(function() {
+  $$('.hobbyItem').click(function() {
     if ($$(this).find('input').prop("checked"))
       $$(this).find('input').prop("checked", false);
     else
@@ -191,25 +199,35 @@ $$(document).on('pageInit', '.page[data-page="storyCategory"]', function(e) {
 $$(document).on('pageInit', '.page[data-page="home"]', function(e) {
   // hotfix for page home's page-content class.
   // this can overrides f7's setting.
-  $$(".page-content").css("padding-bottom","72px");
+  // $$(".page-content").css("padding-bottom", "72px");
 
   $$(".favoriteView").click(function() {
-    var loginState = $(this).attr("data-login");
-    if (loginState=="false") {
-      myApp.hideIndicator();
-      mainView.router.loadPage('/favorites');
-    }else{
-      $("#favoriteView").load("/favorites");
-    }
+    $("#favoriteView").load("/favorites");
+  });
+
+  $$("a.searchView.tab-link").click(function(){
+    $$( "#searchView > .page-content" ).addClass("active");
+  });
+
+  $$("a.favoriteView.tab-link").click(function(){
+    $$( "#favoriteView > .page-content" ).addClass("active");
+    $$( "#searchView > .page-content" ).removeClass("active");
+    $$( "#profileView > .page-content" ).removeClass("active");
+  });
+
+  $$("a.profileView.tab-link").click(function(){
+    $$( "#profileView > .page-content" ).addClass("active");
+    $$( "#searchView > .page-content" ).removeClass("active");
+    $$( "#favoritetView > .page-content" ).removeClass("active");
   });
 
 });
 
 
-$$(document).on('click','.link.like',function(){
+$$(document).on('click', '.link.like', function() {
   var fav = $$(this);
   var id = fav.attr("data-id");
-  console.log("favboxa id=>",id);
+  console.log("favboxa id=>", id);
   $$.ajax({
     url: "/addUserFavorite/" + id,
     type: "POST",
@@ -217,14 +235,14 @@ $$(document).on('click','.link.like',function(){
       console.log(result);
     },
     error: function(xhr, ajaxOptions, thrownError) {
-      console.log("xhr.status,thrownError=>",xhr.status,thrownError);
+      console.log("xhr.status,thrownError=>", xhr.status, thrownError);
       mainView.router.loadPage('/story');
     }
   }); // end ajax
 });
 
 
-$$(document).on('click', '.item-link', function(e){
+$$(document).on('click', '.item-link', function(e) {
   console.log("item clicked");
   $$("iframe#mapView").src = $$(this).attr("data-url");
 });
@@ -239,6 +257,26 @@ $$(document).on('ajaxComplete', function() {
   window.setTimeout(function() {
     window.myApp.hideIndicator();
   }, 500);
+});
+
+
+/*hobby page back to top */
+
+// fade in #back-top
+$(".page-content.active").scroll(function() {
+  if ($(this).scrollTop() > 100) {
+    $('#back-top').fadeIn();
+  } else {
+    $('#back-top').fadeOut();
+  }
+});
+
+// scroll body to 0px on click
+$('#back-top').click(function() {
+  $(".page-content.active").animate({
+    scrollTop: 0
+  }, 400);
+  return false;
 });
 
 
