@@ -25,27 +25,31 @@
             ul
              li.card
                .card-header 
-                  img(src=post.gallery, data-hash='1', alt='')
+                  img(src=post.gallery, data-hash='1', alt='')    
                .card-content
-                .card-content-inner 
-                  p #{post.content||'no description now.'}
-                  p $#{post.price}
-                  p #{post.itemname}
+                .card-content-inner
+                  span.post-title.bold #{post.title}  
+                  span.post-price.bold $#{post.price}
+                  //- p.post-content.bold #{post.content||'no description now.'} 
+                  //- p.post-price.bold $#{post.price}
+                  p.post-itemname.bold #{post.itemname}
                 .list-block
                   ul
                     li
                       a.item-link.item-content(href='#')
+                        img(src='/img/phone.png', alt='phone', style="height: auto;")
                         .item-media
                           i.icon.icon-f7
                         .item-inner
-                          .item-title #{post.content||'no description now.'}
+                          .item-title.bold #{post.content||'no description now.'}
                     -if(post.email)
                       li
                         a.item-link.item-content(href='#')
+                          img(src='/img/mail.png', alt='mail', style="height: auto;")
                           .item-media
                             i.icon.icon-f7
                           .item-inner
-                            .item-title #{post.email}
+                            .item-title.bold #{post.email}
                .card-footer Card footer
             #fb-root
             .fb-comments(data-href="http://localhost:1337/postDetail/#{post.id}" data-width="400" data-numposts="5")
