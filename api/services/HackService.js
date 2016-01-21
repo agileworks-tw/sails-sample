@@ -13,39 +13,38 @@ module.exports = {
       let items = $(".pdt-card");
       console.log("!!!!!!!!!!!!",items);
       items.map(function(i, elem) {
-        // console.log("!!!!!!!!!",$(this).find(".pdt-card-title").text());
-        // console.log("!!!!!!!!!",$(this).find(".pdt-card-username").text());
-        // console.log("!!!!!!!!!",$(this).find(".pdt-card-price").find("span").text().split('$')[1]);
-        // console.log("!!!!!!!!!",$(this).find("img").attr("src"));
-        let item = await Item.create({
-      		"itemname": $(this).find(".pdt-card-title").text(),
+        itemsArray.push({
+      		"itemname": $(this).find(".pdt-card-title").text().replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g,''),
       		"LikeId": likeId
         });
-        let userData = {
+        userArray.push({
           "username": $(this).find(".pdt-card-username").text(),
           "email": $(this).find(".pdt-card-username").text() +"@gmail.com"
-        }
-        let user = await User.findOrCreate({
-          where:{
-            email: userData.email
-          },
-          defaults: userData
         });
-
         let latitude = 24.1542943 + Math.random()/20;
         let longitude = 120.6754701 + Math.random()/20;
-        let post = await Post.create({
-    			"title": $(this).find(".pdt-card-title").text(),
+        postsArray.push({
+    			"title": $(this).find(".pdt-card-title").text().replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g,''),
     			"price": $(this).find(".pdt-card-price").find("span").text().split('$')[1],
-    			"content": $(this).find(".pdt-card-title").text(),
-          "startDate": 1,
+    			"content": $(this).find(".pdt-card-title").text().replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g,''),
+          "startDate": 0,
     			"mode": "give",
     			"latitude": latitude,
     			"longitude": longitude,
     			"images": $(this).find("img").attr("src"),
-    			"ItemId": item.id,
-    			"UserId": 1
         });
+      });
+      await* itemsArray.map(async (elem, i) => {
+        let item = await Item.create(elem);
+        let user = await User.findOrCreate({
+          where:{
+            email: userArray[i].email
+          },
+          defaults: userArray[i]
+        });
+        postsArray[i].ItemId = item.id;
+        postsArray[i].UserId = user.id;
+        let post = await Post.create(postsArray[i]);
       });
     } catch (e) {
       console.log(e);
