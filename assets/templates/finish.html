@@ -2,7 +2,7 @@
   <div class="navbar-inner">
     <div class="left">
       <a href="#" class="back link">
-        <i class="icon icon-back-blue"></i>
+        <i class="i.icon.icon-back-white.icon-back" style="transform: translate3d(0px, 0px, 0px);"></i>
         <span>Back</span>
       </a>
     </div>
@@ -13,7 +13,7 @@
     <div class="page-content">
       <div class="content-block">
         <div id="greeting">
-          <h2>Welcome to Trade Much.</h1>
+          <h2>Welcome to TradeMuch.</h1>
             <p>Share everything around your nearby locations</p>
               <form id="singUp-form" class="ajax-submit" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                 <div class="list-block">
@@ -22,7 +22,9 @@
                     <div class="item-content">
                       <div class="item-inner">
                         <div class="item-input">
-                          <input type="text" name="addr" placeholder="Enter your address or living area">
+                          <select id="regionSelect">
+                          </select>
+                          <input type="hidden" name="addr">
                         </div>
                       </div>
                     </div>
@@ -32,7 +34,7 @@
               {{#each this.hobby}}
               <input type="hidden" class="hobby" name="hobby[{{@index}}]" value={ {this}}> {{/each}}
               <div class="list-block">
-                <input type="submit" class="button  active" value="Start" style="width:50%; margin:0 auto;">
+                <input type="submit" class="button  active" value="Start" style="margin:0 auto;">
               </div>
             </form>
         </div>

@@ -15,19 +15,19 @@ let self = module.exports = {
       {title: '名牌精品', pic: '/img/hobby/famousbrand.png'},
       {title: '復古風情', pic: '/img/hobby/Retro.png'},
       {title: '遊戲玩物', pic: '/img/hobby/game.png'},
-      {title: '傢具傢居', pic: '/img/hobby/couch.png'},
+      {title: '傢具傢居', pic: '/img/hobby/Furniture.png'},
       {title: '課本買賣', pic: '/img/hobby/books.png'},
       {title: '書籍雜誌', pic: '/img/hobby/magazines.png'},
       {title: '樂器樂譜', pic: '/img/hobby/ukulele.png'},
-      {title: '廚房家電', pic: '/img/hobby/Kitchen.png'},
+      {title: '廚房家電', pic: '/img/hobby/kitchen.png'},
       {title: '寶寶時尚', pic: '/img/hobby/baby.png'},
       {title: '寵物用品', pic: '/img/hobby/dog.png'},
       {title: '票卷交換', pic: '/img/hobby/tickets.png'},
       {title: '哩哩扣扣', pic: '/img/hobby/other.png'},
-      {title: '預售代購', pic: '/img/hobby/art.png'}
+      {title: '預售代購', pic: '/img/hobby/sale.png'}
     ];
     await Like.bulkCreate(like);
-    await self.testData();
+    // await self.testData();
   },
 
   testData: async () => {

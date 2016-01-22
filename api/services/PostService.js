@@ -69,7 +69,7 @@ module.exports = {
           location: post.Item.itemname,
           latitude: post.latitude,
           longitude: post.longitude,
-          url: `/postDetail/${post.id}`,
+          url: `/postDetailf7/${post.id}`,
           type: post.Item.Like.title,
           // type_icon: post.Item.Like.icon,
           type_icon: "../icons/store/apparel/bags.png",

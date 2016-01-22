@@ -1,4 +1,4 @@
-#splash {
+/*#splash {
   display: block;
   position: absolute;
   top: 0;
@@ -45,7 +45,7 @@
 .fadeOut {
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut;
-}
+}*/
 
 /* hotfix for find-my-loc button */
 

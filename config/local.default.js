@@ -26,6 +26,8 @@ module.exports = {
         clientID: '',
         clientSecret: '',
         profileFields: [ 'id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified', 'displayName' ],
+        // FB api 2.5 get Email
+        scope: ['email'],
         callbackURL: "http://localhost:1337/auth/facebook/callback"
       }
     }
@@ -35,7 +37,7 @@ module.exports = {
     ConnectSDK_ApiSecret: '',
   },
   uploadImage: {
-    dirname: '../public/images/upload'
+    dirname: '../public/images'
   },
   appn:{
     key: '',

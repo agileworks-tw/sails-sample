@@ -1,0 +1,104 @@
+
+-if(favorites && favorites.length > 0)
+  .card
+    .card-header You like !!
+    .card-content 
+    .list-block.media-list
+      ul
+        each favorite in favorites
+          li.swipeout
+              .swipeout-content
+                .item-content
+                  .item-media
+                    //- img(src=post.gallery[0], width='80')
+                    img(src=favorite.images, width='80')
+                  .item-inner
+                    .item-title-row
+                      .item-title #{favorite.title}
+                    .item-subtitle #{favorite.Item.itemname}
+              .swipeout-actions-right
+                //- a.action1.bg-pink.like(href='#', data-id='#{favorite.id}') Like
+                a.action1.bg-pink.detail(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}')
+                  img(src='/img/detail.png', alt='addlike', style="height: 30px;")
+                a.action2.bg-blue.Delete(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}')
+                  img(src='/img/deletelike.png', alt='deletelike', style="height: 30px;")
+  .card
+    .card-header You may like...
+    .card-content 
+      .list-block.media-list
+        ul
+          //- each post in allPosts
+          each val in [1, 2, 3]
+            - var random = Math.floor(Math.random() * 10)
+            li.swipeout
+                .swipeout-content
+                  .item-content
+                    .item-media
+                      //- img(src=post.gallery[0], width='80')
+                      img(src=allPosts[random].gallery[0], width='80')
+                    .item-inner
+                      .item-title-row
+                        .item-title #{allPosts[random].title}
+                      .item-subtitle NT$#{allPosts[random].price}
+                .swipeout-actions-right
+                  a.action1.bg-blue.like(href='#', data-id='#{allPosts[random].id}')
+                    img(src='/img/addlike.png', alt='addlike', style="height: 30px;")
+    //- .card.demo-card-header-pic
+    //-   .card-header.color-white.no-border(style='background-image:url(#{favorite.images[0]})', valign='middle')
+    //-     span.card-title(class='#{favorite.mode}')
+    //-       | [#{favorite.Item.itemname}] #{favorite.title}
+    //-       span
+    //-   .card-content
+    //-     .card-content-inner
+    //-       p.color-gray.card-desc
+    //-         | [
+    //-         img(src='#{favorite.type_icon}', alt='#{favorite.type}')
+    //-         | ]
+    //-         //- | [$#{favorite.price}] [#{favorite.type}] [#{favorite.location}] [#{favorite.user.username}]
+    //-       p.card-content #{favorite.content}
+    //-   .card-footer
+    //-     //- a.link.like(href='#!', data-id='#{favorite.id}') Like
+    //-     .detailFavbox
+    //-       .favbox.favoriteView
+    //-         a.link.favboxa.favoriteView(href='#!', data-id="#{favorite.id}")
+    //-           |                            
+    //-           -if(isFav==true)
+    //-             i.fa.fa-lg.fa-heart(style="color:red")
+    //-           -else
+    //-             i.fa.fa-lg.fa-heart()
+    //-     a.link(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}') Detail
+-else  
+  -if(loginState)
+   .card
+     .card-content 
+       .list-block.media-list
+         ul
+           li.item-content
+             .item-media
+               img(src='/img/blockHeart.png', width='80')
+             .item-inner
+               .item-title-row
+                 .item-title Opps..
+               .item-subtitle You have no favorite item yet
+    .card
+      .card-header You may like...
+      .card-content 
+        .list-block.media-list
+          ul
+            //- each post in allPosts
+            each val in [1, 2, 3]
+              - var random = Math.floor(Math.random() * 10)
+              li.swipeout
+                  .swipeout-content
+                    .item-content
+                      .item-media
+                        //- img(src=post.gallery[0], width='80')
+                        img(src=allPosts[random].gallery[0], width='80')
+                      .item-inner
+                        .item-title-row
+                          .item-title #{allPosts[random].title}
+                        .item-subtitle NT$#{allPosts[random].price}
+                  .swipeout-actions-right
+                    a.action1.bg-blue.like(href='#', data-id='#{allPosts[random].id}')
+                      img(src='/img/addlike.png', alt='addlike', style="height: 30px;")
+        

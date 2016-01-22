@@ -25,10 +25,11 @@ module.exports.policies = {
   'UserController': {
     'index': [],
     'find': [],
+    'pcOrMobile':[],
     'updateHobbyAndMail': [],
     'hobbyView': ['sessionAuth'],
     'addUserFavorite': [],
-    'getUserFavorites':[]
+    'getUserFavorites':['sessionAuth']
   },
   'PostController': {
     'story': ['sessionAuth'],

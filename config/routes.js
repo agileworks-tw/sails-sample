@@ -43,9 +43,7 @@
      view: 'map'
    },
 
-   '/': {
-     view: 'index'
-   },
+   '/': 'UserController.pcOrMobile',
 
    '/storyDetail': {
      view: 'storyDetail'
@@ -78,6 +76,7 @@
 
    'post /addUserFavorite/:id': 'UserController.addUserFavorite',
    'get /getUserFavorites': 'UserController.getUserFavorites',
+   'get /favorites': 'UserController.getFavoriteView',
 
 
    // image

@@ -2,10 +2,9 @@
 // main page - favoriteView
 //////////////////////////////////////////////
 $$(document).on('click', 'a.favoriteView', function(e) {
-  var loginState = $(this).attr("data-login");
-  if (loginState=="false") {
-    myApp.hideIndicator();
-    mainView.router.loadPage('/story');
-  }
-
+  // var loginState = $(this).attr("data-login");
+  // if (loginState=="false") {
+  //   myApp.hideIndicator();
+  //   mainView.router.loadPage('/story');
+  // }
 });

@@ -1,32 +1,43 @@
 extends ./layout
 
-block body
-  .views.layout-white
+block body  
+  p#back-top(style="display:none;")
+    a(href='#top')
+     span
+     | Top       
+  .views
     .view.view-main(data-page='home')
         .navbar
           .navbar-inner
             .wrapper
-              a.left.external.logo(href='/')
+              a.left.external.logo(href='/main')
                 img(src='/img/logo.png', alt='logo', style="height: 45px;") 
             .wrapper
               -console.log("loginState=>",loginState);
               -if(!loginState)
                 a.right.top.external(href='/auth/facebook')
-                  img.action(src='/img/login.png', alt='login', style="height: 35px;")
+                  img.action(src='/img/facebook.png', alt='facebook', style="height: 35px;")
         .pages
           .page.toolbar-fixed(data-page='home')
-            .toolbar.tabbar
+            .toolbar.tabbar.mainToolbar
               .toolbar-inner
                 a.mapView.tab-link.active(href='#mapView')
-                  img(src='/img/map.png', alt='map')  
-                a.favoriteView.tab-link(href='#favoriteView', data-login="#{loginState}")
-                  img(src='/img/favorite.png', alt='favorite')
+                  img(src='/img/map.png', alt='map')
+                  .activeShow
                 a.searchView.tab-link(href='#searchView')
                   img(src='/img/search.png', alt='search')
-                a.listView.tab-link(href='#listView')
-                  img(src='/img/list.png', alt='list')
                 a.storyView.link(href='/story')
                   img(src='/img/add.png', alt='add')
+                -if(!loginState)
+                  a.link(href='/favorites')
+                    img(src='/img/favorite.png', alt='favorite')
+                -else
+                  a.favoriteView.tab-link(href='#favoriteView', data-login="#{loginState}")
+                    img(src='/img/favorite.png', alt='favorite')
+                //- a.listView.tab-link(href='#listView')
+                //-   img(src='/img/login.png', alt='list')
+                a.profileView.tab-link(href='#profileView')
+                  img(src='/img/login.png', alt='profile')
             |         
             .no-buttom-spaces.page-content
               .content-block(style="height: 100%; padding: 0px; margin: 72px 0 -72px 0;")
@@ -35,98 +46,166 @@ block body
                     iframe#mapFrame(src='/map', style="height: 100%; width: 100%; border: 0;")
                   |               
                   #favoriteView.tab
-                    -if(favorites && favorites.length > 0)
-                      each favorite in favorites
-                        .card.demo-card-header-pic
-                          .card-header.color-white.no-border(style='background-image:url(#{favorite.images[0]})', valign='middle')
-                            span.card-title(class='#{favorite.mode}')
-                              | [#{favorite.Item.itemname}] #{favorite.title} 
-                              span
-                          .card-content
-                            .card-content-inner
-                              p.color-gray.card-desc
-                                | [
-                                img(src='#{favorite.type_icon}', alt='#{favorite.type}')
-                                | ]
-                                //- | [$#{favorite.price}] [#{favorite.type}] [#{favorite.location}] [#{favorite.user.username}]
-                              p.card-content #{favorite.content}
-                          .card-footer
-                            a.link.like(href='#!', data-id='#{favorite.id}') Like
-                            a.link(href='/postDetailf7/#{favorite.id}', data-id='#{favorite.id}') Detail
-                    -else  
-                      -if(loginState)
-                        p.fav-no-item.center you have no favorite item yet:(
-                         img(src='/img/blockHeart.png', alt='blockHeart')
-                  |               
                   #searchView.tab
                     form#formSearch.searchbar
                      // Search bar
                      .searchbar-input
-                       input.i18n(type='search', data-i18n='[placeholder]global.search',focus)
+                       input.i18n(type='search', data-i18n='[placeholder]global.search',autofocus)
                        a.searchbar-clear(href='#') clear
                        a.searchbar-cancel.i18n(href='#', data-i18n='global.cancel') cancel
                     // Search bar overlay
                     .searchbar-overlay
+                    .row.categories
+                      a.button.button-round(href='#', data-keyword='top10') TOP10
+                      a.button.button-round(href='#', data-keyword='iphone') IPhone
+                      a.button.button-round(href='#', data-keyword='test') test
+                      a.button.button-round(href='#', data-keyword='iphone') IPhone
+                      a.button.button-round(href='#', data-keyword='top10') TOP10
+                 
                     .page-content
-                      .list-block
-                        .list-group
-                          ul#search-result.items-list
-                          //f7 search-result callback
-                          script(type='text/template7', id="searchResult").
-                            {{#each this.items}}
-                              <li class="">
-                                <div class="card demo-card-header-pic">
-                                  <div style="background-image:url({{gallery}})" valign="middle" class="card-header color-white no-border">
-                                    <span class="card-title {{mode}}"> [{{itemname}}] {{title}} <span>
-                                  </div>
-                                  <div class="card-content">
-                                    <div class="card-content-inner">
-                                      <p class="color-gray card-desc">
-                                        [<img src="{{type_icon}}" alt="{{type}}">]
-                                        [${{price}}] [{{type}}] [{{location}}] [{{username}}]</p>
-                                      <p class="card-content">{{content}}</p>
-                                    </div>
-                                  </div>
-                                  <div class="card-footer">
-                                    <a href="#!" data-id="{{id}}" class="link like">Like</a>
-                                    <a href="/postDetailf7/{{id}}" data-id="{{id}}" class="link">Detail</a>
-                                  </div>
-                                </div>
-                              </li>
-                            {{/each}}
-                            <li class="">
-                              <div class="card">
-                                <div class="card-footer">
-                                  <a href="#!" class="link backTop"></a>
-                                    <a href="#!" class="link backTop">back to top</a>
-                                </div>
-                              </div>
-                            </li>
-                          // Result List
-                  |               
-                  #listView.tab
-                    -console.log(allPosts[0])
-                          
-                    each post in allPosts
-                      .card.demo-card-header-pic
-                        .card-header.color-white.no-border(style='background-image:url(#{post.gallery[0]})', valign='middle')
-                          span.card-title(class='#{post.mode}')
-                            | [#{post.itemname}] #{post.title} 
-                            span
+                      .card
                         .card-content
-                          .card-content-inner
-                            p.color-gray.card-desc
-                              | [
-                              img(src='#{post.type_icon}', alt='#{post.type}')
-                              | ]
-                              | [$#{post.price}] [#{post.type}] [#{post.location}] [#{post.username}]
-                            p.card-content #{post.content}
+                          .list-block.media-list
+                            .list-group
+                              ul#search-result
+                                each post in allPosts
+                                  li.swipeout
+                                      .swipeout-content
+                                        .item-content
+                                          .item-media
+                                            //- img(src=post.gallery[0], width='80')
+                                            img(src=post.gallery[0], width='80')
+                                          .item-inner
+                                            .item-title-row
+                                              .item-title
+                                                a.link(href='/postDetailf7/#{post.id}') #{post.title}
+                                            .item-subtitle NT$#{post.price}
+                                      .swipeout-actions-right
+                                        a.action1.bg-blue.like(href='#', data-id='#{post.id}') 
+                                          img(src='/img/addlike.png', alt='addlike', style="height: 30px;")
+                              //f7 search-result callback
+                              script(type='text/template7', id="searchResult").
+                                {{#each this.items}}
+                                  <li class="swipeout">
+                                    <div class="swipeout-content">
+                                      <div class="item-content">
+                                        <div class="item-media">
+                                          <img src=post.gallery[0] width="80"/>
+                                        </div>
+                                        <div class="item-inner">
+                                          <div class="item-title-row">
+                                            <div class="item-title">
+                                              <a class="link" href='/postDetailf7/{{id}}'>{{title}}</a>
+                                            </div>
+                                          </div>
+                                          <div class="item-subtitle">NT${{price}}</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="swipeout-actions-right">
+                                      <a href="#" data-id="{{id}}" class="action1 bg-pink like"></a>
+                                        <img src="/img/addlike.png" alt="addlike" style="height: 30px;">
+                                    </div>
+                                  </li>
+                                {{/each}}
+                              // Result List
+                  |               
+                  //- #listView.tab
+                  //-   .page-content
+                  //-     .card
+                  //-       .card-content
+                  //-         .list-block.media-list
+                  //-           ul
+                  //-             each post in allPosts
+                  //-               li.swipeout
+                  //-                   .swipeout-content
+                  //-                     .item-content
+                  //-                       .item-media
+                  //-                         //- img(src=post.gallery[0], width='80')
+                  //-                         img(src='http://lorempixel.com/80/60/technics/#{post.id % 9}', width='80')
+                  //-                       .item-inner
+                  //-                         .item-title-row
+                  //-                           .item-title #{post.title}
+                  //-                         .item-subtitle #{post.itemname}
+                  //-                   .swipeout-actions-right
+                  //-                     a.action1.bg-blue.like(href='#', data-id='#{post.id}')
+                  //-                       img(src='/img/addlike.png', alt='addlike', style="height: 30px;")  
+                    //- -console.log(allPosts[0])
+                    //-       
+                    //- each post in allPosts
+                    //-   .card.demo-card-header-pic
+                    //-     .card-header.color-white.no-border(style='background-image:url(#{post.gallery[0]})', valign='middle')
+                    //-       span.card-title(class='#{post.mode}')
+                    //-         | [#{post.itemname}] #{post.title} 
+                    //-         span
+                    //-     .card-content
+                    //-       .card-content-inner
+                    //-         p.color-gray.card-desc
+                    //-           | [
+                    //-           img(src='#{post.type_icon}', alt='#{post.type}')
+                    //-           | ]
+                    //-           | [$#{post.price}] [#{post.type}] [#{post.location}] [#{post.username}]
+                    //-         p.card-content #{post.content}
+                    //-     .card-footer
+                    //-       a.link.like(href='#!', data-id='#{post.id}') Like
+                    //-       a.link(href='/postDetailf7/#{post.id}', data-id='#{post.id}') Detail
+                      .card
                         .card-footer
-                          a.link.like(href='#!', data-id='#{post.id}') Like
-                          a.link(href='/postDetailf7/#{post.id}', data-id='#{post.id}') Detail
-                    .card
-                      .card-footer
-                        a.link.backTop(href='#!')
-                        a.link.backTop(href='#!') back to top
-              |  
-              link(rel="stylesheet", href="/styles/css/main.css")
+                          a.link.backTop(href='#!')
+                          a.link.backTop(href='#!') back to top
+                  |  
+                  #profileView.tab
+                    .page-content
+                     .content-block
+                       .row
+                        .col-50
+                          .profile-picture
+                            img(src='/img/human.png', alt='human')
+                        .col-50.profile-detail
+                          span.name.bold John Doe
+                          .row
+                            .col-25
+                              span.like.bold.black 1
+                            .col-25
+                              span.post.bold.black 2
+                            .col-25
+                              span.rate.bold.black 3
+                          .row
+                            .col-25 
+                              span.like-title Like
+                            .col-25 
+                              span.post-title Post
+                            .col-25
+                              span.rate-title Rate
+                       .row
+                       .card
+                         .card-content
+                         .col-100.profile-description 
+                           span.description-title Personal Description ...
+                       .row    
+                       .card
+                         .card-content 
+                           .list-block.media-list
+                             ul
+                               //- each post in allPosts
+                               each val in [1, 2, 3]
+                                 - var random = Math.floor(Math.random() * 10)
+                                 li.swipeout
+                                     .swipeout-content
+                                       .item-content
+                                         .item-media
+                                           //- img(src=post.gallery[0], width='80')
+                                           img(src='http://lorempixel.com/80/60/technics/#{allPosts[random].id % 9}', width='80')
+                                         .item-inner
+                                           .item-title-row
+                                             .item-title #{allPosts[random].title}
+                                           .item-subtitle #{allPosts[random].itemname}
+                                     .swipeout-actions-right
+                                       a.action2.bg-blue.Delete(href='#', data-id='#{allPosts[random].id}')
+                                         img(src='/img/deletelike.png', alt='deletelike', style="height: 35px;")
+                         
+
+  //- p#back-top
+  //-   a(href='#top')
+  //-     span
+  //-     | Top      
