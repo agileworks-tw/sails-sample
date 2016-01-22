@@ -1,4 +1,4 @@
-describe.only('Hack', function() {
+describe.skip('Hack', function() {
   it('get', async (done) => {
     try {
       await HackService.addPostItem('https://carousell.com/categories/for-her',1, 24.9915118,121.2942115);
