@@ -70,6 +70,12 @@ module.exports.http = {
   ***************************************************************************/
 
     // bodyParser: require('skipper')
+    bodyParser: function(){
+      var opts = {
+        limit:'10mb'
+      }
+     return require('./../node_modules/sails/node_modules/skipper')(opts);
+    }
 
   // },
 
