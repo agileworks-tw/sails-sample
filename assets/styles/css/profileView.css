@@ -8,7 +8,7 @@
 }
 .profile-picture {
   margin-top: -50px;
-  margin-left: 5%;
+  margin-left: 10%;
   display: inline-block;
   position: absolute;
   width: 100px;
@@ -23,7 +23,7 @@
 }
 .profile-detail {
   margin-bottom: 50px;
-  margin-left: -80px;
+  margin-left: -40px;
   margin-top: -37px;
   margin-right: 35px;
   text-align: center;
@@ -36,12 +36,13 @@
   font-size: 17px;
 }
 
-#profileView .content-block{
+/*#profileView .content-block{
   overflow:hidden;
-}
+}*/
 
 .row {
-    font-size: 18px;
+  font-size: 18px;
+  margin: 0;
 }
 
 .profile-description {
