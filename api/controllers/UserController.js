@@ -32,11 +32,29 @@ module.exports = {
         });// end forEach
       } // end if
 
+      // profileViewData
+      let profile = {};
+      if(userLogin){
+        let profilePost = await Post.findAll({
+          where:{
+            UserId: loginedUser.id
+          }
+        });
+        let likeCount = 0;
+        profile = {
+          name: loginedUser.username,
+          allUserPost: profilePost,
+          postCount: profilePost.length,
+          likeCount: likeCount,
+          rate: profilePost.length * 1.5 + likeCount
+        }
+      }
       res.view('main', {
         favorites: favorites,
         loginState: userLogin,
         loginedUser: loginedUser,
-        allPosts: allPosts.data
+        allPosts: allPosts.data,
+        profile
       });
     } catch (e) {
       res.serverError(e);

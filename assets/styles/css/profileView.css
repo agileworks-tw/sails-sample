@@ -36,6 +36,10 @@
   font-size: 17px;
 }
 
+#profileView .content-block{
+  overflow:hidden;
+}
+
 .row {
     font-size: 18px;
 }

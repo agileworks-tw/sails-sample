@@ -36,12 +36,16 @@ block body
                     img(src='/img/favorite.png', alt='favorite')
                 //- a.listView.tab-link(href='#listView')
                 //-   img(src='/img/login.png', alt='list')
-                a.profileView.tab-link(href='#profileView')
-                  img(src='/img/login.png', alt='profile')
+                -if(!loginState)
+                  a.link(href='/favorites')
+                    img(src='/img/login.png', alt='favorite')
+                -else
+                  a.profileView.tab-link(href='#profileView')
+                    img(src='/img/login.png', alt='profile')
             |         
             .no-buttom-spaces.page-content
               .content-block(style="height: 100%; padding: 0px; margin: 72px 0 -72px 0;")
-                .tabs(style="height: calc(100% - 70px*1);")
+                #mainTab.tabs(style="height: calc(100% - 70px*1);")
                   #mapView.tab.active(style="height: 100%;")
                     iframe#mapFrame(src='/map', style="height: 100%; width: 100%; border: 0;")
                   |               
@@ -153,56 +157,57 @@ block body
                         .card-footer
                           a.link.backTop(href='#!')
                           a.link.backTop(href='#!') back to top
-                  |  
-                  #profileView.tab
-                    .page-content
-                     .content-block
-                       .row
-                        .col-50
-                          .profile-picture
-                            img(src='/img/human.png', alt='human')
-                        .col-50.profile-detail
-                          span.name.bold John Doe
-                          .row
-                            .col-25
-                              span.like.bold.black 1
-                            .col-25
-                              span.post.bold.black 2
-                            .col-25
-                              span.rate.bold.black 3
-                          .row
-                            .col-25 
-                              span.like-title Like
-                            .col-25 
-                              span.post-title Post
-                            .col-25
-                              span.rate-title Rate
-                       .row
-                       .card
-                         .card-content
-                         .col-100.profile-description 
-                           span.description-title Personal Description ...
-                       .row    
-                       .card
-                         .card-content 
-                           .list-block.media-list
-                             ul
-                               //- each post in allPosts
-                               each val in [1, 2, 3]
-                                 - var random = Math.floor(Math.random() * 10)
-                                 li.swipeout
-                                     .swipeout-content
-                                       .item-content
-                                         .item-media
-                                           //- img(src=post.gallery[0], width='80')
-                                           img(src='http://lorempixel.com/80/60/technics/#{allPosts[random].id % 9}', width='80')
-                                         .item-inner
-                                           .item-title-row
-                                             .item-title #{allPosts[random].title}
-                                           .item-subtitle #{allPosts[random].itemname}
-                                     .swipeout-actions-right
-                                       a.action2.bg-blue.Delete(href='#', data-id='#{allPosts[random].id}')
-                                         img(src='/img/deletelike.png', alt='deletelike', style="height: 35px;")
+                  -if(loginState)
+                    #profileView.tab
+                      .page-content
+                       .content-block
+                         .row
+                          .col-50
+                            .profile-picture
+                              img(src='/img/human.png', alt='human')
+                          .col-50.profile-detail
+                            span.name.bold #{profile.name}
+                            .row
+                              .col-25
+                                span.like.bold.black 0
+                              .col-25
+                                span.post.bold.black #{profile.postCount}
+                              .col-25
+                                span.rate.bold.black #{profile.rate}
+                            .row
+                              .col-25 
+                                span.like-title Like
+                              .col-25 
+                                span.post-title Post
+                              .col-25
+                                span.rate-title Rate
+                         .row
+                         .card
+                           .card-content
+                           .col-100.profile-description 
+                             span.description-title Personal Description ...
+                         .row    
+                         .card
+                           .card-content 
+                             .list-block.media-list
+                               ul
+                                 //- each post in allPosts
+                                 -if(profile.postCount != 0)
+                                   each post in profile.allUserPost
+                                     li.swipeout
+                                         .swipeout-content
+                                           .item-content
+                                             .item-media
+                                               //- img(src=post.gallery[0], width='80')
+                                               img(src=post.dataValues.images, width='80')
+                                             .item-inner
+                                               .item-title-row
+                                                 .item-title #{post.dataValues.title}
+                                               .item-subtitle NT$#{post.dataValues.price}
+                                         .swipeout-actions-right
+                                           a.action2.bg-blue.Delete(href='#', data-id='#{post.dataValues.id}')
+                                             img(src='/img/deletelike.png', alt='deletelike', style="height: 35px;")
+                                   
                          
 
   //- p#back-top

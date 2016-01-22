@@ -3,7 +3,7 @@ import cheerio from 'cheerio';
 
 module.exports = {
 
-  addPostItem: async(url, likeId) => {
+  addPostItem: async(url, likeId, lat , lon) => {
     try {
       let crawlHtml = await request.get(url);
       let $ = cheerio.load(crawlHtml.text);
@@ -21,8 +21,8 @@ module.exports = {
           "username": $(this).find(".pdt-card-username").text(),
           "email": $(this).find(".pdt-card-username").text() +"@gmail.com"
         });
-        let latitude = 24.1542943 + Math.random()/20;
-        let longitude = 120.6754701 + Math.random()/20;
+        let latitude = lat + Math.random()/20;
+        let longitude = lon + Math.random()/20;
         postsArray.push({
     			"title": $(this).find(".pdt-card-title").text().replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g,''),
     			"price": $(this).find(".pdt-card-price").find("span").text().split('$')[1],

@@ -87,7 +87,12 @@ i.icon.icon-back-white.icon-back {
 }
 
 /* search view */
-
+#favoriteView > .page-content {
+  margin-bottom: 60px;
+}
+#profileView > .page-content {
+  margin-bottom: 60px;
+}
 #searchView > .page-content {
   margin: 0px auto;
   margin-bottom: 60px;
