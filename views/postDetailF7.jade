@@ -15,7 +15,7 @@
           i.icon.icon-back-white.icon-back
           span Back
     .pages
-      .page.navbar-fixed(data-page='postDetailF7')
+      #postDetailF7.page.navbar-fixed(data-page='postDetailF7')
         input#itemId(type="hidden",value='#{post.id}')
         //- .page-content
         //-     //- iframe#item(src='/postDetail/#{post.id}', style="height: 100%; width: 100%; border: 0;")
@@ -25,7 +25,8 @@
             ul
              li.card
                .card-header 
-                  img(src=post.gallery, data-hash='1', alt='')    
+                div
+                  img(src=post.gallery, data-hash='1', alt='' width='100%')    
                .card-content
                 .card-content-inner
                   span.post-title.bold #{post.title}  

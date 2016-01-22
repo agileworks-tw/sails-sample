@@ -5,22 +5,21 @@
 .card-header {
     margin-top: -20px;
 }
-
+/*
 .card-header > img {
   vertical-align: middle;
-  height: 200px;
-  width: 350px;
+  height: 60vw;
   margin-left: 8px;
   margin-top: 18px;
   margin-bottom: 18px;
-}
+}*/
 
 .card-content-inner > p{
   margin-left: 10px;
   font-size: 16px;
 }
 
-a.item-link.item-content > img{
+#postDetailF7 a.item-link.item-content > img{
   height: 19px;
   width: 19px;
   margin-left: -35px;
@@ -42,6 +41,6 @@ span.post-price.bold{
   margin-left: 8px;
 }
 
-.item-media {
+#postDetailF7.item-media {
     margin-left: -25px;
 }
