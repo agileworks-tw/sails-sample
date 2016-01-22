@@ -12,13 +12,14 @@ module.exports = {
     LikeId, itemname, pic
   }) => {
     try {
-      if (pic == undefined || pic == null) {
-        let pic = await FlickrService.searchGetty(itemname);
-      }
+      // let pic = '';
+      // if (pic == undefined || pic == null) {
+      //   pic = await FlickrService.searchGetty(itemname);
+      // }
       let createItem = await Item.create({
         itemname: itemname,
-        LikeId: LikeId,
-        pic: pic
+        LikeId: LikeId
+        // pic: pic
       });
       return createItem;
     } catch (e) {
