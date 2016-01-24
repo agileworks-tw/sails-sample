@@ -1,3 +1,15 @@
+debug:
+  container_name: sailsSample_debug
+  image: node:4
+  command: "/bin/bash -l"
+
+  working_dir: /sailsSample
+  volumes:
+    - ./:/sailsSample
+  ports:
+    - "1337:1337"
+
+
 buildDev:
   container_name: sailsSample_buildDev
   image: trunk/sails_env
