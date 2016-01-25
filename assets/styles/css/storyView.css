@@ -59,3 +59,7 @@ img.preview {
   margin: auto;
   display: block !important;
 }
+canvas#viewport {
+  margin: auto;
+  display: block !important;
+}

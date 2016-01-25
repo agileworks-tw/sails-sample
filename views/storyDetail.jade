@@ -19,8 +19,8 @@ link(rel='stylesheet', href='styles/css/storyDetail.css', type='text/css')
                   .item-input.fileUpload-input
                     .btn.btn-primary.fileUpload-btn
                       span Upload photos
-                      input.uploadBtn(form='storyImageUpload', type='file', accept="image/*", name='image', capture)
-                    img.preview 
+                      input.uploadBtn#imageLoader(form='storyImageUpload', type='file', accept="image/*", name='image', capture)
+                    canvas#viewport
           form#storyDetailChoose
             .list-block
               .item-content

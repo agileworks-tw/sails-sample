@@ -304,10 +304,35 @@ $(function() {
     var img = document.createElement("img");
     // preview selected pic.
     var reader = new FileReader();
+    var canvas = document.getElementById('viewport');
+    var ctx = canvas.getContext('2d');
+
     reader.onload = function(e) {
+
+
+      var img = new Image();
+      img.onload = function(){
+          // canvas.width = img.width;
+          // canvas.height = img.height;
+          // ctx.drawImage(img,0,0);
+
+          canvas.width = img.width * 0.25;
+          canvas.height = img.height * 0.25;
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          var jpegBase64 = canvas.toDataURL("image/jpeg");
+
+          console.log('=== jpegBase64 ===', jpegBase64);
+
+      }
+      img.src = event.target.result;
+
+
+
+
       // console.log("e.target.result=>", e.target.result);
       // $('img.preview').show('fast', function() {
-      $('img.preview').attr('src', e.target.result);
+      // $('img.preview').attr('src', e.target.result);
       // img.src = e.target.result;
       // var canvas = document.createElement("canvas");
       // var ctx = canvas.getContext("2d");
