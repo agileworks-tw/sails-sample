@@ -26,11 +26,12 @@ $$(document).on('pageInit pageReInit', '.page[data-page="postDetailF7"]', functi
   // var id = $$("input#itemId").val();
   // $$("iframe#item").src = "/postDetail/" + id;
   (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5&appId=915539495181624";
-  fjs.parentNode.insertBefore(js, fjs);
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5&appId=915539495181624";
+    fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 });
 
@@ -68,110 +69,152 @@ $$(document).on('pageInit', '.page[data-page="hobbyPage"]', function(e) {
 
 }); // end hobbyPage
 
-
-$$(document).on('pageInit', '.page[data-page="finish"]', function(e) {
-
-  var hobby = myApp.formGetData('hobbySelect').hobby;
-  console.log("selected hobbys=>", hobby);
-
-  if (!hobby || !hobby[0]) {
-    window.location.replace(window.location.pathname + window.location.search);
-  }
-
-  $("body").delegate("#singUp-form", "submit", function(e) {
-    e.preventDefault();
-    var addr = $("input[name='addr']").val();
-    addressToLatLng(addr);
-  }); // end on-submit
-
-  $("body").delegate("input[name='submit']", "click", function(e) {
-    e.preventDefault();
-    var email = $$('input[name="email"]').val();
-    console.log("email=>", email);
-    if (!email || email.length == 0) {
-      myApp.alert('Enter your EMAIL please :)', 'Woops!');
-      return false;
-    } else {
-      var addr = $("input[name='addr']").val();
-      if (addr) {
-        addressToLatLng(addr);
-      } else {
-        getGeoIpLocation();
-      }
-    }
-  });
-
-  function addressToLatLng(addr) {
-    var jsUrl = "http://maps.google.com/maps/api/js?libraries=places";
-    $.getScript(jsUrl)
-      .done(function(script, textStatus) {
-        var geocoder = new google.maps.Geocoder();
-        geocoder.geocode({
-          "address": addr
-        }, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            var latitude = results[0].geometry.location.lat();
-            var longitude = results[0].geometry.location.lng();
-            var location = {
-              latitude: latitude,
-              longitude: longitude
-            };
-            submitSingUpForm(location);
-          } else {
-            // if no result than use geoip
-            getGeoIpLocation();
-          }
-        });
-      }); // end getscript
-  }; // end addressToLatLng
-
-  function getGeoIpLocation() {
-    $$.ajax({
-      url: 'http://ip-api.com/json/',
-      type: 'POST',
-      dataType: 'jsonp',
-      success: function(loc) {
-        var geoLoc = JSON.parse(loc);
-        var latitude = geoLoc.lat;
-        var longitude = geoLoc.lon;
-        var location = {
-          latitude: latitude,
-          longitude: longitude
-        };
-        submitSingUpForm(location);
-      }
-    }); // end ajax
-  }; // end getGeoIpLocation
-
-  function submitSingUpForm(location) {
-    var email = $("input[name='email']").val()
-    var hobby = $("input[name='hobby']").val();
-    var data = {
-      hobby: hobby,
-      location: location
-    };
-    if (email) {
-      data.email = email;
-    }
-    console.log("regForm data=>", data);
-
-    jQuery.ajax({
-      url: '/updateHobbyAndMail',
-      type: 'POST',
-      data: data,
-      success: function(data) {
-        // if (data == "ok") {
-        window.location.href = 'main';
-        // }
-      },
-      error: function(err) {
-        console.log(err);
-        window.myApp.alert('Your email address has already been used.', 'OH-NO!');
-      }
-    }); // end ajax
-  }; // end submitSingUpForm
-
-}); // end page-finish
+//
+// $$(document).on('pageInit', '.page[data-page="finish"]', function(e) {
+//
+//   var hobby = myApp.formGetData('hobbySelect').hobby;
+//   console.log("selected hobbys=>", hobby);
+//
+//   if (!hobby || !hobby[0]) {
+//     window.location.replace(window.location.pathname + window.location.search);
+//   }
+//
+//   checkRegion();
+//
+//   window.mainView.hideNavbar();
+//   window.mainView.hideToolbar();
+//
+//   $$(document).click("#submit", function(e) {
+//     e.preventDefault();
+//     var email = $$('input[name="email"]').val();
+//     if (email) {
+//       if (email.length == 0) {
+//         myApp.alert('Enter your EMAIL please :)', 'Woops!');
+//         return false;
+//       }
+//     }
+//     var region = $$("#regionSelect").val();
+//     if (region != "請選擇地區" || region != "Where are you?") {
+//       addressToLatLng(region);
+//     } else {
+//       //   getGeoIpLocation();
+//       myApp.alert('We need to know where are you to provide the best user experience :)', 'Woops!');
+//       return false;
+//     }
+//   }); // end click
+//
+//   function checkRegion() {
+//     var list;
+//
+//     if (getRegion() == "zh-TW") {
+//       list = [
+//         "請選擇地區", "基隆市", "台北市", "新北市", "宜蘭縣", "新竹市", "新竹縣", "桃園市",
+//         "苗栗縣", "台中市", "彰化縣", "南投縣", "嘉義市", "嘉義縣", "雲林縣",
+//         "台南市", "高雄市", "屏東縣", "台東縣", "花蓮縣", "金門縣", "連江縣", "澎湖縣"
+//       ];
+//     } else if (getRegion() == "en-us") {
+//       list = [
+//         "Where are you?", "Bath", "Birmingham", "Bradford", "Brighton & Hove", "Bristol", "Cambridge",
+//         "Canterbury", "Carlisle", "Chester", "Chichester", "Coventry", "Derby",
+//         "Durham", "Ely", "Exeter", "Gloucester", "Hereford", "Kingston upon Hull",
+//         "Lancaster", "Leeds", "Leicester", "Lichfield", "Lincoln", "Liverpool",
+//         "City of London", "Manchester", "Newcastle upon Tyne", "Norwich", "Nottingham", "Oxford",
+//         "Peterborough", "Plymouth", "Portsmouth", "Preston", "Ripon", "Salford",
+//         "Salisbury", "Sheffield", "Southampton", "St Albans", "Stoke-on-Trent", "Sunderland",
+//         "Truro", "Wakefield", "Wells", "Westminster", "Winchester", "Wolverhampton",
+//         "Worcester", "York", "Armagh", "Belfast", "Londonderry", "Lisburn",
+//         "Newry", "Aberdeen", "Dundee", "Edinburgh", "Glasgow", "Inverness",
+//         "Stirling", "Perth", "Bangor", "Cardiff", "Newport", "St. David's",
+//         "Swansea",
+//       ];
+//     }
+//     setOption(list);
+//   }
+//
+//   function getRegion() {
+//     var region = navigator.language;
+//     return region;
+//   }
+//
+//   function setOption(list) {
+//     $.each(list, function(i, value) {
+//       $('#regionSelect').append("<option value='" + value + "'>" + value + "</option>");
+//       $("#regionSelect").trigger('change');
+//     });
+//   }
+//
+//   function addressToLatLng(addr) {
+//     var jsUrl = "http://maps.google.com/maps/api/js?libraries=places";
+//     $.getScript(jsUrl)
+//       .done(function(script, textStatus) {
+//         var geocoder = new google.maps.Geocoder();
+//         geocoder.geocode({
+//           "address": addr
+//         }, function(results, status) {
+//           if (status == google.maps.GeocoderStatus.OK) {
+//             var latitude = results[0].geometry.location.lat();
+//             var longitude = results[0].geometry.location.lng();
+//             var location = {
+//               latitude: latitude,
+//               longitude: longitude
+//             };
+//             submitSingUpForm(location);
+//           // } else {
+//           //   // if no result than use geoip
+//           //   getGeoIpLocation();
+//           }
+//         });
+//       }); // end getscript
+//   }; // end addressToLatLng
+//
+//   function getGeoIpLocation() {
+//     $$.ajax({
+//       url: 'http://ip-api.com/json/',
+//       type: 'POST',
+//       dataType: 'jsonp',
+//       success: function(loc) {
+//         var geoLoc = JSON.parse(loc);
+//         var latitude = geoLoc.lat;
+//         var longitude = geoLoc.lon;
+//         var location = {
+//           latitude: latitude,
+//           longitude: longitude
+//         };
+//         submitSingUpForm(location);
+//       }
+//     }); // end ajax
+//   }; // end getGeoIpLocation
+//
+//   function submitSingUpForm(location) {
+//     console.log("location=>", location);
+//     var email = $("input[name='email']").val();
+//     var hobby = $("input[name='hobby']").val();
+//     var data = {
+//       hobby: hobby,
+//       location: location
+//     };
+//     if (email) {
+//       data.email = email;
+//     }
+//     console.log("regForm data=>", data);
+//
+//     jQuery.ajax({
+//       url: '/updateHobbyAndMail',
+//       type: 'POST',
+//       data: data,
+//       success: function(data) {
+//         // if (data == "ok") {
+//         window.location.href = 'main';
+//         // }
+//       },
+//       error: function(err) {
+//         console.log(err);
+//         window.myApp.alert('Your email address has already been used.', 'OH-NO!');
+//       }
+//     }); // end ajax
+//   }; // end submitSingUpForm
+//
+// }); // end page-finish
 
 
 $$(document).on('pageInit', '.page[data-page="storyCategory"]', function(e) {
@@ -205,20 +248,20 @@ $$(document).on('pageInit', '.page[data-page="home"]', function(e) {
     $("#favoriteView").load("/favorites");
   });
 
-  $$("a.searchView.tab-link").click(function(){
-    $$( "#searchView > .page-content" ).addClass("active");
+  $$("a.searchView.tab-link").click(function() {
+    $$("#searchView > .page-content").addClass("active");
   });
 
-  $$("a.favoriteView.tab-link").click(function(){
-    $$( "#favoriteView > .page-content" ).addClass("active");
-    $$( "#searchView > .page-content" ).removeClass("active");
-    $$( "#profileView > .page-content" ).removeClass("active");
+  $$("a.favoriteView.tab-link").click(function() {
+    $$("#favoriteView > .page-content").addClass("active");
+    $$("#searchView > .page-content").removeClass("active");
+    $$("#profileView > .page-content").removeClass("active");
   });
 
-  $$("a.profileView.tab-link").click(function(){
-    $$( "#profileView > .page-content" ).addClass("active");
-    $$( "#searchView > .page-content" ).removeClass("active");
-    $$( "#favoritetView > .page-content" ).removeClass("active");
+  $$("a.profileView.tab-link").click(function() {
+    $$("#profileView > .page-content").addClass("active");
+    $$("#searchView > .page-content").removeClass("active");
+    $$("#favoritetView > .page-content").removeClass("active");
   });
 
 });
