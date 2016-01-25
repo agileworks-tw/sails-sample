@@ -1,21 +1,45 @@
 doctype html
 html
   head
-    title ec-platform
+    title TradeMuch
 
     // Required meta tags
     meta(charset='utf-8')
+    
+    // safira web app configs
     meta(name='viewport', content='width = device-width, initial-scale = 1.0, minimum-scale = 1, maximum-scale = 1, user-scalable = no')
     meta(name='apple-mobile-web-app-capable', content='yes')
     meta(name='mobile-web-app-capable', content='yes')
     meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
-    // Your app title
-    title My App
+    meta(name='apple-mobile-web-app-title', content='TradeMuch')
+    // iPhone ICON
+    link(href='/img/apple-touch-icon-57x57.png', sizes='57x57', rel='apple-touch-icon')
+    // iPad ICON
+    link(href='/img/apple-touch-icon-72x72.png', sizes='72x72', rel='apple-touch-icon')
+    // iPhone (Retina) ICON
+    link(href='/img/apple-touch-icon-114x114.png', sizes='114x114', rel='apple-touch-icon')
+    // iPad (Retina) ICON
+    link(href='apple-touch-icon-144x144.png', sizes='144x144', rel='apple-touch-icon')    
+    //- // iPhone SPLASHSCREEN
+    //- link(href='apple-touch-startup-image-320x460.png', media='(device-width: 320px)', rel='apple-touch-startup-image')
+    //- // iPhone (Retina) SPLASHSCREEN
+    //- link(href='apple-touch-startup-image-640x920.png', media='(device-width: 320px) and (-webkit-device-pixel-ratio: 2)', rel='apple-touch-startup-image')
+    //- // iPad (portrait) SPLASHSCREEN
+    //- link(href='apple-touch-startup-image-768x1004.png', media='(device-width: 768px) and (orientation: portrait)', rel='apple-touch-startup-image')
+    //- // iPad (landscape) SPLASHSCREEN
+    //- link(href='apple-touch-startup-image-748x1024.png', media='(device-width: 768px) and (orientation: landscape)', rel='apple-touch-startup-image')
+    //- // iPad (Retina, portrait) SPLASHSCREEN
+    //- link(href='apple-touch-startup-image-1536x2008.png', media='(device-width: 1536px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)', rel='apple-touch-startup-image')
+    //- // iPad (Retina, landscape) SPLASHSCREEN
+    //- link(href='apple-touch-startup-image-2048x1496.png', media='(device-width: 1536px)  and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)', rel='apple-touch-startup-image')
 
+    // android 
+    meta(name='application-name', content='TradeMuch')
+    
     //if lt IE 9
-      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
-      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
-        
+    script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+    script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+      
     // STYLES
     link(rel="stylesheet", href="/fonts/font-awesome.css")
     link(rel="stylesheet", href="/styles/bootstrap/css/bootstrap.min.css")
@@ -44,8 +68,19 @@ html
     script(src="/bower/jquery/jquery.js")
     script(src="/js/dependencies/sails.io.js")
     script(src="/bower/bootstrap-sass/bootstrap.js")
-    script(src="/bower/bootstrap/bootstrap.js")
+    script(src="/bower/brim/dist/brim.js")
+    script(src="/bower/brim/dist/brim.min.js")
+    script(src="/bower/brim/gulpfile.js")
+    script(src="/bower/brim/src/brim.js")
+    script(src="/bower/brim/tests/brim.js")
     script(src="/bower/framework7/js/framework7.js")
+    script(src="/bower/platform.js")
+    script(src="/bower/platform.js/platform.js")
+    script(src="/bower/platform/platform.js")
+    script(src="/bower/scream/dist/scream.js")
+    script(src="/bower/scream/dist/scream.min.js")
+    script(src="/bower/scream/gulpfile.js")
+    script(src="/bower/scream/src/scream.js")
     script(src="/js/_index.js")
     script(src="/js/favbox.js")
     script(src="/js/favoriteView.js")
