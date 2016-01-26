@@ -37,13 +37,13 @@ test:
   volumes:
     - ./:/sailsSample
 
-web:
-  container_name: sailsSample
+dev:
+  container_name: sailsSample_dev
   image: node:4
   command: "/bin/bash -l -c 'npm start'"
   environment:
     PORT: "1337"
-    NODE_ENV: "production"
+    NODE_ENV: "development"
     DOMAIN_HOST: "localhost:1337"
 
   ports:
@@ -57,6 +57,25 @@ web:
 
   restart: always
 
+prod:
+  container_name: sailsSample_prod
+  image: node:4
+  command: "/bin/bash -l -c 'npm run build-prod && npm run start-prod'"
+  environment:
+    PORT: "1337"
+    NODE_ENV: "development"
+    DOMAIN_HOST: "localhost:1337"
+
+  ports:
+    - "1337:1337"
+
+  working_dir: /sailsSample
+  volumes:
+    - ./:/sailsSample
+  external_links:
+    - mysql
+
+  restart: always
 
 mysql:
   container_name: mysql
