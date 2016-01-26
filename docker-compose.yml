@@ -12,7 +12,7 @@ debug:
 
 buildDev:
   container_name: sailsSample_buildDev
-  image: trunk/sails_env
+  image: node:4
   command: "/bin/bash -l -c 'npm i && node_modules/.bin/grunt build'"
 
   working_dir: /sailsSample
@@ -21,7 +21,7 @@ buildDev:
 
 buildProd:
   container_name: sailsSample_buildProd
-  image: trunk/sails_env
+  image: node:4
   command: "/bin/bash -l -c 'npm i && node_modules/.bin/grunt prod'"
 
   working_dir: /sailsSample
@@ -30,18 +30,16 @@ buildProd:
 
 test:
   container_name: sailsSample_test
-  image: trunk/sails_env
+  image: node:4
   command: "/bin/bash -l -c 'node_modules/.bin/grunt test'"
-  ports:
-    - "1338:1338"
 
-  working_dir: /picklete
+  working_dir: /sailsSample
   volumes:
-    - ./:/picklete
+    - ./:/sailsSample
 
 web:
   container_name: sailsSample
-  image: trunk/sails_env
+  image: node:4
   command: "/bin/bash -l -c 'npm start'"
   environment:
     PORT: "1337"

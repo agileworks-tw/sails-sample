@@ -34,9 +34,13 @@
   },
   "scripts": {
     "debug": "node debug app.js",
+
+    "test": "grunt test",
+
     "start": "node app.js",
     "build": "grunt build",
-    "test": "grunt test",
+
+    "start-prod": "NODE_ENV=production node app.js",
     "build-prod": "grunt prod",
 
     "build-docker": "docker-compose run --rm buildDev",
