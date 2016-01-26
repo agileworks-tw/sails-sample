@@ -1,4 +1,4 @@
-FROM trunk/sails_env
+FROM node:4
 COPY ./ /sailsSample
 WORKDIR /sailsSample
 
