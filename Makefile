@@ -1,7 +1,7 @@
 preview:
 	# build or compile project
 	npm i
-	npm run build
+	npm run build-prod
 	zip -r build.zip ./ > /dev/null
 
 	# trnsfer file
