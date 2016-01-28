@@ -13,7 +13,7 @@ debug:
 buildDev:
   container_name: sailsSample_buildDev
   image: node:4
-  command: "/bin/bash -l -c 'npm i && node_modules/.bin/grunt build'"
+  command: "/bin/bash -l -c 'npm i && npm run build'"
 
   working_dir: /sailsSample
   volumes:
@@ -22,7 +22,7 @@ buildDev:
 buildProd:
   container_name: sailsSample_buildProd
   image: node:4
-  command: "/bin/bash -l -c 'npm i && node_modules/.bin/grunt prod'"
+  command: "/bin/bash -l -c 'npm i && npm run prod'"
 
   working_dir: /sailsSample
   volumes:
@@ -31,7 +31,7 @@ buildProd:
 test:
   container_name: sailsSample_test
   image: node:4
-  command: "/bin/bash -l -c 'node_modules/.bin/grunt test'"
+  command: "/bin/bash -l -c 'npm run test'"
 
   working_dir: /sailsSample
   volumes:
