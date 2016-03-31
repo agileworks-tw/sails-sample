@@ -1,4 +1,4 @@
-FROM node:4
+FROM trunk/node
 COPY ./ /sailsSample
 WORKDIR /sailsSample
 

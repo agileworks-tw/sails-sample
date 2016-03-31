@@ -9,6 +9,13 @@ debug:
   ports:
     - "1337:1337"
 
+build:
+  container_name: sailsSample_build
+  image: agileworks/node
+  command: "npm run build"
+  working_dir: /sailsSample
+  volumes:
+    - ./:/sailsSample
 
 buildDev:
   container_name: sailsSample_buildDev
