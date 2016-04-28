@@ -1,4 +1,4 @@
-production deploy:
+deploy-production:
 	ssh jenkins@localhost docker run -p 8800:1337 agileworks/sails_sample_prod
 
 build-docker-env:
