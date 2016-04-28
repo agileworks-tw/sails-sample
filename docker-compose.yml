@@ -54,15 +54,13 @@ dev:
     DOMAIN_HOST: "localhost:1337"
 
   ports:
-    - "1337:1337"
+    - "8000:1337"
 
   working_dir: /sailsSample
   volumes:
     - ./:/sailsSample
   external_links:
     - mysql
-
-  restart: always
 
 prod:
   container_name: sailsSample_prod
@@ -82,7 +80,6 @@ prod:
   external_links:
     - mysql
 
-  restart: always
 
 mysql:
   container_name: mysql
@@ -99,5 +96,3 @@ mysql:
 
   volumes:
     - ../database:/var/lib/mysql/
-
-  restart: always

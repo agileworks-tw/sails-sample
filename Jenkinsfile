@@ -18,6 +18,14 @@ node {
    stage 'test project'
    sh "docker-compose run --rm test"
 
+   stage 'run project'
+   sh "docker-compose up dev"
+
+   stage 'Approve, deploy to prod'
+   def url = 'http://localhost:8000/'
+   input message: "Does staging at $url look good? ", ok: "Deploy to production"
+   sh "docker-compose stop dev"
+
    stage 'build production image'
    sh "docker build -t agileworks/sails_sample_prod ."
 
