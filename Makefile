@@ -15,3 +15,9 @@ preview:
 		unzip -o ~/deploy/temp/build.zip -d ~/deploy/preview > /dev/null && \
 		pm2 kill && \
 		pm2 start ~/deploy/preview/app.js
+
+build-docker-env:
+	docker build -t agileworks/sails_sample_env dockers/node
+
+build-docker-image:
+	docker build -t agileworks/sails_sample_prod .
