@@ -77,8 +77,6 @@ prod:
   working_dir: /sailsSample
   volumes:
     - ./:/sailsSample
-  external_links:
-    - mysql
 
 
 mysql:
