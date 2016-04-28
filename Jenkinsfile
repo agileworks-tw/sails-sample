@@ -19,9 +19,9 @@ node {
    sh "docker-compose run --rm test"
 
    stage 'run project'
-   sh "docker-compose up dev"
+   sh "docker-compose up -d dev"
 
-   stage 'Approve, deploy to prod'
+   stage 'Approve, production flow'
    def url = 'http://localhost:8000/'
    input message: "Does staging at $url look good? ", ok: "Deploy to production"
    sh "docker-compose stop dev"
