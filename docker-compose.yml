@@ -1,7 +1,7 @@
 debug:
   container_name: sailsSample_debug
   image: agileworks/sails_sample_env
-  command: "/bin/bash -l"
+  command: "/bin/sh -l"
 
   working_dir: /sailsSample
   volumes:
@@ -20,7 +20,7 @@ build:
 buildDev:
   container_name: sailsSample_buildDev
   image: agileworks/sails_sample_env
-  command: "/bin/bash -l -c 'npm i && npm run build'"
+  command: "/bin/sh -l -c 'npm i && npm run build'"
 
   working_dir: /sailsSample
   volumes:
@@ -29,7 +29,7 @@ buildDev:
 buildProd:
   container_name: sailsSample_buildProd
   image: agileworks/sails_sample_env
-  command: "/bin/bash -l -c 'npm i && npm run prod'"
+  command: "/bin/sh -l -c 'npm i && npm run prod'"
 
   working_dir: /sailsSample
   volumes:
@@ -38,7 +38,7 @@ buildProd:
 test:
   container_name: sailsSample_test
   image: agileworks/sails_sample_env
-  command: "/bin/bash -l -c 'npm run test'"
+  command: "/bin/sh -l -c 'npm run test'"
 
   working_dir: /sailsSample
   volumes:
@@ -47,7 +47,7 @@ test:
 dev:
   container_name: sailsSample_dev
   image: agileworks/sails_sample_env
-  command: "/bin/bash -l -c 'npm start'"
+  command: "/bin/sh -l -c 'npm start'"
   environment:
     PORT: "1337"
     NODE_ENV: "development"
@@ -67,7 +67,7 @@ dev:
 prod:
   container_name: sailsSample_prod
   image: agileworks/sails_sample_env
-  command: "/bin/bash -l -c 'npm run build-prod && npm run start-prod'"
+  command: "/bin/sh -l -c 'npm run build-prod && npm run start-prod'"
   environment:
     PORT: "1337"
     NODE_ENV: "development"
