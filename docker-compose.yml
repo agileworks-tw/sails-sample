@@ -59,8 +59,6 @@ dev:
   working_dir: /sailsSample
   volumes:
     - ./:/sailsSample
-  external_links:
-    - mysql
 
 prod:
   container_name: sailsSample_prod
