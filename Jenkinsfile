@@ -3,7 +3,7 @@ node {
   stage 'checkout project'
   git url: 'https://github.com/TrunkWorkshop/sailsSample.git'
 
-  stage 'docker env check'
+  stage 'check docker env'
 
   sh "docker -v"
   sh "docker-compose -v"
@@ -22,7 +22,7 @@ node {
   sh "docker-compose up -d dev"
 
   try{
-    stage 'Approve, production flow'
+    stage 'Approve, go production'
     def url = 'http://localhost:8000/'
     input message: "Does staging at $url look good? ", ok: "Deploy to production"
   }finally{
