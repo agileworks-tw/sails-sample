@@ -33,11 +33,24 @@ module.exports.connections = {
   mysql: {
     'user': process.env.MYSQL_ENV_MYSQL_USER_NAME || "root",
     'password': process.env.MYSQL_ENV_MYSQL_USER_PASS || "root",
-    'database': process.env.MYSQL_ENV_MYSQL_USER_DB ||'sails_db',
+    'database': process.env.MYSQL_ENV_MYSQL_USER_DB ||'127.0.0.1',
     'dialect': 'mysql',
     options: {
       'host': process.env.MYSQL_PORT_3306_TCP_ADDR || "127.0.0.1",
       'port': process.env.MYSQL_PORT_3306_TCP_PORT || 3306,
+      'dialect': 'mysql',
+      'timezone': '+08:00'
+    }
+  },
+
+  docker_mysql: {
+    'user': "nodejsSample",
+    'password': "nodejsSample",
+    'database': "nodejsSample",
+    'dialect': 'mysql',
+    options: {
+      'host': "mysql",
+      'port': 3306,
       'dialect': 'mysql',
       'timezone': '+08:00'
     }
