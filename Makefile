@@ -20,4 +20,4 @@ deploy-production-legacy:
 
 restart-production:
 	- ssh jenkins@localhost cd ~/deploy/production && pm2 delete production
-	ssh jenkins@localhost cd ~/deploy/production && pm2 start app.js --name 'production'
+	ssh jenkins@localhost  cd ~/deploy/production && NODE_ENV=production pm2 start app.js --name 'production'
