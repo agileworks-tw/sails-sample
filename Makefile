@@ -15,9 +15,9 @@ package-production:
 
 deploy-production-legacy:
 	ssh jenkins@localhost mkdir -p ~/deploy/production
-	scp  ~/build/sailsSampleProd.tar.gz jenkins@localhost:~/deploy/production
+	scp ~/build/sailsSampleProd.tar.gz jenkins@localhost:~/deploy/production
 	tar -C ~/deploy/production/ -zvxf ~/deploy/production/sailsSampleProd.tar.gz
 
 restart-production:
 	- ssh jenkins@localhost cd ~/deploy/production && pm2 delete production
-	ssh jenkins@localhost  cd ~/deploy/production && NODE_ENV=production pm2 start app.js --name 'production'
+	ssh jenkins@localhost  cd ~/deploy/production && NODE_ENV=production pm2 start -f app.js --name 'production'
