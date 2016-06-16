@@ -11,7 +11,7 @@ node {
   stage 'build project'
   sh "npm i"
 
-stage 'test project'
+  stage 'test project'
   sh "npm test"
 
   stage 'run project'
