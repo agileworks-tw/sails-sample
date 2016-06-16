@@ -27,10 +27,10 @@ stage 'test project'
   }
 
   stage 'package production'
-  sh "npm run package-prod"
+  sh "make package-production"
 
   stage 'deploy production'
-  sh "make deploy-production-tar"
+  sh "make deploy-production-legacy"
 
   stage 'restart production'
   sh "make restart-production"

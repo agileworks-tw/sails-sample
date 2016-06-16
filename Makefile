@@ -8,9 +8,14 @@ build-docker-env:
 build-docker-prod-image:
 	docker build -t agileworks/sails_sample_prod .
 
-deploy-production-tar:
+package-production:
+	mkdir -p ~/build
+	- rm ~/build/sailsSampleProd.tar.gz
+	tar cvzf ~/build/sailsSampleProd.tar.gz ./
+
+deploy-production-legacy:
 	ssh jenkins@localhost mkdir -p ~/deploy/production
-	scp sailsSampleProd.tar.gz jenkins@localhost:~/deploy/production
+	scp  ~/build/sailsSampleProd.tar.gz jenkins@localhost:~/deploy/production
 	tar -C ~/deploy/production/ -zvxf ~/deploy/production/sailsSampleProd.tar.gz
 
 restart-production:
