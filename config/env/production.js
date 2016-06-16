@@ -11,7 +11,7 @@
  */
 
 module.exports = {
-  port: 2337
+  port: 2337,
   /***************************************************************************
    * Set the default database connection for models in the production        *
    * environment (see config/connections.js and config/models.js )           *

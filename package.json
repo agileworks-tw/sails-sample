@@ -38,6 +38,8 @@
     "test": "grunt test",
 
     "start": "node app.js",
+    "pm2-start": "pm2 start app.js --name 'sailsSample'",
+
     "build": "npm i && node_modules/grunt-cli/bin/grunt build",
 
     "start-prod": "NODE_ENV=production node app.js",

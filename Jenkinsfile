@@ -15,7 +15,7 @@ stage 'test project'
   sh "npm test"
 
   stage 'run project'
-  sh "pm2 start app.js --name 'sailsSample'"
+  sh "npm run pm2-start"
 
   try{
     stage 'Approve, go production'
