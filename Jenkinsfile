@@ -6,7 +6,6 @@ node {
   stage 'check env'
 
   sh "node -v"
-  sh "nvm -v"
   sh "npm i pm2 -g"
 
   stage 'build project'
