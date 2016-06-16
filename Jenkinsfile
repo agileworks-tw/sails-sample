@@ -14,6 +14,9 @@ node {
   stage 'test project'
   sh "npm test"
 
+  //   stage 'report'
+  //   step([$class: 'CoberturaPublisher', coberturaReportFile: 'coverage/cobertura-coverage.xml'])
+
   stage 'run project'
   sh "npm run pm2-start"
 
@@ -27,6 +30,10 @@ node {
 
   stage 'package production'
   sh "make package-production"
+
+  stage 'Artifact'
+  step([$class: 'ArtifactArchiver', artifacts: 'sailsSampleProd.tar.gz', fingerprint: true])
+
 
   stage 'deploy production'
   sh "make deploy-production-legacy"
