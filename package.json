@@ -42,6 +42,9 @@
 
     "start-prod": "NODE_ENV=production node app.js",
     "build-prod": "grunt prod",
+    "package-prod": "tar cvzf sailsSampleProd.tar.gz ./",
+
+
 
     "build-docker": "docker-compose run --rm buildDev",
     "test-docker": "docker-compose run --rm test",
