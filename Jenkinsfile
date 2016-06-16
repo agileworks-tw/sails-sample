@@ -20,7 +20,7 @@ stage 'test project'
 
   try{
     stage 'Approve, go production'
-    def url = 'http://localhost:8000/'
+    def url = 'http://localhost:1337/'
     input message: "Does staging at $url look good? ", ok: "Deploy to production"
   }finally{
     sh "pm2 delete sailsSample"

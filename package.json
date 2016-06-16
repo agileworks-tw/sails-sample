@@ -42,7 +42,7 @@
 
     "start-prod": "NODE_ENV=production node app.js",
     "build-prod": "grunt prod",
-    "package-prod": "tar cvzf sailsSampleProd.tar.gz ./",
+    "package-prod": "rm sailsSampleProd.tar.gz && tar cvzf sailsSampleProd.tar.gz ./",
 
 
 
