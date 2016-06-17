@@ -3,7 +3,7 @@ node {
   stage 'checkout project'
   git url: 'https://github.com/TrunkWorkshop/sailsSample.git'
 
-  stage 'check env & pre install test hello'
+  stage 'check env'
 
   sh "node -v"
   sh "npm i pm2 -g"
