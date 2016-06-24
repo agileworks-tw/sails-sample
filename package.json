@@ -42,10 +42,14 @@
     "pm2-stop": "pm2 stop sailsSample",
     "start-prod": "NODE_ENV=production node app.js",
     "build-prod": "grunt prod",
-    "build-docker-node": "docker build -t agileworks/node dockers/node",
+
+    "build-docker-env": "docker build -t agileworks/sails_sample_env dockers/node",
+    "build-docker-prod-image": "docker build -t agileworks/sails_sample_prod .",
+
     "build-docker": "docker-compose run --rm buildDev",
     "test-docker": "docker-compose run --rm test",
-    "start-docker": "docker-compose up -d web",
+    "start-docker": "docker-compose up -d dev",
+    "stop-docker": "docker-compose stop dev",
     "build-prod-docker": "docker-compose run --rm buildPord",
     "build-prod-docker-images": "docker build -t trunk/sails .",
     "start-mysql-docker": "docker-compose up -d mysql",
