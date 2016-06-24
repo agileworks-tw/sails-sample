@@ -38,7 +38,7 @@ buildProd:
 test:
   container_name: sailsSample_test
   image: agileworks/sails_sample_env
-  command: "/bin/sh -l -c 'npm run test-unit'"
+  command: "/bin/sh -l -c 'npm run test-junit'"
 
   working_dir: /sailsSample
   volumes:
