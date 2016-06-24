@@ -4,15 +4,17 @@ node {
   git url: 'https://github.com/TrunkWorkshop/sailsSample.git'
 
   stage 'check env'
-
   sh "node -v"
-  sh "npm i pm2 -g"
+
+  stage 'install pm2'
+  sh "npm install pm2 -g"
 
   stage 'build project'
-  sh "npm i"
+  sh "npm install"
 
   stage 'test project'
-  sh "npm test"
+  sh "npm run test-junit"
+  step([$class: 'JUnitResultArchiver', testResults: 'test-results.xml'])
 
   stage 'run project'
   sh "npm run pm2-start"
@@ -27,10 +29,7 @@ node {
 
   stage 'package production'
   sh "make package-production"
-
-  stage 'Artifact'
   step([$class: 'ArtifactArchiver', artifacts: 'sailsSampleProd.tar.gz', fingerprint: true])
-
 
   stage 'deploy production'
   sh "make deploy-production-legacy"

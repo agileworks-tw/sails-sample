@@ -35,27 +35,22 @@
   "scripts": {
     "debug": "node debug app.js",
     "test": "grunt test",
+    "test-junit": "mocha test --reporter mocha-junit-reporter",
     "build": "npm i && node_modules/grunt-cli/bin/grunt build",
     "start": "node app.js",
-
     "pm2-start": "pm2 start -f app.js --name 'sailsSample'",
     "pm2-stop": "pm2 stop sailsSample",
-
     "start-prod": "NODE_ENV=production node app.js",
     "build-prod": "grunt prod",
-
     "build-docker-node": "docker build -t agileworks/node dockers/node",
     "build-docker": "docker-compose run --rm buildDev",
     "test-docker": "docker-compose run --rm test",
     "start-docker": "docker-compose up -d web",
-
     "build-prod-docker": "docker-compose run --rm buildPord",
     "build-prod-docker-images": "docker build -t trunk/sails .",
-
     "start-mysql-docker": "docker-compose up -d mysql",
     "start-web-docker": "docker rm -f web || true && docker run -d --link mysql -p 1337:1337 --restart always --name web trunk/sails",
     "start-prod-docker": "npm run start-mysql-docker && npm run start-web-docker"
-
   },
   "main": "app.js",
   "repository": {
@@ -72,6 +67,7 @@
     "grunt-mocha-istanbul": "^3.0.1",
     "istanbul": "^0.4.0",
     "mocha": "^2.3.4",
+    "mocha-junit-reporter": "^1.11.1",
     "sinon": "^1.17.2",
     "supertest-as-promised": "^2.0.2"
   }
