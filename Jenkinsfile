@@ -22,7 +22,7 @@ node {
     def url = 'http://localhost:1337/'
     input message: "Does staging at $url look good? ", ok: "Deploy to production"
   }finally{
-    sh "pm2 delete sailsSample"
+    sh "npm run pm2-stop"
   }
 
   stage 'package production'

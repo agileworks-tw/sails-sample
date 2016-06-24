@@ -34,17 +34,17 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "build-docker-node": "docker build -t agileworks/node dockers/node",
     "test": "grunt test",
-
-    "start": "node app.js",
-    "pm2-start": "pm2 start -f app.js --name 'sailsSample'",
-
     "build": "npm i && node_modules/grunt-cli/bin/grunt build",
+    "start": "node app.js",
+
+    "pm2-start": "pm2 start -f app.js --name 'sailsSample'",
+    "pm2-stop": "pm2 stop sailsSample",
 
     "start-prod": "NODE_ENV=production node app.js",
     "build-prod": "grunt prod",
 
+    "build-docker-node": "docker build -t agileworks/node dockers/node",
     "build-docker": "docker-compose run --rm buildDev",
     "test-docker": "docker-compose run --rm test",
     "start-docker": "docker-compose up -d web",
