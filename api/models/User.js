@@ -8,17 +8,9 @@ module.exports = {
       type: Sequelize.STRING,
       allowNull: false
     },
-    age: {
-      type: Sequelize.INTEGER
+    password: {
+      type: Sequelize.STRING,
+      allowNull: false
     }
-  },
-  associations: function() {
-    User.hasMany(Post);
-    User.hasMany(Passport);
-  },
-  options: {
-    classMethods: {},
-    instanceMethods: {},
-    hooks: {}
   }
 };

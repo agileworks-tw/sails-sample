@@ -1,4 +1,4 @@
-describe('about Sinon operation.', () => {
+describe.skip('about Sinon operation.', () => {
   it('use origin UserService findAll function', async (done) => {
     let users = await UserService.findAll();
     users.should.be.Array;

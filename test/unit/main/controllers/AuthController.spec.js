@@ -1,4 +1,4 @@
-describe('about Auth Controller operation.', function() {
+describe.skip('about Auth Controller operation.', function() {
   it('register user should success.', async (done) => {
 
     try {

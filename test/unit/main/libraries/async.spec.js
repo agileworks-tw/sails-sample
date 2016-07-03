@@ -1,4 +1,4 @@
-describe('about flow operation.', () => {
+describe.skip('about flow operation.', () => {
 
   it('use promise function', (done) => {
     User.findAll()
