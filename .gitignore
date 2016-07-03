@@ -121,3 +121,4 @@ sqlite.db
 www
 assets/bower
 coverage
+test-results.xml

@@ -42,10 +42,8 @@
     "pm2-stop": "pm2 stop sailsSample",
     "start-prod": "NODE_ENV=production node app.js",
     "build-prod": "grunt prod",
-
     "build-docker-env": "docker build -t agileworks/sails_sample_env dockers/node",
     "build-docker-prod-image": "docker build -t agileworks/sails_sample_prod .",
-
     "build-docker": "docker-compose run --rm buildDev",
     "test-docker": "docker-compose run --rm test",
     "start-docker": "docker-compose up -d dev",
@@ -73,6 +71,7 @@
     "mocha": "^2.3.4",
     "mocha-junit-reporter": "^1.11.1",
     "sinon": "^1.17.2",
+    "supertest": "^1.2.0",
     "supertest-as-promised": "^2.0.2"
   }
 }
