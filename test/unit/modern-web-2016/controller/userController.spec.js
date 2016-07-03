@@ -1,7 +1,5 @@
-describe('對 User Model 進行使用者驗證', function() {
-
+describe.only('about Auth Controller operation.', function() {
   let user = null;
-
   before(async (done) => {
     // 建立測試的 user 資料
     // 在進行 Login 驗證前需要 User 事先存在
@@ -18,18 +16,22 @@ describe('對 User Model 進行使用者驗證', function() {
     }
   });
 
-  it('透過 email 以及 password 確認使用者確實存在', async (done) => {
+  it('login user should success.', async (done) => {
+    console.log('=== user controller spec ===');
     try {
-      let where = {
-        email: user.email,
+
+      let newUser = {
         username: user.username,
+        email: user.email,
         password: user.password
       }
-      let userExist = await User.findOne({where});
-      console.log('=== model userExist.email ===', userExist.toJSON());
-      userExist.email.should.be.equal(user.email);
-      userExist.username.should.be.equal(user.username);
-      userExist.password.should.be.equal(user.password);
+
+      let result = await request(sails.hooks.http.app)
+      .post('/user/login')
+      .send(newUser);
+      console.log('=== result ===', result.body);
+      result.loginSuccess.should.be.true;
+
       done();
     } catch (e) {
       done(e);

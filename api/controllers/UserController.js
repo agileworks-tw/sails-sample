@@ -1,17 +1,9 @@
 module.exports = {
-  index: async (req, res) => {
+  login: async (req, res) => {
     try {
-      let users = await UserService.findAll();
-      res.ok({users});
-    } catch (e) {
-      res.serverError(e);
-    }
-  },
-
-  find: async (req, res) => {
-    try {
-      let users = await UserService.findAll();
-      res.ok({users});
+      let user = req.body;
+      let userExist = await UserService.checkUser({user});
+      res.ok({user: userExist, loginSuccess: true});
     } catch (e) {
       res.serverError(e);
     }

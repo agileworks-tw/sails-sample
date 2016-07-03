@@ -1,4 +1,4 @@
-describe('對 User Model 進行使用者驗證', function() {
+describe('對 User Service 進行使用者驗證', function() {
 
   let user = null;
 
@@ -20,13 +20,9 @@ describe('對 User Model 進行使用者驗證', function() {
 
   it('透過 email 以及 password 確認使用者確實存在', async (done) => {
     try {
-      let where = {
-        email: user.email,
-        username: user.username,
-        password: user.password
-      }
-      let userExist = await User.findOne({where});
-      console.log('=== model userExist.email ===', userExist.toJSON());
+
+      let userExist = await UserService.checkUser({user});
+      console.log('=== service userExist.email ===', userExist.toJSON());
       userExist.email.should.be.equal(user.email);
       userExist.username.should.be.equal(user.username);
       userExist.password.should.be.equal(user.password);

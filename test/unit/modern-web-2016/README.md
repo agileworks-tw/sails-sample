@@ -38,7 +38,7 @@ let where = {
   username: user,
   password: 'user'
 }
-let userExist = await User.findOne({});
+let userExist = await User.findOne({where});
 
 ```
 
