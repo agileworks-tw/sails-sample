@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title ec-platform
+    title sailsSample
 
     meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
 
@@ -10,7 +10,7 @@ html
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
 
     // STYLES
-    link(rel="stylesheet", href="styles/importer.css")
+    link(rel="stylesheet", href="/styles/importer.css")
     // STYLES END
     
     block styles
@@ -25,15 +25,15 @@ html
             li(class=(req.options.controller == null ? 'active' : ''))
               a(href='/') #{i18n('home')}
             li(class=(req.options.controller == 'user' ? 'active' : ''))
-              a(href='/user/index') #{i18n('user')}
+              a(href='/login') 登入
 
     
     block body
 
     // SCRIPTS
-    script(src="js/dependencies/sails.io.js")
-    script(src="bower/jquery/jquery.js")
-    script(src="bower/bootstrap-sass/bootstrap.js")
+    script(src="/js/dependencies/sails.io.js")
+    script(src="/bower/jquery/jquery.js")
+    script(src="/bower/bootstrap-sass/bootstrap.js")
     // SCRIPTS END
 
     block scripts

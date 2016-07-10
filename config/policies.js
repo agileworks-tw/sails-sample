@@ -18,14 +18,9 @@
 
 
 module.exports.policies = {
-  '*': ['passport', 'sessionAuth'],
-  'AuthController': {
-    '*': ['passport']
-  },
+  '*': ['sessionAuth'],
   'UserController': {
-    'index': [],
-    'login': [],
-    'find': []
+    'signin': []
   }
   /***************************************************************************
   *                                                                          *

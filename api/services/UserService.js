@@ -10,7 +10,6 @@ module.exports = {
     try {
       let where = {
         email: user.email,
-        username: user.username,
         password: user.password
       }
       let userExist = await User.findOne({where});

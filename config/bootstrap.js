@@ -11,7 +11,7 @@
 
 module.exports.bootstrap = async (cb) => {
   try {
-    let user = await User.create({username: 'user', email: 'user@gmail.com', password: 'user'});
+    let user = await User.create({email: 'user@gmail.com', password: 'user'});
     cb();
   } catch (e) {
     cb(e);

@@ -17,6 +17,6 @@ module.exports = {
     migrate: 'drop'
   },
   log: {
-    level: 'verbose'
+    level: 'info'
   }
 };
