@@ -2,10 +2,15 @@
 
 ### request
 
-* http method: POST
-* url: `/auth/login`
-* input:
-  * email
-  * password
+* form: http method: POST, action: `/signin`
+  * input:
+    * name: email
+    * name: password
 
-### response
+## 相關程式碼
+
+### login 實作 service
+
+```
+let userExist = await UserService.checkUser({user});
+```

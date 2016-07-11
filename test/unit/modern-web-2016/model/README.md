@@ -1,13 +1,11 @@
-## Model (資料表欄位)
+# Model
 
-### User 欄位定義
+
+## User 欄位定義
+
 ```
 module.exports = {
   attributes: {
-    username: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
     email: {
       type: Sequelize.STRING,
       allowNull: false
@@ -20,17 +18,15 @@ module.exports = {
 };
 ```
 
-### User Create
+## 相關程式碼
 
-`let user = await User.create({username: 'user', email: 'user@gmail.com'});`
 
 ### User query
 
 ```
 let where = {
-  email: 'user@gmail.com',
-  username: user,
-  password: 'user'
+  email: user.email,
+  password: user.password
 }
 let userExist = await User.findOne({where});
 

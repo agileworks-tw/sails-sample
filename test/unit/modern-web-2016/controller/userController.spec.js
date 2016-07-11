@@ -23,6 +23,8 @@ describe('對 User Controller 進行使用者驗證', function() {
         password: user.password
       }
 
+      // 實作 controller 呼叫 service 完成 login 動作
+      // 檔案位置：api/controllers/UserController.js
       let result = await request(sails.hooks.http.app)
       .post('/signin')
       .send(newUser);
