@@ -24,11 +24,30 @@
 
 
 
-根據上面的 MVCS 我們要進行練習的步驟如下
+根據上面的 MVCS 我們要進行練習的步驟如下，在最後的驗證步驟前，請試著只用
+
+`npm test`
+
+進行相關程式碼的驗證，在一開始，我運行 `npm test` 將會看到所有測試將會 fail 如下
+
+```
+對 User Controller 進行使用者驗證
+  1) 透過 email 以及 password 確認使用者確實存在
+
+對 User Model 進行使用者驗證
+  2) 透過 email 以及 password 確認使用者確實存在
+
+對 User Service 進行使用者驗證
+  3) 透過 email 以及 password 確認使用者確實存在
+
+
+0 passing (2s)
+3 failing
+```
 
 ## 1. 使用 Model 進行 Login 使用者驗證
 
-實作 & 驗證 `test/unit/modern-web-2016/model/user.spec.js`
+* 實作 & 驗證 `test/unit/modern-web-2016/model/user.spec.js`
 
 ### User 欄位定義
 
@@ -60,8 +79,8 @@ let userExist = await User.findOne({where});
 
 ## 2. 將 Model 所完成的 Login 邏輯，用 Service 包裝
 
-實作 `api/services/UserService.js`
-驗證 `test/unit/modern-web-2016/service/userService.js`
+* 實作 `api/services/UserService.js`
+* 驗證 `test/unit/modern-web-2016/service/userService.js`
 
 ### User Create
 
@@ -81,8 +100,8 @@ let userExist = await User.findOne({where});
 
 ## 3. 使用 Controller 呼叫 Service 所完成的 Login 驗證函式，並且將驗證結果回傳
 
-實作 `api/controllers/UserController.js`
-驗證 `test/unit/modern-web-2016/controller/userController.spec.js`
+* 實作 `api/controllers/UserController.js`
+* 驗證 `test/unit/modern-web-2016/controller/userController.spec.js`
 
 ### request
 
@@ -100,7 +119,7 @@ let userExist = await UserService.checkUser({user});
 
 ## 4. View 根據 Controller 的定義將 login 資料傳入，並且顯示處理結果
 
-實作 & 驗證: `views/login.jade`
+* 實作 & 驗證: `views/login.jade`
 
 
 ### 根據 controller 的 spec 把 form 表單完成
@@ -121,6 +140,24 @@ let result = await request(sails.hooks.http.app)
 ```
 
 ## 最後驗證
+
+運行 `npm test` 將會看到
+
+```
+對 User Controller 進行使用者驗證
+  ✓ 透過 email 以及 password 確認使用者確實存在 (346ms)
+
+對 User Model 進行使用者驗證
+  ✓ 透過 email 以及 password 確認使用者確實存在
+
+對 User Service 進行使用者驗證
+  ✓ 透過 email 以及 password 確認使用者確實存在
+
+
+3 passing (1s)
+```
+
+接著
 
 `npm start`
 
