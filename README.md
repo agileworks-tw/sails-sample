@@ -66,6 +66,15 @@ module.exports = {
 };
 ```
 
+### User Create Before test
+
+```
+user = await User.create({
+  email: 'test@gmail.com',
+  password: 'test'
+});
+```
+
 ### User query
 
 ```
