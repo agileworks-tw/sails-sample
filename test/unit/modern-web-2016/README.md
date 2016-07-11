@@ -26,7 +26,34 @@
 
 根據上面的 MVCS 我們要進行練習的步驟如下
 
-1. 使用 Model 進行 Login 使用者驗證
-2. 將 Model 所完成的 Login 邏輯，用 Service 包裝
-3. 使用 Controller 呼叫 Service 所完成的 Login 驗證函式，並且將驗證結果回傳
-4. View 根據 Controller 的定義將 login 資料傳入，並且顯示處理結果
+### 使用 Model 進行 Login 使用者驗證
+
+實作 & 驗證 `test/unit/modern-web-2016/model/user.spec.js`
+
+### 將 Model 所完成的 Login 邏輯，用 Service 包裝
+
+實作 `api/services/UserService.js`
+驗證 `test/unit/modern-web-2016/service/userService.js`
+
+
+### 使用 Controller 呼叫 Service 所完成的 Login 驗證函式，並且將驗證結果回傳
+
+實作 `api/controllers/UserController.js`
+驗證 `test/unit/modern-web-2016/controller/userController.spec.js`
+
+###View 根據 Controller 的定義將 login 資料傳入，並且顯示處理結果
+
+實作 & 驗證: `views/login.jade`
+
+## 最後驗證
+
+`npm start`
+
+開啟瀏覽器進入網站 `http://localhost:1337/login`
+
+輸入：
+
+* email: user@gmail.com
+* password: user
+
+可以正確完成登入
