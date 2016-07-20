@@ -1,15 +1,4 @@
 
-process.chdir(__dirname)
-
-var options = {
-  loose:  'all',
-  stage:  1,
-  ignore:  null,
-  only:  null,
-  extensions:  null
-};
-
-require('sails-hook-babel/node_modules/babel/register')(options);
 
 (function() {
   var e, e0, e1, rc, sails;
