@@ -1,7 +1,7 @@
 node {
 
   stage 'checkout project'
-  git url: 'https://github.com/TrunkWorkshop/sailsSample.git'
+  git url: 'https://github.com/agileworks-tw/sails-sample.git'
 
   stage 'check env'
 
