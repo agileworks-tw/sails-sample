@@ -1,7 +1,7 @@
 node {
 
   stage 'checkout project'
-  git url: 'https://github.com/TrunkWorkshop/sailsSample.git'
+  git url: 'https://github.com/agileworks-tw/sails-sample.git'
 
   stage 'check env'
 
@@ -14,8 +14,6 @@ node {
   stage 'test project'
   sh "npm test"
 
-  //   stage 'report'
-  //   step([$class: 'CoberturaPublisher', coberturaReportFile: 'coverage/cobertura-coverage.xml'])
 
   stage 'run project'
   sh "npm run pm2-start"
