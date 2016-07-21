@@ -45,9 +45,9 @@ module.exports.bootstrap = async (cb) => {
     ]);
     let passport = await Passport.create({provider: 'local', password: 'user', UserId: user.id});
     let post = await Post.bulkCreate([
-      { title: 'Pokemon GOOO', auth: 'user', content: 'piko piko', UserId: user.id },
-      { title: 'Dark Souls IIIII', content: 'daaaarkness', auth: 'Deleav' },
-      { title: 'Big Sushi III', content: '大顆壽司', auth: 'DMoon' }
+      { title: 'Pokemon GOOO', authId: '1', content: 'piko piko', UserId: user.id },
+      { title: 'Dark Souls IIIII', content: 'daaaarkness', authId: '2' },
+      { title: 'Big Sushi III', content: '大顆壽司', authId: '3' }
     ]);
     let dashboard = await Dashboard.bulkCreate([
       { title: "Pokemon GOOO" },
