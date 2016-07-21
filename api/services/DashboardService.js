@@ -3,7 +3,7 @@ module.exports = {
   get_callback: function( callback ) {
     Dashboard.findAll().then(function( value ) {
       callback( value );
-      return "success";
+      return value;
     }).catch(function( error ) {
       return error;
     });
