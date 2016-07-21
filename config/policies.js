@@ -25,6 +25,9 @@ module.exports.policies = {
   'UserController': {
     'index': [],
     'find': []
+  },
+  'DashboardController': {
+    '*': []
   }
   /***************************************************************************
   *                                                                          *

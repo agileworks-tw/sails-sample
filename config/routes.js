@@ -41,13 +41,21 @@ module.exports.routes = {
   'get /register': 'AuthController.register',
 
   'get /auth/status': 'AuthController.status',
-  
+
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',
 
   'get /auth/:provider': 'AuthController.provider',
   'get /auth/:provider/callback': 'AuthController.callback',
   'get /auth/:provider/:action': 'AuthController.callback',
+
+  // api
+  'get /api/callback/dashboard': 'DashboardController.get_dashboard_callback',
+  'get /api/callback/firstPost': 'DashboardController.get_first_post_callback',
+  'get /api/callback/authOfFirstPost': 'DashboardController.get_auth_of_first_post_callback',
+  'get /api/promise/authOfFirstPost': 'DashboardController.get_promise',
+  'get /api/arrow/authOfFirstPost': 'DashboardController.get_arrow',
+  'get /api/async/authOfFirstPost': 'DashboardController.get_async',
 
   /***************************************************************************
   *                                                                          *
