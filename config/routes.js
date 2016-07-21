@@ -50,12 +50,16 @@ module.exports.routes = {
   'get /auth/:provider/:action': 'AuthController.callback',
 
   // api
-  'get /api/callback/dashboard': 'DashboardController.get_dashboard_callback',
-  'get /api/callback/firstPost': 'DashboardController.get_first_post_callback',
-  'get /api/callback/authOfFirstPost': 'DashboardController.get_auth_of_first_post_callback',
-  'get /api/promise/authOfFirstPost': 'DashboardController.get_promise',
-  'get /api/arrow/authOfFirstPost': 'DashboardController.get_arrow',
-  'get /api/async/authOfFirstPost': 'DashboardController.get_async',
+  'get /api/article': 'DashboardController.get',
+  'get /api/articleInfo/:id': 'DashboardController.getArticleInfo',
+  'get /api/author/:id': 'DashboardController.getAuthInfo',
+  // api demo
+  'get /api/dashboard/callback': 'DashboardController.get_dashboard_callback',
+  'get /api/firstPost/callback': 'DashboardController.get_first_post_callback',
+  'get /api/authOfFirstPost/callback': 'DashboardController.get_auth_of_first_post_callback',
+  'get /api/authOfFirstPost/promise': 'DashboardController.get_promise',
+  'get /api/authOfFirstPost/arrow': 'DashboardController.get_arrow',
+  'get /api/authOfFirstPost/async': 'DashboardController.get_async',
 
   /***************************************************************************
   *                                                                          *

@@ -14,10 +14,10 @@ module.exports = {
 
 
   // Demo for callback
-  get_callback: function( name, callback ) {
+  get_callback: function( authId, callback ) {
     User.findOne({
       where: {
-        username: name
+        id: authId
       }
     }).then(function( value ) {
       callback( value );
@@ -26,11 +26,11 @@ module.exports = {
       return error;
     });
   },
-  get_promise: function( name, callback ) {
+  get_promise: function( authId, callback ) {
     return new Promise(function( resolve, reject ) {
       User.findOne({
         where: {
-          username: name
+          id: authId
         }
       }).then(function( value ) {
         return resolve( value );

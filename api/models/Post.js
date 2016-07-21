@@ -7,7 +7,7 @@ module.exports = {
     content: {
       type: Sequelize.STRING,
     },
-    auth: {
+    authId: {
       type: Sequelize.STRING,
       defaultValue: ""
     }

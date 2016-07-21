@@ -40,19 +40,19 @@ module.exports.bootstrap = async (cb) => {
 
     let user = await User.bulkCreate([
       { username: 'user', email: 'user@gmail.com' },
-      { username: 'Deleav', email: 'deleav@deleav.com' },
+      { username: 'Deleav', email: 'deleav@gmail.com', age: '22k' },
       { username: 'DMoon', email: 'dmoon@dmoon.com' }
     ]);
     let passport = await Passport.create({provider: 'local', password: 'user', UserId: user.id});
     let post = await Post.bulkCreate([
-      { title: 'Pokemon GOOO', auth: 'user', content: 'piko piko', UserId: user.id },
-      { title: 'Dark Souls IIIII', content: 'daaaarkness', auth: 'Deleav' },
-      { title: 'Big Sushi III', content: '大顆壽司', auth: 'DMoon' }
+      { title: 'post 1', authId: '2', content: '今天天氣真好', UserId: user.id },
+      { title: 'post 2', content: 'daaaarkness', authId: '1' },
+      { title: 'post 3', content: '大顆壽司', authId: '3' }
     ]);
     let dashboard = await Dashboard.bulkCreate([
-      { title: "Pokemon GOOO" },
-      { title: "Dark Souls IIIII" },
-      { title: "Big Sushi III" }
+      { title: "post 1" },
+      { title: "post 2" },
+      { title: "post 3" }
     ]);
     // await user.setPosts([post]);
     // await user.setPassports([passport]);
