@@ -8,6 +8,15 @@
 module.exports = {
 
   attributes: {
-
+    name: {
+      type: Sequelize.STRING
+    },
+    facebookId: {
+      type: Sequelize.STRING
+    },
+    email: {
+      type: Sequelize.STRING,
+      defaultValue: "nuknown@email.com"
+    },
   }
 };
