@@ -36,7 +36,11 @@ module.exports.routes = {
     view: 'index'
   },
   // homework friend
+  'get /friend': 'FriendController.index',
 
+  'post /friend/create': 'FriendController.create',
+  'put /friend/update': 'FriendController.update',
+  'delete /friend/delete/:id': 'FriendController.destroy',
   //
 
   'get /login': 'AuthController.login',
