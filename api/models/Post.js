@@ -6,6 +6,10 @@ module.exports = {
     },
     content: {
       type: Sequelize.STRING,
+    },
+    authId: {
+      type: Sequelize.STRING,
+      defaultValue: ""
     }
   },
   associations: function() {

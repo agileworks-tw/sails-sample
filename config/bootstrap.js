@@ -38,9 +38,22 @@ module.exports.bootstrap = async (cb) => {
     sails.services.passport.loadStrategies();
     await porductionInitDb();
 
-    let user = await User.create({username: 'user', email: 'user@gmail.com'});
+    let user = await User.bulkCreate([
+      { username: 'user', email: 'user@gmail.com' },
+      { username: 'Deleav', email: 'deleav@gmail.com', age: '22k' },
+      { username: 'DMoon', email: 'dmoon@dmoon.com' }
+    ]);
     let passport = await Passport.create({provider: 'local', password: 'user', UserId: user.id});
-    let post = await Post.create({title: 'testTitle', UserId: user.id});
+    let post = await Post.bulkCreate([
+      { title: 'post 1', authId: '2', content: '今天天氣真好', UserId: user.id },
+      { title: 'post 2', content: 'daaaarkness', authId: '1' },
+      { title: 'post 3', content: '大顆壽司', authId: '3' }
+    ]);
+    let dashboard = await Dashboard.bulkCreate([
+      { title: "post 1" },
+      { title: "post 2" },
+      { title: "post 3" }
+    ]);
     // await user.setPosts([post]);
     // await user.setPassports([passport]);
     cb();

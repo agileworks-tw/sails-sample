@@ -1,23 +1,8 @@
 module.exports = {
-  findAll: async () => {
-    try {
-      return await User.findAll();
-    } catch (e) {
-      throw e;
-    }
-  },
-
-
-
-
-
-
-
-  // Demo for callback
-  get_callback: function( authId, callback ) {
-    User.findOne({
+  get_callback: function( title, callback ) {
+    Post.findOne({
       where: {
-        id: authId
+        title: title
       }
     }).then(function( value ) {
       callback( value );
@@ -26,11 +11,11 @@ module.exports = {
       return error;
     });
   },
-  get_promise: function( authId, callback ) {
+  get_promise: function( title ) {
     return new Promise(function( resolve, reject ) {
-      User.findOne({
+      Post.findOne({
         where: {
-          id: authId
+          title: title
         }
       }).then(function( value ) {
         return resolve( value );
