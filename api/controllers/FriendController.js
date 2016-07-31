@@ -15,23 +15,11 @@ module.exports = {
     catch(e){
       throw e;
     }
-
-    // fb.api('4',{fields: [friends]}, function(res){
-    //
-    //   if(!res || res.error){
-    //     console.log(!res ? 'error occurred' : res.error);
-    //     return;
-    //   }
-    //
-    //   console.log(JSON.stringify(res.friends.data));
-    //   return res.friends.data;
-    //
-    // });
   },
 
   index: async(req , res) => {
     try{
-      let friends = await Facebook.findAll();
+      let friends = await Friend.findAll();
       res.ok(friends);
       res.end();
     }
@@ -43,7 +31,18 @@ module.exports = {
 
   create: async(req , res) => {
     try{
+      let name  = req.body.name,
+          email = req.body.email,
+          facebookId = req.body.facebookId;
 
+      let newFriend = await Friend.create({
+        name: name,
+        email: email,
+        facebookId: facebookId
+      });
+
+      res.ok(newFriend);
+      res.end();
     }
     catch(e){
       throw e;
@@ -52,7 +51,17 @@ module.exports = {
 
   update: async(req , res) => {
     try{
+      let id = req.body.id,
+          email = req.body.email,
+          name  = req.body.name;
 
+      let updateInfo = await Friend.findById(id);
+      updateInfo.email = email;
+      updateInfo.name  = name;
+      await updateInfo.save();
+
+      res.ok(updateInfo);
+      res.end();
     }
     catch(e){
       throw e;
@@ -61,7 +70,15 @@ module.exports = {
 
   destroy: async(req , res) => {
     try{
+      console.log('friend delete...');
+      let id = req.params['id'];
 
+      let delFriend = await Friend.findById(id);
+      await delFriend.destroy();
+
+      console.log(delFriend);
+      res.ok(delFriend);
+      res.end();
     }
     catch(e){
       throw e;
