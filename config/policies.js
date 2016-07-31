@@ -29,7 +29,7 @@ module.exports.policies = {
   'DashboardController': {
     '*': []
   },
-  'FacebookController':{
+  'FriendController':{
     // '*':[]
     'getFriends':[],
     'index': [],
