@@ -35,6 +35,9 @@ module.exports.routes = {
   '/': {
     view: 'index'
   },
+  // homework friend
+
+  //
 
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',

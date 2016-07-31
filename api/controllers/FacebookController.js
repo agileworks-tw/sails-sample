@@ -5,27 +5,11 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-var FB = require('fb');
-var fb = new FB.Facebook();
-
 module.exports = {
   getFriends: async (req ,res) => {
     try{
-      let token  = "EAACEdEose0cBAFK3ooNdcpDsSL7WqvDrTfGXgox2X15HsHfPKXbZA4MWL2xDTkFWjqJKowK0umNmxxrApjN9P6bVMkdgJOTikPK1ZBiCUWpY55tOZBtrvNqh9lV42NTH4e6aNaqQC8LzoAiHyJdHqZA74szHg2VoedB3Lqg2oAZDZD",
-          userId = "790001111011196"
-
-      fb.setAccessToken(token);
-      let result = await new Promise( function(resolve, reject){
-        fb.api(`${userId}/friends`, function(res , err){
-          if(err){
-            reject(err);
-          }else{
-            resolve(res.data);
-          }
-        });
-      });
-
-      res.ok({result});
+      let friends = await Facebook.findAll();
+      res.ok(friends);
       res.end();
     }
     catch(e){
@@ -46,22 +30,41 @@ module.exports = {
   },
 
   index: async(req , res) => {
-    res.ok('Hello index');
-    res.end();
+    try{
+      let friends = await Facebook.findAll();
+      res.ok(friends);
+      res.end();
+    }
+    catch(e){
+      throw e;
+    }
+
   },
 
   create: async(req , res) => {
-    res.ok('Hello create');
-    res.end();
+    try{
+
+    }
+    catch(e){
+      throw e;
+    }
   },
 
   update: async(req , res) => {
-    res.ok('Hello update');
-    res.end();
+    try{
+
+    }
+    catch(e){
+      throw e;
+    }
   },
 
   destroy: async(req , res) => {
-    res.ok('Hello destroy');
-    res.end();
+    try{
+
+    }
+    catch(e){
+      throw e;
+    }
   }
 };
