@@ -1,0 +1,11 @@
+<h1>Friend list page</h1>
+<hr>
+<a href="/create">create a friend</a>
+<hr>
+<ul>
+  <% for(var i=0;i<users.length;i++){ %>
+    <li>
+      <a href="/destroy/<%= users[i].id %>">X</a>
+      <%=  users[i].fbID%> <%=  users[i].name%> <%=  users[i].email %> </li>
+  <% } %>
+</ul>
