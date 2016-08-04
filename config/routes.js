@@ -61,6 +61,12 @@ module.exports.routes = {
   'get /api/authOfFirstPost/arrow': 'DashboardController.get_arrow',
   'get /api/authOfFirstPost/async': 'DashboardController.get_async',
 
+  // Likes
+  'get /likes/create': 'LikseController.create',
+  'get /likes/find': 'LikseController.find',
+  'get /likes/update': 'LikseController.update',
+  'get /likes/destory': 'LikseController.destory',
+  'get /likes/delete': 'LikseController.destory',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
