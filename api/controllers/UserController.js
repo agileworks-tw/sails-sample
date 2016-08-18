@@ -5,7 +5,7 @@ module.exports = {
       let user = req.body;
 
       // 呼叫 UserService.checkUser 完成相關處理
-      let userExist = {};
+      let userExist = await UserService.checkUser({user});
 
       // 回傳驗證結果
       res.view('info.jade', {user: userExist, loginSuccess: true});

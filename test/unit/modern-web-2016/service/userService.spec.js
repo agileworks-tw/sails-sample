@@ -22,6 +22,7 @@ describe('對 User Service 進行使用者驗證', function() {
       // 開啟 api/services/UserService.js
       // 將在 model 所撰寫的使用者查詢驗證，透過 service 實作
       // 在此測試不需新增程式碼，只需要實作 api/services/UserService.js 讓此測試通過
+
       let userExist = await UserService.checkUser({user});
       userExist.email.should.be.equal(user.email);
       userExist.password.should.be.equal(user.password);

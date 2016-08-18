@@ -8,7 +8,8 @@ module.exports = {
       }
 
       // 根據 model 的 spec 完成下列實作
-      let userExist = {};
+
+      let userExist = await User.findOne({where});
 
       return userExist;
 

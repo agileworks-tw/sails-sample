@@ -83,7 +83,6 @@ let where = {
   password: user.password
 }
 let userExist = await User.findOne({where});
-
 ```
 
 ## 2. 將 Model 所完成的 Login 邏輯，用 Service 包裝

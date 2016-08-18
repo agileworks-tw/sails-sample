@@ -2,3 +2,4 @@
 --require chai
 --recursive test/bootstrap.test.js
 --reporter spec
+--require babel-core/register
