@@ -8,10 +8,10 @@ describe('對 User Model 進行使用者驗證', function() {
       // 在進行 Login 驗證前需要先有 User 存在
 
       // 撰寫使用者建立程式碼
-      user = await User.create({
-        email: 'test@gmail.com',
-        password: 'test'
-      });
+      // user = await User.create({
+      //   email: 'test@gmail.com',
+      //   password: 'test'
+      // });
 
       done();
     } catch (e) {
@@ -27,7 +27,8 @@ describe('對 User Model 進行使用者驗證', function() {
         email: user.email,
         password: user.password
       }
-      let userExist = await User.findOne({where});
+      let userExist = {email: "", password: ""}
+      // userExist = await User.findOne({where});
 
       //check Output
       userExist.email.should.be.equal(user.email);
