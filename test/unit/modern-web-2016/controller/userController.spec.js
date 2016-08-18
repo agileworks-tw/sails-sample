@@ -8,10 +8,10 @@ describe('對 User Controller 進行使用者驗證', function() {
       // 在進行 Login 驗證前需要 User 事先存在
 
       // 撰寫使用者建立程式碼
-      // user = await User.create({
-      //   email: 'test@gmail.com',
-      //   password: 'test'
-      // });
+      user = await User.create({
+        email: 'test@gmail.com',
+        password: 'test'
+      });
 
       done();
     } catch (e) {
