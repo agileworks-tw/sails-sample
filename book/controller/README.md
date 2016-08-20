@@ -14,7 +14,7 @@
 html 部分，根據上述內容進行 form 表單製作
 
 ```
-form(action='POST', method='/signin')
+form(action='/signin', method='POST')
   input(name='email', type='email')
   input(name='password', type='password')
   button(type='submit') Sign in

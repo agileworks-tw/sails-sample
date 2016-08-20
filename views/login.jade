@@ -2,7 +2,7 @@ extends ./layout
 
 block body
   .container
-    form.form-signin(action='POST', method='/signin')
+    form.form-signin(action='/signin', method='POST')
       h2.form-signin-heading Please sign in
       label.sr-only(for='inputEmail') Email address
       input#inputEmail.form-control(name='email', type='email', placeholder='Email address', required='', autofocus='')
